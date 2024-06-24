@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "837355697155",
+    "project_id": "viv-assistente",
+    "storage_bucket": "viv-assistente.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837355697155:android:73dde98dd01bc0f6b20a36",
+        "android_client_info": {
+          "package_name": "com.viv.aplicativo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-5ZVOBGe7PbtLuV_B1v8S9X146_kBCzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
