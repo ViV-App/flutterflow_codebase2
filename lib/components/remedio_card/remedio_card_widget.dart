@@ -69,9 +69,11 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
             );
           }
           List<PrescricaoRow> containerPrescricaoRowList = snapshot.data!;
+
           final containerPrescricaoRow = containerPrescricaoRowList.isNotEmpty
               ? containerPrescricaoRowList.first
               : null;
+
           return Material(
             color: Colors.transparent,
             elevation: 2.0,
@@ -184,6 +186,9 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                                       valueOrDefault<String>(
                                         widget.medicamentoFiltered?.nome,
                                         '-',
+                                      ).maybeHandleOverflow(
+                                        maxChars: 25,
+                                        replacement: '…',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -196,7 +201,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                                           ),
                                     ),
                                     Text(
-                                      '${containerPrescricaoRow?.posologia?.toString()}comprimidos - ${containerPrescricaoRow?.horarios.length.toString()}x ao dia',
+                                      '${containerPrescricaoRow?.posologia?.toString()}${containerPrescricaoRow?.formaDose} - ${containerPrescricaoRow?.horarios.length.toString()}x ao dia',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

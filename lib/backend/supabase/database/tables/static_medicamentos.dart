@@ -29,4 +29,10 @@ class StaticMedicamentosRow extends SupabaseDataRow {
 
   bool? get aprovado => getField<bool>('aprovado');
   set aprovado(bool? value) => setField<bool>('aprovado', value);
+
+  bool? get createdByUser => getField<bool>('createdByUser');
+  set createdByUser(bool? value) => setField<bool>('createdByUser', value);
+
+  int? get createdBy => getField<int>('createdBy');
+  set createdBy(int? value) => setField<int>('createdBy', value);
 }

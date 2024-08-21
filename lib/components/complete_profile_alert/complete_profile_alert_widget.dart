@@ -55,7 +55,10 @@ class _CompleteProfileAlertWidgetState
             return WebViewAware(
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: const CompletePerfilWidget(),
+                child: SizedBox(
+                  height: MediaQuery.sizeOf(context).height * 0.85,
+                  child: const CompletePerfilWidget(),
+                ),
               ),
             );
           },

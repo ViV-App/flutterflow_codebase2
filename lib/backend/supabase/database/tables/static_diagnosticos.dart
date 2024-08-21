@@ -24,6 +24,7 @@ class StaticDiagnosticosRow extends SupabaseDataRow {
   String? get nome => getField<String>('nome');
   set nome(String? value) => setField<String>('nome', value);
 
-  String? get descricao => getField<String>('descricao');
-  set descricao(String? value) => setField<String>('descricao', value);
+  List<dynamic> get perguntas => getListField<dynamic>('perguntas');
+  set perguntas(List<dynamic>? value) =>
+      setListField<dynamic>('perguntas', value);
 }

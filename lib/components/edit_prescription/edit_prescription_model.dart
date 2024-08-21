@@ -1,5 +1,4 @@
 import '/backend/schema/structs/index.dart';
-import '/backend/supabase/supabase.dart';
 import '/components/remedio_card/remedio_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -40,8 +39,6 @@ class EditPrescriptionModel extends FlutterFlowModel<EditPrescriptionWidget> {
   DateTime? datePicked;
   // State field(s) for Switch widget.
   bool? switchValue;
-  // Stores action output result for [Backend Call - Delete Row(s)] action in Button widget.
-  List<PrescricaoRow>? ukkgu;
 
   @override
   void initState(BuildContext context) {

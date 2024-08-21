@@ -25,4 +25,7 @@ class MedicoRow extends SupabaseDataRow {
 
   String? get crm => getField<String>('crm');
   set crm(String? value) => setField<String>('crm', value);
+
+  String? get uf => getField<String>('uf');
+  set uf(String? value) => setField<String>('uf', value);
 }

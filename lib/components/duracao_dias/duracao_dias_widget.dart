@@ -99,6 +99,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                   child: Builder(
                     builder: (context) {
                       final listN = functions.generateNumberList().toList();
+
                       return SingleChildScrollView(
                         primary: false,
                         child: Column(

@@ -1,17 +1,22 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/assistant_hub/assistant_hub_widget.dart';
 import '/components/av_quinzenal/av_quinzenal_widget.dart';
 import '/components/complete_perfil/complete_perfil_widget.dart';
 import '/components/complete_profile_alert/complete_profile_alert_widget.dart';
+import '/components/home_page_status_component/home_page_status_component_widget.dart';
 import '/components/onboarding_home_completed/onboarding_home_completed_widget.dart';
 import '/components/onboarding_home_skipped/onboarding_home_skipped_widget.dart';
 import '/components/pdf_viewer/pdf_viewer_widget.dart';
-import '/components/wb_diary/wb_diary_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/walkthroughs/onboarding.dart';
+import '/pages/well_being_diary/new_well_being/new_well_being_widget.dart';
+import '/walkthroughs/onboarding01.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
@@ -48,8 +53,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           currentUserUid,
         ),
       );
-      if (_model.user.isEmpty) {
+      if ((_model.user != null && (_model.user)!.isNotEmpty) == false) {
         await _model.criarPacienteFromGoogle(context);
+        return;
       } else {
         FFAppState().paciente = PacienteStruct(
           nome: _model.user?.first.nome,
@@ -60,23 +66,72 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           cpf: _model.user?.first.cpf,
           foto: _model.user?.first.profilePic,
           perfilCompleto: _model.user?.first.perfilCompleto,
+          tratamentoPrevio: _model.user?.first.tramentoPrevio,
+          medico: _model.user?.first.medicoPrescritor,
+          queixas: _model.user?.map((e) => e.queixas.first).toList(),
+          contraIndicacoes:
+              _model.user?.map((e) => e.contraIndicacoes.first).toList(),
+          peso: valueOrDefault<double>(
+            _model.user?.first.peso,
+            0.0,
+          ),
+          altura: valueOrDefault<double>(
+            _model.user?.first.altura,
+            0.0,
+          ),
         );
         FFAppState().update(() {});
-      }
+        _model.assinatura = await AssinaturaTable().queryRows(
+          queryFn: (q) => q.eq(
+            'paciente',
+            FFAppState().paciente.id,
+          ),
+        );
+        FFAppState().updatePacienteStruct(
+          (e) => e
+            ..assinatura = AssinaturaStruct(
+              assinaturaId: _model.assinatura?.first.id,
+              plano: _model.assinatura?.first.plano,
+              status: _model.assinatura?.first.status,
+              registroBemViver: _model.assinatura?.first.registroBemViver,
+              registroAlertasMedicamento:
+                  _model.assinatura?.first.registroAlertasMedicamento,
+              evolucaoBemViver: _model.assinatura?.first.evolucaoBemViver,
+              acessoAssistente: _model.assinatura?.first.acessoAssistente,
+              bipMensal: _model.assinatura?.first.bipsDisponiveis,
+            ),
+        );
+        setState(() {});
+        if (_model.user?.first.tramentoPrevio == null ||
+            _model.user?.first.tramentoPrevio == '') {
+          context.goNamed(
+            'previousTreatment',
+            extra: <String, dynamic>{
+              kTransitionInfoKey: const TransitionInfo(
+                hasTransition: true,
+                transitionType: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+              ),
+            },
+          );
 
-      _model.user2 = await PacienteTable().queryRows(
-        queryFn: (q) => q.eq(
-          'uuid',
-          currentUserUid,
-        ),
-      );
-      if (_model.user2?.first.firstOnboarding == 0) {
-        safeSetState(
-            () => _model.onboardingController = createPageWalkthrough(context));
-        _model.onboardingController?.show(context: context);
-        return;
-      } else {
-        return;
+          return;
+        } else {
+          _model.user2 = await PacienteTable().queryRows(
+            queryFn: (q) => q.eq(
+              'uuid',
+              currentUserUid,
+            ),
+          );
+          if (_model.user2?.first.firstOnboarding == 0) {
+            safeSetState(() =>
+                _model.onboarding01Controller = createPageWalkthrough(context));
+            _model.onboarding01Controller?.show(context: context);
+            return;
+          } else {
+            return;
+          }
+        }
       }
     });
 
@@ -121,13 +176,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             );
           }
           List<PacienteRow> homePagePacienteRowList = snapshot.data!;
+
           final homePagePacienteRow = homePagePacienteRowList.isNotEmpty
               ? homePagePacienteRowList.first
               : null;
+
           return GestureDetector(
-            onTap: () => _model.unfocusNode.canRequestFocus
-                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                : FocusScope.of(context).unfocus(),
+            onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
               key: scaffoldKey,
               backgroundColor: const Color(0xFFEFF4F9),
@@ -192,7 +247,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             ),
                                             child: Image.network(
                                               valueOrDefault<String>(
-                                                FFAppState().paciente.foto,
+                                                homePagePacienteRow?.profilePic,
                                                 'https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small/default-avatar-photo-placeholder-profile-icon-vector.jpg',
                                               ),
                                               fit: BoxFit.cover,
@@ -209,7 +264,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Olá, ${FFAppState().paciente.nome}',
+                                                'Olá, ${valueOrDefault<String>(
+                                                  homePagePacienteRow?.nome,
+                                                  'name',
+                                                )}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -243,13 +301,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ],
                                     ).addWalkthrough(
                                       rowHm3zeowq,
-                                      _model.onboardingController,
+                                      _model.onboarding01Controller,
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            if (FFAppState().paciente.perfilCompleto == false)
+                            if (homePagePacienteRow?.perfilCompleto == false)
                               wrapWithModel(
                                 model: _model.completeProfileAlertModel,
                                 updateCallback: () => setState(() {}),
@@ -432,7 +490,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             size: 24.0,
                                           ),
                                           Text(
-                                            'Conteudos',
+                                            'Conteudo',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -455,17 +513,105 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed(
-                                      'evolucao',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
+                                    _model.apiResultfi2z =
+                                        await GetLatestBemViverScoreCall.call(
+                                      dataInit: functions
+                                          .subDaysToDate(getCurrentTimestamp, 6)
+                                          .toString(),
+                                      dataEnd: getCurrentTimestamp.toString(),
+                                      paciente: homePagePacienteRow?.id,
                                     );
+
+                                    if ((GetLatestBemViverScoreCall.id(
+                                                  (_model.apiResultfi2z
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                ) !=
+                                                null &&
+                                            (GetLatestBemViverScoreCall.id(
+                                              (_model.apiResultfi2z?.jsonBody ??
+                                                  ''),
+                                            ))!
+                                                .isNotEmpty) ==
+                                        false) {
+                                      if (homePagePacienteRow?.perfilCompleto ==
+                                          false) {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          context: context,
+                                          builder: (context) {
+                                            return WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () =>
+                                                    FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: SizedBox(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.85,
+                                                    child:
+                                                        const CompletePerfilWidget(),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      } else {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          context: context,
+                                          builder: (context) {
+                                            return WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () =>
+                                                    FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: SizedBox(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.85,
+                                                    child: NewWellBeingWidget(
+                                                      paciente:
+                                                          homePagePacienteRow
+                                                              ?.id,
+                                                      pacient:
+                                                          homePagePacienteRow,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      }
+                                    } else {
+                                      context.pushNamed(
+                                        'newEvolucao',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
+                                    }
+
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -513,7 +659,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ].divide(const SizedBox(width: 12.0)),
                           ).addWalkthrough(
                             rowE6h0my7a,
-                            _model.onboardingController,
+                            _model.onboarding01Controller,
                           ),
                         ),
                         if (responsiveVisibility(
@@ -537,12 +683,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   builder: (context) {
                                     return WebViewAware(
                                       child: GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
+                                        onTap: () =>
+                                            FocusScope.of(context).unfocus(),
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
@@ -625,94 +767,171 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             ),
                           ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              if (FFAppState().paciente.perfilCompleto ==
-                                  false) {
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  context: context,
-                                  builder: (context) {
-                                    return WebViewAware(
-                                      child: GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: const CompletePerfilWidget(),
-                                        ),
+                        FutureBuilder<List<StatusPacientRow>>(
+                          future: StatusPacientTable().querySingleRow(
+                            queryFn: (q) => q.eq(
+                              'paciente',
+                              homePagePacienteRow?.id,
+                            ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<StatusPacientRow> columnStatusPacientRowList =
+                                snapshot.data!;
+
+                            final columnStatusPacientRow =
+                                columnStatusPacientRowList.isNotEmpty
+                                    ? columnStatusPacientRowList.first
+                                    : null;
+
+                            return Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                if ((columnStatusPacientRow?.estagio != 'receberPlano') &&
+                                    (columnStatusPacientRow?.estagio !=
+                                        'receberAjusteBip') &&
+                                    (columnStatusPacientRow?.estagio !=
+                                        'emTratamento') &&
+                                    (columnStatusPacientRow?.estagio !=
+                                        'bipsInsuficientes'))
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 24.0),
+                                    child: wrapWithModel(
+                                      model:
+                                          _model.homePageStatusComponentModel,
+                                      updateCallback: () => setState(() {}),
+                                      child: HomePageStatusComponentWidget(
+                                        status: columnStatusPacientRow,
                                       ),
-                                    );
-                                  },
-                                ).then((value) => safeSetState(() {}));
-                              } else {
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  context: context,
-                                  builder: (context) {
-                                    return WebViewAware(
-                                      child: GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: const WbDiaryWidget(),
+                                    ),
+                                  ),
+                              ],
+                            );
+                          },
+                        ),
+                        if (dateTimeFormat(
+                              "d/M/y",
+                              FFAppState().ultimoRegistroDiario,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) !=
+                            dateTimeFormat(
+                              "d/M/y",
+                              getCurrentTimestamp,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ))
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                if (homePagePacienteRow?.perfilCompleto ==
+                                    false) {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    isDismissible: false,
+                                    context: context,
+                                    builder: (context) {
+                                      return WebViewAware(
+                                        child: GestureDetector(
+                                          onTap: () =>
+                                              FocusScope.of(context).unfocus(),
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: SizedBox(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.85,
+                                              child: const CompletePerfilWidget(),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => safeSetState(() {}));
-                              }
-                            },
-                            child: Container(
-                              width: double.infinity,
-                              height: 146.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(9.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 18.0, 12.0, 12.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                } else {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    context: context,
+                                    builder: (context) {
+                                      return WebViewAware(
+                                        child: GestureDetector(
+                                          onTap: () =>
+                                              FocusScope.of(context).unfocus(),
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: SizedBox(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.8,
+                                              child: NewWellBeingWidget(
+                                                pacient: homePagePacienteRow,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                }
+                              },
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 3.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                ),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 146.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(9.0),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 18.0, 12.0, 12.0),
+                                    child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Column(
+                                        Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              'Como você está se sentindo hoje?',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Como você está se sentindo hoje?',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Mulish',
@@ -721,332 +940,352 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
-                                            ),
-                                            Text(
-                                              'Clique para registrar seu diário',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                                ),
+                                                Text(
+                                                  'Clique para registrar seu diário',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         letterSpacing: 0.0,
                                                       ),
+                                                ),
+                                              ].divide(const SizedBox(height: 4.0)),
                                             ),
-                                          ].divide(const SizedBox(height: 4.0)),
+                                            Icon(
+                                              Icons.arrow_forward_ios,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                          ],
                                         ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Container(
+                                                  width: 75.0,
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFF75C3FB),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.asset(
+                                                          'assets/images/beaming-face-with-smiling-eyes_1f601_(1).png',
+                                                          width: 35.0,
+                                                          height: 35.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Container(
+                                                  width: 75.0,
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFFB9EEB0),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.asset(
+                                                          'assets/images/lnkkg_.png',
+                                                          width: 35.0,
+                                                          height: 35.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Container(
+                                                  width: 75.0,
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFFEEE8B0),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.asset(
+                                                          'assets/images/suksn_.png',
+                                                          width: 35.0,
+                                                          height: 35.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Container(
+                                                  width: 75.0,
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFFFFCFA4),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.asset(
+                                                          'assets/images/kzeqx_.png',
+                                                          width: 35.0,
+                                                          height: 35.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Container(
+                                                  width: 75.0,
+                                                  height: 60.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFFFFA4A4),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Stack(
+                                                    children: [
+                                                      Align(
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.asset(
+                                                                'assets/images/crying-face_1f622_(2).png',
+                                                                width: 35.0,
+                                                                height: 35.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ].divide(const SizedBox(width: 12.0)),
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Container(
-                                              width: 75.0,
-                                              height: 60.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xFFFFA4A4),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              child: Stack(
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.asset(
-                                                            'assets/images/crying-face_1f622_(2).png',
-                                                            width: 35.0,
-                                                            height: 35.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Container(
-                                              width: 75.0,
-                                              height: 60.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xFFFFCFA4),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/kzeqx_.png',
-                                                      width: 35.0,
-                                                      height: 35.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Container(
-                                              width: 75.0,
-                                              height: 60.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xFFEEE8B0),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/suksn_.png',
-                                                      width: 35.0,
-                                                      height: 35.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Container(
-                                              width: 75.0,
-                                              height: 60.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xFFB9EEB0),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/lnkkg_.png',
-                                                      width: 35.0,
-                                                      height: 35.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Container(
-                                              width: 75.0,
-                                              height: 60.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xFF75C3FB),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/beaming-face-with-smiling-eyes_1f601_(1).png',
-                                                      width: 35.0,
-                                                      height: 35.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ].divide(const SizedBox(width: 12.0)),
-                                    ),
-                                  ],
+                                  ),
                                 ),
                               ),
+                            ).addWalkthrough(
+                              containerN74zw2up,
+                              _model.onboarding01Controller,
                             ),
-                          ).addWalkthrough(
-                            containerN74zw2up,
-                            _model.onboardingController,
                           ),
-                        ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 16.0, 24.0, 0.0),
+                              24.0, 32.0, 24.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              if (FFAppState().paciente.perfilCompleto ==
-                                  false) {
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  context: context,
-                                  builder: (context) {
-                                    return WebViewAware(
-                                      child: GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: const CompletePerfilWidget(),
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                context: context,
+                                builder: (context) {
+                                  return WebViewAware(
+                                    child: GestureDetector(
+                                      onTap: () =>
+                                          FocusScope.of(context).unfocus(),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: SizedBox(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.85,
+                                          child: const AssistantHubWidget(),
                                         ),
                                       ),
-                                    );
-                                  },
-                                ).then((value) => safeSetState(() {}));
-                              } else {
-                                context.pushNamed('chatViv');
-                              }
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
                             },
-                            child: Container(
-                              width: double.infinity,
-                              height: 80.0,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF6E78FF),
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 3.0,
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(9.0),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    18.0, 0.0, 18.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Container(
-                                          width: 32.0,
-                                          height: 32.0,
-                                          decoration: BoxDecoration(
-                                            color: Colors.transparent,
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: Image.asset(
-                                                'assets/images/Group_(1).png',
-                                              ).image,
-                                            ),
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
+                              child: Container(
+                                width: double.infinity,
+                                height: 80.0,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF6E78FF),
+                                  borderRadius: BorderRadius.circular(9.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      18.0, 0.0, 18.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: 32.0,
+                                            height: 32.0,
+                                            decoration: BoxDecoration(
                                               color: Colors.transparent,
-                                              width: 0.0,
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: Image.asset(
+                                                  'assets/images/Group_(1).png',
+                                                ).image,
+                                              ),
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                color: Colors.transparent,
+                                                width: 0.0,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Fale com a ViV',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Mulish',
-                                                        color: Colors.white,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                            ),
-                                            Text(
-                                              'Sua assistente virtual te ajudará!',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Mulish',
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                          ].divide(const SizedBox(height: 4.0)),
-                                        ),
-                                      ].divide(const SizedBox(width: 12.0)),
-                                    ),
-                                  ],
+                                          Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Fale com a ViV',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
+                                              Text(
+                                                'Sua assistente virtual te ajudará!',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ].divide(const SizedBox(height: 4.0)),
+                                          ),
+                                        ].divide(const SizedBox(width: 12.0)),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ).addWalkthrough(
                             container5ho7jjlb,
-                            _model.onboardingController,
+                            _model.onboarding01Controller,
                           ),
                         ),
                         Padding(
@@ -1069,105 +1308,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 },
                               );
                             },
-                            child: Container(
-                              width: double.infinity,
-                              height: 80.0,
-                              decoration: BoxDecoration(
-                                color: const Color(0x49FFA29F),
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 3.0,
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(9.0),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    18.0, 0.0, 18.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Container(
-                                          width: 32.0,
-                                          height: 32.0,
-                                          decoration: const BoxDecoration(
-                                            color: Color(0xFFFFA29F),
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: const Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              FaIcon(
-                                                FontAwesomeIcons.pills,
-                                                color: Colors.white,
-                                                size: 18.0,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Já tomou seus remédios hoje?',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Mulish',
-                                                    color: const Color(0xFF434854),
-                                                    fontSize: 16.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                            ),
-                                            Text(
-                                              'Registre na sua agenda!',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Mulish',
-                                                        color:
-                                                            const Color(0xCC434854),
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                          ].divide(const SizedBox(height: 4.0)),
-                                        ),
-                                      ].divide(const SizedBox(width: 12.0)),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Builder(
-                          builder: (context) => Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                24.0, 16.0, 24.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                await Share.share(
-                                  'https://appviv.com',
-                                  sharePositionOrigin:
-                                      getWidgetBoundingBox(context),
-                                );
-                              },
                               child: Container(
                                 width: double.infinity,
                                 height: 80.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFEFEDFF),
+                                  color: const Color(0xFFFFD4D2),
                                   borderRadius: BorderRadius.circular(9.0),
                                 ),
                                 child: Padding(
@@ -1185,7 +1336,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             width: 32.0,
                                             height: 32.0,
                                             decoration: const BoxDecoration(
-                                              color: Color(0xFF6E78FF),
+                                              color: Color(0xFFFFA29F),
                                               shape: BoxShape.circle,
                                             ),
                                             child: const Column(
@@ -1194,23 +1345,46 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 FaIcon(
-                                                  FontAwesomeIcons.heart,
+                                                  FontAwesomeIcons.pills,
                                                   color: Colors.white,
                                                   size: 18.0,
                                                 ),
                                               ],
                                             ),
                                           ),
-                                          Text(
-                                            'Convide seus amigos para se \njuntar a ViV',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Já tomou seus remédios hoje?',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                              const Color(0xFF434854),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
+                                              Text(
+                                                'Registre agora!',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                              const Color(0xCC434854),
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ].divide(const SizedBox(height: 4.0)),
                                           ),
                                         ].divide(const SizedBox(width: 12.0)),
                                       ),
@@ -1224,16 +1398,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 32.0, 0.0, 0.0),
-                          child: Text(
-                            'Conteúdos mais vistos',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Mulish',
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w800,
-                                ),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              _model.vfbi = await actions.getFCM();
+                              _model.fcm = valueOrDefault<String>(
+                                _model.vfbi,
+                                'jyr',
+                              );
+                              setState(() {});
+
+                              setState(() {});
+                            },
+                            child: Text(
+                              'Conteúdos mais vistos',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Mulish',
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                            ),
                           ),
                         ),
                         Padding(
@@ -1260,6 +1450,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               }
                               List<StaticConteudosRow>
                                   rowStaticConteudosRowList = snapshot.data!;
+
                               return SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
@@ -1269,182 +1460,192 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           (rowIndex) {
                                     final rowStaticConteudosRow =
                                         rowStaticConteudosRowList[rowIndex];
-                                    return ClipRRect(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      child: Container(
-                                        width: 225.0,
-                                        height: 191.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                    return Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 4.0, 0.0, 4.0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 3.0,
+                                        shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                         ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              child: Image.network(
-                                                rowStaticConteudosRow.capa!,
-                                                width: double.infinity,
-                                                height: 66.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 100.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                          child: Container(
+                                            width: 225.0,
+                                            height: 191.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.network(
+                                                    rowStaticConteudosRow.capa!,
+                                                    width: double.infinity,
+                                                    height: 66.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(12.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              rowStaticConteudosRow
-                                                                  .titulo,
-                                                              '-',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                          ),
-                                                          Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              rowStaticConteudosRow
-                                                                  .descricaoCurta,
-                                                              '-',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  color: const Color(
-                                                                      0xFF8798B5),
-                                                                  fontSize:
-                                                                      11.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
+                                                Expanded(
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    height: 100.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                     ),
-                                                    Builder(
-                                                      builder: (context) =>
-                                                          Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    12.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0),
-                                                        child: FFButtonWidget(
-                                                          onPressed: () async {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Dialog(
-                                                                  elevation: 0,
-                                                                  insetPadding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  alignment: const AlignmentDirectional(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets.all(
+                                                                  12.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  rowStaticConteudosRow
+                                                                      .titulo,
+                                                                  '-',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Mulish',
+                                                                      fontSize:
+                                                                          14.0,
+                                                                      letterSpacing:
                                                                           0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  child:
-                                                                      WebViewAware(
-                                                                    child:
-                                                                        GestureDetector(
-                                                                      onTap: () => _model
-                                                                              .unfocusNode
-                                                                              .canRequestFocus
-                                                                          ? FocusScope.of(context).requestFocus(_model
-                                                                              .unfocusNode)
-                                                                          : FocusScope.of(context)
-                                                                              .unfocus(),
-                                                                      child:
-                                                                          PdfViewerWidget(
-                                                                        pdfPath:
-                                                                            rowStaticConteudosRow.link!,
-                                                                      ),
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
                                                                     ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                setState(
-                                                                    () {}));
-                                                          },
-                                                          text: 'Ler mais',
-                                                          options:
-                                                              FFButtonOptions(
-                                                            width: 100.0,
-                                                            height: 32.0,
+                                                              ),
+                                                              Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  rowStaticConteudosRow
+                                                                      .descricaoCurta,
+                                                                  '-',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Mulish',
+                                                                      color: const Color(
+                                                                          0xFF8798B5),
+                                                                      fontSize:
+                                                                          11.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Builder(
+                                                          builder: (context) =>
+                                                              Padding(
                                                             padding:
                                                                 const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        24.0,
+                                                                        12.0,
                                                                         0.0,
-                                                                        24.0,
-                                                                        0.0),
-                                                            iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                        0.0,
+                                                                        12.0),
+                                                            child:
+                                                                FFButtonWidget(
+                                                              onPressed:
+                                                                  () async {
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: const AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap: () =>
+                                                                              FocusScope.of(dialogContext).unfocus(),
+                                                                          child:
+                                                                              PdfViewerWidget(
+                                                                            pdfPath:
+                                                                                rowStaticConteudosRow.link!,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+                                                              },
+                                                              text: 'Ler mais',
+                                                              options:
+                                                                  FFButtonOptions(
+                                                                width: 100.0,
+                                                                height: 32.0,
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
+                                                                        24.0,
                                                                         0.0,
-                                                                        0.0,
-                                                                        0.0,
+                                                                        24.0,
                                                                         0.0),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
+                                                                iconPadding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
                                                                     .override(
@@ -1460,26 +1661,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           FontWeight
                                                                               .w600,
                                                                     ),
-                                                            elevation: 1.0,
-                                                            borderSide:
-                                                                const BorderSide(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              width: 1.0,
+                                                                elevation: 1.0,
+                                                                borderSide:
+                                                                    const BorderSide(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
                                                             ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
                                                           ),
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
                                                 ),
-                                              ),
+                                              ],
                                             ),
-                                          ],
+                                          ),
                                         ),
                                       ),
                                     );
@@ -1495,6 +1698,89 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         Container(
                           width: double.infinity,
                           decoration: const BoxDecoration(),
+                        ),
+                        Builder(
+                          builder: (context) => Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 32.0, 24.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await Share.share(
+                                  'https://appviv.com',
+                                  sharePositionOrigin:
+                                      getWidgetBoundingBox(context),
+                                );
+                              },
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 3.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                ),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 80.0,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFEFEDFF),
+                                    borderRadius: BorderRadius.circular(9.0),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        18.0, 0.0, 18.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 32.0,
+                                              height: 32.0,
+                                              decoration: const BoxDecoration(
+                                                color: Color(0xFF6E78FF),
+                                                shape: BoxShape.circle,
+                                              ),
+                                              child: const Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  FaIcon(
+                                                    FontAwesomeIcons.heart,
+                                                    color: Colors.white,
+                                                    size: 18.0,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Text(
+                                              'Convide seus amigos para se \njuntar a ViV',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Mulish',
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                            ),
+                                          ].divide(const SizedBox(width: 12.0)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ].addToEnd(const SizedBox(height: 32.0)),
                     ),
@@ -1512,7 +1798,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
         onFinish: () async {
-          safeSetState(() => _model.onboardingController = null);
+          safeSetState(() => _model.onboarding01Controller = null);
           await showDialog(
             context: context,
             builder: (dialogContext) {
@@ -1524,16 +1810,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     .resolve(Directionality.of(context)),
                 child: WebViewAware(
                   child: GestureDetector(
-                    onTap: () => _model.unfocusNode.canRequestFocus
-                        ? FocusScope.of(context)
-                            .requestFocus(_model.unfocusNode)
-                        : FocusScope.of(context).unfocus(),
+                    onTap: () => FocusScope.of(dialogContext).unfocus(),
                     child: const OnboardingHomeCompletedWidget(),
                   ),
                 ),
               );
             },
-          ).then((value) => setState(() {}));
+          );
 
           await PacienteTable().update(
             data: {
@@ -1558,16 +1841,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       .resolve(Directionality.of(context)),
                   child: WebViewAware(
                     child: GestureDetector(
-                      onTap: () => _model.unfocusNode.canRequestFocus
-                          ? FocusScope.of(context)
-                              .requestFocus(_model.unfocusNode)
-                          : FocusScope.of(context).unfocus(),
+                      onTap: () => FocusScope.of(dialogContext).unfocus(),
                       child: const OnboardingHomeSkippedWidget(),
                     ),
                   ),
                 );
               },
-            ).then((value) => setState(() {}));
+            );
 
             await PacienteTable().update(
               data: {

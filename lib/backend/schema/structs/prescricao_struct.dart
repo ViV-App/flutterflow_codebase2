@@ -55,7 +55,7 @@ class PrescricaoStruct extends BaseStruct {
   set timeslots(List<HorariosStruct>? val) => _timeslots = val;
 
   void updateTimeslots(Function(List<HorariosStruct>) updateFn) {
-    updateFn(timeslots ??= []);
+    updateFn(_timeslots ??= []);
   }
 
   bool hasTimeslots() => _timeslots != null;
@@ -66,7 +66,7 @@ class PrescricaoStruct extends BaseStruct {
   set horarios(List<DateTime>? val) => _horarios = val;
 
   void updateHorarios(Function(List<DateTime>) updateFn) {
-    updateFn(horarios ??= []);
+    updateFn(_horarios ??= []);
   }
 
   bool hasHorarios() => _horarios != null;

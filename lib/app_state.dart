@@ -44,6 +44,17 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _userRef = prefs.getString('ff_userRef') ?? _userRef;
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_fluxoConversa')) {
+        try {
+          final serializedData = prefs.getString('ff_fluxoConversa') ?? '{}';
+          _fluxoConversa = FluxoConversacionalStruct.fromSerializableMap(
+              jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -126,6 +137,53 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInHorarios(int index, HorariosStruct value) {
     horarios.insert(index, value);
+  }
+
+  FluxoConversacionalStruct _fluxoConversa = FluxoConversacionalStruct();
+  FluxoConversacionalStruct get fluxoConversa => _fluxoConversa;
+  set fluxoConversa(FluxoConversacionalStruct value) {
+    _fluxoConversa = value;
+    prefs.setString('ff_fluxoConversa', value.serialize());
+  }
+
+  void updateFluxoConversaStruct(Function(FluxoConversacionalStruct) updateFn) {
+    updateFn(_fluxoConversa);
+    prefs.setString('ff_fluxoConversa', _fluxoConversa.serialize());
+  }
+
+  bool _menuChatOpen = false;
+  bool get menuChatOpen => _menuChatOpen;
+  set menuChatOpen(bool value) {
+    _menuChatOpen = value;
+  }
+
+  List<RespostaQuestStruct> _respostasQuests = [];
+  List<RespostaQuestStruct> get respostasQuests => _respostasQuests;
+  set respostasQuests(List<RespostaQuestStruct> value) {
+    _respostasQuests = value;
+  }
+
+  void addToRespostasQuests(RespostaQuestStruct value) {
+    respostasQuests.add(value);
+  }
+
+  void removeFromRespostasQuests(RespostaQuestStruct value) {
+    respostasQuests.remove(value);
+  }
+
+  void removeAtIndexFromRespostasQuests(int index) {
+    respostasQuests.removeAt(index);
+  }
+
+  void updateRespostasQuestsAtIndex(
+    int index,
+    RespostaQuestStruct Function(RespostaQuestStruct) updateFn,
+  ) {
+    respostasQuests[index] = updateFn(_respostasQuests[index]);
+  }
+
+  void insertAtIndexInRespostasQuests(int index, RespostaQuestStruct value) {
+    respostasQuests.insert(index, value);
   }
 
   final _remediosManager = FutureRequestManager<List<MeusMedicamentosRow>>();

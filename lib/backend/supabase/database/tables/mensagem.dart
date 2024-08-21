@@ -28,4 +28,13 @@ class MensagemRow extends SupabaseDataRow {
 
   String? get message => getField<String>('message');
   set message(String? value) => setField<String>('message', value);
+
+  int? get perguntaFluxo => getField<int>('pergunta_fluxo');
+  set perguntaFluxo(int? value) => setField<int>('pergunta_fluxo', value);
+
+  bool? get isPergunta => getField<bool>('is_pergunta');
+  set isPergunta(bool? value) => setField<bool>('is_pergunta', value);
+
+  dynamic get resposta => getField<dynamic>('resposta');
+  set resposta(dynamic value) => setField<dynamic>('resposta', value);
 }

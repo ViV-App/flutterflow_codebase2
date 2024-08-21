@@ -36,8 +36,8 @@ class _LoginWidgetState extends State<LoginWidget> {
       }
     });
 
-    _model.ipEmailTextController ??= TextEditingController();
-    _model.ipEmailFocusNode ??= FocusNode();
+    _model.mailTextController ??= TextEditingController();
+    _model.mailFocusNode ??= FocusNode();
 
     _model.ipPassTextController ??= TextEditingController();
     _model.ipPassFocusNode ??= FocusNode();
@@ -55,9 +55,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -129,14 +127,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       ),
                                 ),
                                 TextFormField(
-                                  controller: _model.ipEmailTextController,
-                                  focusNode: _model.ipEmailFocusNode,
+                                  controller: _model.mailTextController,
+                                  focusNode: _model.mailFocusNode,
                                   autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintText: 'email@gmail.com',
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .labelMedium
                                         .override(
                                           fontFamily: 'Mulish',
                                           color: const Color(0xFF8798B5),
@@ -186,8 +184,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         fontFamily: 'Mulish',
                                         letterSpacing: 0.0,
                                       ),
-                                  validator: _model
-                                      .ipEmailTextControllerValidator
+                                  keyboardType: TextInputType.emailAddress,
+                                  validator: _model.mailTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ].divide(const SizedBox(height: 6.0)),
@@ -364,20 +362,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                               context)),
                                               child: WebViewAware(
                                                 child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
+                                                  onTap: () => FocusScope.of(
+                                                          dialogContext)
+                                                      .unfocus(),
                                                   child: const ResetPasswordWidget(),
                                                 ),
                                               ),
                                             );
                                           },
-                                        ).then((value) => setState(() {}));
+                                        );
                                       },
                                       child: Text(
                                         'Esqueci minha senha',
@@ -401,17 +394,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   0.0, 8.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  if (_model.formKey.currentState == null ||
-                                      !_model.formKey.currentState!
-                                          .validate()) {
-                                    return;
-                                  }
                                   GoRouter.of(context).prepareAuthEvent();
 
                                   final user =
                                       await authManager.signInWithEmail(
                                     context,
-                                    _model.ipEmailTextController.text,
+                                    _model.mailTextController.text,
                                     _model.ipPassTextController.text,
                                   );
                                   if (user == null) {
@@ -447,7 +435,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   setState(() {});
 
                                   context.goNamedAuth(
-                                      'homePage', context.mounted);
+                                    'homePage',
+                                    context.mounted,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: const TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
+                                  );
 
                                   setState(() {});
                                 },
@@ -516,59 +513,190 @@ class _LoginWidgetState extends State<LoginWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Expanded(
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      await actions.signInWithGoogle();
-                                    },
-                                    child: Container(
-                                      width: 100.0,
-                                      height: 42.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        border: Border.all(
-                                          color: const Color(0xFF8798B5),
+                                if (isAndroid == true)
+                                  Expanded(
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await actions.signInWithGoogle();
+                                        _model.userExist =
+                                            await PacienteTable().queryRows(
+                                          queryFn: (q) => q.eq(
+                                            'uuid',
+                                            currentUserUid,
+                                          ),
+                                        );
+                                        if ((_model.userExist != null &&
+                                                (_model.userExist)!
+                                                    .isNotEmpty) ==
+                                            false) {
+                                          FFAppState().paciente =
+                                              PacienteStruct(
+                                            nome: _model.userExist?.first.nome,
+                                            id: _model.userExist?.first.id,
+                                            uuid: _model.userExist?.first.uuid,
+                                            createdAt: _model
+                                                .userExist?.first.createdAt,
+                                            telefone: _model
+                                                .userExist?.first.telefone,
+                                            cpf: _model.userExist?.first.cpf,
+                                            foto: _model
+                                                .userExist?.first.profilePic,
+                                            perfilCompleto: _model.userExist
+                                                ?.first.perfilCompleto,
+                                            tratamentoPrevio: _model.userExist
+                                                ?.first.tramentoPrevio,
+                                            medico: _model.userExist?.first
+                                                .medicoPrescritor,
+                                          );
+                                          FFAppState().update(() {});
+
+                                          context.goNamed(
+                                            'homePage',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        } else {
+                                          await PacienteTable().insert({
+                                            'uuid': currentUserUid,
+                                          });
+
+                                          context.goNamed(
+                                            'homePage',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  const TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        }
+
+                                        setState(() {});
+                                      },
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 42.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          border: Border.all(
+                                            color: const Color(0xFF8798B5),
+                                          ),
                                         ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Image.asset(
-                                              'assets/images/Google_svg.png',
-                                              width: 24.0,
-                                              height: 24.0,
-                                              fit: BoxFit.cover,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.asset(
+                                                'assets/images/Google_svg.png',
+                                                width: 24.0,
+                                                height: 24.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
-                                          ),
-                                          Text(
-                                            'Google',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Mulish',
-                                                  color: const Color(0xFF262B37),
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w800,
-                                                ),
-                                          ),
-                                        ].divide(const SizedBox(width: 4.0)),
+                                            Text(
+                                              'Google',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Mulish',
+                                                    color: const Color(0xFF262B37),
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w800,
+                                                  ),
+                                            ),
+                                          ].divide(const SizedBox(width: 4.0)),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                if (isiOS == true)
+                                  Expanded(
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        final user = await authManager
+                                            .signInWithGoogle(context);
+                                        if (user == null) {
+                                          return;
+                                        }
+
+                                        context.goNamedAuth(
+                                            'homePage', context.mounted);
+                                      },
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 42.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          border: Border.all(
+                                            color: const Color(0xFF8798B5),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.asset(
+                                                'assets/images/Google_svg.png',
+                                                width: 24.0,
+                                                height: 24.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Google',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Mulish',
+                                                    color: const Color(0xFF262B37),
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w800,
+                                                  ),
+                                            ),
+                                          ].divide(const SizedBox(width: 4.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                               ].divide(const SizedBox(width: 24.0)),
                             ),
                           ].divide(const SizedBox(height: 24.0)),

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '/backend/schema/structs/index.dart';
-
+import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 
 import '../../flutter_flow/place.dart';
@@ -74,6 +74,9 @@ String? serializeParam(
 
       case ParamType.DataStruct:
         data = param is BaseStruct ? param.serialize() : null;
+
+      case ParamType.Enum:
+        data = (param is Enum) ? param.serialize() : null;
 
       case ParamType.SupabaseRow:
         return json.encode((param as SupabaseDataRow).data);
@@ -153,7 +156,9 @@ enum ParamType {
   FFPlace,
   FFUploadedFile,
   JSON,
+
   DataStruct,
+  Enum,
   SupabaseRow,
 }
 
@@ -215,8 +220,16 @@ dynamic deserializeParam<T>(
       case ParamType.SupabaseRow:
         final data = json.decode(param) as Map<String, dynamic>;
         switch (T) {
+          case RespostasQuestionarioRow:
+            return RespostasQuestionarioRow(data);
           case StaticQueixasSaudeRow:
             return StaticQueixasSaudeRow(data);
+          case PlanosAssinaturaRow:
+            return PlanosAssinaturaRow(data);
+          case ViewQueixasPacienteRow:
+            return ViewQueixasPacienteRow(data);
+          case HistoricoMedcoRow:
+            return HistoricoMedcoRow(data);
           case PrescricaoRow:
             return PrescricaoRow(data);
           case StaticMedicamentosRow:
@@ -225,10 +238,22 @@ dynamic deserializeParam<T>(
             return MeusMedicamentosRow(data);
           case MedicoRow:
             return MedicoRow(data);
+          case PlanoTerapeuticoRow:
+            return PlanoTerapeuticoRow(data);
           case MensagemRow:
             return MensagemRow(data);
+          case DadosCadastraisRow:
+            return DadosCadastraisRow(data);
+          case AjusteDoseRequisicaoRow:
+            return AjusteDoseRequisicaoRow(data);
           case StaticEfeitosAdversosRow:
             return StaticEfeitosAdversosRow(data);
+          case BemViverScoreRow:
+            return BemViverScoreRow(data);
+          case BipVigenteRow:
+            return BipVigenteRow(data);
+          case QuestionarioRow:
+            return QuestionarioRow(data);
           case ChatRow:
             return ChatRow(data);
           case StaticDiagnosticosRow:
@@ -237,18 +262,32 @@ dynamic deserializeParam<T>(
             return StaticTagConteudoEducativoRow(data);
           case ConsumotrackRow:
             return ConsumotrackRow(data);
+          case QuestionarioPerguntasRow:
+            return QuestionarioPerguntasRow(data);
           case PacienteRow:
             return PacienteRow(data);
-          case BemEstarRow:
-            return BemEstarRow(data);
-          case AnaliseEvolucaoRow:
-            return AnaliseEvolucaoRow(data);
+          case StatusPacientRow:
+            return StatusPacientRow(data);
           case FichaSaudeRow:
             return FichaSaudeRow(data);
+          case BemViverRow:
+            return BemViverRow(data);
+          case AssinaturaRow:
+            return AssinaturaRow(data);
+          case RespostaQuestionarioRow:
+            return RespostaQuestionarioRow(data);
           case AvaliacaoQuinzenalRow:
             return AvaliacaoQuinzenalRow(data);
           case StaticConteudosRow:
             return StaticConteudosRow(data);
+          case CobrancaRow:
+            return CobrancaRow(data);
+          case AgendamentoRow:
+            return AgendamentoRow(data);
+          case BipPlanosRow:
+            return BipPlanosRow(data);
+          case AjusteDeDoseRow:
+            return AjusteDeDoseRow(data);
           case StaticContraIndicacaoRow:
             return StaticContraIndicacaoRow(data);
           default:
@@ -258,6 +297,9 @@ dynamic deserializeParam<T>(
       case ParamType.DataStruct:
         final data = json.decode(param) as Map<String, dynamic>? ?? {};
         return structBuilder != null ? structBuilder(data) : null;
+
+      case ParamType.Enum:
+        return deserializeEnum<T>(param);
 
       default:
         return null;

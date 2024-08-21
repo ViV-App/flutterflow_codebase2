@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'prescription_added_model.dart';
@@ -73,15 +72,6 @@ class _PrescriptionAddedWidgetState extends State<PrescriptionAddedWidget>
             height: 220.0,
             child: Stack(
               children: [
-                const SizedBox(
-                  width: double.infinity,
-                  height: 225.0,
-                  child: custom_widgets.Gradients(
-                    width: double.infinity,
-                    height: 225.0,
-                    gradientStyle: 'trident',
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -114,7 +104,7 @@ class _PrescriptionAddedWidgetState extends State<PrescriptionAddedWidget>
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
                                     child: Text(
-                                      'Parabéns, a sua prescrição foi criada!',
+                                      'Parabéns, o seu remédio foi adicionado!',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

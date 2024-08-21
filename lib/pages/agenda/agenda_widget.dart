@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -35,7 +37,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
       await _model.getAgenda(
         context,
         date: dateTimeFormat(
-          'y-M-d',
+          "y-M-d",
           _model.pickedDate,
           locale: FFLocalizations.of(context).languageCode,
         ),
@@ -58,9 +60,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -108,7 +108,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                   ),
                                 ),
                                 Text(
-                                  'Minha agenda',
+                                  'Agenda',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -184,28 +184,85 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      final datePickedDate =
-                                          await showDatePicker(
-                                        context: context,
-                                        initialDate: (_model.datePicked ??
-                                            DateTime.now()),
-                                        firstDate: DateTime(1900),
-                                        lastDate: DateTime(2050),
-                                      );
-
-                                      if (datePickedDate != null) {
-                                        safeSetState(() {
-                                          _model.datePicked = DateTime(
-                                            datePickedDate.year,
-                                            datePickedDate.month,
-                                            datePickedDate.day,
-                                          );
-                                        });
-                                      }
+                                      await showModalBottomSheet<bool>(
+                                          context: context,
+                                          builder: (context) {
+                                            final datePickedCupertinoTheme =
+                                                CupertinoTheme.of(context);
+                                            return ScrollConfiguration(
+                                              behavior:
+                                                  const MaterialScrollBehavior()
+                                                      .copyWith(
+                                                dragDevices: {
+                                                  PointerDeviceKind.mouse,
+                                                  PointerDeviceKind.touch,
+                                                  PointerDeviceKind.stylus,
+                                                  PointerDeviceKind.unknown
+                                                },
+                                              ),
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    3,
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                child: CupertinoTheme(
+                                                  data:
+                                                      datePickedCupertinoTheme
+                                                          .copyWith(
+                                                    textTheme:
+                                                        datePickedCupertinoTheme
+                                                            .textTheme
+                                                            .copyWith(
+                                                      dateTimePickerTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Mulish',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  child: CupertinoDatePicker(
+                                                    mode:
+                                                        CupertinoDatePickerMode
+                                                            .date,
+                                                    minimumDate: DateTime(1900),
+                                                    initialDateTime:
+                                                        (_model.datePicked ??
+                                                            DateTime.now()),
+                                                    maximumDate: DateTime(2050),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                    use24hFormat: false,
+                                                    onDateTimeChanged:
+                                                        (newDateTime) =>
+                                                            safeSetState(() {
+                                                      _model.datePicked =
+                                                          newDateTime;
+                                                    }),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          });
                                       await _model.getAgenda(
                                         context,
                                         date: dateTimeFormat(
-                                          'y-M-d',
+                                          "y-M-d",
                                           _model.datePicked,
                                           locale: FFLocalizations.of(context)
                                               .languageCode,
@@ -253,7 +310,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                             ),
                                             Text(
                                               dateTimeFormat(
-                                                'MMMMEEEEd',
+                                                "MMMMEEEEd",
                                                 _model.pickedDate,
                                                 locale:
                                                     FFLocalizations.of(context)
@@ -304,6 +361,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                       final week = functions
                                           .getWeekCalendar(_model.pickedDate!)
                                           .toList();
+
                                       return Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: List.generate(week.length,
@@ -322,7 +380,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 await _model.getAgenda(
                                                   context,
                                                   date: dateTimeFormat(
-                                                    'y-M-d',
+                                                    "y-M-d",
                                                     _model.pickedDate,
                                                     locale: FFLocalizations.of(
                                                             context)
@@ -336,14 +394,14 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 height: 66.0,
                                                 decoration: BoxDecoration(
                                                   color: dateTimeFormat(
-                                                            'd/M/y',
+                                                            "d/M/y",
                                                             _model.pickedDate,
                                                             locale: FFLocalizations
                                                                     .of(context)
                                                                 .languageCode,
                                                           ) ==
                                                           dateTimeFormat(
-                                                            'd/M/y',
+                                                            "d/M/y",
                                                             weekItem,
                                                             locale: FFLocalizations
                                                                     .of(context)
@@ -401,14 +459,14 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                                 fontFamily:
                                                                     'Mulish',
                                                                 color: dateTimeFormat(
-                                                                          'd/M/y',
+                                                                          "d/M/y",
                                                                           _model
                                                                               .pickedDate,
                                                                           locale:
                                                                               FFLocalizations.of(context).languageCode,
                                                                         ) ==
                                                                         dateTimeFormat(
-                                                                          'd/M/y',
+                                                                          "d/M/y",
                                                                           weekItem,
                                                                           locale:
                                                                               FFLocalizations.of(context).languageCode,
@@ -426,7 +484,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                     Text(
                                                       valueOrDefault<String>(
                                                         dateTimeFormat(
-                                                          'd',
+                                                          "d",
                                                           weekItem,
                                                           locale:
                                                               FFLocalizations.of(
@@ -443,14 +501,14 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                                 fontFamily:
                                                                     'Mulish',
                                                                 color: dateTimeFormat(
-                                                                          'd/M/y',
+                                                                          "d/M/y",
                                                                           _model
                                                                               .pickedDate,
                                                                           locale:
                                                                               FFLocalizations.of(context).languageCode,
                                                                         ) ==
                                                                         dateTimeFormat(
-                                                                          'd/M/y',
+                                                                          "d/M/y",
                                                                           weekItem,
                                                                           locale:
                                                                               FFLocalizations.of(context).languageCode,
@@ -493,6 +551,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                     ),
                                   );
                                 }
+
                                 return ListView.separated(
                                   padding: const EdgeInsets.fromLTRB(
                                     0,
@@ -727,6 +786,11 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                                           consumoManhamItem
                                                                               .medicamentoNome,
                                                                           'Medicamento',
+                                                                        ).maybeHandleOverflow(
+                                                                          maxChars:
+                                                                              25,
+                                                                          replacement:
+                                                                              '…',
                                                                         ),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium

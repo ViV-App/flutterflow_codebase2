@@ -31,4 +31,7 @@ class ConsumotrackRow extends SupabaseDataRow {
 
   DateTime? get hour => getField<DateTime>('hour');
   set hour(DateTime? value) => setField<DateTime>('hour', value);
+
+  dynamic get dadosConsumo => getField<dynamic>('dados_consumo');
+  set dadosConsumo(dynamic value) => setField<dynamic>('dados_consumo', value);
 }

@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'complete_perfil_widget.dart' show CompletePerfilWidget;
@@ -91,6 +92,8 @@ class CompletePerfilModel extends FlutterFlowModel<CompletePerfilWidget> {
 
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Backend Call - API (create asaas customer)] action in Button widget.
+  ApiCallResponse? cust;
 
   @override
   void initState(BuildContext context) {

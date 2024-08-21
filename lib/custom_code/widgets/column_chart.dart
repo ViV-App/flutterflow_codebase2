@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,7 +39,7 @@ class _ColumnChartState extends State<ColumnChart> {
             primaryYAxis: NumericAxis(minimum: 0, maximum: 40, interval: 10),
             tooltipBehavior: TooltipBehavior(enable: true),
             series: <CartesianSeries<ColumnChartDataStruct, String>>[
-          ColumnSeries<ColumnChartDataStruct, String>(
+          BarSeries<ColumnChartDataStruct, String>(
               dataSource: widget.chartData,
               xValueMapper: (ColumnChartDataStruct data, _) => data.sintoma,
               yValueMapper: (ColumnChartDataStruct data, _) => data.count,

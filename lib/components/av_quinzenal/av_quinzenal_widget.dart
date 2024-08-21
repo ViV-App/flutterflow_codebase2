@@ -76,9 +76,11 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
             );
           }
           List<PacienteRow> containerPacienteRowList = snapshot.data!;
+
           final containerPacienteRow = containerPacienteRowList.isNotEmpty
               ? containerPacienteRowList.first
               : null;
+
           return Material(
             color: Colors.transparent,
             elevation: 3.0,
@@ -209,7 +211,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                 children: [
                                   Text(
                                     dateTimeFormat(
-                                      'EEEE, d/M/y',
+                                      "EEEE, d/M/y",
                                       getCurrentTimestamp,
                                       locale: FFLocalizations.of(context)
                                           .languageCode,

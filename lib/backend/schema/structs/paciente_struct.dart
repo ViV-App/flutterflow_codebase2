@@ -18,7 +18,9 @@ class PacienteStruct extends BaseStruct {
     bool? perfilCompleto,
     double? peso,
     double? altura,
-    MedicoStruct? medico,
+    String? tratamentoPrevio,
+    int? medico,
+    AssinaturaStruct? assinatura,
   })  : _id = id,
         _uuid = uuid,
         _createdAt = createdAt,
@@ -31,7 +33,9 @@ class PacienteStruct extends BaseStruct {
         _perfilCompleto = perfilCompleto,
         _peso = peso,
         _altura = altura,
-        _medico = medico;
+        _tratamentoPrevio = tratamentoPrevio,
+        _medico = medico,
+        _assinatura = assinatura;
 
   // "id" field.
   int? _id;
@@ -83,7 +87,7 @@ class PacienteStruct extends BaseStruct {
   set queixas(List<String>? val) => _queixas = val;
 
   void updateQueixas(Function(List<String>) updateFn) {
-    updateFn(queixas ??= []);
+    updateFn(_queixas ??= []);
   }
 
   bool hasQueixas() => _queixas != null;
@@ -94,7 +98,7 @@ class PacienteStruct extends BaseStruct {
   set contraIndicacoes(List<String>? val) => _contraIndicacoes = val;
 
   void updateContraIndicacoes(Function(List<String>) updateFn) {
-    updateFn(contraIndicacoes ??= []);
+    updateFn(_contraIndicacoes ??= []);
   }
 
   bool hasContraIndicacoes() => _contraIndicacoes != null;
@@ -131,16 +135,32 @@ class PacienteStruct extends BaseStruct {
 
   bool hasAltura() => _altura != null;
 
-  // "medico" field.
-  MedicoStruct? _medico;
-  MedicoStruct get medico => _medico ?? MedicoStruct();
-  set medico(MedicoStruct? val) => _medico = val;
+  // "tratamentoPrevio" field.
+  String? _tratamentoPrevio;
+  String get tratamentoPrevio => _tratamentoPrevio ?? '';
+  set tratamentoPrevio(String? val) => _tratamentoPrevio = val;
 
-  void updateMedico(Function(MedicoStruct) updateFn) {
-    updateFn(medico ??= MedicoStruct());
-  }
+  bool hasTratamentoPrevio() => _tratamentoPrevio != null;
+
+  // "medico" field.
+  int? _medico;
+  int get medico => _medico ?? 0;
+  set medico(int? val) => _medico = val;
+
+  void incrementMedico(int amount) => medico = medico + amount;
 
   bool hasMedico() => _medico != null;
+
+  // "assinatura" field.
+  AssinaturaStruct? _assinatura;
+  AssinaturaStruct get assinatura => _assinatura ?? AssinaturaStruct();
+  set assinatura(AssinaturaStruct? val) => _assinatura = val;
+
+  void updateAssinatura(Function(AssinaturaStruct) updateFn) {
+    updateFn(_assinatura ??= AssinaturaStruct());
+  }
+
+  bool hasAssinatura() => _assinatura != null;
 
   static PacienteStruct fromMap(Map<String, dynamic> data) => PacienteStruct(
         id: castToType<int>(data['id']),
@@ -155,7 +175,9 @@ class PacienteStruct extends BaseStruct {
         perfilCompleto: data['perfil_completo'] as bool?,
         peso: castToType<double>(data['peso']),
         altura: castToType<double>(data['altura']),
-        medico: MedicoStruct.maybeFromMap(data['medico']),
+        tratamentoPrevio: data['tratamentoPrevio'] as String?,
+        medico: castToType<int>(data['medico']),
+        assinatura: AssinaturaStruct.maybeFromMap(data['assinatura']),
       );
 
   static PacienteStruct? maybeFromMap(dynamic data) =>
@@ -174,7 +196,9 @@ class PacienteStruct extends BaseStruct {
         'perfil_completo': _perfilCompleto,
         'peso': _peso,
         'altura': _altura,
-        'medico': _medico?.toMap(),
+        'tratamentoPrevio': _tratamentoPrevio,
+        'medico': _medico,
+        'assinatura': _assinatura?.toMap(),
       }.withoutNulls;
 
   @override
@@ -229,8 +253,16 @@ class PacienteStruct extends BaseStruct {
           _altura,
           ParamType.double,
         ),
+        'tratamentoPrevio': serializeParam(
+          _tratamentoPrevio,
+          ParamType.String,
+        ),
         'medico': serializeParam(
           _medico,
+          ParamType.int,
+        ),
+        'assinatura': serializeParam(
+          _assinatura,
           ParamType.DataStruct,
         ),
       }.withoutNulls;
@@ -297,11 +329,21 @@ class PacienteStruct extends BaseStruct {
           ParamType.double,
           false,
         ),
-        medico: deserializeStructParam(
+        tratamentoPrevio: deserializeParam(
+          data['tratamentoPrevio'],
+          ParamType.String,
+          false,
+        ),
+        medico: deserializeParam(
           data['medico'],
+          ParamType.int,
+          false,
+        ),
+        assinatura: deserializeStructParam(
+          data['assinatura'],
           ParamType.DataStruct,
           false,
-          structBuilder: MedicoStruct.fromSerializableMap,
+          structBuilder: AssinaturaStruct.fromSerializableMap,
         ),
       );
 
@@ -324,7 +366,9 @@ class PacienteStruct extends BaseStruct {
         perfilCompleto == other.perfilCompleto &&
         peso == other.peso &&
         altura == other.altura &&
-        medico == other.medico;
+        tratamentoPrevio == other.tratamentoPrevio &&
+        medico == other.medico &&
+        assinatura == other.assinatura;
   }
 
   @override
@@ -341,7 +385,9 @@ class PacienteStruct extends BaseStruct {
         perfilCompleto,
         peso,
         altura,
-        medico
+        tratamentoPrevio,
+        medico,
+        assinatura
       ]);
 }
 
@@ -356,7 +402,9 @@ PacienteStruct createPacienteStruct({
   bool? perfilCompleto,
   double? peso,
   double? altura,
-  MedicoStruct? medico,
+  String? tratamentoPrevio,
+  int? medico,
+  AssinaturaStruct? assinatura,
 }) =>
     PacienteStruct(
       id: id,
@@ -369,5 +417,7 @@ PacienteStruct createPacienteStruct({
       perfilCompleto: perfilCompleto,
       peso: peso,
       altura: altura,
-      medico: medico ?? MedicoStruct(),
+      tratamentoPrevio: tratamentoPrevio,
+      medico: medico,
+      assinatura: assinatura ?? AssinaturaStruct(),
     );

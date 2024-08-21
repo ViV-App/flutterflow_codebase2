@@ -1,9 +1,8 @@
-import '/components/wb_diary/wb_diary_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/pages/well_being_diary/new_well_being/new_well_being_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -74,15 +73,6 @@ class _OnboardingHomeCompletedWidgetState
             height: 220.0,
             child: Stack(
               children: [
-                const SizedBox(
-                  width: double.infinity,
-                  height: 225.0,
-                  child: custom_widgets.Gradients(
-                    width: double.infinity,
-                    height: 225.0,
-                    gradientStyle: 'trident',
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -203,7 +193,12 @@ class _OnboardingHomeCompletedWidgetState
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: const WbDiaryWidget(),
+                                          child: SizedBox(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.85,
+                                            child: const NewWellBeingWidget(),
+                                          ),
                                         ),
                                       );
                                     },

@@ -2,13 +2,15 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/duracao_dias/duracao_dias_widget.dart';
 import '/components/horario_prescricao/horario_prescricao_widget.dart';
-import '/components/prescription_added/prescription_added_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_tooltip/aligned_tooltip.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -62,9 +64,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -110,11 +110,11 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                           ),
                         ),
                         Text(
-                          'Adicionar prescrição',
+                          'Adicionar remédio',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Mulish',
-                                    fontSize: 16.0,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -175,10 +175,36 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
-                                  const Icon(
-                                    Icons.info_outlined,
-                                    color: Color(0xFF8798B5),
-                                    size: 18.0,
+                                  AlignedTooltip(
+                                    content: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Text(
+                                        'A dose diária é a somatória de todas as doses que devem ser ingeridas no decorrer do dia. A mesma pode ser consultada na última receita recebida.',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Mulish',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                    offset: 4.0,
+                                    preferredDirection: AxisDirection.left,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                    elevation: 4.0,
+                                    tailBaseWidth: 24.0,
+                                    tailLength: 12.0,
+                                    waitDuration: const Duration(milliseconds: 100),
+                                    showDuration: const Duration(milliseconds: 1500),
+                                    triggerMode: TooltipTriggerMode.tap,
+                                    child: const Icon(
+                                      Icons.info_outlined,
+                                      color: Color(0xFF8798B5),
+                                      size: 18.0,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -190,6 +216,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                       controller: _model.textController1,
                                       focusNode: _model.textFieldFocusNode1,
                                       autofocus: false,
+                                      textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: 'Quantidade',
@@ -197,7 +224,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color: const Color(0xFF8798B5),
+                                              color: const Color(0xFFB5C0D3),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -253,58 +280,82 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                           .asValidator(context),
                                     ),
                                   ),
-                                  FlutterFlowDropDown<String>(
-                                    controller:
-                                        _model.dropDownValueController ??=
+                                  Stack(
+                                    children: [
+                                      FlutterFlowDropDown<String>(
+                                        controller: _model
+                                                .dropDownValueController ??=
                                             FormFieldController<String>(null),
-                                    options: const [
-                                      'g',
-                                      'mg',
-                                      'mcg',
-                                      'mL',
-                                      '%',
-                                      'UI',
-                                      'Gotas',
-                                      'Comprimidos',
-                                      'Puff nasal'
-                                    ],
-                                    onChanged: (val) async {
-                                      setState(
-                                          () => _model.dropDownValue = val);
-                                      FFAppState().updatePrescricaoStruct(
-                                        (e) =>
-                                            e..categoria = _model.dropDownValue,
-                                      );
-                                      setState(() {});
-                                    },
-                                    width: 125.0,
-                                    height: 48.0,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Mulish',
+                                        options: const [
+                                          'g',
+                                          'mg',
+                                          'mcg',
+                                          'mL',
+                                          '%',
+                                          'UI',
+                                          'Gotas',
+                                          'Comprimidos',
+                                          'Puff nasal'
+                                        ],
+                                        onChanged: (val) async {
+                                          setState(
+                                              () => _model.dropDownValue = val);
+                                          setState(() {});
+                                        },
+                                        width: 125.0,
+                                        height: 48.0,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Mulish',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          letterSpacing: 0.0,
+                                              .secondaryText,
+                                          size: 24.0,
                                         ),
-                                    hintText: 'vol',
-                                    icon: Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                    fillColor: const Color(0xFFF7FAFE),
-                                    elevation: 2.0,
-                                    borderColor: const Color(0x0E294B0D),
-                                    borderWidth: 2.0,
-                                    borderRadius: 8.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    hidesUnderline: true,
-                                    isOverButton: true,
-                                    isSearchable: false,
-                                    isMultiSelect: false,
+                                        fillColor: const Color(0xFFF7FAFE),
+                                        elevation: 2.0,
+                                        borderColor: const Color(0x0E294B0D),
+                                        borderWidth: 2.0,
+                                        borderRadius: 8.0,
+                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        hidesUnderline: true,
+                                        isOverButton: true,
+                                        isSearchable: false,
+                                        isMultiSelect: false,
+                                      ),
+                                      if (_model.dropDownValue == null ||
+                                          _model.dropDownValue == '')
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 14.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Med.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Mulish',
+                                                        color:
+                                                            const Color(0xFFB5C0D3),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
                                   ),
                                 ].divide(const SizedBox(width: 14.0)),
                               ),
@@ -318,29 +369,68 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Concentração',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Mulish',
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Concentração',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Mulish',
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  AlignedTooltip(
+                                    content: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Text(
+                                        'A concentração está indicada na embalagem ou receita do remédio. Geralmente está associada à mg/ml.',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Mulish',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
                                     ),
+                                    offset: 4.0,
+                                    preferredDirection: AxisDirection.left,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                    elevation: 4.0,
+                                    tailBaseWidth: 24.0,
+                                    tailLength: 12.0,
+                                    waitDuration: const Duration(milliseconds: 100),
+                                    showDuration: const Duration(milliseconds: 1500),
+                                    triggerMode: TooltipTriggerMode.tap,
+                                    child: const Icon(
+                                      Icons.info_outlined,
+                                      color: Color(0xFF8798B5),
+                                      size: 18.0,
+                                    ),
+                                  ),
+                                ],
                               ),
                               TextFormField(
                                 controller: _model.textController2,
                                 focusNode: _model.textFieldFocusNode2,
                                 autofocus: false,
+                                textInputAction: TextInputAction.next,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Concentração',
+                                  hintText: 'Digite uma concentração',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: const Color(0xFFB5C0D3),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
@@ -385,7 +475,6 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                       fontFamily: 'Mulish',
                                       letterSpacing: 0.0,
                                     ),
-                                keyboardType: TextInputType.number,
                                 validator: _model.textController2Validator
                                     .asValidator(context),
                               ),
@@ -430,24 +519,98 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              final datePickedDate =
-                                                  await showDatePicker(
-                                                context: context,
-                                                initialDate:
-                                                    (_model.datePicked ??
-                                                        DateTime.now()),
-                                                firstDate: DateTime(1900),
-                                                lastDate: DateTime(2050),
-                                              );
-
-                                              if (datePickedDate != null) {
-                                                safeSetState(() {
-                                                  _model.datePicked = DateTime(
-                                                    datePickedDate.year,
-                                                    datePickedDate.month,
-                                                    datePickedDate.day,
-                                                  );
-                                                });
+                                              _model.date =
+                                                  functions.convertStringToDate(
+                                                      getCurrentTimestamp
+                                                          .toString());
+                                              setState(() {});
+                                              await showModalBottomSheet<bool>(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    final datePickedCupertinoTheme =
+                                                        CupertinoTheme.of(
+                                                            context);
+                                                    return ScrollConfiguration(
+                                                      behavior:
+                                                          const MaterialScrollBehavior()
+                                                              .copyWith(
+                                                        dragDevices: {
+                                                          PointerDeviceKind
+                                                              .mouse,
+                                                          PointerDeviceKind
+                                                              .touch,
+                                                          PointerDeviceKind
+                                                              .stylus,
+                                                          PointerDeviceKind
+                                                              .unknown
+                                                        },
+                                                      ),
+                                                      child: Container(
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height /
+                                                            3,
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        child: CupertinoTheme(
+                                                          data:
+                                                              datePickedCupertinoTheme
+                                                                  .copyWith(
+                                                            textTheme:
+                                                                datePickedCupertinoTheme
+                                                                    .textTheme
+                                                                    .copyWith(
+                                                              dateTimePickerTextStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Mulish',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              CupertinoDatePicker(
+                                                            mode:
+                                                                CupertinoDatePickerMode
+                                                                    .date,
+                                                            minimumDate:
+                                                                DateTime(1900),
+                                                            initialDateTime:
+                                                                getCurrentTimestamp,
+                                                            maximumDate:
+                                                                DateTime(2050),
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                            use24hFormat: false,
+                                                            onDateTimeChanged:
+                                                                (newDateTime) =>
+                                                                    safeSetState(
+                                                                        () {
+                                                              _model.datePicked =
+                                                                  newDateTime;
+                                                            }),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  });
+                                              if (_model.datePicked != null) {
+                                                _model.date = _model.datePicked;
+                                                setState(() {});
                                               }
                                             },
                                             child: Container(
@@ -474,10 +637,10 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                                           .spaceBetween,
                                                   children: [
                                                     Text(
-                                                      _model.datePicked != null
+                                                      _model.date != null
                                                           ? dateTimeFormat(
-                                                              'd/M/y',
-                                                              _model.datePicked,
+                                                              "d/M/y",
+                                                              _model.date,
                                                               locale: FFLocalizations
                                                                       .of(context)
                                                                   .languageCode,
@@ -520,10 +683,16 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                'Duração',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Duração',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Mulish',
@@ -532,6 +701,51 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
+                                                  ),
+                                                  AlignedTooltip(
+                                                    content: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(4.0),
+                                                      child: Text(
+                                                        'A data de início é o momento que se iniciou o tratamento com o remédio em questão. A duração pode ser específica, contada em dias ou \"uso continuo\" caso não exista término claro para o tratamento.',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Mulish',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    offset: 4.0,
+                                                    preferredDirection:
+                                                        AxisDirection.left,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                    elevation: 4.0,
+                                                    tailBaseWidth: 24.0,
+                                                    tailLength: 12.0,
+                                                    waitDuration: const Duration(
+                                                        milliseconds: 100),
+                                                    showDuration: const Duration(
+                                                        milliseconds: 1500),
+                                                    triggerMode:
+                                                        TooltipTriggerMode.tap,
+                                                    child: const Icon(
+                                                      Icons.info_outlined,
+                                                      color: Color(0xFF8798B5),
+                                                      size: 18.0,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                               InkWell(
                                                 splashColor: Colors.transparent,
@@ -548,15 +762,8 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                                     builder: (context) {
                                                       return WebViewAware(
                                                         child: GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
+                                                          onTap: () =>
+                                                              FocusScope.of(
                                                                       context)
                                                                   .unfocus(),
                                                           child: Padding(
@@ -697,16 +904,59 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Frequência',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Mulish',
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 4.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Frequência',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Mulish',
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                     ),
+                                    AlignedTooltip(
+                                      content: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text(
+                                          'A frequência é a quantidade de vezes que o remédio deveria ser ingerido no decorrer do dia, geralmente atrelado à um horário. ',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Mulish',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                      offset: 4.0,
+                                      preferredDirection: AxisDirection.left,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                      elevation: 4.0,
+                                      tailBaseWidth: 24.0,
+                                      tailLength: 12.0,
+                                      waitDuration: const Duration(milliseconds: 100),
+                                      showDuration:
+                                          const Duration(milliseconds: 1500),
+                                      triggerMode: TooltipTriggerMode.tap,
+                                      child: const Icon(
+                                        Icons.info_outlined,
+                                        color: Color(0xFF8798B5),
+                                        size: 18.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -900,60 +1150,62 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                   ),
                                 ].divide(const SizedBox(width: 12.0)),
                               ),
-                            ].divide(const SizedBox(height: 6.0)),
+                            ].divide(const SizedBox(height: 12.0)),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 24.0, 24.0, 0.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Agenda de lembretes',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Mulish',
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 0.0),
-                                child: Builder(
-                                  builder: (context) {
-                                    final times =
-                                        FFAppState().horarios.toList();
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: List.generate(times.length,
-                                          (timesIndex) {
-                                        final timesItem = times[timesIndex];
-                                        return HorarioPrescricaoWidget(
-                                          key: Key(
-                                              'Keyjj8_${timesIndex}_of_${times.length}'),
-                                          horario: timesItem,
-                                          index: timesIndex,
-                                        );
-                                      }).divide(const SizedBox(height: 18.0)),
-                                    );
-                                  },
+                        if (FFAppState().horarios.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 24.0, 24.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Agenda de lembretes',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Mulish',
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ].divide(const SizedBox(height: 6.0)),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 0.0),
+                                  child: Builder(
+                                    builder: (context) {
+                                      final times =
+                                          FFAppState().horarios.toList();
+
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: List.generate(times.length,
+                                            (timesIndex) {
+                                          final timesItem = times[timesIndex];
+                                          return HorarioPrescricaoWidget(
+                                            key: Key(
+                                                'Keyjj8_${timesIndex}_of_${times.length}'),
+                                            horario: timesItem,
+                                            index: timesIndex,
+                                          );
+                                        }).divide(const SizedBox(height: 18.0)),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ].divide(const SizedBox(height: 6.0)),
+                            ),
                           ),
-                        ),
                       ].addToEnd(const SizedBox(height: 24.0)),
                     ),
                   ),
@@ -975,6 +1227,12 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                           child: FFButtonWidget(
                             onPressed: () async {
                               context.safePop();
+                              FFAppState().updatePrescricaoStruct(
+                                (e) => e
+                                  ..remedio = null
+                                  ..remedNome = null,
+                              );
+                              setState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -1004,160 +1262,91 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                         ),
                         Expanded(
                           flex: 2,
-                          child: Builder(
-                            builder: (context) => FFButtonWidget(
-                              onPressed: ((_model.textController1.text == '') ||
-                                      (_model.dropDownValue == null ||
-                                          _model.dropDownValue == '') ||
-                                      (_model.textController2.text == '') ||
-                                      (_model.datePicked == null))
-                                  ? null
-                                  : () async {
-                                      if (_model.switchValue == true) {
-                                        await PrescricaoTable().insert({
-                                          'horarios':
-                                              supaSerializeList<DateTime>(
-                                                  FFAppState()
-                                                      .horarios
-                                                      .map((e) => e.horario)
-                                                      .withoutNulls
-                                                      .toList()),
-                                          'medicamento':
-                                              FFAppState().prescricao.remedio,
-                                          'posologia': int.tryParse(
-                                              _model.textController1.text),
-                                          'duracao_dias': FFAppState()
-                                              .prescricao
-                                              .duracaoDias,
-                                          'date_start': supaSerialize<DateTime>(
-                                              _model.datePicked),
-                                          'forma_dose': _model.dropDownValue,
-                                          'continuo': true,
-                                          'paciente': FFAppState().paciente.id,
-                                          'concentracao': int.tryParse(
-                                              _model.textController2.text),
-                                        });
-                                        FFAppState().clearRemediosCache();
-                                        await showDialog(
-                                          context: context,
-                                          builder: (dialogContext) {
-                                            return Dialog(
-                                              elevation: 0,
-                                              insetPadding: EdgeInsets.zero,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              alignment: const AlignmentDirectional(
-                                                      0.0, -1.0)
-                                                  .resolve(Directionality.of(
-                                                      context)),
-                                              child: WebViewAware(
-                                                child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child:
-                                                      const PrescriptionAddedWidget(),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => setState(() {}));
-                                      } else {
-                                        await PrescricaoTable().insert({
-                                          'horarios':
-                                              supaSerializeList<DateTime>(
-                                                  FFAppState()
-                                                      .horarios
-                                                      .map((e) => e.horario)
-                                                      .withoutNulls
-                                                      .toList()),
-                                          'medicamento':
-                                              FFAppState().prescricao.remedio,
-                                          'posologia': int.tryParse(
-                                              _model.textController1.text),
-                                          'duracao_dias': FFAppState()
-                                              .prescricao
-                                              .duracaoDias,
-                                          'date_start': supaSerialize<DateTime>(
-                                              _model.datePicked),
-                                          'forma_dose': _model.dropDownValue,
-                                          'date_end': supaSerialize<DateTime>(
-                                              functions.getFinalDate(
-                                                  _model.datePicked!,
-                                                  FFAppState()
-                                                          .prescricao
-                                                          .duracaoDias -
-                                                      1)),
-                                          'continuo': false,
-                                          'paciente': FFAppState().paciente.id,
-                                          'concentracao': int.tryParse(
-                                              _model.textController2.text),
-                                        });
-                                        FFAppState().clearRemediosCache();
-                                        await showDialog(
-                                          context: context,
-                                          builder: (dialogContext) {
-                                            return Dialog(
-                                              elevation: 0,
-                                              insetPadding: EdgeInsets.zero,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              alignment: const AlignmentDirectional(
-                                                      0.0, -1.0)
-                                                  .resolve(Directionality.of(
-                                                      context)),
-                                              child: WebViewAware(
-                                                child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child:
-                                                      const PrescriptionAddedWidget(),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => setState(() {}));
-                                      }
-                                    },
-                              text: 'Salvar',
-                              options: FFButtonOptions(
-                                width: double.infinity,
-                                height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Mulish',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: const BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                                disabledColor:
-                                    FlutterFlowTheme.of(context).alternate,
-                                disabledTextColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                          child: FFButtonWidget(
+                            onPressed: ((_model.textController1.text == '') ||
+                                    (_model.dropDownValue == null ||
+                                        _model.dropDownValue == '') ||
+                                    (_model.textController2.text == '') ||
+                                    (_model.date == null) ||
+                                    ((_model.switchValue == false) &&
+                                        ((FFAppState()
+                                                    .prescricao
+                                                    .duracaoDias ==
+                                                null) ||
+                                            (FFAppState()
+                                                    .prescricao
+                                                    .duracaoDias ==
+                                                0))) ||
+                                    ((FFAppState()
+                                            .horarios
+                                            .where((e) => e.horario == null)
+                                            .toList()
+                                            .isNotEmpty) ==
+                                        true) ||
+                                    !(FFAppState().horarios.isNotEmpty))
+                                ? null
+                                : () async {
+                                    if (FFAppState().prescricao.remedio == 0) {
+                                      _model.newMed =
+                                          await StaticMedicamentosTable()
+                                              .insert({
+                                        'nome':
+                                            FFAppState().prescricao.remedNome,
+                                        'categoria':
+                                            FFAppState().prescricao.categoria,
+                                        'createdByUser': true,
+                                        'createdBy': FFAppState().paciente.id,
+                                      });
+                                      await _model.createPrescription(
+                                        context,
+                                        remedio: _model.newMed,
+                                      );
+                                      setState(() {});
+                                    } else {
+                                      _model.selectedMed =
+                                          await StaticMedicamentosTable()
+                                              .queryRows(
+                                        queryFn: (q) => q.eq(
+                                          'id',
+                                          FFAppState().prescricao.remedio,
+                                        ),
+                                      );
+                                      await _model.createPrescription(
+                                        context,
+                                        remedio: _model.selectedMed?.first,
+                                      );
+                                      setState(() {});
+                                    }
+
+                                    setState(() {});
+                                  },
+                            text: 'Salvar',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 48.0,
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Mulish',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
                               ),
+                              borderRadius: BorderRadius.circular(8.0),
+                              disabledColor:
+                                  FlutterFlowTheme.of(context).alternate,
+                              disabledTextColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                             ),
                           ),
                         ),

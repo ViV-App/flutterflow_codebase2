@@ -1,5 +1,7 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/questionario/int_phone_number/int_phone_number_widget.dart';
 import 'create_account_widget.dart' show CreateAccountWidget;
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -9,7 +11,7 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   int? profile = 1;
 
-  int? currentStep = 1;
+  int? currentStep = 2;
 
   List<String> queixas = [];
   void addToQueixas(String item) => queixas.add(item);
@@ -39,9 +41,10 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   String? pass;
 
+  String? rout;
+
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for ipNome widget.
   FocusNode? ipNomeFocusNode;
@@ -84,23 +87,8 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
     return null;
   }
 
-  // State field(s) for ipPhone widget.
-  FocusNode? ipPhoneFocusNode;
-  TextEditingController? ipPhoneTextController;
-  final ipPhoneMask = MaskTextInputFormatter(mask: '(##) #####-####');
-  String? Function(BuildContext, String?)? ipPhoneTextControllerValidator;
-  String? _ipPhoneTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Telefone inválido.';
-    }
-
-    if (val.length < 15) {
-      return 'Telefone inválido.';
-    }
-
-    return null;
-  }
-
+  // Model for intPhoneNumber component.
+  late IntPhoneNumberModel intPhoneNumberModel;
   // State field(s) for ipPass widget.
   FocusNode? ipPassFocusNode;
   TextEditingController? ipPassTextController;
@@ -120,6 +108,8 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Backend Call - API (create asaas customer)] action in Button widget.
+  ApiCallResponse? customerAsaas;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   PacienteRow? createdUser;
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.
@@ -130,14 +120,13 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
     ipNomeTextControllerValidator = _ipNomeTextControllerValidator;
     ipCPFTextControllerValidator = _ipCPFTextControllerValidator;
     iEmailTextControllerValidator = _iEmailTextControllerValidator;
-    ipPhoneTextControllerValidator = _ipPhoneTextControllerValidator;
+    intPhoneNumberModel = createModel(context, () => IntPhoneNumberModel());
     ipPassVisibility = false;
     ipPassTextControllerValidator = _ipPassTextControllerValidator;
   }
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     ipNomeFocusNode?.dispose();
     ipNomeTextController?.dispose();
 
@@ -147,10 +136,13 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
     iEmailFocusNode?.dispose();
     iEmailTextController?.dispose();
 
-    ipPhoneFocusNode?.dispose();
-    ipPhoneTextController?.dispose();
-
+    intPhoneNumberModel.dispose();
     ipPassFocusNode?.dispose();
     ipPassTextController?.dispose();
+  }
+
+  /// Action blocks.
+  Future<bool?> checkCredentials(BuildContext context) async {
+    return null;
   }
 }

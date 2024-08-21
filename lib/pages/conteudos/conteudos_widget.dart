@@ -41,9 +41,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -79,10 +77,10 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                         ),
                       ),
                       Text(
-                        'Conteudos',
+                        'Conteúdos',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Mulish',
-                              fontSize: 16.0,
+                              fontSize: 18.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -119,6 +117,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                       List<StaticTagConteudoEducativoRow>
                           containerStaticTagConteudoEducativoRowList =
                           snapshot.data!;
+
                       return ClipRRect(
                         borderRadius: BorderRadius.circular(12.0),
                         child: Container(
@@ -258,11 +257,13 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                   List<StaticConteudosRow>
                                       listViewStaticConteudosRowList =
                                       snapshot.data!;
+
                                   if (listViewStaticConteudosRowList.isEmpty) {
                                     return Image.asset(
                                       'assets/images/Group_12947.png',
                                     );
                                   }
+
                                   return ListView.separated(
                                     padding: const EdgeInsets.fromLTRB(
                                       0,
@@ -593,12 +594,8 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                     WebViewAware(
                                                                   child:
                                                                       GestureDetector(
-                                                                    onTap: () => _model
-                                                                            .unfocusNode
-                                                                            .canRequestFocus
-                                                                        ? FocusScope.of(context).requestFocus(_model
-                                                                            .unfocusNode)
-                                                                        : FocusScope.of(context)
+                                                                    onTap: () =>
+                                                                        FocusScope.of(dialogContext)
                                                                             .unfocus(),
                                                                     child:
                                                                         PdfViewerWidget(
@@ -610,8 +607,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                 ),
                                                               );
                                                             },
-                                                          ).then((value) =>
-                                                              setState(() {}));
+                                                          );
                                                         },
                                                         child: Text(
                                                           'Ler mais',
@@ -679,11 +675,13 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                   List<StaticConteudosRow>
                                       listViewStaticConteudosRowList =
                                       snapshot.data!;
+
                                   if (listViewStaticConteudosRowList.isEmpty) {
                                     return Image.asset(
                                       'assets/images/Group_12947.png',
                                     );
                                   }
+
                                   return ListView.separated(
                                     padding: const EdgeInsets.fromLTRB(
                                       0,
@@ -1014,12 +1012,8 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                     WebViewAware(
                                                                   child:
                                                                       GestureDetector(
-                                                                    onTap: () => _model
-                                                                            .unfocusNode
-                                                                            .canRequestFocus
-                                                                        ? FocusScope.of(context).requestFocus(_model
-                                                                            .unfocusNode)
-                                                                        : FocusScope.of(context)
+                                                                    onTap: () =>
+                                                                        FocusScope.of(dialogContext)
                                                                             .unfocus(),
                                                                     child:
                                                                         PdfViewerWidget(
@@ -1031,8 +1025,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                 ),
                                                               );
                                                             },
-                                                          ).then((value) =>
-                                                              setState(() {}));
+                                                          );
                                                         },
                                                         child: Text(
                                                           'Ler mais',

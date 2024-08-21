@@ -11,10 +11,12 @@ class MedicoStruct extends BaseStruct {
     DateTime? createdAt,
     String? nome,
     String? crm,
+    String? uf,
   })  : _id = id,
         _createdAt = createdAt,
         _nome = nome,
-        _crm = crm;
+        _crm = crm,
+        _uf = uf;
 
   // "id" field.
   int? _id;
@@ -46,11 +48,19 @@ class MedicoStruct extends BaseStruct {
 
   bool hasCrm() => _crm != null;
 
+  // "uf" field.
+  String? _uf;
+  String get uf => _uf ?? '';
+  set uf(String? val) => _uf = val;
+
+  bool hasUf() => _uf != null;
+
   static MedicoStruct fromMap(Map<String, dynamic> data) => MedicoStruct(
         id: castToType<int>(data['id']),
         createdAt: data['created_at'] as DateTime?,
         nome: data['nome'] as String?,
         crm: data['crm'] as String?,
+        uf: data['uf'] as String?,
       );
 
   static MedicoStruct? maybeFromMap(dynamic data) =>
@@ -61,6 +71,7 @@ class MedicoStruct extends BaseStruct {
         'created_at': _createdAt,
         'nome': _nome,
         'crm': _crm,
+        'uf': _uf,
       }.withoutNulls;
 
   @override
@@ -79,6 +90,10 @@ class MedicoStruct extends BaseStruct {
         ),
         'crm': serializeParam(
           _crm,
+          ParamType.String,
+        ),
+        'uf': serializeParam(
+          _uf,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -105,6 +120,11 @@ class MedicoStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        uf: deserializeParam(
+          data['uf'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -116,11 +136,12 @@ class MedicoStruct extends BaseStruct {
         id == other.id &&
         createdAt == other.createdAt &&
         nome == other.nome &&
-        crm == other.crm;
+        crm == other.crm &&
+        uf == other.uf;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([id, createdAt, nome, crm]);
+  int get hashCode => const ListEquality().hash([id, createdAt, nome, crm, uf]);
 }
 
 MedicoStruct createMedicoStruct({
@@ -128,10 +149,12 @@ MedicoStruct createMedicoStruct({
   DateTime? createdAt,
   String? nome,
   String? crm,
+  String? uf,
 }) =>
     MedicoStruct(
       id: id,
       createdAt: createdAt,
       nome: nome,
       crm: crm,
+      uf: uf,
     );

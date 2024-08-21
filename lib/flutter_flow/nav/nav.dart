@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
-
+import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -149,51 +149,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => const ConteudosWidget(),
         ),
         FFRoute(
-          name: 'evolucao',
-          path: '/evolucao',
-          requireAuth: true,
-          builder: (context, params) => const EvolucaoWidget(),
-        ),
-        FFRoute(
-          name: 'consultas',
-          path: '/consultas',
-          requireAuth: true,
-          builder: (context, params) => const ConsultasWidget(),
-        ),
-        FFRoute(
-          name: 'agendarConsulta01',
-          path: '/agendarConsulta01',
-          requireAuth: true,
-          builder: (context, params) => const AgendarConsulta01Widget(),
-        ),
-        FFRoute(
-          name: 'agendarConsulta02',
-          path: '/agendarConsulta02',
-          requireAuth: true,
-          builder: (context, params) => const AgendarConsulta02Widget(),
-        ),
-        FFRoute(
-          name: 'agendarConsulta03',
-          path: '/agendarConsulta03',
-          requireAuth: true,
-          builder: (context, params) => const AgendarConsulta03Widget(),
-        ),
-        FFRoute(
-          name: 'formHistorico01',
-          path: '/formHistorico01',
-          requireAuth: true,
-          builder: (context, params) => const FormHistorico01Widget(),
-        ),
-        FFRoute(
-          name: 'formHistorico02',
-          path: '/formHistorico02',
-          requireAuth: true,
-          builder: (context, params) => const FormHistorico02Widget(),
-        ),
-        FFRoute(
-          name: 'planosPremium',
-          path: '/planosPremium',
-          builder: (context, params) => const PlanosPremiumWidget(),
+          name: 'planos',
+          path: '/planos',
+          builder: (context, params) => const PlanosWidget(),
         ),
         FFRoute(
           name: 'chatViv',
@@ -205,6 +163,97 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           name: 'resetSenha',
           path: '/resetSenha',
           builder: (context, params) => const ResetSenhaWidget(),
+        ),
+        FFRoute(
+          name: 'assitantHome',
+          path: '/assitantHome',
+          builder: (context, params) => const AssitantHomeWidget(),
+        ),
+        FFRoute(
+          name: 'cannabisPraMim',
+          path: '/cannabisPraMim',
+          builder: (context, params) => CannabisPraMimWidget(
+            fluxo: params.getParam<QuestionarioRow>(
+              'fluxo',
+              ParamType.SupabaseRow,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'consulta',
+          path: '/consulta',
+          builder: (context, params) => const ConsultaWidget(),
+        ),
+        FFRoute(
+          name: 'previousTreatment',
+          path: '/previousTreatment',
+          builder: (context, params) => const PreviousTreatmentWidget(),
+        ),
+        FFRoute(
+          name: 'meuPlano',
+          path: '/meuPlano',
+          builder: (context, params) => const MeuPlanoWidget(),
+        ),
+        FFRoute(
+          name: 'comprarBip',
+          path: '/comprarBip',
+          builder: (context, params) => const ComprarBipWidget(),
+        ),
+        FFRoute(
+          name: 'formPreConsulta',
+          path: '/formPreConsulta',
+          builder: (context, params) => FormPreConsultaWidget(
+            goToOnOpen: params.getParam(
+              'goToOnOpen',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'questionario',
+          path: '/questionario',
+          builder: (context, params) => QuestionarioWidget(
+            questionario: params.getParam<QuestionarioRow>(
+              'questionario',
+              ParamType.SupabaseRow,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'newEvolucao',
+          path: '/newEvolucao',
+          requireAuth: true,
+          builder: (context, params) => const NewEvolucaoWidget(),
+        ),
+        FFRoute(
+          name: 'planoTerapeutico',
+          path: '/planoTerapeutico',
+          builder: (context, params) => PlanoTerapeuticoWidget(
+            verDosagem: params.getParam(
+              'verDosagem',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'confirmarRecebimento',
+          path: '/confirmarRecebimento',
+          builder: (context, params) => ConfirmarRecebimentoWidget(
+            verDosagem: params.getParam(
+              'verDosagem',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ajustarDose',
+          path: '/ajustarDose',
+          builder: (context, params) => AjustarDoseWidget(
+            page: params.getParam(
+              'page',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

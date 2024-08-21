@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -132,6 +131,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                     }
                     List<StaticMedicamentosRow>
                         textFieldStaticMedicamentosRowList = snapshot.data!;
+
                     return Autocomplete<String>(
                       initialValue: const TextEditingValue(),
                       optionsBuilder: (textEditingValue) {
@@ -192,7 +192,27 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                             const Duration(milliseconds: 0),
                             () => setState(() {}),
                           ),
+                          onFieldSubmitted: (_) async {
+                            _model.med =
+                                await StaticMedicamentosTable().queryRows(
+                              queryFn: (q) => q.eq(
+                                'nome',
+                                _model.textFieldSelectedOption,
+                              ),
+                            );
+                            _model.remedio = _model.med?.first.id;
+                            setState(() {});
+                            FFAppState().updatePrescricaoStruct(
+                              (e) => e
+                                ..remedio = _model.med?.first.id
+                                ..remedNome = _model.med?.first.nome,
+                            );
+                            setState(() {});
+
+                            setState(() {});
+                          },
                           autofocus: false,
+                          textInputAction: TextInputAction.done,
                           obscureText: false,
                           decoration: InputDecoration(
                             hintText: 'Medicamento',
@@ -253,264 +273,134 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                   },
                 ),
               ),
-              if (_model.textController.text == '')
-                Expanded(
-                  child: FutureBuilder<List<StaticMedicamentosRow>>(
-                    future: StaticMedicamentosTable().queryRows(
-                      queryFn: (q) => q.eq(
-                        'categoria',
-                        widget.categoria,
+              Expanded(
+                child: FutureBuilder<List<StaticMedicamentosRow>>(
+                  future: StaticMedicamentosTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'categoria',
+                      widget.categoria,
+                    ),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    List<StaticMedicamentosRow>
+                        listViewStaticMedicamentosRowList = snapshot.data!;
+
+                    return ListView.separated(
+                      padding: const EdgeInsets.fromLTRB(
+                        0,
+                        24.0,
+                        0,
+                        8.0,
                       ),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewStaticMedicamentosRowList.length,
+                      separatorBuilder: (_, __) => const SizedBox(height: 18.0),
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewStaticMedicamentosRow =
+                            listViewStaticMedicamentosRowList[listViewIndex];
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              _model.remedio = listViewStaticMedicamentosRow.id;
+                              setState(() {});
+                              FFAppState().updatePrescricaoStruct(
+                                (e) => e
+                                  ..remedio = listViewStaticMedicamentosRow.id
+                                  ..remedNome =
+                                      listViewStaticMedicamentosRow.nome,
+                              );
+                              setState(() {});
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: listViewStaticMedicamentosRow.id ==
+                                      _model.remedio
+                                  ? 1.0
+                                  : 0.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                            ),
-                          ),
-                        );
-                      }
-                      List<StaticMedicamentosRow>
-                          listViewStaticMedicamentosRowList = snapshot.data!;
-                      return ListView.separated(
-                        padding: const EdgeInsets.fromLTRB(
-                          0,
-                          24.0,
-                          0,
-                          8.0,
-                        ),
-                        scrollDirection: Axis.vertical,
-                        itemCount: listViewStaticMedicamentosRowList.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 18.0),
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewStaticMedicamentosRow =
-                              listViewStaticMedicamentosRowList[listViewIndex];
-                          return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                _model.remedio =
-                                    listViewStaticMedicamentosRow.id;
-                                setState(() {});
-                                FFAppState().updatePrescricaoStruct(
-                                  (e) => e
-                                    ..remedio = listViewStaticMedicamentosRow.id
-                                    ..remedNome =
-                                        listViewStaticMedicamentosRow.nome,
-                                );
-                                setState(() {});
-                              },
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: listViewStaticMedicamentosRow.id ==
-                                        _model.remedio
-                                    ? 1.0
-                                    : 0.0,
-                                shape: RoundedRectangleBorder(
+                              child: Container(
+                                width: double.infinity,
+                                height: 45.0,
+                                decoration: BoxDecoration(
+                                  color: listViewStaticMedicamentosRow.id ==
+                                          _model.remedio
+                                      ? const Color(0xFFEFF4F9)
+                                      : Colors.white,
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 45.0,
-                                  decoration: BoxDecoration(
-                                    color: listViewStaticMedicamentosRow.id ==
-                                            _model.remedio
-                                        ? const Color(0xFFEFF4F9)
-                                        : Colors.white,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            listViewStaticMedicamentosRow.nome,
-                                            '-',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Mulish',
-                                                color:
-                                                    listViewStaticMedicamentosRow
-                                                                .id ==
-                                                            _model.remedio
-                                                        ? const Color(0xFF6E78FF)
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
-                                                fontSize: 18.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          listViewStaticMedicamentosRow.nome,
+                                          '-',
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ),
-              if (_model.textController.text != '')
-                Expanded(
-                  child: FutureBuilder<ApiCallResponse>(
-                    future: GetMedicamentosByNameCall.call(
-                      medicamento: _model.textController.text,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                      final listViewGetMedicamentosByNameResponse =
-                          snapshot.data!;
-                      return ListView(
-                        padding: const EdgeInsets.fromLTRB(
-                          0,
-                          24.0,
-                          0,
-                          8.0,
-                        ),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                _model.remedio = GetMedicamentosByNameCall.id(
-                                  listViewGetMedicamentosByNameResponse
-                                      .jsonBody,
-                                );
-                                setState(() {});
-                                FFAppState().updatePrescricaoStruct(
-                                  (e) => e
-                                    ..remedio = GetMedicamentosByNameCall.id(
-                                      listViewGetMedicamentosByNameResponse
-                                          .jsonBody,
-                                    )
-                                    ..remedNome =
-                                        GetMedicamentosByNameCall.nome(
-                                      listViewGetMedicamentosByNameResponse
-                                          .jsonBody,
-                                    ),
-                                );
-                                setState(() {});
-                              },
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: GetMedicamentosByNameCall.id(
-                                          listViewGetMedicamentosByNameResponse
-                                              .jsonBody,
-                                        ) ==
-                                        _model.remedio
-                                    ? 1.0
-                                    : 0.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 45.0,
-                                  decoration: BoxDecoration(
-                                    color: GetMedicamentosByNameCall.id(
-                                              listViewGetMedicamentosByNameResponse
-                                                  .jsonBody,
-                                            ) ==
-                                            _model.remedio
-                                        ? const Color(0xFFEFF4F9)
-                                        : Colors.white,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            GetMedicamentosByNameCall.nome(
-                                              listViewGetMedicamentosByNameResponse
-                                                  .jsonBody,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Mulish',
+                                              color:
+                                                  listViewStaticMedicamentosRow
+                                                              .id ==
+                                                          _model.remedio
+                                                      ? const Color(0xFF6E78FF)
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                              fontSize: 18.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
                                             ),
-                                            '-',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Mulish',
-                                                color: GetMedicamentosByNameCall
-                                                            .id(
-                                                          listViewGetMedicamentosByNameResponse
-                                                              .jsonBody,
-                                                        ) ==
-                                                        _model.remedio
-                                                    ? const Color(0xFF6E78FF)
-                                                    : FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                fontSize: 18.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
                           ),
-                        ].divide(const SizedBox(height: 18.0)),
-                      );
-                    },
-                  ),
+                        );
+                      },
+                    );
+                  },
                 ),
+              ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     Navigator.pop(context);
                   },
-                  text: 'Salvar',
+                  text: valueOrDefault<String>(
+                    _model.textFieldSelectedOption,
+                    'aa',
+                  ),
                   options: FFButtonOptions(
                     width: double.infinity,
                     height: 48.0,

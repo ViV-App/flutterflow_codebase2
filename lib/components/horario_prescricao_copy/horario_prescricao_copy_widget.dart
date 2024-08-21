@@ -129,7 +129,7 @@ class _HorarioPrescricaoCopyWidgetState
                   Text(
                     valueOrDefault<String>(
                       dateTimeFormat(
-                        'Hm',
+                        "Hm",
                         widget.horario?.horario,
                         locale: FFLocalizations.of(context).languageCode,
                       ),

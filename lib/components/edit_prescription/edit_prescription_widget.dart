@@ -1,7 +1,9 @@
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/delete_prescription/delete_prescription_widget.dart';
 import '/components/duracao_dias/duracao_dias_widget.dart';
 import '/components/horario_prescricao/horario_prescricao_widget.dart';
+import '/components/prescription_edited/prescription_edited_widget.dart';
 import '/components/remedio_card/remedio_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -216,12 +218,14 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         List<MeusMedicamentosRow>
                                             remedioCardMeusMedicamentosRowList =
                                             snapshot.data!;
+
                                         final remedioCardMeusMedicamentosRow =
                                             remedioCardMeusMedicamentosRowList
                                                     .isNotEmpty
                                                 ? remedioCardMeusMedicamentosRowList
                                                     .first
                                                 : null;
+
                                         return wrapWithModel(
                                           model: _model.remedioCardModel,
                                           updateCallback: () => setState(() {}),
@@ -630,7 +634,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                             _model.datePicked !=
                                                                     null
                                                                 ? dateTimeFormat(
-                                                                    'd/M/y',
+                                                                    "d/M/y",
                                                                     _model
                                                                         .datePicked,
                                                                     locale: FFLocalizations.of(
@@ -638,7 +642,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                         .languageCode,
                                                                   )
                                                                 : dateTimeFormat(
-                                                                    'd/M/y',
+                                                                    "d/M/y",
                                                                     widget
                                                                         .prescricao!
                                                                         .dateStart!,
@@ -1136,6 +1140,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                       builder: (context) {
                                         final times2 =
                                             FFAppState().horarios.toList();
+
                                         return Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: List.generate(times2.length,
@@ -1165,266 +1170,233 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    var confirmDialogResponse =
-                                        await showDialog<bool>(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                  child: AlertDialog(
-                                                    title: const Text('Cuidado!'),
-                                                    content: const Text(
-                                                        'Ao confirmar essa ação, voce concorda que sua prescrição e todos os registros relacionados a ela sejam removidos. Prossiga apenas se tiver certeza.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: const Text(
-                                                            'Cancelar e voltar'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: const Text(
-                                                            'Confirmar e deletar'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
-                                            ) ??
-                                            false;
-                                    if (confirmDialogResponse) {
-                                      await PrescricaoTable().delete(
-                                        matchingRows: (rows) => rows.eq(
-                                          'id',
-                                          valueOrDefault<int>(
-                                            widget.prescricao?.id,
-                                            5,
-                                          ),
-                                        ),
-                                      );
-                                      FFAppState().clearRemediosCache();
-                                      Navigator.pop(context);
+                                child: Builder(
+                                  builder: (context) => FFButtonWidget(
+                                    onPressed: () async {
                                       await showDialog(
                                         context: context,
-                                        builder: (alertDialogContext) {
-                                          return WebViewAware(
-                                            child: AlertDialog(
-                                              title: const Text('Sucesso!'),
-                                              content: const Text(
-                                                  'Sua prescrição foi deletada com sucesso.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
+                                        builder: (dialogContext) {
+                                          return Dialog(
+                                            elevation: 0,
+                                            insetPadding: EdgeInsets.zero,
+                                            backgroundColor: Colors.transparent,
+                                            alignment: const AlignmentDirectional(
+                                                    0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                            child: WebViewAware(
+                                              child: DeletePrescriptionWidget(
+                                                prescricao: widget.prescricao,
+                                              ),
                                             ),
                                           );
                                         },
                                       );
-                                    }
-
-                                    setState(() {});
-                                  },
-                                  text: 'Deletar',
-                                  options: FFButtonOptions(
-                                    height: 48.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Colors.white,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Mulish',
-                                          color: const Color(0xFFE25D5D),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: const BorderSide(
-                                      color: Color(0xFFE25D5D),
-                                      width: 1.0,
+                                    },
+                                    text: 'Deletar',
+                                    options: FFButtonOptions(
+                                      height: 48.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Colors.white,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Mulish',
+                                            color: const Color(0xFFE25D5D),
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: const BorderSide(
+                                        color: Color(0xFFE25D5D),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
                                 ),
                               ),
                               Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: ((_model.textController1.text ==
-                                                  '') ||
-                                          (_model.dropDownValue == null ||
-                                              _model.dropDownValue == '') ||
-                                          (_model.textController2.text ==
-                                                  ''))
-                                      ? null
-                                      : () async {
-                                          if (_model.switchValue == true) {
-                                            await PrescricaoTable().update(
-                                              data: {
-                                                'horarios': supaSerializeList<
-                                                        DateTime>(
-                                                    FFAppState()
-                                                        .horarios
-                                                        .map((e) => e.horario)
-                                                        .withoutNulls
-                                                        .toList()),
-                                                'posologia': int.tryParse(_model
-                                                    .textController1.text),
-                                                'forma_dose':
-                                                    _model.dropDownValue,
-                                                'duracao_dias': FFAppState()
-                                                    .prescricao
-                                                    .duracaoDias,
-                                                'date_start': supaSerialize<
-                                                        DateTime>(
-                                                    _model.datePicked ?? widget.prescricao
-                                                            ?.dateStart),
-                                                'concentracao': int.tryParse(
-                                                    _model
-                                                        .textController2.text),
-                                                'continuo': true,
-                                              },
-                                              matchingRows: (rows) => rows.eq(
-                                                'id',
-                                                widget.prescricao?.id,
-                                              ),
-                                            );
-                                            Navigator.pop(context);
-                                            FFAppState().prescricao =
-                                                PrescricaoStruct();
-                                            FFAppState().horarios = [];
-                                            setState(() {});
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                  child: AlertDialog(
-                                                    title: const Text('Sucesso!'),
-                                                    content: const Text(
-                                                        'Sua prescrição foi editada com sucesso.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          } else {
-                                            await PrescricaoTable().update(
-                                              data: {
-                                                'horarios': supaSerializeList<
-                                                        DateTime>(
-                                                    FFAppState()
-                                                        .horarios
-                                                        .map((e) => e.horario)
-                                                        .withoutNulls
-                                                        .toList()),
-                                                'posologia': int.tryParse(_model
-                                                    .textController1.text),
-                                                'forma_dose':
-                                                    _model.dropDownValue,
-                                                'duracao_dias': FFAppState()
-                                                    .prescricao
-                                                    .duracaoDias,
-                                                'date_start': supaSerialize<
-                                                        DateTime>(
-                                                    _model.datePicked ?? widget.prescricao
-                                                            ?.dateStart),
-                                                'concentracao': int.tryParse(
-                                                    _model
-                                                        .textController2.text),
-                                                'continuo': false,
-                                                'date_end': supaSerialize<
-                                                    DateTime>(_model.datePicked ==
-                                                        null
-                                                    ? functions.getFinalDate(
-                                                        widget.prescricao!
-                                                            .dateStart!,
-                                                        FFAppState()
-                                                                .prescricao
-                                                                .duracaoDias -
-                                                            1)
-                                                    : functions.getFinalDate(
-                                                        _model.datePicked!,
-                                                        FFAppState()
-                                                                .prescricao
-                                                                .duracaoDias -
-                                                            1)),
-                                              },
-                                              matchingRows: (rows) => rows.eq(
-                                                'id',
-                                                widget.prescricao?.id,
-                                              ),
-                                            );
-                                            Navigator.pop(context);
-                                            FFAppState().prescricao =
-                                                PrescricaoStruct();
-                                            FFAppState().horarios = [];
-                                            setState(() {});
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                  child: AlertDialog(
-                                                    title: const Text('Sucesso!'),
-                                                    content: const Text(
-                                                        'Sua prescrição foi editada com sucesso.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          }
-                                        },
-                                  text: 'Salvar',
-                                  options: FFButtonOptions(
-                                    height: 48.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Mulish',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                child: Builder(
+                                  builder: (context) => FFButtonWidget(
+                                    onPressed: ((_model.textController1.text ==
+                                                    '') ||
+                                            (_model.dropDownValue == null ||
+                                                _model.dropDownValue == '') ||
+                                            (_model.textController2.text ==
+                                                    ''))
+                                        ? null
+                                        : () async {
+                                            if (_model.switchValue == true) {
+                                              await PrescricaoTable().update(
+                                                data: {
+                                                  'horarios': supaSerializeList<
+                                                          DateTime>(
+                                                      FFAppState()
+                                                          .horarios
+                                                          .map((e) => e.horario)
+                                                          .withoutNulls
+                                                          .toList()),
+                                                  'posologia': int.tryParse(
+                                                      _model.textController1
+                                                          .text),
+                                                  'forma_dose':
+                                                      _model.dropDownValue,
+                                                  'duracao_dias': FFAppState()
+                                                      .prescricao
+                                                      .duracaoDias,
+                                                  'date_start': supaSerialize<
+                                                          DateTime>(
+                                                      _model.datePicked ?? widget.prescricao
+                                                              ?.dateStart),
+                                                  'concentracao': int.tryParse(
+                                                      _model.textController2
+                                                          .text),
+                                                  'continuo': true,
+                                                },
+                                                matchingRows: (rows) => rows.eq(
+                                                  'id',
+                                                  widget.prescricao?.id,
+                                                ),
+                                              );
+                                              Navigator.pop(context);
+                                              FFAppState().prescricao =
+                                                  PrescricaoStruct();
+                                              FFAppState().horarios = [];
+                                              setState(() {});
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: const WebViewAware(
+                                                      child:
+                                                          PrescriptionEditedWidget(),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await PrescricaoTable().update(
+                                                data: {
+                                                  'horarios': supaSerializeList<
+                                                          DateTime>(
+                                                      FFAppState()
+                                                          .horarios
+                                                          .map((e) => e.horario)
+                                                          .withoutNulls
+                                                          .toList()),
+                                                  'posologia': int.tryParse(
+                                                      _model.textController1
+                                                          .text),
+                                                  'forma_dose':
+                                                      _model.dropDownValue,
+                                                  'duracao_dias': FFAppState()
+                                                      .prescricao
+                                                      .duracaoDias,
+                                                  'date_start': supaSerialize<
+                                                          DateTime>(
+                                                      _model.datePicked ?? widget.prescricao
+                                                              ?.dateStart),
+                                                  'concentracao': int.tryParse(
+                                                      _model.textController2
+                                                          .text),
+                                                  'continuo': false,
+                                                  'date_end': supaSerialize<
+                                                      DateTime>(_model
+                                                              .datePicked ==
+                                                          null
+                                                      ? functions.getFinalDate(
+                                                          widget.prescricao!
+                                                              .dateStart!,
+                                                          FFAppState()
+                                                                  .prescricao
+                                                                  .duracaoDias -
+                                                              1)
+                                                      : functions.getFinalDate(
+                                                          _model.datePicked!,
+                                                          FFAppState()
+                                                                  .prescricao
+                                                                  .duracaoDias -
+                                                              1)),
+                                                },
+                                                matchingRows: (rows) => rows.eq(
+                                                  'id',
+                                                  widget.prescricao?.id,
+                                                ),
+                                              );
+                                              Navigator.pop(context);
+                                              FFAppState().prescricao =
+                                                  PrescricaoStruct();
+                                              FFAppState().horarios = [];
+                                              setState(() {});
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: const WebViewAware(
+                                                      child:
+                                                          PrescriptionEditedWidget(),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            }
+                                          },
+                                    text: 'Salvar',
+                                    options: FFButtonOptions(
+                                      height: 48.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Mulish',
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      disabledColor:
+                                          FlutterFlowTheme.of(context)
+                                              .alternate,
+                                      disabledTextColor: Colors.white,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    disabledColor:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    disabledTextColor: Colors.white,
                                   ),
                                 ),
                               ),

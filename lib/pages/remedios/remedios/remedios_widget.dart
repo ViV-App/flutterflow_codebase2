@@ -52,9 +52,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -100,12 +98,12 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                               ),
                             ),
                             Text(
-                              'Remédios e medicamentos',
+                              'Remédios',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    fontSize: 16.0,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -127,9 +125,9 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                   },
                                 );
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.add,
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: Color(0x005D67E2),
                                 size: 32.0,
                               ),
                             ),
@@ -184,6 +182,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                         }
                         List<MeusMedicamentosRow>
                             listViewMeusMedicamentosRowList = snapshot.data!;
+
                         if (listViewMeusMedicamentosRowList.isEmpty) {
                           return Center(
                             child: Image.asset(
@@ -191,6 +190,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                             ),
                           );
                         }
+
                         return ListView.separated(
                           padding: const EdgeInsets.fromLTRB(
                             0,
@@ -236,12 +236,14 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                   List<StaticMedicamentosRow>
                                       remedioCardStaticMedicamentosRowList =
                                       snapshot.data!;
+
                                   final remedioCardStaticMedicamentosRow =
                                       remedioCardStaticMedicamentosRowList
                                               .isNotEmpty
                                           ? remedioCardStaticMedicamentosRowList
                                               .first
                                           : null;
+
                                   return InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -267,12 +269,8 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                         builder: (context) {
                                           return WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(context)
                                                       .unfocus(),
                                               child: Padding(
                                                 padding:

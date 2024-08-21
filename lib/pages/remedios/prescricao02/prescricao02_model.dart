@@ -1,7 +1,11 @@
+import '/backend/supabase/supabase.dart';
+import '/components/prescription_added/prescription_added_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'prescricao02_widget.dart' show Prescricao02Widget;
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
   ///  Local state fields for this page.
@@ -31,9 +35,10 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
   void updateHorarioAtIndex(int index, Function(DateTime) updateFn) =>
       horario[index] = updateFn(horario[index]);
 
+  DateTime? date;
+
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -48,17 +53,96 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
   DateTime? datePicked;
   // State field(s) for Switch widget.
   bool? switchValue;
+  // Stores action output result for [Backend Call - Insert Row] action in Button widget.
+  StaticMedicamentosRow? newMed;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<StaticMedicamentosRow>? selectedMed;
 
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     textFieldFocusNode1?.dispose();
     textController1?.dispose();
 
     textFieldFocusNode2?.dispose();
     textController2?.dispose();
+  }
+
+  /// Action blocks.
+  Future createPrescription(
+    BuildContext context, {
+    StaticMedicamentosRow? remedio,
+  }) async {
+    if (switchValue == true) {
+      await PrescricaoTable().insert({
+        'horarios': supaSerializeList<DateTime>(
+            FFAppState().horarios.map((e) => e.horario).withoutNulls.toList()),
+        'medicamento': remedio?.id,
+        'posologia': int.tryParse(textController1.text),
+        'duracao_dias': FFAppState().prescricao.duracaoDias,
+        'date_start': supaSerialize<DateTime>(date),
+        'forma_dose': dropDownValue,
+        'continuo': true,
+        'paciente': FFAppState().paciente.id,
+        'concentracao': int.tryParse(textController2.text),
+      });
+      FFAppState().clearRemediosCache();
+      await showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (dialogContext) {
+          return Dialog(
+            elevation: 0,
+            insetPadding: EdgeInsets.zero,
+            backgroundColor: Colors.transparent,
+            alignment: const AlignmentDirectional(0.0, -1.0)
+                .resolve(Directionality.of(context)),
+            child: WebViewAware(
+              child: GestureDetector(
+                onTap: () => FocusScope.of(dialogContext).unfocus(),
+                child: const PrescriptionAddedWidget(),
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      await PrescricaoTable().insert({
+        'horarios': supaSerializeList<DateTime>(
+            FFAppState().horarios.map((e) => e.horario).withoutNulls.toList()),
+        'medicamento': remedio?.id,
+        'posologia': int.tryParse(textController1.text),
+        'duracao_dias': FFAppState().prescricao.duracaoDias,
+        'date_start': supaSerialize<DateTime>(date),
+        'forma_dose': dropDownValue,
+        'date_end': supaSerialize<DateTime>(functions.getFinalDate(
+            date!, FFAppState().prescricao.duracaoDias - 1)),
+        'continuo': false,
+        'paciente': FFAppState().paciente.id,
+        'concentracao': int.tryParse(textController2.text),
+      });
+      FFAppState().clearRemediosCache();
+      await showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (dialogContext) {
+          return Dialog(
+            elevation: 0,
+            insetPadding: EdgeInsets.zero,
+            backgroundColor: Colors.transparent,
+            alignment: const AlignmentDirectional(0.0, -1.0)
+                .resolve(Directionality.of(context)),
+            child: WebViewAware(
+              child: GestureDetector(
+                onTap: () => FocusScope.of(dialogContext).unfocus(),
+                child: const PrescriptionAddedWidget(),
+              ),
+            ),
+          );
+        },
+      );
+    }
   }
 }

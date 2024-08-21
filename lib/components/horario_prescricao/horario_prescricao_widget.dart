@@ -1,6 +1,8 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'horario_prescricao_model.dart';
 export 'horario_prescricao_model.dart';
@@ -77,22 +79,57 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              final datePickedTime = await showTimePicker(
-                context: context,
-                initialTime: TimeOfDay.fromDateTime(
-                    (widget.horario?.horario ?? DateTime.now())),
-              );
-              if (datePickedTime != null) {
-                safeSetState(() {
-                  _model.datePicked = DateTime(
-                    (widget.horario?.horario ?? DateTime.now()).year,
-                    (widget.horario?.horario ?? DateTime.now()).month,
-                    (widget.horario?.horario ?? DateTime.now()).day,
-                    datePickedTime.hour,
-                    datePickedTime.minute,
-                  );
-                });
-              }
+              await showModalBottomSheet<bool>(
+                  context: context,
+                  builder: (context) {
+                    final datePickedCupertinoTheme =
+                        CupertinoTheme.of(context);
+                    return ScrollConfiguration(
+                      behavior: const MaterialScrollBehavior().copyWith(
+                        dragDevices: {
+                          PointerDeviceKind.mouse,
+                          PointerDeviceKind.touch,
+                          PointerDeviceKind.stylus,
+                          PointerDeviceKind.unknown
+                        },
+                      ),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 3,
+                        width: MediaQuery.of(context).size.width,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        child: CupertinoTheme(
+                          data: datePickedCupertinoTheme.copyWith(
+                            textTheme:
+                                datePickedCupertinoTheme.textTheme.copyWith(
+                              dateTimePickerTextStyle:
+                                  FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        fontFamily: 'Mulish',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                            ),
+                          ),
+                          child: CupertinoDatePicker(
+                            mode: CupertinoDatePickerMode.time,
+                            minimumDate: DateTime(1900),
+                            initialDateTime:
+                                (widget.horario?.horario ?? DateTime.now()),
+                            maximumDate: DateTime(2050),
+                            backgroundColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            use24hFormat: false,
+                            onDateTimeChanged: (newDateTime) =>
+                                safeSetState(() {
+                              _model.datePicked = newDateTime;
+                            }),
+                          ),
+                        ),
+                      ),
+                    );
+                  });
               if (_model.datePicked != null) {
                 FFAppState().updateHorariosAtIndex(
                   widget.index!,
@@ -123,7 +160,7 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                   Text(
                     valueOrDefault<String>(
                       dateTimeFormat(
-                        'Hm',
+                        "Hm",
                         widget.horario?.horario,
                         locale: FFLocalizations.of(context).languageCode,
                       ),

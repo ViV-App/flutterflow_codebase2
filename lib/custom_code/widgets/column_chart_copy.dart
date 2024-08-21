@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -58,7 +59,7 @@ class _ColumnChartCopyState extends State<ColumnChartCopy> {
         ),
       ),
       series: <CartesianSeries<ColumnChartDataStruct, String>>[
-        ColumnSeries<ColumnChartDataStruct, String>(
+        BarSeries<ColumnChartDataStruct, String>(
           dataSource: widget.chartData,
           xValueMapper: (ColumnChartDataStruct data, _) => data.sintoma,
           yValueMapper: (ColumnChartDataStruct data, _) => data.count,

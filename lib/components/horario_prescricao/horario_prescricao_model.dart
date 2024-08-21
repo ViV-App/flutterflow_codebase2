@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import 'horario_prescricao_widget.dart' show HorarioPrescricaoWidget;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HorarioPrescricaoModel extends FlutterFlowModel<HorarioPrescricaoWidget> {

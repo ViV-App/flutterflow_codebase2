@@ -355,6 +355,11 @@ class CallChatCall {
       alwaysAllowBody: false,
     );
   }
+
+  static bool? response(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.success''',
+      ));
 }
 
 class EditUserCall {
@@ -551,6 +556,466 @@ class GetSintomasPlotCall {
           .map((x) => castToType<int>(x))
           .withoutNulls
           .toList();
+}
+
+class GenerateResponsesCall {
+  static Future<ApiCallResponse> call({
+    int? paciente,
+    int? questionario,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "paciente_id": $paciente,
+  "questionario_id": $questionario
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'generate responses',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/create_respostas_questionario',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzOTg0MjksImV4cCI6MjAyOTk3NDQyOX0.XczFr7OwtAY2U06zTYWsFHKDwoDzdY10ZeO9hlevcAk',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzOTg0MjksImV4cCI6MjAyOTk3NDQyOX0.XczFr7OwtAY2U06zTYWsFHKDwoDzdY10ZeO9hlevcAk',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SubscriptionRequestCall {
+  static Future<ApiCallResponse> call({
+    int? plano,
+    int? paciente,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "plano": $plano,
+  "paciente": $paciente
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'subscription request',
+      apiUrl:
+          'https://primary-production-52d3.up.railway.app/webhook-test/subscription',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class CreateAsaasCustomerCall {
+  static Future<ApiCallResponse> call({
+    String? name = '',
+    String? email = '',
+    String? phone = '',
+    String? cpf = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "name": "$name",
+  "email": "$email",
+  "phone": "$phone",
+  "cpfCnpj": "$cpf"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'create asaas customer',
+      apiUrl: 'https://api.asaas.com/v3/customers',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'access_token':
+            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzRkZWQ4ZDA2LTViMDktNDQ3NS04MTI3LTQyYmE1YjEwODc0NA==',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? custId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.id''',
+      ));
+}
+
+class SendBemViverResponseCall {
+  static Future<ApiCallResponse> call({
+    dynamic responseJson,
+    int? humor,
+    List<String>? adversosList,
+    String? observacoes = '',
+  }) async {
+    final adversos = _serializeList(adversosList);
+    final response = _serializeJson(responseJson, true);
+    final ffApiRequestBody = '''
+{
+  "humor": $humor,
+  "adversos": $adversos,
+  "response": $response,
+  "observacoes": "$observacoes"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'send bem viver response',
+      apiUrl:
+          'https://primary-production-52d3.up.railway.app/webhook/genvivscore',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetLatestBemViverScoreCall {
+  static Future<ApiCallResponse> call({
+    String? dataInit = '',
+    String? dataEnd = '',
+    int? paciente,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "p_data_end": "$dataEnd",
+  "p_data_init": "$dataInit",
+  "p_paciente": $paciente
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getLatestBemViverScore',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/get_latest_bem_viver_score',
+      callType: ApiCallType.POST,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<int>? id(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<double>? scoreViV(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].score_viv''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? createdAt(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].created_at''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? paciente(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].paciente''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List? queixas(dynamic response) => getJsonField(
+        response,
+        r'''$[:].queixas_vinculadas''',
+        true,
+      ) as List?;
+  static List? sintomas(dynamic response) => getJsonField(
+        response,
+        r'''$[:].sintomas''',
+        true,
+      ) as List?;
+  static List<int>? humor(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].humor''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+}
+
+class GetQueixaValuesCall {
+  static Future<ApiCallResponse> call({
+    String? dateEnd = '',
+    String? dateInit = '',
+    int? paciente,
+    int? queixa,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "data_end": "$dateEnd",
+  "data_init": "$dateInit",
+  "paciente_id": $paciente,
+  "queixa_id": $queixa
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'get queixa values',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/get_bem_viver_data',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<int>? id(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? createdA6(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].created_at''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? paciente(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].paciente''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<double>? score(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].score''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? queixa(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].queixa''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? resposta(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].resposta''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? pergunta(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].pergunta''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? peso(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].peso''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+}
+
+class GetAgreggatedSintomasCall {
+  static Future<ApiCallResponse> call({
+    String? dataInit = '',
+    String? dataEnd = '',
+    int? paciente,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "p_data_end": "$dataEnd",
+  "p_data_init": "$dataInit",
+  "p_paciente": $paciente
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getAgreggatedSintomas',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/get_aggregated_sintomas',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List<String>? sintoma(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].sintoma''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? count(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].count''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+}
+
+class CancelSubscriptionCall {
+  static Future<ApiCallResponse> call({
+    String? id = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'Cancel Subscription',
+      apiUrl: 'https://api.asaas.com/v3/subscriptions/$id',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'User-Agent':
+            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzRkZWQ4ZDA2LTViMDktNDQ3NS04MTI3LTQyYmE1YjEwODc0NA==',
+        'accept': 'application/json',
+        'access_token':
+            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzRkZWQ4ZDA2LTViMDktNDQ3NS04MTI3LTQyYmE1YjEwODc0NA==',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class ResetFormResponsesCall {
+  static Future<ApiCallResponse> call({
+    int? paciente,
+    int? formulario,
+    int? ordem,
+  }) async {
+    final ffApiRequestBody = '''
+{
+"paciente": $paciente,
+"formulario": $formulario,
+"currentOrdem": $ordem
+}
+''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'reset form responses',
+      apiUrl:
+          'https://primary-production-52d3.up.railway.app/webhook/resetFormResponses',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 class ApiPagingParams {

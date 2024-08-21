@@ -20,6 +20,8 @@ class ChooseMedModel extends FlutterFlowModel<ChooseMedWidget> {
   TextEditingController? textController;
   String? textFieldSelectedOption;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Backend Call - Query Rows] action in TextField widget.
+  List<StaticMedicamentosRow>? med;
 
   @override
   void initState(BuildContext context) {}

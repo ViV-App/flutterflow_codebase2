@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class ResetSenhaModel extends FlutterFlowModel<ResetSenhaWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
@@ -55,7 +54,6 @@ class ResetSenhaModel extends FlutterFlowModel<ResetSenhaWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     textFieldFocusNode1?.dispose();
     textController1?.dispose();
 

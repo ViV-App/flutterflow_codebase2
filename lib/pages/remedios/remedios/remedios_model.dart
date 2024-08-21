@@ -17,7 +17,6 @@ class RemediosModel extends FlutterFlowModel<RemediosWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   bool requestCompleted = false;
   String? requestLastUniqueKey;
   // Stores action output result for [Backend Call - Query Rows] action in remedioCard widget.
@@ -27,9 +26,7 @@ class RemediosModel extends FlutterFlowModel<RemediosWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 
   /// Additional helper methods.
   Future waitForRequestCompleted({

@@ -26,4 +26,11 @@ class StaticQueixasSaudeRow extends SupabaseDataRow {
 
   String? get logo => getField<String>('logo');
   set logo(String? value) => setField<String>('logo', value);
+
+  List<dynamic> get perguntas => getListField<dynamic>('perguntas');
+  set perguntas(List<dynamic>? value) =>
+      setListField<dynamic>('perguntas', value);
+
+  String? get descritivo => getField<String>('descritivo');
+  set descritivo(String? value) => setField<String>('descritivo', value);
 }

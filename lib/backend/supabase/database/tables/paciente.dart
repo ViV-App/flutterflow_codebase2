@@ -57,4 +57,50 @@ class PacienteRow extends SupabaseDataRow {
 
   int? get medicoPrescritor => getField<int>('medico_prescritor');
   set medicoPrescritor(int? value) => setField<int>('medico_prescritor', value);
+
+  String? get tramentoPrevio => getField<String>('tramentoPrevio');
+  set tramentoPrevio(String? value) =>
+      setField<String>('tramentoPrevio', value);
+
+  bool? get dadosCadPreenchidos => getField<bool>('dados_cad_preenchidos');
+  set dadosCadPreenchidos(bool? value) =>
+      setField<bool>('dados_cad_preenchidos', value);
+
+  bool? get histMedicoPreenchido => getField<bool>('hist_medico_preenchido');
+  set histMedicoPreenchido(bool? value) =>
+      setField<bool>('hist_medico_preenchido', value);
+
+  bool? get famSocialHistPreenchido =>
+      getField<bool>('fam_social_hist_preenchido');
+  set famSocialHistPreenchido(bool? value) =>
+      setField<bool>('fam_social_hist_preenchido', value);
+
+  bool? get lifestylePreenchido => getField<bool>('lifestyle_preenchido');
+  set lifestylePreenchido(bool? value) =>
+      setField<bool>('lifestyle_preenchido', value);
+
+  bool? get funcionalidadePreenchida =>
+      getField<bool>('funcionalidade_preenchida');
+  set funcionalidadePreenchida(bool? value) =>
+      setField<bool>('funcionalidade_preenchida', value);
+
+  String? get asaasCustomerId => getField<String>('asaas_customer_id');
+  set asaasCustomerId(String? value) =>
+      setField<String>('asaas_customer_id', value);
+
+  String? get queixaPrincipal => getField<String>('queixa_principal');
+  set queixaPrincipal(String? value) =>
+      setField<String>('queixa_principal', value);
+
+  String? get email => getField<String>('email');
+  set email(String? value) => setField<String>('email', value);
+
+  String? get fcmToken => getField<String>('fcm_token');
+  set fcmToken(String? value) => setField<String>('fcm_token', value);
+
+  int? get statusAtual => getField<int>('status_atual');
+  set statusAtual(int? value) => setField<int>('status_atual', value);
+
+  int? get planoAtual => getField<int>('plano_atual');
+  set planoAtual(int? value) => setField<int>('plano_atual', value);
 }
