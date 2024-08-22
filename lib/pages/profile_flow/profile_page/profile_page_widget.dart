@@ -366,7 +366,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           Colors.transparent,
                                                       alignment:
                                                           const AlignmentDirectional(
-                                                                  0.0, -1.0)
+                                                                  0.0, 0.0)
                                                               .resolve(
                                                                   Directionality.of(
                                                                       context)),

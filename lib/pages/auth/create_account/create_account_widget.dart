@@ -1,5 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/enums/enums.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
@@ -2443,24 +2442,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     return;
                                   }
 
-                                  _model.customerAsaas =
-                                      await CreateAsaasCustomerCall.call(
-                                    name: _model.ipNomeTextController.text,
-                                    email: currentUserEmail,
-                                    phone: _model.phone,
-                                    cpf: _model.ipCPFTextController.text,
-                                  );
-
                                   _model.createdUser =
                                       await PacienteTable().insert({
                                     'nome': _model.ipNomeTextController.text,
                                     'telefone': _model.phone,
                                     'cpf': _model.ipCPFTextController.text,
                                     'uuid': currentUserUid,
-                                    'asaas_customer_id':
-                                        CreateAsaasCustomerCall.custId(
-                                      (_model.customerAsaas?.jsonBody ?? ''),
-                                    ),
+                                    'asaas_customer_id': 'a',
                                     'email': currentUserEmail,
                                   });
                                   _model.loggedUser =

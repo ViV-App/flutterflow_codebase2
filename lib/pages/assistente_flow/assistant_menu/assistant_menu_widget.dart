@@ -622,8 +622,16 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         ),
                       ).animateOnPageLoad(
                           animationsMap['containerOnPageLoadAnimation5']!),
-                    if ((columnStatusPacientRow?.processo == 'consulta') &&
-                        (columnStatusPacientRow?.estagio == 'pagarConsulta'))
+                    if (((columnStatusPacientRow?.processo == 'consulta') &&
+                            (columnStatusPacientRow?.estagio ==
+                                'pagarConsulta')) &&
+                        responsiveVisibility(
+                          context: context,
+                          phone: false,
+                          tablet: false,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ))
                       InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -680,8 +688,16 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         ),
                       ).animateOnPageLoad(
                           animationsMap['containerOnPageLoadAnimation6']!),
-                    if ((columnStatusPacientRow?.processo == 'consulta') &&
-                        (columnStatusPacientRow?.estagio == 'agendarConsulta'))
+                    if (((columnStatusPacientRow?.processo == 'consulta') &&
+                            (columnStatusPacientRow?.estagio ==
+                                'agendarConsulta')) &&
+                        responsiveVisibility(
+                          context: context,
+                          phone: false,
+                          tablet: false,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ))
                       InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,

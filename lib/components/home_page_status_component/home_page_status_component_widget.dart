@@ -55,43 +55,6 @@ class _HomePageStatusComponentWidgetState
       highlightColor: Colors.transparent,
       onTap: () async {
         if (widget.status?.processo == 'consulta') {
-          if (widget.status?.estagio == 'agendarConsulta') {
-            context.pushNamed(
-              'consulta',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: const TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.fade,
-                  duration: Duration(milliseconds: 0),
-                ),
-              },
-            );
-          } else if (widget.status?.estagio == 'pagarConsulta') {
-            context.pushNamed(
-              'consulta',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: const TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.fade,
-                  duration: Duration(milliseconds: 0),
-                ),
-              },
-            );
-          } else if (widget.status?.estagio == 'formularioPreConsulta') {
-            context.pushNamed(
-              'formPreConsulta',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: const TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.fade,
-                  duration: Duration(milliseconds: 0),
-                ),
-              },
-            );
-          } else {
-            return;
-          }
-
           return;
         } else if (widget.status?.processo == 'planoTerapeutico') {
           if (widget.status?.estagio == 'visualizarPlano') {
@@ -108,6 +71,17 @@ class _HomePageStatusComponentWidgetState
           } else if (widget.status?.estagio == 'confirmarRecebimento') {
             context.pushNamed(
               'confirmarRecebimento',
+              extra: <String, dynamic>{
+                kTransitionInfoKey: const TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 0),
+                ),
+              },
+            );
+          } else if (widget.status?.estagio == 'formularioPreConsulta') {
+            context.pushNamed(
+              'formPreConsulta',
               extra: <String, dynamic>{
                 kTransitionInfoKey: const TransitionInfo(
                   hasTransition: true,
@@ -146,6 +120,8 @@ class _HomePageStatusComponentWidgetState
                 },
               );
             }
+
+            return;
           } else if (widget.status?.estagio == 'preencherFormularioBip') {
             context.pushNamed(
               'ajustarDose',
@@ -163,6 +139,8 @@ class _HomePageStatusComponentWidgetState
                 ),
               },
             );
+
+            return;
           } else if (widget.status?.estagio == 'visualizarAjusteBip') {
             context.pushNamed(
               'ajustarDose',
@@ -180,11 +158,11 @@ class _HomePageStatusComponentWidgetState
                 ),
               },
             );
+
+            return;
           } else {
             return;
           }
-
-          return;
         } else {
           return;
         }
@@ -206,7 +184,7 @@ class _HomePageStatusComponentWidgetState
               } else if ((widget.status?.processo == 'consulta') &&
                   (widget.status?.estagio == 'pagarConsulta')) {
                 return const Color(0xFFD30000);
-              } else if ((widget.status?.processo == 'consulta') &&
+              } else if ((widget.status?.processo == 'planoTerapeutico') &&
                   (widget.status?.estagio == 'formularioPreConsulta')) {
                 return const Color(0xFFFFA438);
               } else if ((widget.status?.processo == 'planoTerapeutico') &&
@@ -249,7 +227,8 @@ class _HomePageStatusComponentWidgetState
                       } else if ((widget.status?.processo == 'consulta') &&
                           (widget.status?.estagio == 'pagarConsulta')) {
                         return const Color(0xFF7C0000);
-                      } else if ((widget.status?.processo == 'consulta') &&
+                      } else if ((widget.status?.processo ==
+                              'planoTerapeutico') &&
                           (widget.status?.estagio ==
                               'formularioPreConsulta')) {
                         return const Color(0xFFC16A02);
@@ -353,7 +332,7 @@ class _HomePageStatusComponentWidgetState
                                 (widget.status?.estagio == 'pagarConsulta')) {
                               return 'Realize agora o pagamento para garantir o horário agendado com o médico.';
                             } else if ((widget.status?.processo ==
-                                    'consulta') &&
+                                    'planoTerapeutico') &&
                                 (widget.status?.estagio ==
                                     'formularioPreConsulta')) {
                               return 'Preencha o formulário de Pré-consulta antes da conversa com o Médico!';

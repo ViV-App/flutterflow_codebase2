@@ -334,8 +334,8 @@ class _PreviousTreatmentWidgetState extends State<PreviousTreatmentWidget> {
                                   'Não faço tratamento com Cannabis') {
                                 _model.st1 = await StatusPacientTable().insert({
                                   'paciente': FFAppState().paciente.id,
-                                  'processo': 'consulta',
-                                  'estagio': 'agendarConsulta',
+                                  'processo': 'planoTerapeutico',
+                                  'estagio': 'formularioPreConsulta',
                                 });
                                 await PacienteTable().update(
                                   data: {
