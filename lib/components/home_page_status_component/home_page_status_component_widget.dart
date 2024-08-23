@@ -323,19 +323,11 @@ class _HomePageStatusComponentWidgetState
                       Text(
                         valueOrDefault<String>(
                           () {
-                            if ((widget.status?.processo == 'consulta') &&
-                                (widget.status?.estagio ==
-                                    'agendarConsulta')) {
-                              return 'Descubra qual Cannabis é para você, agenda uma consulta!';
-                            } else if ((widget.status?.processo ==
-                                    'consulta') &&
-                                (widget.status?.estagio == 'pagarConsulta')) {
-                              return 'Realize agora o pagamento para garantir o horário agendado com o médico.';
-                            } else if ((widget.status?.processo ==
+                            if ((widget.status?.processo ==
                                     'planoTerapeutico') &&
                                 (widget.status?.estagio ==
                                     'formularioPreConsulta')) {
-                              return 'Preencha o formulário de Pré-consulta antes da conversa com o Médico!';
+                              return 'Preencha o Formulário de Saúde para te conhecer melhor';
                             } else if ((widget.status?.processo ==
                                     'planoTerapeutico') &&
                                 (widget.status?.estagio ==
