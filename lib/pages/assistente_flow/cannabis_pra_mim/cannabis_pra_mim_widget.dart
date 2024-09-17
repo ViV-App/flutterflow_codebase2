@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/questionario/pergunta_widget/pergunta_widget_widget.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'cannabis_pra_mim_model.dart';
 export 'cannabis_pra_mim_model.dart';
 
@@ -31,7 +30,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
     super.initState();
     _model = createModel(context, () => CannabisPraMimModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -43,8 +42,6 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -261,7 +258,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                   pageViewIndex,
                                                 ),
                                                 updateCallback: () =>
-                                                    setState(() {}),
+                                                    safeSetState(() {}),
                                                 updateOnChange: true,
                                                 child: PerguntaWidgetWidget(
                                                   key: Key(
@@ -289,7 +286,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                     };
                                                     _model.respostaExiste =
                                                         respostaExiste;
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   },
                                                 ),
                                               ),
@@ -320,7 +317,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                                 .respostas.last,
                                                             r'''$.nextPergunta''',
                                                           );
-                                                          setState(() {});
+                                                          safeSetState(() {});
                                                           _model
                                                               .removeFromPrevList(
                                                                   _model
@@ -336,7 +333,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                                       .last);
                                                           _model.respostaExiste =
                                                               true;
-                                                          setState(() {});
+                                                          safeSetState(() {});
                                                         },
                                                         text: 'Voltar',
                                                         options:
@@ -391,41 +388,42 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                     ),
                                                     Expanded(
                                                       child: FFButtonWidget(
-                                                        onPressed: ((_model
-                                                                        .respostaAtual ==
-                                                                    null) ||
-                                                                (_model.respostaExiste ==
-                                                                    false))
-                                                            ? null
-                                                            : () async {
-                                                                _model.addToRespostas(
-                                                                    _model
-                                                                        .respostaAtual!);
-                                                                _model.addToPrevList(
-                                                                    pageViewQuestionarioPerguntasRow
-                                                                        .ordem!);
-                                                                setState(() {});
-                                                                unawaited(
-                                                                  () async {
-                                                                    await _model
-                                                                        .pageViewController
-                                                                        ?.animateToPage(
-                                                                      _model
-                                                                          .nextQuestion!,
-                                                                      duration: const Duration(
-                                                                          milliseconds:
-                                                                              500),
-                                                                      curve: Curves
-                                                                          .ease,
+                                                        onPressed:
+                                                            ((_model.respostaAtual ==
+                                                                        null) ||
+                                                                    (_model.respostaExiste ==
+                                                                        false))
+                                                                ? null
+                                                                : () async {
+                                                                    _model.addToRespostas(
+                                                                        _model
+                                                                            .respostaAtual!);
+                                                                    _model.addToPrevList(
+                                                                        pageViewQuestionarioPerguntasRow
+                                                                            .ordem!);
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    unawaited(
+                                                                      () async {
+                                                                        await _model
+                                                                            .pageViewController
+                                                                            ?.animateToPage(
+                                                                          _model
+                                                                              .nextQuestion!,
+                                                                          duration:
+                                                                              const Duration(milliseconds: 500),
+                                                                          curve:
+                                                                              Curves.ease,
+                                                                        );
+                                                                      }(),
                                                                     );
-                                                                  }(),
-                                                                );
-                                                                _model.respostaAtual =
-                                                                    null;
-                                                                _model.respostaExiste =
-                                                                    false;
-                                                                setState(() {});
-                                                              },
+                                                                    _model.respostaAtual =
+                                                                        null;
+                                                                    _model.respostaExiste =
+                                                                        false;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
                                                         text: 'Próximo',
                                                         options:
                                                             FFButtonOptions(

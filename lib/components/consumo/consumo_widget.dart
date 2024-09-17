@@ -72,7 +72,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
       this,
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -227,7 +227,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
                             child: Checkbox(
                               value: _model.checkboxValue ??= false,
                               onChanged: (newValue) async {
-                                setState(
+                                safeSetState(
                                     () => _model.checkboxValue = newValue!);
                                 if (newValue!) {
                                   if (animationsMap[

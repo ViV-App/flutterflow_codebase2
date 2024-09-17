@@ -3,11 +3,11 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
-import 'new_evolucao_widget.dart' show NewEvolucaoWidget;
+import 'evolucao_widget.dart' show EvolucaoWidget;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NewEvolucaoModel extends FlutterFlowModel<NewEvolucaoWidget> {
+class EvolucaoModel extends FlutterFlowModel<EvolucaoWidget> {
   ///  Local state fields for this page.
 
   DateTime? dataInicio;
@@ -28,11 +28,15 @@ class NewEvolucaoModel extends FlutterFlowModel<NewEvolucaoWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (getLatestBemViverScore)] action in evolucao widget.
+  ApiCallResponse? scoreHas;
   Completer<ApiCallResponse>? apiRequestCompleter;
-  // Stores action output result for [Backend Call - Query Rows] action in newEvolucao widget.
+  // Stores action output result for [Backend Call - Query Rows] action in evolucao widget.
   List<StaticQueixasSaudeRow>? queix;
   DateTime? datePicked1;
   DateTime? datePicked2;
+  DateTime? datePicked3;
+  DateTime? datePicked4;
 
   @override
   void initState(BuildContext context) {}

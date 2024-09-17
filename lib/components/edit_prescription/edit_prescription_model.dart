@@ -3,6 +3,7 @@ import '/components/remedio_card/remedio_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'edit_prescription_widget.dart' show EditPrescriptionWidget;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EditPrescriptionModel extends FlutterFlowModel<EditPrescriptionWidget> {
@@ -20,6 +21,14 @@ class EditPrescriptionModel extends FlutterFlowModel<EditPrescriptionWidget> {
   int nvar = 0;
 
   bool alterado = false;
+
+  List<dynamic> dats = [];
+  void addToDats(dynamic item) => dats.add(item);
+  void removeFromDats(dynamic item) => dats.remove(item);
+  void removeAtIndexFromDats(int index) => dats.removeAt(index);
+  void insertAtIndexInDats(int index, dynamic item) => dats.insert(index, item);
+  void updateDatsAtIndex(int index, Function(dynamic) updateFn) =>
+      dats[index] = updateFn(dats[index]);
 
   ///  State fields for stateful widgets in this component.
 

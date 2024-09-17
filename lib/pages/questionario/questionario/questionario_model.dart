@@ -45,6 +45,10 @@ class QuestionarioModel extends FlutterFlowModel<QuestionarioWidget> {
   ApiCallResponse? apiResultr3x;
   // Stores action output result for [Backend Call - API (generate responses)] action in Button widget.
   ApiCallResponse? apiResultr3xd3;
+  // Stores action output result for [Backend Call - API (generate responses)] action in Button widget.
+  ApiCallResponse? apiResultr3xd3a;
+  // Stores action output result for [Backend Call - Update Row(s)] action in Button widget.
+  List<StatusPacientRow>? qefef;
 
   /// Query cache managers for this widget.
 

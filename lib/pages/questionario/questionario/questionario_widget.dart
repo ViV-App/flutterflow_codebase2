@@ -47,7 +47,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
       );
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -128,18 +128,18 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                         _model.pageViewCurrentIndex
                                     ? true
                                     : false;
-                            setState(() {});
+                            safeSetState(() {});
                             _model.nextQuestion =
                                 pageViewRespostasQuestionarioRowList[
                                         _model.pageViewCurrentIndex]
                                     .nextQuestion;
-                            setState(() {});
+                            safeSetState(() {});
                             if (pageViewRespostasQuestionarioRowList[
                                         _model.pageViewCurrentIndex]
                                     .pergunta ==
                                 30) {
                               _model.nextQuestion = 20;
-                              setState(() {});
+                              safeSetState(() {});
                               return;
                             } else {
                               return;
@@ -265,7 +265,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                           .toString(),
                                       pageViewIndex,
                                     ),
-                                    updateCallback: () => setState(() {}),
+                                    updateCallback: () => safeSetState(() {}),
                                     updateOnChange: true,
                                     child: QuestionarioAskWidget(
                                       key: Key(
@@ -275,7 +275,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                           pageViewRespostasQuestionarioRow,
                                       callback: (nextQuestion) async {
                                         _model.nextQuestion = nextQuestion;
-                                        setState(() {});
+                                        safeSetState(() {});
                                       },
                                     ),
                                   ),
@@ -332,7 +332,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                               _model.nextQuestion =
                                                   pageViewRespostasQuestionarioRow
                                                       .ordem;
-                                              setState(() {});
+                                              safeSetState(() {});
                                               await _model.pageViewController
                                                   ?.animateToPage(
                                                 _model.previuousQuestions.last,
@@ -344,7 +344,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                   .removeFromPreviuousQuestions(
                                                       _model.previuousQuestions
                                                           .last);
-                                              setState(() {});
+                                              safeSetState(() {});
                                             },
                                             text: 'Voltar',
                                             options: FFButtonOptions(
@@ -390,7 +390,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                         true) {
                                                       if (widget.questionario
                                                               ?.nome ==
-                                                          'Histórico de Saúde') {
+                                                          'Históra Clinica') {
                                                         await PacienteTable()
                                                             .update(
                                                           data: {
@@ -433,13 +433,13 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                         );
 
                                                         if (shouldSetState) {
-                                                          setState(() {});
+                                                          safeSetState(() {});
                                                         }
                                                         return;
                                                       } else if (widget
                                                               .questionario
                                                               ?.nome ==
-                                                          'História Familiar e Social') {
+                                                          'História Familiar') {
                                                         await PacienteTable()
                                                             .update(
                                                           data: {
@@ -482,17 +482,66 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                         );
 
                                                         if (shouldSetState) {
-                                                          setState(() {});
+                                                          safeSetState(() {});
                                                         }
                                                         return;
                                                       } else if (widget
                                                               .questionario
                                                               ?.nome ==
-                                                          'Estilo de Vida') {
+                                                          'Hábitos de Vida') {
                                                         await PacienteTable()
                                                             .update(
                                                           data: {
                                                             'lifestyle_preenchido':
+                                                                true,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) => rows.eq(
+                                                            'uuid',
+                                                            currentUserUid,
+                                                          ),
+                                                        );
+                                                        _model.apiResultr3xd3a =
+                                                            await GenerateResponsesCall
+                                                                .call(
+                                                          paciente: FFAppState()
+                                                              .paciente
+                                                              .id,
+                                                          questionario: 6,
+                                                        );
+
+                                                        shouldSetState = true;
+
+                                                        context.goNamed(
+                                                          'formPreConsulta',
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            kTransitionInfoKey:
+                                                                const TransitionInfo(
+                                                              hasTransition:
+                                                                  true,
+                                                              transitionType:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      0),
+                                                            ),
+                                                          },
+                                                        );
+
+                                                        if (shouldSetState) {
+                                                          safeSetState(() {});
+                                                        }
+                                                        return;
+                                                      } else if (widget
+                                                              .questionario
+                                                              ?.nome ==
+                                                          'História Psicosocial') {
+                                                        await PacienteTable()
+                                                            .update(
+                                                          data: {
+                                                            'funcionalidade_preenchida':
                                                                 true,
                                                           },
                                                           matchingRows:
@@ -516,6 +565,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                                 .paciente,
                                                           ),
                                                         );
+                                                        shouldSetState = true;
                                                         await showModalBottomSheet(
                                                           isScrollControlled:
                                                               true,
@@ -571,32 +621,12 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                         );
 
                                                         if (shouldSetState) {
-                                                          setState(() {});
-                                                        }
-                                                        return;
-                                                      } else if (widget
-                                                              .questionario
-                                                              ?.nome ==
-                                                          'Funcionalidade') {
-                                                        await PacienteTable()
-                                                            .update(
-                                                          data: {
-                                                            'funcionalidade_preenchida':
-                                                                true,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'uuid',
-                                                            currentUserUid,
-                                                          ),
-                                                        );
-                                                        if (shouldSetState) {
-                                                          setState(() {});
+                                                          safeSetState(() {});
                                                         }
                                                         return;
                                                       } else {
                                                         if (shouldSetState) {
-                                                          setState(() {});
+                                                          safeSetState(() {});
                                                         }
                                                         return;
                                                       }
@@ -612,17 +642,17 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                       _model.addToPreviuousQuestions(
                                                           pageViewRespostasQuestionarioRow
                                                               .ordem!);
-                                                      setState(() {});
+                                                      safeSetState(() {});
                                                       await actions
                                                           .hideKeyboard();
                                                       if (shouldSetState) {
-                                                        setState(() {});
+                                                        safeSetState(() {});
                                                       }
                                                       return;
                                                     }
 
                                                     if (shouldSetState) {
-                                                      setState(() {});
+                                                      safeSetState(() {});
                                                     }
                                                   },
                                             text: 'Continuar',

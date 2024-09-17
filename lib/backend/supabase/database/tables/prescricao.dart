@@ -50,4 +50,7 @@ class PrescricaoRow extends SupabaseDataRow {
 
   bool? get continuo => getField<bool>('continuo');
   set continuo(bool? value) => setField<bool>('continuo', value);
+
+  List<dynamic> get doses => getListField<dynamic>('doses');
+  set doses(List<dynamic>? value) => setListField<dynamic>('doses', value);
 }

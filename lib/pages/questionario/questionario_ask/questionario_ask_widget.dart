@@ -10,7 +10,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'questionario_ask_model.dart';
@@ -46,20 +45,13 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
     super.initState();
     _model = createModel(context, () => QuestionarioAskModel());
 
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.wait([
-        Future(() async {}),
-      ]);
-    });
-
     _model.textInputTextController ??= TextEditingController();
     _model.textInputFocusNode ??= FocusNode();
 
     _model.numberInputTextController ??= TextEditingController();
     _model.numberInputFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -207,7 +199,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               widget.resposta?.id,
                                             ),
                                           );
-                                          setState(() =>
+                                          safeSetState(() =>
                                               _model.requestCompleter = null);
                                           await widget.callback?.call(
                                             getJsonField(
@@ -383,7 +375,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                 widget.resposta?.id,
                                               ),
                                             );
-                                            setState(() =>
+                                            safeSetState(() =>
                                                 _model.requestCompleter = null);
                                           } else {
                                             await RespostasQuestionarioTable()
@@ -408,7 +400,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                 widget.resposta?.id,
                                               ),
                                             );
-                                            setState(() =>
+                                            safeSetState(() =>
                                                 _model.requestCompleter = null);
                                           }
 
@@ -631,7 +623,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                         widget.resposta?.id,
                                                       ),
                                                     );
-                                                    setState(() => _model
+                                                    safeSetState(() => _model
                                                             .requestCompleter =
                                                         null);
                                                   } else {
@@ -653,8 +645,8 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                     );
                                                     _model.addToListQueixas(
                                                         queixasItem);
-                                                    setState(() {});
-                                                    setState(() => _model
+                                                    safeSetState(() {});
+                                                    safeSetState(() => _model
                                                             .requestCompleter =
                                                         null);
                                                   }
@@ -689,7 +681,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                         widget.resposta?.id,
                                                       ),
                                                     );
-                                                    setState(() => _model
+                                                    safeSetState(() => _model
                                                             .requestCompleter =
                                                         null);
                                                     await _model
@@ -1152,7 +1144,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                                 .resposta?.id,
                                                           ),
                                                         );
-                                                        setState(() => _model
+                                                        safeSetState(() => _model
                                                                 .requestCompleter =
                                                             null);
                                                       },
@@ -1189,12 +1181,12 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                             child: wrapWithModel(
                                               model: _model.createObjectModel,
                                               updateCallback: () =>
-                                                  setState(() {}),
+                                                  safeSetState(() {}),
                                               child: CreateObjectWidget(
                                                 resposta:
                                                     mainRespostasQuestionarioRow,
                                                 callbck: () async {
-                                                  setState(() => _model
+                                                  safeSetState(() => _model
                                                       .requestCompleter = null);
                                                   await _model
                                                       .waitForRequestCompleted();
@@ -1584,7 +1576,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                                 .id,
                                                           ),
                                                         );
-                                                        setState(() => _model
+                                                        safeSetState(() => _model
                                                                 .requestCompleter =
                                                             null);
                                                         await _model
@@ -1625,7 +1617,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                   validateFileFormat(
                                                       m.storagePath,
                                                       context))) {
-                                            setState(() =>
+                                            safeSetState(() =>
                                                 _model.isDataUploading = true);
                                             var selectedUploadedFiles =
                                                 <FFUploadedFile>[];
@@ -1664,14 +1656,14 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                     selectedMedia.length &&
                                                 downloadUrls.length ==
                                                     selectedMedia.length) {
-                                              setState(() {
+                                              safeSetState(() {
                                                 _model.uploadedLocalFile =
                                                     selectedUploadedFiles.first;
                                                 _model.uploadedFileUrl =
                                                     downloadUrls.first;
                                               });
                                             } else {
-                                              setState(() {});
+                                              safeSetState(() {});
                                               return;
                                             }
                                           }
@@ -1695,7 +1687,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               mainRespostasQuestionarioRow.id,
                                             ),
                                           );
-                                          setState(() =>
+                                          safeSetState(() =>
                                               _model.requestCompleter = null);
                                           await _model
                                               .waitForRequestCompleted();
@@ -1706,7 +1698,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               r'''$.next_question''',
                                             ),
                                           );
-                                          setState(() {
+                                          safeSetState(() {
                                             _model.isDataUploading = false;
                                             _model.uploadedLocalFile =
                                                 FFUploadedFile(
@@ -1760,7 +1752,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               mainRespostasQuestionarioRow?.id,
                                             ),
                                           );
-                                          setState(() =>
+                                          safeSetState(() =>
                                               _model.requestCompleter = null);
                                           await _model
                                               .waitForRequestCompleted();

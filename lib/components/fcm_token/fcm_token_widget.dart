@@ -27,7 +27,7 @@ class _FcmTokenWidgetState extends State<FcmTokenWidget> {
     super.initState();
     _model = createModel(context, () => FcmTokenModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -71,9 +71,9 @@ class _FcmTokenWidgetState extends State<FcmTokenWidget> {
                 onPressed: () async {
                   _model.tkc = await actions.getFCM();
                   _model.fcmtk = _model.tkc;
-                  setState(() {});
+                  safeSetState(() {});
 
-                  setState(() {});
+                  safeSetState(() {});
                 },
                 text: 'Gerar',
                 options: FFButtonOptions(

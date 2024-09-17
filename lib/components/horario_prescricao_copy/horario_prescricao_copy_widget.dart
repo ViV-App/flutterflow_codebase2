@@ -35,7 +35,7 @@ class _HorarioPrescricaoCopyWidgetState
     super.initState();
     _model = createModel(context, () => HorarioPrescricaoCopyModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -104,9 +104,9 @@ class _HorarioPrescricaoCopyWidgetState
                       (e) => e.add(_model.datePicked!),
                     ),
                 );
-                setState(() {});
+                safeSetState(() {});
                 _model.time = _model.datePicked;
-                setState(() {});
+                safeSetState(() {});
               } else {
                 return;
               }

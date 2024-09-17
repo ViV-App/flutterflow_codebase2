@@ -43,7 +43,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -89,7 +89,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                       onChanged: (_) => EasyDebounce.debounce(
                         '_model.textController1',
                         const Duration(milliseconds: 0),
-                        () => setState(() {}),
+                        () => safeSetState(() {}),
                       ),
                       autofocus: false,
                       obscureText: false,
@@ -170,7 +170,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                       onChanged: (_) => EasyDebounce.debounce(
                         '_model.textController2',
                         const Duration(milliseconds: 0),
-                        () => setState(() {}),
+                        () => safeSetState(() {}),
                       ),
                       autofocus: false,
                       obscureText: false,
@@ -265,7 +265,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                           widget.resposta?.id,
                         ),
                       );
-                      setState(() {
+                      safeSetState(() {
                         _model.textController1?.clear();
                         _model.textController2?.clear();
                       });
@@ -293,7 +293,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                         widget.resposta?.id,
                       ),
                     );
-                    setState(() {
+                    safeSetState(() {
                       _model.textController1?.clear();
                       _model.textController2?.clear();
                     });

@@ -32,7 +32,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
     super.initState();
     _model = createModel(context, () => RemedioCardModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -201,7 +201,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                                           ),
                                     ),
                                     Text(
-                                      '${containerPrescricaoRow?.posologia?.toString()}${containerPrescricaoRow?.formaDose} - ${containerPrescricaoRow?.horarios.length.toString()}x ao dia',
+                                      '${containerPrescricaoRow?.horarios.length.toString()}x ao dia',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

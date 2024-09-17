@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>VIV - Paciente</string>
+	<string>VIV - Assistente</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -47,10 +47,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>vivpaciente.com</string>
+        <string>vivassistente.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>vivpaciente</string>
+        <string>vivassistente</string>
         </array>
         </dict>
     </array>

@@ -56,7 +56,7 @@ class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
               funcnCopy = await QuestionarioTable().queryRows(
                 queryFn: (q) => q.eq(
                   'nome',
-                  'Funcionalidade',
+                  'História Psicosocial',
                 ),
               );
 
@@ -74,7 +74,7 @@ class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
             lifestCopy = await QuestionarioTable().queryRows(
               queryFn: (q) => q.eq(
                 'nome',
-                'Estilo de Vida',
+                'Hábitos de Vida',
               ),
             );
 
@@ -92,7 +92,7 @@ class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
           famscCopy = await QuestionarioTable().queryRows(
             queryFn: (q) => q.eq(
               'nome',
-              'História Familiar e Social',
+              'História Familiar',
             ),
           );
 
@@ -110,7 +110,7 @@ class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
         histsCopy = await QuestionarioTable().queryRows(
           queryFn: (q) => q.eq(
             'nome',
-            'Histórico de Saúde',
+            'Históra Clinica',
           ),
         );
 

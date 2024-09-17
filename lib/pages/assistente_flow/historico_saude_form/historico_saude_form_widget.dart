@@ -77,7 +77,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -147,7 +147,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                       child: FFButtonWidget(
                         onPressed: () async {
                           _model.currentStep = _model.currentStep + 1;
-                          setState(() {});
+                          safeSetState(() {});
                         },
                         text: 'Continuar',
                         options: FFButtonOptions(
@@ -474,7 +474,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -508,7 +508,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -629,8 +629,8 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           FFAppConstants.triagemBool),
                                       optionLabels:
                                           FFAppConstants.triagemBoolStr,
-                                      onChanged: (val) =>
-                                          setState(() => _model.q03Value = val),
+                                      onChanged: (val) => safeSetState(
+                                          () => _model.q03Value = val),
                                       width: 300.0,
                                       height: 56.0,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -677,7 +677,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -711,7 +711,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -1032,7 +1032,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -1066,7 +1066,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -1191,7 +1191,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             FFAppConstants.triagemBool),
                                         optionLabels:
                                             FFAppConstants.triagemBoolStr,
-                                        onChanged: (val) => setState(
+                                        onChanged: (val) => safeSetState(
                                             () => _model.q05Value = val),
                                         width: 300.0,
                                         height: 56.0,
@@ -1240,7 +1240,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -1274,7 +1274,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -1595,7 +1595,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -1629,7 +1629,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -1815,7 +1815,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -1849,7 +1849,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -2083,7 +2083,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -2117,7 +2117,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -2225,7 +2225,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           FormFieldController<String>(null),
                                       options:
                                           FFAppConstants.triagemMedDiagnosticos,
-                                      onChanged: (val) => setState(
+                                      onChanged: (val) => safeSetState(
                                           () => _model.q09Value1 = val),
                                       width: double.infinity,
                                       height: 56.0,
@@ -2275,7 +2275,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -2309,7 +2309,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -2434,7 +2434,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             FFAppConstants.triagemBool),
                                         optionLabels:
                                             FFAppConstants.triagemBoolStr,
-                                        onChanged: (val) => setState(
+                                        onChanged: (val) => safeSetState(
                                             () => _model.q10Value = val),
                                         width: 300.0,
                                         height: 56.0,
@@ -2483,7 +2483,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -2517,7 +2517,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -2827,7 +2827,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -2861,7 +2861,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -2986,7 +2986,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             FFAppConstants.triagemBool),
                                         optionLabels:
                                             FFAppConstants.triagemBoolStr,
-                                        onChanged: (val) => setState(
+                                        onChanged: (val) => safeSetState(
                                             () => _model.q12Value = val),
                                         width: 300.0,
                                         height: 56.0,
@@ -3035,7 +3035,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -3069,7 +3069,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -3390,7 +3390,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -3424,7 +3424,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -3532,8 +3532,8 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           FormFieldController<String>(null),
                                       options:
                                           FFAppConstants.triagemMedDiagnosticos,
-                                      onChanged: (val) =>
-                                          setState(() => _model.q14Value = val),
+                                      onChanged: (val) => safeSetState(
+                                          () => _model.q14Value = val),
                                       width: double.infinity,
                                       height: 56.0,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -3582,7 +3582,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -3616,7 +3616,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -3722,8 +3722,8 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         FormFieldController<String>(null),
                                     options: FFAppConstants
                                         .triagemRecurrentInfection,
-                                    onChanged: (val) =>
-                                        setState(() => _model.q09Value2 = val),
+                                    onChanged: (val) => safeSetState(
+                                        () => _model.q09Value2 = val),
                                     width: double.infinity,
                                     height: 56.0,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -3771,7 +3771,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -3805,7 +3805,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -3926,8 +3926,8 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           FFAppConstants.triagemBool),
                                       optionLabels:
                                           FFAppConstants.triagemBoolStr,
-                                      onChanged: (val) =>
-                                          setState(() => _model.q16Value = val),
+                                      onChanged: (val) => safeSetState(
+                                          () => _model.q16Value = val),
                                       width: 300.0,
                                       height: 56.0,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -3974,7 +3974,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -4008,7 +4008,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -4178,7 +4178,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -4212,7 +4212,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -4337,7 +4337,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             FFAppConstants.triagemBool),
                                         optionLabels:
                                             FFAppConstants.triagemBoolStr,
-                                        onChanged: (val) => setState(
+                                        onChanged: (val) => safeSetState(
                                             () => _model.q18Value = val),
                                         width: 300.0,
                                         height: 56.0,
@@ -4386,7 +4386,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -4420,7 +4420,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -4590,7 +4590,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -4624,7 +4624,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -4794,7 +4794,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -4828,7 +4828,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -4934,8 +4934,8 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         FormFieldController<String>(null),
                                     options:
                                         FFAppConstants.triagemHadUsedCannabis,
-                                    onChanged: (val) =>
-                                        setState(() => _model.q21Value = val),
+                                    onChanged: (val) => safeSetState(
+                                        () => _model.q21Value = val),
                                     width: double.infinity,
                                     height: 56.0,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -4983,7 +4983,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -5017,7 +5017,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -5125,8 +5125,8 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           FormFieldController<String>(null),
                                       options:
                                           FFAppConstants.triagemMainGoalAtViv,
-                                      onChanged: (val) =>
-                                          setState(() => _model.q22Value = val),
+                                      onChanged: (val) => safeSetState(
+                                          () => _model.q22Value = val),
                                       width: double.infinity,
                                       height: 56.0,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -5175,7 +5175,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -5209,7 +5209,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -5334,7 +5334,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             FFAppConstants.triagemBool),
                                         optionLabels:
                                             FFAppConstants.triagemBoolStr,
-                                        onChanged: (val) => setState(
+                                        onChanged: (val) => safeSetState(
                                             () => _model.q23Value = val),
                                         width: 300.0,
                                         height: 56.0,
@@ -5383,7 +5383,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -5417,7 +5417,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -5738,7 +5738,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -5772,7 +5772,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -5880,7 +5880,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           FormFieldController<String>(null),
                                       options: FFAppConstants
                                           .triagemHadSideEffUsingCannabis,
-                                      onChanged: (val) => setState(
+                                      onChanged: (val) => safeSetState(
                                           () => _model.q09Value3 = val),
                                       width: double.infinity,
                                       height: 56.0,
@@ -5930,7 +5930,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -5964,7 +5964,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -6150,7 +6150,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -6184,7 +6184,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -6309,7 +6309,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             FFAppConstants.triagemBool),
                                         optionLabels:
                                             FFAppConstants.triagemBoolStr,
-                                        onChanged: (val) => setState(
+                                        onChanged: (val) => safeSetState(
                                             () => _model.q27Value = val),
                                         width: 300.0,
                                         height: 56.0,
@@ -6358,7 +6358,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -6392,7 +6392,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -6578,7 +6578,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -6612,7 +6612,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -6798,7 +6798,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -6832,7 +6832,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               text: 'Continuar',
                               options: FFButtonOptions(
@@ -6939,8 +6939,8 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       controller: _model.q30ValueController ??=
                                           FormFieldController<String>(null),
                                       options: FFAppConstants.triagemConditions,
-                                      onChanged: (val) =>
-                                          setState(() => _model.q30Value = val),
+                                      onChanged: (val) => safeSetState(
+                                          () => _model.q30Value = val),
                                       width: double.infinity,
                                       height: 56.0,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -6989,7 +6989,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               _model.currentStep = _model.currentStep + -1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(

@@ -103,7 +103,7 @@ class _ChatButtonWidgetState extends State<ChatButtonWidget>
       this,
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -1,8 +1,10 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'comprar_bip_model.dart';
 export 'comprar_bip_model.dart';
 
@@ -23,7 +25,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
     super.initState();
     _model = createModel(context, () => ComprarBipModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -35,6 +37,8 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -399,9 +403,24 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                       0.0,
                                                                       0.0),
                                                           child: FFButtonWidget(
-                                                            onPressed: () {
-                                                              print(
-                                                                  'Button pressed ...');
+                                                            onPressed:
+                                                                () async {
+                                                              _model.apiResult2ho =
+                                                                  await BuyBipCall
+                                                                      .call(
+                                                                cusId:
+                                                                    FFAppState()
+                                                                        .paciente
+                                                                        .id,
+                                                                value:
+                                                                    listViewBipPlanosRow
+                                                                        .valor,
+                                                                produto:
+                                                                    'BIP ${listViewBipPlanosRow.qntdBip?.toString()}',
+                                                              );
+
+                                                              safeSetState(
+                                                                  () {});
                                                             },
                                                             text: 'Comprar',
                                                             icon: const Icon(

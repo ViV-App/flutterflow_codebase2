@@ -3,7 +3,6 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/complete_profile_alert/complete_profile_alert_widget.dart';
 import '/components/data_security/data_security_widget.dart';
-import '/components/fcm_token_widget.dart';
 import '/components/health_data/health_data_widget.dart';
 import '/components/personal_data/personal_data_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -35,7 +34,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
     super.initState();
     _model = createModel(context, () => ProfilePageModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -166,21 +165,20 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                         photoLibraryPermission);
                                                   } else {
                                                     final selectedMedia =
-                                                        await selectMedia(
+                                                        await selectMediaWithSourceBottomSheet(
+                                                      context: context,
                                                       storageFolderPath:
                                                           'profile',
                                                       maxWidth: 500.00,
                                                       maxHeight: 500.00,
-                                                      mediaSource: MediaSource
-                                                          .photoGallery,
-                                                      multiImage: false,
+                                                      allowPhoto: true,
                                                     );
                                                     if (selectedMedia != null &&
                                                         selectedMedia.every((m) =>
                                                             validateFileFormat(
                                                                 m.storagePath,
                                                                 context))) {
-                                                      setState(() => _model
+                                                      safeSetState(() => _model
                                                               .isDataUploading =
                                                           true);
                                                       var selectedUploadedFiles =
@@ -228,7 +226,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           downloadUrls.length ==
                                                               selectedMedia
                                                                   .length) {
-                                                        setState(() {
+                                                        safeSetState(() {
                                                           _model.uploadedLocalFile =
                                                               selectedUploadedFiles
                                                                   .first;
@@ -237,7 +235,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                   .first;
                                                         });
                                                       } else {
-                                                        setState(() {});
+                                                        safeSetState(() {});
                                                         return;
                                                       }
                                                     }
@@ -262,7 +260,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           ..foto = _model
                                                               .uploadedFileUrl,
                                                       );
-                                                      setState(() {});
+                                                      safeSetState(() {});
                                                     }
                                                   }
                                                 },
@@ -326,7 +324,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           ),
                                                     ),
                                                     Text(
-                                                      'ID: $currentUserUid',
+                                                      'ID: ${profilePagePacienteRow?.id.toString()}',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -347,48 +345,16 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                               ),
                                             ],
                                           ),
-                                          Builder(
-                                            builder: (context) => InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder: (dialogContext) {
-                                                    return Dialog(
-                                                      elevation: 0,
-                                                      insetPadding:
-                                                          EdgeInsets.zero,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      child: WebViewAware(
-                                                        child: GestureDetector(
-                                                          onTap: () =>
-                                                              FocusScope.of(
-                                                                      dialogContext)
-                                                                  .unfocus(),
-                                                          child:
-                                                              const FcmTokenWidget(),
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                              child: const Icon(
-                                                Icons.content_copy_sharp,
-                                                color: Color(0xFF8798B5),
-                                                size: 24.0,
-                                              ),
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {},
+                                            child: const Icon(
+                                              Icons.content_copy_sharp,
+                                              color: Color(0xFF8798B5),
+                                              size: 24.0,
                                             ),
                                           ),
                                         ],
@@ -495,7 +461,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         if (FFAppState().paciente.perfilCompleto == false)
                           wrapWithModel(
                             model: _model.completeProfileAlertModel,
-                            updateCallback: () => setState(() {}),
+                            updateCallback: () => safeSetState(() {}),
                             child: const CompleteProfileAlertWidget(),
                           ),
                         Column(
@@ -519,8 +485,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: PersonalDataWidget(
-                                            paciente: profilePagePacienteRow,
+                                          child: SizedBox(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.8,
+                                            child: PersonalDataWidget(
+                                              paciente: profilePagePacienteRow,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -612,7 +583,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: const HealthDataWidget(),
+                                          child: SizedBox(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.8,
+                                            child: const HealthDataWidget(),
+                                          ),
                                         ),
                                       ),
                                     );
@@ -704,7 +680,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: const DataSecurityWidget(),
+                                          child: SizedBox(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.8,
+                                            child: const DataSecurityWidget(),
+                                          ),
                                         ),
                                       ),
                                     );
@@ -876,7 +857,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           FFAppState().paciente = PacienteStruct();
                           FFAppState().prescricao = PrescricaoStruct();
                           FFAppState().onboardingHomePage = 0;
-                          setState(() {});
+                          safeSetState(() {});
                           GoRouter.of(context).prepareAuthEvent();
                           await authManager.signOut();
                           GoRouter.of(context).clearRedirectLocation();

@@ -48,7 +48,7 @@ class _PrescriptionAddedWidgetState extends State<PrescriptionAddedWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -153,7 +153,7 @@ class _PrescriptionAddedWidgetState extends State<PrescriptionAddedWidget>
                                   Navigator.pop(context);
                                   FFAppState().prescricao = PrescricaoStruct();
                                   FFAppState().horarios = [];
-                                  setState(() {});
+                                  safeSetState(() {});
 
                                   context.goNamed(
                                     'homePage',
@@ -199,7 +199,7 @@ class _PrescriptionAddedWidgetState extends State<PrescriptionAddedWidget>
                                   Navigator.pop(context);
                                   FFAppState().prescricao = PrescricaoStruct();
                                   FFAppState().horarios = [];
-                                  setState(() {});
+                                  safeSetState(() {});
 
                                   context.goNamed(
                                     'agenda',

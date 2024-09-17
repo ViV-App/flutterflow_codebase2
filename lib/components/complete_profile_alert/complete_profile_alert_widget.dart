@@ -29,7 +29,7 @@ class _CompleteProfileAlertWidgetState
     super.initState();
     _model = createModel(context, () => CompleteProfileAlertModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

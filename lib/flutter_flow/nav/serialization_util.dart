@@ -274,8 +274,6 @@ dynamic deserializeParam<T>(
             return BemViverRow(data);
           case AssinaturaRow:
             return AssinaturaRow(data);
-          case RespostaQuestionarioRow:
-            return RespostaQuestionarioRow(data);
           case AvaliacaoQuinzenalRow:
             return AvaliacaoQuinzenalRow(data);
           case StaticConteudosRow:

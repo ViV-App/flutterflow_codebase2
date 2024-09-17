@@ -1,13 +1,11 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/pdf_viewer/pdf_viewer_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -56,7 +54,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
         TextEditingController(text: FFAppState().paciente.telefone);
     _model.ipPhoneFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -195,7 +193,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               _model.currentStep = 2;
-                                              setState(() {});
+                                              safeSetState(() {});
                                             },
                                             child: Text(
                                               'Complete seus dados pessoais',
@@ -223,7 +221,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               _model.currentStep = 2;
-                                              setState(() {});
+                                              safeSetState(() {});
                                             },
                                             child: Text(
                                               'FInalize o seu perfil para que você tenha acesso total a sua assistente ViV! ',
@@ -499,7 +497,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                         EasyDebounce.debounce(
                                                       '_model.ipCPFTextController',
                                                       const Duration(milliseconds: 0),
-                                                      () => setState(() {}),
+                                                      () => safeSetState(() {}),
                                                     ),
                                                     autofocus: false,
                                                     obscureText: false,
@@ -620,7 +618,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                         EasyDebounce.debounce(
                                                       '_model.ipPhoneTextController',
                                                       const Duration(milliseconds: 0),
-                                                      () => setState(() {}),
+                                                      () => safeSetState(() {}),
                                                     ),
                                                     autofocus: false,
                                                     obscureText: false,
@@ -713,193 +711,6 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                     ],
                                                   ),
                                                 ].divide(const SizedBox(height: 6.0)),
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Theme(
-                                                    data: ThemeData(
-                                                      checkboxTheme:
-                                                          CheckboxThemeData(
-                                                        visualDensity:
-                                                            VisualDensity
-                                                                .compact,
-                                                        materialTapTargetSize:
-                                                            MaterialTapTargetSize
-                                                                .shrinkWrap,
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      4.0),
-                                                        ),
-                                                      ),
-                                                      unselectedWidgetColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                    ),
-                                                    child: Checkbox(
-                                                      value: _model
-                                                              .checkboxValue ??=
-                                                          false,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        setState(() => _model
-                                                                .checkboxValue =
-                                                            newValue!);
-                                                      },
-                                                      side: BorderSide(
-                                                        width: 2,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                      ),
-                                                      activeColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      checkColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: RichText(
-                                                      textScaler:
-                                                          MediaQuery.of(context)
-                                                              .textScaler,
-                                                      text: TextSpan(
-                                                        children: [
-                                                          TextSpan(
-                                                            text:
-                                                                'Eu aceito os ',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  color: const Color(
-                                                                      0xFF262B37),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                          ),
-                                                          TextSpan(
-                                                            text:
-                                                                'Termos de Uso ',
-                                                            style: const TextStyle(
-                                                              color: Color(
-                                                                  0xFF6E78FF),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                            mouseCursor:
-                                                                SystemMouseCursors
-                                                                    .click,
-                                                            recognizer:
-                                                                TapGestureRecognizer()
-                                                                  ..onTap =
-                                                                      () async {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (dialogContext) {
-                                                                        return Dialog(
-                                                                          elevation:
-                                                                              0,
-                                                                          insetPadding:
-                                                                              EdgeInsets.zero,
-                                                                          backgroundColor:
-                                                                              Colors.transparent,
-                                                                          alignment:
-                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                          child:
-                                                                              const WebViewAware(
-                                                                            child:
-                                                                                PdfViewerWidget(
-                                                                              pdfPath: 'https://drive.google.com/file/d/1jxN1xxWybNB3-ZK_3GNzeP6AT2yTofS9/preview',
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    );
-                                                                  },
-                                                          ),
-                                                          const TextSpan(
-                                                            text: 'e ',
-                                                            style: TextStyle(
-                                                              color: Color(
-                                                                  0xFF262B37),
-                                                            ),
-                                                          ),
-                                                          TextSpan(
-                                                            text:
-                                                                'Politicas de Privacidade',
-                                                            style: const TextStyle(
-                                                              color: Color(
-                                                                  0xFF6E78FF),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                            mouseCursor:
-                                                                SystemMouseCursors
-                                                                    .click,
-                                                            recognizer:
-                                                                TapGestureRecognizer()
-                                                                  ..onTap =
-                                                                      () async {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (dialogContext) {
-                                                                        return Dialog(
-                                                                          elevation:
-                                                                              0,
-                                                                          insetPadding:
-                                                                              EdgeInsets.zero,
-                                                                          backgroundColor:
-                                                                              Colors.transparent,
-                                                                          alignment:
-                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                          child:
-                                                                              const WebViewAware(
-                                                                            child:
-                                                                                PdfViewerWidget(
-                                                                              pdfPath: 'https://drive.google.com/file/d/1c7eL9NJxawoLsT2EwksAIE5-nQbUYJBt/preview',
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    );
-                                                                  },
-                                                          )
-                                                        ],
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
                                               ),
                                             ].divide(const SizedBox(height: 18.0)),
                                           ),
@@ -1100,7 +911,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                     _model.removeFromQueixas(
                                                         listViewStaticQueixasSaudeRow
                                                             .nome!);
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   } else if ((_model.queixas
                                                               .contains(
                                                                   listViewStaticQueixasSaudeRow
@@ -1111,7 +922,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                     _model.addToQueixas(
                                                         listViewStaticQueixasSaudeRow
                                                             .nome!);
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                 },
                                                 child: Container(
@@ -1408,12 +1219,12 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                   _model.removeFromContra(
                                                       listViewStaticContraIndicacaoRow
                                                           .nome!);
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 } else {
                                                   _model.addToContra(
                                                       listViewStaticContraIndicacaoRow
                                                           .nome!);
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 }
                                               },
                                               child: Container(
@@ -1553,8 +1364,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                 ((_model.ipCPFTextController.text ==
                                             '') ||
                                     (_model.ipPhoneTextController.text ==
-                                            '') ||
-                                    (_model.checkboxValue == false))) ||
+                                            ''))) ||
                             ((_model.currentStep == 2) &&
                                 (_model.queixas.isEmpty)) ||
                             ((_model.currentStep == 3) &&
@@ -1567,10 +1377,10 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                 return;
                               }
                               _model.currentStep = _model.currentStep + 1;
-                              setState(() {});
+                              safeSetState(() {});
                             } else if (_model.currentStep == 2) {
                               _model.currentStep = _model.currentStep + 1;
-                              setState(() {});
+                              safeSetState(() {});
                             } else if (_model.currentStep == 3) {
                               _model.cust = await CreateAsaasCustomerCall.call(
                                 name: FFAppState().paciente.nome,
@@ -1607,7 +1417,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                   ..contraIndicacoes = _model.contra.toList()
                                   ..perfilCompleto = true,
                               );
-                              setState(() {});
+                              safeSetState(() {});
                               Navigator.pop(context);
                               await showDialog(
                                 context: context,
@@ -1630,7 +1440,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                               );
                             }
 
-                            setState(() {});
+                            safeSetState(() {});
                           },
                     text: _model.currentStep == 3
                         ? 'Finalizar e ativar conta!'

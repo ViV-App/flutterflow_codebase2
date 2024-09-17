@@ -41,8 +41,8 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
           (_model.status?.first.estagio == 'visualizarPlano')) {
         await StatusPacientTable().update(
           data: {
-            'processo': 'planoTerapeutico',
-            'estagio': 'confirmarRecebimento',
+            'processo': 'tratamentoBip',
+            'estagio': 'preencherFormularioBip',
           },
           matchingRows: (rows) => rows.eq(
             'paciente',
@@ -52,7 +52,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
       }
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

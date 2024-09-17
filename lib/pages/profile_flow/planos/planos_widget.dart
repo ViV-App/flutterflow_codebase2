@@ -24,7 +24,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
     super.initState();
     _model = createModel(context, () => PlanosModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -144,7 +144,10 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                               0.0, 32.0, 0.0, 0.0),
                           child: FutureBuilder<List<PlanosAssinaturaRow>>(
                             future: PlanosAssinaturaTable().queryRows(
-                              queryFn: (q) => q,
+                              queryFn: (q) => q.eq(
+                                'ativado',
+                                true,
+                              ),
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.

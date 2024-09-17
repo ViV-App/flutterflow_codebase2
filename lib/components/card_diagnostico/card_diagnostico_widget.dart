@@ -31,7 +31,7 @@ class _CardDiagnosticoWidgetState extends State<CardDiagnosticoWidget> {
     super.initState();
     _model = createModel(context, () => CardDiagnosticoModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -101,7 +101,7 @@ class _CardDiagnosticoWidgetState extends State<CardDiagnosticoWidget> {
                   child: Checkbox(
                     value: _model.checkboxValue1 ??= false,
                     onChanged: (newValue) async {
-                      setState(() => _model.checkboxValue1 = newValue!);
+                      safeSetState(() => _model.checkboxValue1 = newValue!);
                     },
                     side: BorderSide(
                       width: 2,
@@ -126,7 +126,7 @@ class _CardDiagnosticoWidgetState extends State<CardDiagnosticoWidget> {
                   child: Checkbox(
                     value: _model.checkboxValue2 ??= false,
                     onChanged: (newValue) async {
-                      setState(() => _model.checkboxValue2 = newValue!);
+                      safeSetState(() => _model.checkboxValue2 = newValue!);
                     },
                     side: BorderSide(
                       width: 2,
@@ -151,7 +151,7 @@ class _CardDiagnosticoWidgetState extends State<CardDiagnosticoWidget> {
                   child: Checkbox(
                     value: _model.checkboxValue3 ??= false,
                     onChanged: (newValue) async {
-                      setState(() => _model.checkboxValue3 = newValue!);
+                      safeSetState(() => _model.checkboxValue3 = newValue!);
                     },
                     side: BorderSide(
                       width: 2,
@@ -176,7 +176,7 @@ class _CardDiagnosticoWidgetState extends State<CardDiagnosticoWidget> {
                   child: Checkbox(
                     value: _model.checkboxValue4 ??= false,
                     onChanged: (newValue) async {
-                      setState(() => _model.checkboxValue4 = newValue!);
+                      safeSetState(() => _model.checkboxValue4 = newValue!);
                     },
                     side: BorderSide(
                       width: 2,

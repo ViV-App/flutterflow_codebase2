@@ -34,7 +34,7 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
     super.initState();
     _model = createModel(context, () => DeletePrescriptionModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -142,7 +142,7 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                                 },
                               );
 
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Sim',
                             options: FFButtonOptions(

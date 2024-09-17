@@ -277,9 +277,64 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
           ),
         ],
       ),
+      'columnOnPageLoadAnimation9': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          BlurEffect(
+            curve: Curves.easeOut,
+            delay: 1300.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(2.0, 2.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'iconOnPageLoadAnimation5': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1200.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation5': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation10': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 1000.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(-24.0, 0.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          BlurEffect(
+            curve: Curves.easeInOut,
+            delay: 1000.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(2.0, 2.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -427,7 +482,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                     .fromSTEB(
                                                         28.0, 62.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Formulário de Saúde',
+                                                  'Informações de Saúde',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -449,7 +504,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                     .fromSTEB(
                                                         28.0, 18.0, 28.0, 0.0),
                                                 child: Text(
-                                                  'Esta etapa é crucial para assegurar a otimização dos resultados e a máxima eficácia do tratamento que vamos preparar para você, são 4 etapas:',
+                                                  'Esta etapa é crucial para a personalização e máxima eficácia do seu tratamento:',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -498,7 +553,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     'iconOnPageLoadAnimation1']!),
                                                             Container(
                                                               width: 1.0,
-                                                              height: 72.0,
+                                                              height: 92.0,
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: formPreConsultaPacienteRow
@@ -528,7 +583,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                'Dados Cadastrais',
+                                                                'Identificação pessoal',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -633,7 +688,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                'Histórico de Saúde',
+                                                                'História Clinica',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -708,7 +763,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     'iconOnPageLoadAnimation3']!),
                                                             Container(
                                                               width: 1.0,
-                                                              height: 72.0,
+                                                              height: 52.0,
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: formPreConsultaPacienteRow
@@ -738,7 +793,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                'Histórico Familiar e Social',
+                                                                'História Familiar',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -813,7 +868,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     'iconOnPageLoadAnimation4']!),
                                                             Container(
                                                               width: 1.0,
-                                                              height: 52.0,
+                                                              height: 72.0,
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: formPreConsultaPacienteRow
@@ -843,7 +898,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                'Estilo de Vida',
+                                                                'Hábitos de Vida',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -889,6 +944,111 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                       ].divide(const SizedBox(
                                                           width: 18.0)),
                                                     ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Icon(
+                                                              Icons
+                                                                  .check_circle,
+                                                              color: formPreConsultaPacienteRow
+                                                                          ?.funcionalidadePreenchida ==
+                                                                      true
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                              size: 24.0,
+                                                            ).animateOnPageLoad(
+                                                                animationsMap[
+                                                                    'iconOnPageLoadAnimation5']!),
+                                                            Container(
+                                                              width: 1.0,
+                                                              height: 52.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: formPreConsultaPacienteRow
+                                                                            ?.funcionalidadePreenchida ==
+                                                                        true
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary
+                                                                    : FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                              ),
+                                                            ).animateOnPageLoad(
+                                                                animationsMap[
+                                                                    'containerOnPageLoadAnimation5']!),
+                                                          ],
+                                                        ).animateOnPageLoad(
+                                                            animationsMap[
+                                                                'columnOnPageLoadAnimation9']!),
+                                                        Expanded(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                'História Psicosocial',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Mulish',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      fontSize:
+                                                                          18.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Text(
+                                                                    'Relatar seu estilo de vida permite a criação de estratégias de saúde personalizadas, baseadas nos seus hábitos de vida.',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Mulish',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ).animateOnPageLoad(
+                                                              animationsMap[
+                                                                  'columnOnPageLoadAnimation10']!),
+                                                        ),
+                                                      ].divide(const SizedBox(
+                                                          width: 18.0)),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -910,7 +1070,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                 paciente:
                                                     formPreConsultaPacienteRow,
                                               );
-                                              setState(() {});
+                                              safeSetState(() {});
                                             },
                                             text: 'Continuar',
                                             options: FFButtonOptions(
@@ -952,7 +1112,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                 Expanded(
                                   child: wrapWithModel(
                                     model: _model.dadosCadastraisFormModel1,
-                                    updateCallback: () => setState(() {}),
+                                    updateCallback: () => safeSetState(() {}),
                                     child: const DadosCadastraisFormWidget(),
                                   ),
                                 ),
@@ -964,7 +1124,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                       Expanded(
                         child: wrapWithModel(
                           model: _model.dadosCadastraisFormModel2,
-                          updateCallback: () => setState(() {}),
+                          updateCallback: () => safeSetState(() {}),
                           child: const DadosCadastraisFormWidget(),
                         ),
                       ),
@@ -972,7 +1132,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                       Expanded(
                         child: wrapWithModel(
                           model: _model.historicoSaudeFormModel,
-                          updateCallback: () => setState(() {}),
+                          updateCallback: () => safeSetState(() {}),
                           child: const HistoricoSaudeFormWidget(),
                         ),
                       ),

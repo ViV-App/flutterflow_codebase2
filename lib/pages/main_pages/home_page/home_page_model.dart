@@ -23,12 +23,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   List<PacienteRow>? user;
   // Stores action output result for [Backend Call - Query Rows] action in homePage widget.
   List<AssinaturaRow>? assinatura;
-  // Stores action output result for [Backend Call - Query Rows] action in homePage widget.
-  List<PacienteRow>? user2;
   // Model for completeProfileAlert component.
   late CompleteProfileAlertModel completeProfileAlertModel;
-  // Stores action output result for [Backend Call - API (getLatestBemViverScore)] action in Container widget.
-  ApiCallResponse? apiResultfi2z;
   // Model for homePageStatusComponent component.
   late HomePageStatusComponentModel homePageStatusComponentModel;
   // Stores action output result for [Custom Action - getFCM] action in Text widget.
@@ -83,17 +79,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
           'uuid',
           currentUserUid,
         ),
-      );
-
-      context.goNamed(
-        'previousTreatment',
-        extra: <String, dynamic>{
-          kTransitionInfoKey: const TransitionInfo(
-            hasTransition: true,
-            transitionType: PageTransitionType.fade,
-            duration: Duration(milliseconds: 0),
-          ),
-        },
       );
     }
   }

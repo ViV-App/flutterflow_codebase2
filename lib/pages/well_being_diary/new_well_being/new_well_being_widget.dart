@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/well_being_diary/queixa_question/queixa_question_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:provider/provider.dart';
 import 'new_well_being_model.dart';
 export 'new_well_being_model.dart';
 
@@ -44,7 +43,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 2000));
       await _model.setComponent(context);
-      setState(() {});
+      safeSetState(() {});
     });
 
     _model.efeitoCustomTextController ??= TextEditingController();
@@ -53,7 +52,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -65,8 +64,6 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
       alignment: const AlignmentDirectional(0.0, 1.0),
       child: FutureBuilder<List<PacienteRow>>(
@@ -282,7 +279,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   _model.mood = 4;
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -333,7 +330,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   _model.mood = 3;
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -384,7 +381,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   _model.mood = 2;
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -435,7 +432,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   _model.mood = 1;
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -486,7 +483,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   _model.mood = 0;
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -577,7 +574,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
 
                                     return wrapWithModel(
                                       model: _model.queixaQuestionModel,
-                                      updateCallback: () => setState(() {}),
+                                      updateCallback: () => safeSetState(() {}),
                                       child: QueixaQuestionWidget(
                                         queixaName:
                                             queixaQuestionStaticQueixasSaudeRow
@@ -621,7 +618,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 containerPacienteRow?.id,
                                             'periodo': periodo,
                                           });
-                                          setState(() {});
+                                          safeSetState(() {});
                                         },
                                       ),
                                     );
@@ -733,7 +730,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                       containerPacienteRow?.id,
                                                   'periodo': periodo,
                                                 });
-                                                setState(() {});
+                                                safeSetState(() {});
                                               },
                                             ),
                                           );
@@ -925,12 +922,14 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                               _model.removeFromEffects(
                                                                   wrapStaticEfeitosAdversosRow
                                                                       .efeito!);
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                             } else {
                                                               _model.addToEffects(
                                                                   wrapStaticEfeitosAdversosRow
                                                                       .efeito!);
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                             }
                                                           },
                                                           child: Container(
@@ -1081,12 +1080,12 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                     true) {
                                                                   _model.removeFromEffects(
                                                                       effecstCustomItem);
-                                                                  setState(
+                                                                  safeSetState(
                                                                       () {});
                                                                 } else {
                                                                   _model.addToEffects(
                                                                       effecstCustomItem);
-                                                                  setState(
+                                                                  safeSetState(
                                                                       () {});
                                                                 }
                                                               },
@@ -1332,8 +1331,8 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                           _model
                                                               .efeitoCustomTextController
                                                               .text);
-                                                      setState(() {});
-                                                      setState(() {
+                                                      safeSetState(() {});
+                                                      safeSetState(() {
                                                         _model
                                                             .efeitoCustomTextController
                                                             ?.clear();
@@ -1575,7 +1574,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
 
                                   Navigator.pop(context);
 
-                                  setState(() {});
+                                  safeSetState(() {});
                                 },
                           text: 'Salvar',
                           options: FFButtonOptions(

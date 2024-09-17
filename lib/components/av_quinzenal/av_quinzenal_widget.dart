@@ -37,7 +37,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
     super.initState();
     _model = createModel(context, () => AvQuinzenalModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -460,9 +460,9 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     ),
                                                     RatingBar.builder(
                                                       onRatingUpdate: (newValue) =>
-                                                          setState(() => _model
-                                                                  .ratingBarValue1 =
-                                                              newValue),
+                                                          safeSetState(() =>
+                                                              _model.ratingBarValue1 =
+                                                                  newValue),
                                                       itemBuilder:
                                                           (context, index) =>
                                                               Icon(
@@ -642,9 +642,9 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     ),
                                                     RatingBar.builder(
                                                       onRatingUpdate: (newValue) =>
-                                                          setState(() => _model
-                                                                  .ratingBarValue2 =
-                                                              newValue),
+                                                          safeSetState(() =>
+                                                              _model.ratingBarValue2 =
+                                                                  newValue),
                                                       itemBuilder:
                                                           (context, index) =>
                                                               Icon(
@@ -824,9 +824,9 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     ),
                                                     RatingBar.builder(
                                                       onRatingUpdate: (newValue) =>
-                                                          setState(() => _model
-                                                                  .ratingBarValue3 =
-                                                              newValue),
+                                                          safeSetState(() =>
+                                                              _model.ratingBarValue3 =
+                                                                  newValue),
                                                       itemBuilder:
                                                           (context, index) =>
                                                               Icon(
@@ -1075,7 +1075,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     'Me sinto limitado(a) ou realizo menos \ntarefas do que gostaria'
                                                   ].toList(),
                                                   onChanged: (val) =>
-                                                      setState(() {}),
+                                                      safeSetState(() {}),
                                                   controller: _model
                                                           .radioButtonValueController1 ??=
                                                       FormFieldController<
@@ -1332,9 +1332,9 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     ),
                                                     RatingBar.builder(
                                                       onRatingUpdate: (newValue) =>
-                                                          setState(() => _model
-                                                                  .ratingBarValue4 =
-                                                              newValue),
+                                                          safeSetState(() =>
+                                                              _model.ratingBarValue4 =
+                                                                  newValue),
                                                       itemBuilder:
                                                           (context, index) =>
                                                               Icon(
@@ -1581,7 +1581,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                   options:
                                                       ['Sim', 'Não'].toList(),
                                                   onChanged: (val) =>
-                                                      setState(() {}),
+                                                      safeSetState(() {}),
                                                   controller: _model
                                                           .radioButtonValueController2 ??=
                                                       FormFieldController<
@@ -1748,9 +1748,9 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     ),
                                                     RatingBar.builder(
                                                       onRatingUpdate: (newValue) =>
-                                                          setState(() => _model
-                                                                  .ratingBarValue5 =
-                                                              newValue),
+                                                          safeSetState(() =>
+                                                              _model.ratingBarValue5 =
+                                                                  newValue),
                                                       itemBuilder:
                                                           (context, index) =>
                                                               Icon(
@@ -2020,9 +2020,9 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     ),
                                                     RatingBar.builder(
                                                       onRatingUpdate: (newValue) =>
-                                                          setState(() => _model
-                                                                  .ratingBarValue6 =
-                                                              newValue),
+                                                          safeSetState(() =>
+                                                              _model.ratingBarValue6 =
+                                                                  newValue),
                                                       itemBuilder:
                                                           (context, index) =>
                                                               Icon(
@@ -2292,9 +2292,9 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     ),
                                                     RatingBar.builder(
                                                       onRatingUpdate: (newValue) =>
-                                                          setState(() => _model
-                                                                  .ratingBarValue7 =
-                                                              newValue),
+                                                          safeSetState(() =>
+                                                              _model.ratingBarValue7 =
+                                                                  newValue),
                                                       itemBuilder:
                                                           (context, index) =>
                                                               Icon(
@@ -2381,7 +2381,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                   } else {
                                     _model.currentStep =
                                         (_model.currentStep!) - 1;
-                                    setState(() {});
+                                    safeSetState(() {});
                                   }
                                 },
                                 text: 'Voltar',
@@ -2438,7 +2438,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                   } else {
                                     _model.currentStep =
                                         (_model.currentStep!) + 1;
-                                    setState(() {});
+                                    safeSetState(() {});
                                   }
                                 },
                                 text: 'Avançar',

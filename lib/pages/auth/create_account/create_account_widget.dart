@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/enums/enums.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
@@ -12,6 +13,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_account_model.dart';
 export 'create_account_model.dart';
@@ -50,7 +52,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
     _model.ipPassTextController ??= TextEditingController();
     _model.ipPassFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -62,6 +64,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -634,14 +638,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                       model: _model
                                                           .intPhoneNumberModel,
                                                       updateCallback: () =>
-                                                          setState(() {}),
+                                                          safeSetState(() {}),
                                                       updateOnChange: true,
                                                       child:
                                                           IntPhoneNumberWidget(
                                                         callback:
                                                             (phone) async {
                                                           _model.phone = phone;
-                                                          setState(() {});
+                                                          safeSetState(() {});
                                                         },
                                                       ),
                                                     ),
@@ -759,7 +763,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                     0.0,
                                                                     0.0),
                                                         suffixIcon: InkWell(
-                                                          onTap: () => setState(
+                                                          onTap: () =>
+                                                              safeSetState(
                                                             () => _model
                                                                     .ipPassVisibility =
                                                                 !_model
@@ -826,9 +831,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             false,
                                                         onChanged:
                                                             (newValue) async {
-                                                          setState(() => _model
-                                                                  .checkboxValue =
-                                                              newValue!);
+                                                          safeSetState(() =>
+                                                              _model.checkboxValue =
+                                                                  newValue!);
                                                         },
                                                         side: BorderSide(
                                                           width: 2,
@@ -908,7 +913,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                               child: GestureDetector(
                                                                                 onTap: () => FocusScope.of(dialogContext).unfocus(),
                                                                                 child: const PdfViewerWidget(
-                                                                                  pdfPath: 'https://drive.google.com/file/d/1jxN1xxWybNB3-ZK_3GNzeP6AT2yTofS9/preview',
+                                                                                  pdfPath: 'https://drive.google.com/file/d/1TnDQoBETMkScmexrGLFk4y_pCR--R_xy/preview',
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -960,7 +965,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                               child: GestureDetector(
                                                                                 onTap: () => FocusScope.of(dialogContext).unfocus(),
                                                                                 child: const PdfViewerWidget(
-                                                                                  pdfPath: 'https://drive.google.com/file/d/1c7eL9NJxawoLsT2EwksAIE5-nQbUYJBt/preview',
+                                                                                  pdfPath: 'https://drive.google.com/file/d/1KlTzrYKhwmQVJ4B8CXi3UZ_eKkk__wKE/preview',
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -987,351 +992,347 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                               ].divide(const SizedBox(height: 18.0)),
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    28.0, 24.0, 28.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Container(
-                                                        width: 100.0,
-                                                        height: 1.0,
-                                                        decoration:
-                                                            const BoxDecoration(
-                                                          color:
-                                                              Color(0xFF8798B5),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      'Ou faça cadastro com',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Mulish',
-                                                            color: const Color(
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                            tablet: false,
+                                            tabletLandscape: false,
+                                            desktop: false,
+                                          ))
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      28.0, 24.0, 28.0, 0.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          height: 1.0,
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                            color: Color(
                                                                 0xFF8798B5),
-                                                            fontSize: 12.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
                                                           ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                        width: 100.0,
-                                                        height: 1.0,
-                                                        decoration:
-                                                            const BoxDecoration(
-                                                          color:
-                                                              Color(0xFF8798B5),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ].divide(
-                                                      const SizedBox(width: 18.0)),
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    if (isAndroid == true)
+                                                      Text(
+                                                        'Ou faça cadastro com',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              color: const Color(
+                                                                  0xFF8798B5),
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                      ),
                                                       Expanded(
-                                                        child: Builder(
-                                                          builder: (context) =>
-                                                              InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              if (_model
-                                                                      .checkboxValue ==
-                                                                  true) {
-                                                                await actions
-                                                                    .signInWithGoogle();
-                                                              } else {
-                                                                await showDialog(
-                                                                  barrierDismissible:
-                                                                      false,
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: const AlignmentDirectional(
-                                                                              0.0,
-                                                                              -1.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          WebViewAware(
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          height: 1.0,
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                            color: Color(
+                                                                0xFF8798B5),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ].divide(
+                                                        const SizedBox(width: 18.0)),
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      if (isAndroid == true)
+                                                        Expanded(
+                                                          child: Builder(
+                                                            builder:
+                                                                (context) =>
+                                                                    InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                if (_model
+                                                                        .checkboxValue ==
+                                                                    true) {
+                                                                  await actions
+                                                                      .signInWithGoogle();
+                                                                } else {
+                                                                  await showDialog(
+                                                                    barrierDismissible:
+                                                                        false,
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            const AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
                                                                         child:
-                                                                            GestureDetector(
-                                                                          onTap: () =>
-                                                                              FocusScope.of(dialogContext).unfocus(),
+                                                                            WebViewAware(
                                                                           child:
-                                                                              const ToastWidget(
-                                                                            type:
-                                                                                ToastTypes.red,
-                                                                            title:
-                                                                                'Politica de privacidade',
-                                                                            message:
-                                                                                'Aceite os termos e politica de privacidade para entrar com o Google.',
+                                                                              GestureDetector(
+                                                                            onTap: () =>
+                                                                                FocusScope.of(dialogContext).unfocus(),
+                                                                            child:
+                                                                                const ToastWidget(
+                                                                              type: ToastTypes.red,
+                                                                              title: 'Politica de privacidade',
+                                                                              message: 'Aceite os termos e politica de privacidade para entrar com o Google.',
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-                                                              }
-                                                            },
-                                                            child: Container(
-                                                              width: 100.0,
-                                                              height: 42.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                border:
-                                                                    Border.all(
-                                                                  color: const Color(
-                                                                      0xFF8798B5),
-                                                                ),
-                                                              ),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    child: Image
-                                                                        .asset(
-                                                                      'assets/images/Google_svg.png',
-                                                                      width:
-                                                                          24.0,
-                                                                      height:
-                                                                          24.0,
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    'Google',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Mulish',
-                                                                          color:
-                                                                              const Color(0xFF262B37),
-                                                                          fontSize:
-                                                                              12.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w800,
-                                                                        ),
-                                                                  ),
-                                                                ].divide(const SizedBox(
-                                                                    width:
-                                                                        4.0)),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    if (isiOS == true)
-                                                      Expanded(
-                                                        child: Builder(
-                                                          builder: (context) =>
-                                                              InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              Function()
-                                                                  navigate =
-                                                                  () {};
-                                                              if (_model
-                                                                      .checkboxValue ==
-                                                                  true) {
-                                                                GoRouter.of(
-                                                                        context)
-                                                                    .prepareAuthEvent();
-                                                                final user =
-                                                                    await authManager
-                                                                        .signInWithGoogle(
-                                                                            context);
-                                                                if (user ==
-                                                                    null) {
-                                                                  return;
+                                                                      );
+                                                                    },
+                                                                  );
                                                                 }
-                                                                navigate = () =>
-                                                                    context.goNamedAuth(
-                                                                        'homePage',
-                                                                        context
-                                                                            .mounted);
-                                                              } else {
-                                                                await showDialog(
-                                                                  barrierDismissible:
-                                                                      false,
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: const AlignmentDirectional(
-                                                                              0.0,
-                                                                              -1.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          WebViewAware(
-                                                                        child:
-                                                                            GestureDetector(
-                                                                          onTap: () =>
-                                                                              FocusScope.of(dialogContext).unfocus(),
-                                                                          child:
-                                                                              const ToastWidget(
-                                                                            type:
-                                                                                ToastTypes.red,
-                                                                            title:
-                                                                                'Politica de privacidade',
-                                                                            message:
-                                                                                'Aceite os termos e politica de privacidade para entrar com o Google.',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-                                                              }
-
-                                                              navigate();
-                                                            },
-                                                            child: Container(
-                                                              width: 100.0,
-                                                              height: 42.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                border:
-                                                                    Border.all(
-                                                                  color: const Color(
-                                                                      0xFF8798B5),
+                                                              },
+                                                              child: Container(
+                                                                width: 100.0,
+                                                                height: 42.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: const Color(
+                                                                        0xFF8798B5),
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    child: Image
-                                                                        .asset(
-                                                                      'assets/images/Google_svg.png',
-                                                                      width:
-                                                                          24.0,
-                                                                      height:
-                                                                          24.0,
-                                                                      fit: BoxFit
-                                                                          .cover,
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                      child: Image
+                                                                          .asset(
+                                                                        'assets/images/Google_svg.png',
+                                                                        width:
+                                                                            24.0,
+                                                                        height:
+                                                                            24.0,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                  Text(
-                                                                    'Google',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Mulish',
-                                                                          color:
-                                                                              const Color(0xFF262B37),
-                                                                          fontSize:
-                                                                              12.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w800,
-                                                                        ),
-                                                                  ),
-                                                                ].divide(const SizedBox(
-                                                                    width:
-                                                                        4.0)),
+                                                                    Text(
+                                                                      'Google',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Mulish',
+                                                                            color:
+                                                                                const Color(0xFF262B37),
+                                                                            fontSize:
+                                                                                12.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w800,
+                                                                          ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          4.0)),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                  ],
-                                                ),
-                                              ].divide(const SizedBox(height: 18.0)),
+                                                      if (isiOS == true)
+                                                        Expanded(
+                                                          child: Builder(
+                                                            builder:
+                                                                (context) =>
+                                                                    InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                Function()
+                                                                    navigate =
+                                                                    () {};
+                                                                if (_model
+                                                                        .checkboxValue ==
+                                                                    true) {
+                                                                  GoRouter.of(
+                                                                          context)
+                                                                      .prepareAuthEvent();
+                                                                  final user =
+                                                                      await authManager
+                                                                          .signInWithGoogle(
+                                                                              context);
+                                                                  if (user ==
+                                                                      null) {
+                                                                    return;
+                                                                  }
+                                                                  navigate = () =>
+                                                                      context.goNamedAuth(
+                                                                          'homePage',
+                                                                          context
+                                                                              .mounted);
+                                                                } else {
+                                                                  await showDialog(
+                                                                    barrierDismissible:
+                                                                        false,
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            const AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            WebViewAware(
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap: () =>
+                                                                                FocusScope.of(dialogContext).unfocus(),
+                                                                            child:
+                                                                                const ToastWidget(
+                                                                              type: ToastTypes.red,
+                                                                              title: 'Politica de privacidade',
+                                                                              message: 'Aceite os termos e politica de privacidade para entrar com o Google.',
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  );
+                                                                }
+
+                                                                navigate();
+                                                              },
+                                                              child: Container(
+                                                                width: 100.0,
+                                                                height: 42.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: const Color(
+                                                                        0xFF8798B5),
+                                                                  ),
+                                                                ),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                      child: Image
+                                                                          .asset(
+                                                                        'assets/images/Google_svg.png',
+                                                                        width:
+                                                                            24.0,
+                                                                        height:
+                                                                            24.0,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      'Google',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Mulish',
+                                                                            color:
+                                                                                const Color(0xFF262B37),
+                                                                            fontSize:
+                                                                                12.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w800,
+                                                                          ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          4.0)),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                    ],
+                                                  ),
+                                                ].divide(
+                                                    const SizedBox(height: 18.0)),
+                                              ),
                                             ),
-                                          ),
                                         ].addToEnd(const SizedBox(height: 24.0)),
                                       ),
                                     ),
@@ -1362,7 +1363,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             _model.currentStep = 3;
-                                            setState(() {});
+                                            safeSetState(() {});
                                           },
                                           child: Icon(
                                             Icons.arrow_back_rounded,
@@ -1543,7 +1544,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                     _model.removeFromQueixas(
                                                         listViewStaticQueixasSaudeRow
                                                             .nome!);
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   } else if ((_model.queixas
                                                               .contains(
                                                                   listViewStaticQueixasSaudeRow
@@ -1554,7 +1555,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                     _model.addToQueixas(
                                                         listViewStaticQueixasSaudeRow
                                                             .nome!);
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                 },
                                                 child: Container(
@@ -1667,7 +1668,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                               _model.addToQueixas(
                                                                   listViewStaticQueixasSaudeRow
                                                                       .nome!);
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                             },
                                                             child: const Icon(
                                                               Icons
@@ -1695,7 +1697,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                               _model.removeFromQueixas(
                                                                   listViewStaticQueixasSaudeRow
                                                                       .nome!);
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                             },
                                                             child: Icon(
                                                               Icons
@@ -1744,7 +1747,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             _model.currentStep = 3;
-                                            setState(() {});
+                                            safeSetState(() {});
                                           },
                                           child: Icon(
                                             Icons.arrow_back_rounded,
@@ -1902,12 +1905,12 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                     _model.removeFromContra(
                                                         listViewStaticContraIndicacaoRow
                                                             .nome!);
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   } else {
                                                     _model.addToContra(
                                                         listViewStaticContraIndicacaoRow
                                                             .nome!);
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   }
                                                 },
                                                 child: Container(
@@ -2005,7 +2008,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                               _model.addToContra(
                                                                   listViewStaticContraIndicacaoRow
                                                                       .nome!);
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                             },
                                                             child: const Icon(
                                                               Icons
@@ -2033,7 +2037,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                               _model.removeFromContra(
                                                                   listViewStaticContraIndicacaoRow
                                                                       .nome!);
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                             },
                                                             child: Icon(
                                                               Icons
@@ -2060,284 +2065,6 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                               ),
                             ),
                           ),
-                        if (_model.currentStep == 1)
-                          Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      child: Text(
-                                        'Tratamento prévio',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Mulish',
-                                              color: const Color(0xFF13294B),
-                                              fontSize: 24.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 8.0, 24.0, 0.0),
-                                      child: Text(
-                                        'Precisamos saber como está seu tratamento.',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Mulish',
-                                              color: const Color(0xFF8798B5),
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              lineHeight: 1.5,
-                                            ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 32.0, 24.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Atualmente, vocês já faz tratamento com Cannabis Medicinal?',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 12.0, 0.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    _model.profile = 1;
-                                                    setState(() {});
-                                                  },
-                                                  child: Container(
-                                                    key: const ValueKey(
-                                                        'Container_hvcj'),
-                                                    width: double.infinity,
-                                                    height: 52.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .primaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.0),
-                                                      border: Border.all(
-                                                        color: _model.rout ==
-                                                                'Não faço tratamento com Cannabis'
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .alternate,
-                                                      ),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(12.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          AnimatedDefaultTextStyle(
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  color: _model
-                                                                              .rout ==
-                                                                          'Não faço tratamento com Cannabis'
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                            duration: const Duration(
-                                                                milliseconds:
-                                                                    600),
-                                                            curve:
-                                                                Curves.easeIn,
-                                                            child: const Text(
-                                                              'Não faço tratamento com Cannabis',
-                                                            ),
-                                                          ),
-                                                          if (_model.rout !=
-                                                              'Não faço tratamento com Cannabis')
-                                                            const Icon(
-                                                              Icons
-                                                                  .circle_outlined,
-                                                              color: Color(
-                                                                  0xFFDBE4F1),
-                                                              size: 24.0,
-                                                            ),
-                                                          if (_model.rout ==
-                                                              'Não faço tratamento com Cannabis')
-                                                            Icon(
-                                                              Icons
-                                                                  .check_circle_rounded,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              size: 24.0,
-                                                            ),
-                                                        ].divide(const SizedBox(
-                                                            width: 8.0)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    _model.profile = 2;
-                                                    setState(() {});
-                                                  },
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 52.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .primaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.0),
-                                                      border: Border.all(
-                                                        color: _model.rout ==
-                                                                'Já faço tratamento com Cannabis'
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .alternate,
-                                                      ),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(12.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            'Já faço tratamento com Cannabis',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  color: _model
-                                                                              .rout ==
-                                                                          'Já faço tratamento com Cannabis'
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                          ),
-                                                          if (_model.rout !=
-                                                              'Já faço tratamento com Cannabis')
-                                                            const Icon(
-                                                              Icons
-                                                                  .circle_outlined,
-                                                              color: Color(
-                                                                  0xFFDBE4F1),
-                                                              size: 24.0,
-                                                            ),
-                                                          if (_model.rout ==
-                                                              'Já faço tratamento com Cannabis')
-                                                            Icon(
-                                                              Icons
-                                                                  .check_circle_rounded,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              size: 24.0,
-                                                            ),
-                                                        ].divide(const SizedBox(
-                                                            width: 8.0)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ].divide(const SizedBox(height: 18.0)),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
                       ],
                     ),
                   ),
@@ -2350,7 +2077,6 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                     children: [
                       if (_model.currentStep != 2)
                         FFButtonWidget(
-                          key: const ValueKey('Button_qjmn'),
                           onPressed: (((_model.currentStep == 3) &&
                                       ((_model.queixas.isNotEmpty) == false)) ||
                                   ((_model.currentStep == 4) &&
@@ -2360,11 +2086,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   if (_model.currentStep == 1) {
                                     _model.currentStep =
                                         _model.currentStep! + 1;
-                                    setState(() {});
+                                    safeSetState(() {});
                                   } else if (_model.currentStep == 3) {
                                     _model.currentStep =
                                         _model.currentStep! + 1;
-                                    setState(() {});
+                                    safeSetState(() {});
                                   } else if (_model.currentStep == 4) {
                                     await PacienteTable().update(
                                       data: {
@@ -2388,7 +2114,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             _model.contra.toList()
                                         ..queixas = _model.queixas.toList(),
                                     );
-                                    setState(() {});
+                                    safeSetState(() {});
 
                                     context.goNamed('homePage');
                                   }
@@ -2442,13 +2168,24 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     return;
                                   }
 
+                                  _model.customerAsaas =
+                                      await CreateAsaasCustomerCall.call(
+                                    name: _model.ipNomeTextController.text,
+                                    email: currentUserEmail,
+                                    phone: _model.phone,
+                                    cpf: _model.ipCPFTextController.text,
+                                  );
+
                                   _model.createdUser =
                                       await PacienteTable().insert({
                                     'nome': _model.ipNomeTextController.text,
                                     'telefone': _model.phone,
                                     'cpf': _model.ipCPFTextController.text,
                                     'uuid': currentUserUid,
-                                    'asaas_customer_id': 'a',
+                                    'asaas_customer_id':
+                                        CreateAsaasCustomerCall.custId(
+                                      (_model.customerAsaas?.jsonBody ?? ''),
+                                    ),
                                     'email': currentUserEmail,
                                   });
                                   _model.loggedUser =
@@ -2468,7 +2205,22 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         _model.loggedUser?.first.telefone,
                                     cpf: _model.loggedUser?.first.cpf,
                                   );
-                                  setState(() {});
+                                  safeSetState(() {});
+                                  _model.st1 =
+                                      await StatusPacientTable().insert({
+                                    'paciente': FFAppState().paciente.id,
+                                    'processo': 'planoTerapeutico',
+                                    'estagio': 'assinarPlano',
+                                  });
+                                  await PacienteTable().update(
+                                    data: {
+                                      'status_atual': _model.st1?.id,
+                                    },
+                                    matchingRows: (rows) => rows.eq(
+                                      'id',
+                                      FFAppState().paciente.id,
+                                    ),
+                                  );
                                   _model.currentStep = 3;
                                   _model.nome =
                                       _model.ipNomeTextController.text;
@@ -2476,9 +2228,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   _model.email =
                                       _model.iEmailTextController.text;
                                   _model.phone = _model.phone;
-                                  setState(() {});
+                                  safeSetState(() {});
 
-                                  setState(() {});
+                                  safeSetState(() {});
                                 },
                           text: 'Continuar',
                           options: FFButtonOptions(
@@ -2518,10 +2270,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               _model.currentStep = 3;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             child: Text(
-                              'Esqueci uma queixa',
+                              'Voltar',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

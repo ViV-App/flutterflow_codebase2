@@ -33,7 +33,7 @@ class _PrescriptionEditedWidgetState extends State<PrescriptionEditedWidget> {
     super.initState();
     _model = createModel(context, () => PrescriptionEditedModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -76,7 +76,7 @@ class _PrescriptionEditedWidgetState extends State<PrescriptionEditedWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     child: Text(
-                      'Sua prescrição foi editada com sucesso',
+                      'Seu remédio foi editado com sucesso',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Mulish',

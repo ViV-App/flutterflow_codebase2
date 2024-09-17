@@ -26,7 +26,7 @@ class _ChooseMinuteWidgetState extends State<ChooseMinuteWidget> {
     super.initState();
     _model = createModel(context, () => ChooseMinuteModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

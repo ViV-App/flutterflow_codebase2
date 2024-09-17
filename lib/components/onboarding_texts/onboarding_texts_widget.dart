@@ -33,7 +33,7 @@ class _OnboardingTextsWidgetState extends State<OnboardingTextsWidget> {
     super.initState();
     _model = createModel(context, () => OnboardingTextsModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

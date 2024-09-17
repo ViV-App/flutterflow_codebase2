@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -33,11 +34,11 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (!(FFAppState().prescricao.duracaoDias == null)) {
         _model.picked = FFAppState().prescricao.duracaoDias;
-        setState(() {});
+        safeSetState(() {});
       }
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -66,7 +67,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
         ),
         child: Container(
           width: double.infinity,
-          height: 350.0,
+          height: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             borderRadius: const BorderRadius.only(
@@ -116,7 +117,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
                                   _model.picked = listNItem;
-                                  setState(() {});
+                                  safeSetState(() {});
                                 },
                                 child: Material(
                                   color: Colors.transparent,
@@ -179,8 +180,9 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                     FFAppState().updatePrescricaoStruct(
                       (e) => e..duracaoDias = _model.picked,
                     );
-                    setState(() {});
+                    safeSetState(() {});
                     Navigator.pop(context);
+                    await actions.hideKeyboard();
                   },
                   text: 'Salvar',
                   options: FFButtonOptions(

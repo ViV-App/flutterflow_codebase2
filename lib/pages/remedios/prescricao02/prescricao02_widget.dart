@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:flutter/cupertino.dart';
@@ -39,7 +40,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       FFAppState().horarios = [];
-      setState(() {});
+      safeSetState(() {});
     });
 
     _model.textController1 ??= TextEditingController();
@@ -49,7 +50,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
     _model.textFieldFocusNode2 ??= FocusNode();
 
     _model.switchValue = false;
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -101,7 +102,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                           onTap: () async {
                             context.safePop();
                             FFAppState().horarios = [];
-                            setState(() {});
+                            safeSetState(() {});
                           },
                           child: Icon(
                             Icons.arrow_back_ios_new,
@@ -152,216 +153,232 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                         Container(
                           decoration: const BoxDecoration(),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 24.0, 24.0, 0.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Dose diária total',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Mulish',
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                  AlignedTooltip(
-                                    content: Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: Text(
-                                        'A dose diária é a somatória de todas as doses que devem ser ingeridas no decorrer do dia. A mesma pode ser consultada na última receita recebida.',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Mulish',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                    offset: 4.0,
-                                    preferredDirection: AxisDirection.left,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    elevation: 4.0,
-                                    tailBaseWidth: 24.0,
-                                    tailLength: 12.0,
-                                    waitDuration: const Duration(milliseconds: 100),
-                                    showDuration: const Duration(milliseconds: 1500),
-                                    triggerMode: TooltipTriggerMode.tap,
-                                    child: const Icon(
-                                      Icons.info_outlined,
-                                      color: Color(0xFF8798B5),
-                                      size: 18.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Flexible(
-                                    child: TextFormField(
-                                      controller: _model.textController1,
-                                      focusNode: _model.textFieldFocusNode1,
-                                      autofocus: false,
-                                      textInputAction: TextInputAction.next,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        hintText: 'Quantidade',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Mulish',
-                                              color: const Color(0xFFB5C0D3),
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
-                                            color: Color(0x0E294B0D),
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        filled: true,
-                                        fillColor: const Color(0xFFF7FAFE),
-                                        contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                12.0, 0.0, 0.0, 0.0),
-                                      ),
+                        if (responsiveVisibility(
+                          context: context,
+                          phone: false,
+                          tablet: false,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ))
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 24.0, 24.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Dose diária total',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
+                                            fontSize: 16.0,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                      keyboardType: TextInputType.number,
-                                      validator: _model.textController1Validator
-                                          .asValidator(context),
                                     ),
-                                  ),
-                                  Stack(
-                                    children: [
-                                      FlutterFlowDropDown<String>(
-                                        controller: _model
-                                                .dropDownValueController ??=
-                                            FormFieldController<String>(null),
-                                        options: const [
-                                          'g',
-                                          'mg',
-                                          'mcg',
-                                          'mL',
-                                          '%',
-                                          'UI',
-                                          'Gotas',
-                                          'Comprimidos',
-                                          'Puff nasal'
-                                        ],
-                                        onChanged: (val) async {
-                                          setState(
-                                              () => _model.dropDownValue = val);
-                                          setState(() {});
-                                        },
-                                        width: 125.0,
-                                        height: 48.0,
-                                        textStyle: FlutterFlowTheme.of(context)
+                                    AlignedTooltip(
+                                      content: Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text(
+                                          'A dose diária é a somatória de todas as doses que devem ser ingeridas no decorrer do dia. A mesma pode ser consultada na última receita recebida.',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Mulish',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                      offset: 4.0,
+                                      preferredDirection: AxisDirection.left,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                      elevation: 4.0,
+                                      tailBaseWidth: 24.0,
+                                      tailLength: 12.0,
+                                      waitDuration: const Duration(milliseconds: 100),
+                                      showDuration:
+                                          const Duration(milliseconds: 1500),
+                                      triggerMode: TooltipTriggerMode.tap,
+                                      child: const Icon(
+                                        Icons.info_outlined,
+                                        color: Color(0xFF8798B5),
+                                        size: 18.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Flexible(
+                                      child: TextFormField(
+                                        controller: _model.textController1,
+                                        focusNode: _model.textFieldFocusNode1,
+                                        autofocus: false,
+                                        textInputAction: TextInputAction.next,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          hintText: 'Quantidade',
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Mulish',
+                                                    color: const Color(0xFFB5C0D3),
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: const BorderSide(
+                                              color: Color(0x0E294B0D),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          filled: true,
+                                          fillColor: const Color(0xFFF7FAFE),
+                                          contentPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
                                               letterSpacing: 0.0,
                                             ),
-                                        icon: Icon(
-                                          Icons.keyboard_arrow_down_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
-                                        fillColor: const Color(0xFFF7FAFE),
-                                        elevation: 2.0,
-                                        borderColor: const Color(0x0E294B0D),
-                                        borderWidth: 2.0,
-                                        borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        hidesUnderline: true,
-                                        isOverButton: true,
-                                        isSearchable: false,
-                                        isMultiSelect: false,
+                                        keyboardType: TextInputType.number,
+                                        validator: _model
+                                            .textController1Validator
+                                            .asValidator(context),
                                       ),
-                                      if (_model.dropDownValue == null ||
-                                          _model.dropDownValue == '')
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 14.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Med.',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Mulish',
-                                                        color:
-                                                            const Color(0xFFB5C0D3),
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                    ),
+                                    Stack(
+                                      children: [
+                                        FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .dropDownValueController ??=
+                                              FormFieldController<String>(null),
+                                          options: const [
+                                            'g',
+                                            'mg',
+                                            'mcg',
+                                            'mL',
+                                            '%',
+                                            'UI',
+                                            'Gotas',
+                                            'Comprimidos',
+                                            'Puff nasal'
+                                          ],
+                                          onChanged: (val) async {
+                                            safeSetState(() =>
+                                                _model.dropDownValue = val);
+                                            safeSetState(() {});
+                                          },
+                                          width: 125.0,
+                                          height: 48.0,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Mulish',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                          fillColor: const Color(0xFFF7FAFE),
+                                          elevation: 2.0,
+                                          borderColor: const Color(0x0E294B0D),
+                                          borderWidth: 2.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          hidesUnderline: true,
+                                          isOverButton: true,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                        ),
+                                        if (_model.dropDownValue == null ||
+                                            _model.dropDownValue == '')
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(-1.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      8.0, 14.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Med.',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                              const Color(0xFFB5C0D3),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                    ],
-                                  ),
-                                ].divide(const SizedBox(width: 14.0)),
-                              ),
-                            ].divide(const SizedBox(height: 6.0)),
+                                      ],
+                                    ),
+                                  ].divide(const SizedBox(width: 14.0)),
+                                ),
+                              ].divide(const SizedBox(height: 6.0)),
+                            ),
                           ),
-                        ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 24.0, 24.0, 0.0),
@@ -425,7 +442,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                 textInputAction: TextInputAction.next,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Digite uma concentração',
+                                  hintText: '000 ml/mg',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -475,6 +492,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                       fontFamily: 'Mulish',
                                       letterSpacing: 0.0,
                                     ),
+                                keyboardType: TextInputType.number,
                                 validator: _model.textController2Validator
                                     .asValidator(context),
                               ),
@@ -523,7 +541,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                                   functions.convertStringToDate(
                                                       getCurrentTimestamp
                                                           .toString());
-                                              setState(() {});
+                                              safeSetState(() {});
                                               await showModalBottomSheet<bool>(
                                                   context: context,
                                                   builder: (context) {
@@ -610,8 +628,10 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                                   });
                                               if (_model.datePicked != null) {
                                                 _model.date = _model.datePicked;
-                                                setState(() {});
+                                                safeSetState(() {});
+                                                await actions.hideKeyboard();
                                               }
+                                              await actions.hideKeyboard();
                                             },
                                             child: Container(
                                               width: double.infinity,
@@ -770,14 +790,23 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
                                                                     context),
-                                                            child:
-                                                                const DuracaoDiasWidget(),
+                                                            child: SizedBox(
+                                                              height: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .height *
+                                                                  0.5,
+                                                              child:
+                                                                  const DuracaoDiasWidget(),
+                                                            ),
                                                           ),
                                                         ),
                                                       );
                                                     },
                                                   ).then((value) =>
                                                       safeSetState(() {}));
+
+                                                  await actions.hideKeyboard();
                                                 },
                                                 child: Container(
                                                   width: double.infinity,
@@ -859,7 +888,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                             Switch.adaptive(
                                               value: _model.switchValue!,
                                               onChanged: (newValue) async {
-                                                setState(() => _model
+                                                safeSetState(() => _model
                                                     .switchValue = newValue);
                                               },
                                               activeColor:
@@ -1080,7 +1109,8 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                                               FFAppState()
                                                                   .addToHorarios(
                                                                       HorariosStruct());
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                             }
                                                           },
                                                           child: Icon(
@@ -1121,7 +1151,8 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                                                       FFAppState()
                                                                           .horarios
                                                                           .last);
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                             }
                                                           },
                                                           child: Icon(
@@ -1232,7 +1263,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                   ..remedio = null
                                   ..remedNome = null,
                               );
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             text: 'Voltar',
                             options: FFButtonOptions(
@@ -1263,27 +1294,36 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                         Expanded(
                           flex: 2,
                           child: FFButtonWidget(
-                            onPressed: ((_model.textController1.text == '') ||
-                                    (_model.dropDownValue == null ||
-                                        _model.dropDownValue == '') ||
-                                    (_model.textController2.text == '') ||
+                            onPressed: ((_model.textController2.text == '') ||
                                     (_model.date == null) ||
                                     ((_model.switchValue == false) &&
-                                        ((FFAppState()
-                                                    .prescricao
-                                                    .duracaoDias ==
+                                        ((FFAppState().prescricao.duracaoDias ==
                                                 null) ||
                                             (FFAppState()
                                                     .prescricao
                                                     .duracaoDias ==
                                                 0))) ||
-                                    ((FFAppState()
-                                            .horarios
-                                            .where((e) => e.horario == null)
-                                            .toList()
-                                            .isNotEmpty) ==
-                                        true) ||
-                                    !(FFAppState().horarios.isNotEmpty))
+                                    (((FFAppState()
+                                                .horarios
+                                                .where((e) => e.horario == null)
+                                                .toList()
+                                                .isNotEmpty) ==
+                                            true) ||
+                                        ((FFAppState()
+                                                .horarios
+                                                .where((e) => e.dosagem == null)
+                                                .toList()
+                                                .isNotEmpty) ==
+                                            true) ||
+                                        ((FFAppState()
+                                                .horarios
+                                                .where((e) =>
+                                                    e.medida == '')
+                                                .toList()
+                                                .isNotEmpty) ==
+                                            true)) ||
+                                    ((FFAppState().horarios.isNotEmpty) ==
+                                        false))
                                 ? null
                                 : () async {
                                     if (FFAppState().prescricao.remedio == 0) {
@@ -1301,7 +1341,6 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                         context,
                                         remedio: _model.newMed,
                                       );
-                                      setState(() {});
                                     } else {
                                       _model.selectedMed =
                                           await StaticMedicamentosTable()
@@ -1315,10 +1354,9 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                         context,
                                         remedio: _model.selectedMed?.first,
                                       );
-                                      setState(() {});
                                     }
 
-                                    setState(() {});
+                                    safeSetState(() {});
                                   },
                             text: 'Salvar',
                             options: FFButtonOptions(

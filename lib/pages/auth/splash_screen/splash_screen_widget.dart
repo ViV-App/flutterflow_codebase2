@@ -23,7 +23,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
     super.initState();
     _model = createModel(context, () => SplashScreenModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -150,7 +150,6 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 48.0, 0.0, 0.0),
                                 child: FFButtonWidget(
-                                  key: const ValueKey('Button_nzyv'),
                                   onPressed: () async {
                                     context.pushNamed(
                                       'createAccount',

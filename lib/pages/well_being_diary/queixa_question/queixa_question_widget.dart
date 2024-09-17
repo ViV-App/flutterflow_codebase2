@@ -40,7 +40,7 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
     super.initState();
     _model = createModel(context, () => QueixaQuestionModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -143,7 +143,7 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                             FormFieldController<String>(null),
                         options: const ['Manhã', 'Tarde', 'Noite'],
                         onChanged: (val) =>
-                            setState(() => _model.dropDownValue = val),
+                            safeSetState(() => _model.dropDownValue = val),
                         width: double.infinity,
                         height: 48.0,
                         textStyle:
@@ -210,7 +210,7 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                             perguntasIndex.toString(),
                             perguntasIndex,
                           ),
-                          updateCallback: () => setState(() {}),
+                          updateCallback: () => safeSetState(() {}),
                           updateOnChange: true,
                           child: QueixaQuestionDropWidget(
                             key: Key(

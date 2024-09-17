@@ -45,4 +45,7 @@ class RespostasQuestionarioRow extends SupabaseDataRow {
 
   int? get nextQuestion => getField<int>('next_question');
   set nextQuestion(int? value) => setField<int>('next_question', value);
+
+  int? get bipRequisicao => getField<int>('bipRequisicao');
+  set bipRequisicao(int? value) => setField<int>('bipRequisicao', value);
 }

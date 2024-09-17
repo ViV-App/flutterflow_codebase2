@@ -187,7 +187,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -639,7 +639,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
-                            'consulta',
+                            'evolucao',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: const TransitionInfo(
                                 hasTransition: true,
@@ -705,7 +705,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
-                            'consulta',
+                            'evolucao',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: const TransitionInfo(
                                 hasTransition: true,

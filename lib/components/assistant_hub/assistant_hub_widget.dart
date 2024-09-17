@@ -34,7 +34,7 @@ class _AssistantHubWidgetState extends State<AssistantHubWidget> {
     super.initState();
     _model = createModel(context, () => AssistantHubModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

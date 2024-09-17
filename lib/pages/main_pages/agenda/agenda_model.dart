@@ -58,7 +58,7 @@ class AgendaModel extends FlutterFlowModel<AgendaWidget> {
   }) async {
     ApiCallResponse? returnedAgenda;
 
-    returnedAgenda = await GetCall.call(
+    returnedAgenda = await GetAgendaCall.call(
       date: date,
       cliente: FFAppState().paciente.id,
     );

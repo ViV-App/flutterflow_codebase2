@@ -1,5 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/assistant_hub/assistant_hub_widget.dart';
@@ -16,7 +15,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/well_being_diary/new_well_being/new_well_being_widget.dart';
 import '/walkthroughs/onboarding01.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
@@ -101,41 +99,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               bipMensal: _model.assinatura?.first.bipsDisponiveis,
             ),
         );
-        setState(() {});
-        if (_model.user?.first.tramentoPrevio == null ||
-            _model.user?.first.tramentoPrevio == '') {
-          context.goNamed(
-            'previousTreatment',
-            extra: <String, dynamic>{
-              kTransitionInfoKey: const TransitionInfo(
-                hasTransition: true,
-                transitionType: PageTransitionType.fade,
-                duration: Duration(milliseconds: 0),
-              ),
-            },
-          );
-
+        safeSetState(() {});
+        if (_model.user?.first.firstOnboarding == 0) {
+          safeSetState(() =>
+              _model.onboarding01Controller = createPageWalkthrough(context));
+          _model.onboarding01Controller?.show(context: context);
           return;
         } else {
-          _model.user2 = await PacienteTable().queryRows(
-            queryFn: (q) => q.eq(
-              'uuid',
-              currentUserUid,
-            ),
-          );
-          if (_model.user2?.first.firstOnboarding == 0) {
-            safeSetState(() =>
-                _model.onboarding01Controller = createPageWalkthrough(context));
-            _model.onboarding01Controller?.show(context: context);
-            return;
-          } else {
-            return;
-          }
+          return;
         }
       }
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -224,19 +200,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            context.pushNamed(
-                                              'profilePage',
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    const TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                  duration:
-                                                      Duration(milliseconds: 0),
-                                                ),
-                                              },
-                                            );
+                                            context.pushNamed('profilePage');
                                           },
                                           child: Container(
                                             width: 52.0,
@@ -263,22 +227,40 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                'Olá, ${valueOrDefault<String>(
-                                                  homePagePacienteRow?.nome,
-                                                  'name',
-                                                )}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Mulish',
-                                                          color: Colors.white,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
+                                              InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'ajustarDose',
+                                                    queryParameters: {
+                                                      'page': serializeParam(
+                                                        'preencher',
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: Text(
+                                                  'Olá, ${valueOrDefault<String>(
+                                                    homePagePacienteRow?.nome,
+                                                    'name',
+                                                  )}',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Mulish',
+                                                        color: Colors.white,
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
                                               ),
                                               Text(
                                                 'O que vamos fazer hoje?',
@@ -310,7 +292,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             if (homePagePacienteRow?.perfilCompleto == false)
                               wrapWithModel(
                                 model: _model.completeProfileAlertModel,
-                                updateCallback: () => setState(() {}),
+                                updateCallback: () => safeSetState(() {}),
                                 child: const CompleteProfileAlertWidget(),
                               ),
                           ],
@@ -327,17 +309,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed(
-                                      'agenda',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
+                                    context.pushNamed('agenda');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -389,17 +361,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed(
-                                      'remedios',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
+                                    context.pushNamed('remedios');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -451,17 +413,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed(
-                                      'conteudos',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
+                                    context.pushNamed('conteudos');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -513,105 +465,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    _model.apiResultfi2z =
-                                        await GetLatestBemViverScoreCall.call(
-                                      dataInit: functions
-                                          .subDaysToDate(getCurrentTimestamp, 6)
-                                          .toString(),
-                                      dataEnd: getCurrentTimestamp.toString(),
-                                      paciente: homePagePacienteRow?.id,
-                                    );
-
-                                    if ((GetLatestBemViverScoreCall.id(
-                                                  (_model.apiResultfi2z
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                ) !=
-                                                null &&
-                                            (GetLatestBemViverScoreCall.id(
-                                              (_model.apiResultfi2z?.jsonBody ??
-                                                  ''),
-                                            ))!
-                                                .isNotEmpty) ==
-                                        false) {
-                                      if (homePagePacienteRow?.perfilCompleto ==
-                                          false) {
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          context: context,
-                                          builder: (context) {
-                                            return WebViewAware(
-                                              child: GestureDetector(
-                                                onTap: () =>
-                                                    FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: SizedBox(
-                                                    height: MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.85,
-                                                    child:
-                                                        const CompletePerfilWidget(),
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => safeSetState(() {}));
-                                      } else {
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          context: context,
-                                          builder: (context) {
-                                            return WebViewAware(
-                                              child: GestureDetector(
-                                                onTap: () =>
-                                                    FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: SizedBox(
-                                                    height: MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.85,
-                                                    child: NewWellBeingWidget(
-                                                      paciente:
-                                                          homePagePacienteRow
-                                                              ?.id,
-                                                      pacient:
-                                                          homePagePacienteRow,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => safeSetState(() {}));
-                                      }
-                                    } else {
-                                      context.pushNamed(
-                                        'newEvolucao',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: const TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 0),
-                                          ),
-                                        },
-                                      );
-                                    }
-
-                                    setState(() {});
+                                    context.pushNamed('evolucao');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -813,7 +667,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     child: wrapWithModel(
                                       model:
                                           _model.homePageStatusComponentModel,
-                                      updateCallback: () => setState(() {}),
+                                      updateCallback: () => safeSetState(() {}),
                                       child: HomePageStatusComponentWidget(
                                         status: columnStatusPacientRow,
                                       ),
@@ -1409,9 +1263,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 _model.vfbi,
                                 'jyr',
                               );
-                              setState(() {});
+                              safeSetState(() {});
 
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             child: Text(
                               'Conteúdos mais vistos',

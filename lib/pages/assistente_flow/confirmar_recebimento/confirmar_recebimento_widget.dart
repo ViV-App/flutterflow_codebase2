@@ -31,7 +31,7 @@ class _ConfirmarRecebimentoWidgetState
     super.initState();
     _model = createModel(context, () => ConfirmarRecebimentoModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -224,7 +224,7 @@ class _ConfirmarRecebimentoWidgetState
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         _model.currentStep = 2;
-                                        setState(() {});
+                                        safeSetState(() {});
                                         if (FFAppState()
                                                 .paciente
                                                 .assinatura
@@ -264,7 +264,7 @@ class _ConfirmarRecebimentoWidgetState
                                           );
                                         }
 
-                                        setState(() {});
+                                        safeSetState(() {});
                                       },
                                       text: 'Confirmar recebimento',
                                       options: FFButtonOptions(

@@ -41,7 +41,7 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 500));
-      setState(() {
+      safeSetState(() {
         _model.textController?.text = valueOrDefault<String>(
           getJsonField(
             widget.respostaSetada,
@@ -53,7 +53,7 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
             TextSelection.collapsed(offset: _model.textController!.text.length);
       });
       if (_model.textController.text == '.') {
-        setState(() {
+        safeSetState(() {
           _model.textController?.clear();
         });
       } else {
@@ -64,7 +64,7 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

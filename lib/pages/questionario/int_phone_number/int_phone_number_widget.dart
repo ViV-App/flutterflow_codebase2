@@ -43,9 +43,9 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
         'dialCode': '+55',
         'flag': 'https://flagcdn.com/h80/br.png',
       };
-      setState(() {});
+      safeSetState(() {});
       await Future.delayed(const Duration(milliseconds: 100));
-      setState(() {
+      safeSetState(() {
         _model.ipEmailTextController1?.text = getJsonField(
           _model.selectedCountry,
           r'''$.dialCode''',
@@ -68,7 +68,7 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
     _model.ipEmailTextController2 ??= TextEditingController();
     _model.ipEmailFocusNode2 ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -104,13 +104,13 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
                         child: SelectContryWidget(
                           callback: (contrySelected) async {
                             _model.selectedCountry = contrySelected;
-                            setState(() {});
+                            safeSetState(() {});
                             await Future.delayed(
                                 const Duration(milliseconds: 100));
-                            setState(() {
+                            safeSetState(() {
                               _model.ipEmailTextController2?.clear();
                             });
-                            setState(() {
+                            safeSetState(() {
                               _model.ipEmailTextController1?.text =
                                   getJsonField(
                                 contrySelected,
@@ -182,7 +182,7 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
                 onChanged: (_) => EasyDebounce.debounce(
                   '_model.ipEmailTextController1',
                   const Duration(milliseconds: 0),
-                  () => setState(() {}),
+                  () => safeSetState(() {}),
                 ),
                 autofocus: false,
                 readOnly: true,

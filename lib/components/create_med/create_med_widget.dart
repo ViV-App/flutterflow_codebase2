@@ -32,7 +32,7 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -119,7 +119,7 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                               'Suplemento'
                             ],
                             onChanged: (val) =>
-                                setState(() => _model.dropDownValue = val),
+                                safeSetState(() => _model.dropDownValue = val),
                             width: double.infinity,
                             height: 48.0,
                             textStyle: FlutterFlowTheme.of(context)
@@ -250,10 +250,10 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                               ..remedio = _model.medCreated?.id
                               ..remedNome = _model.medCreated?.nome,
                           );
-                          setState(() {});
+                          safeSetState(() {});
                           Navigator.pop(context);
 
-                          setState(() {});
+                          safeSetState(() {});
                         },
                   text: 'Adicionar medicamento',
                   options: FFButtonOptions(

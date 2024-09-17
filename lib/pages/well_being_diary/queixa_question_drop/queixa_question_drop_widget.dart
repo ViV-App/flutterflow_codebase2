@@ -44,7 +44,7 @@ class _QueixaQuestionDropWidgetState extends State<QueixaQuestionDropWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -95,12 +95,12 @@ class _QueixaQuestionDropWidgetState extends State<QueixaQuestionDropWidget> {
                       .map((e) => e.toString())
                       .toList(),
                   onChanged: (val) async {
-                    setState(() => _model.dropDownValue1 = val);
+                    safeSetState(() => _model.dropDownValue1 = val);
                     _model.response = widget.respostas
                         ?.where((e) => _model.dropDownValue1 == e.toString())
                         .toList()
                         .first;
-                    setState(() {});
+                    safeSetState(() {});
                     await widget.sendRes?.call(
                       <String, dynamic>{
                         'pergunta': getJsonField(
@@ -168,7 +168,7 @@ class _QueixaQuestionDropWidgetState extends State<QueixaQuestionDropWidget> {
                   isSearchable: false,
                   isMultiSelect: true,
                   onMultiSelectChanged: (val) =>
-                      setState(() => _model.dropDownValue2 = val),
+                      safeSetState(() => _model.dropDownValue2 = val),
                 ),
               ),
             if (widget.fieldType == 'open input')

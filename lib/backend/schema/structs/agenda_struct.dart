@@ -20,8 +20,8 @@ class AgendaStruct extends BaseStruct {
     int? first,
     String? categoria,
     String? formaDose,
-    int? posologia,
     String? horarioString,
+    double? posologia,
   })  : _medicamentoId = medicamentoId,
         _medicamentoNome = medicamentoNome,
         _prescricaoId = prescricaoId,
@@ -35,8 +35,8 @@ class AgendaStruct extends BaseStruct {
         _first = first,
         _categoria = categoria,
         _formaDose = formaDose,
-        _posologia = posologia,
-        _horarioString = horarioString;
+        _horarioString = horarioString,
+        _posologia = posologia;
 
   // "medicamento_id" field.
   int? _medicamentoId;
@@ -139,21 +139,21 @@ class AgendaStruct extends BaseStruct {
 
   bool hasFormaDose() => _formaDose != null;
 
-  // "posologia" field.
-  int? _posologia;
-  int get posologia => _posologia ?? 0;
-  set posologia(int? val) => _posologia = val;
-
-  void incrementPosologia(int amount) => posologia = posologia + amount;
-
-  bool hasPosologia() => _posologia != null;
-
   // "horario_string" field.
   String? _horarioString;
   String get horarioString => _horarioString ?? '';
   set horarioString(String? val) => _horarioString = val;
 
   bool hasHorarioString() => _horarioString != null;
+
+  // "posologia" field.
+  double? _posologia;
+  double get posologia => _posologia ?? 0.0;
+  set posologia(double? val) => _posologia = val;
+
+  void incrementPosologia(double amount) => posologia = posologia + amount;
+
+  bool hasPosologia() => _posologia != null;
 
   static AgendaStruct fromMap(Map<String, dynamic> data) => AgendaStruct(
         medicamentoId: castToType<int>(data['medicamento_id']),
@@ -169,8 +169,8 @@ class AgendaStruct extends BaseStruct {
         first: castToType<int>(data['first']),
         categoria: data['categoria'] as String?,
         formaDose: data['forma_dose'] as String?,
-        posologia: castToType<int>(data['posologia']),
         horarioString: data['horario_string'] as String?,
+        posologia: castToType<double>(data['posologia']),
       );
 
   static AgendaStruct? maybeFromMap(dynamic data) =>
@@ -190,8 +190,8 @@ class AgendaStruct extends BaseStruct {
         'first': _first,
         'categoria': _categoria,
         'forma_dose': _formaDose,
-        'posologia': _posologia,
         'horario_string': _horarioString,
+        'posologia': _posologia,
       }.withoutNulls;
 
   @override
@@ -248,13 +248,13 @@ class AgendaStruct extends BaseStruct {
           _formaDose,
           ParamType.String,
         ),
-        'posologia': serializeParam(
-          _posologia,
-          ParamType.int,
-        ),
         'horario_string': serializeParam(
           _horarioString,
           ParamType.String,
+        ),
+        'posologia': serializeParam(
+          _posologia,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -325,14 +325,14 @@ class AgendaStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        posologia: deserializeParam(
-          data['posologia'],
-          ParamType.int,
-          false,
-        ),
         horarioString: deserializeParam(
           data['horario_string'],
           ParamType.String,
+          false,
+        ),
+        posologia: deserializeParam(
+          data['posologia'],
+          ParamType.double,
           false,
         ),
       );
@@ -356,8 +356,8 @@ class AgendaStruct extends BaseStruct {
         first == other.first &&
         categoria == other.categoria &&
         formaDose == other.formaDose &&
-        posologia == other.posologia &&
-        horarioString == other.horarioString;
+        horarioString == other.horarioString &&
+        posologia == other.posologia;
   }
 
   @override
@@ -375,8 +375,8 @@ class AgendaStruct extends BaseStruct {
         first,
         categoria,
         formaDose,
-        posologia,
-        horarioString
+        horarioString,
+        posologia
       ]);
 }
 
@@ -394,8 +394,8 @@ AgendaStruct createAgendaStruct({
   int? first,
   String? categoria,
   String? formaDose,
-  int? posologia,
   String? horarioString,
+  double? posologia,
 }) =>
     AgendaStruct(
       medicamentoId: medicamentoId,
@@ -411,6 +411,6 @@ AgendaStruct createAgendaStruct({
       first: first,
       categoria: categoria,
       formaDose: formaDose,
-      posologia: posologia,
       horarioString: horarioString,
+      posologia: posologia,
     );

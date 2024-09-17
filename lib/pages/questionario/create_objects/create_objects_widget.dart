@@ -34,7 +34,7 @@ class _CreateObjectsWidgetState extends State<CreateObjectsWidget> {
     super.initState();
     _model = createModel(context, () => CreateObjectsModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

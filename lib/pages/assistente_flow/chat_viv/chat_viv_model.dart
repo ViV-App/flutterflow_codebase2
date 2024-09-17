@@ -28,7 +28,7 @@ class ChatVivModel extends FlutterFlowModel<ChatVivWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Backend Call - API (callChat)] action in Icon widget.
+  // Stores action output result for [Backend Call - API (senchatb)] action in Icon widget.
   ApiCallResponse? apiResultt290;
 
   @override

@@ -47,12 +47,12 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
         ),
       );
       _model.remedio = _model.remedioAtual?.first.id;
-      setState(() {});
+      safeSetState(() {});
         });
 
     _model.textController ??= TextEditingController();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -169,7 +169,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                         );
                       },
                       onSelected: (String selection) {
-                        setState(
+                        safeSetState(
                             () => _model.textFieldSelectedOption = selection);
                         FocusScope.of(context).unfocus();
                       },
@@ -190,7 +190,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                           onChanged: (_) => EasyDebounce.debounce(
                             '_model.textController',
                             const Duration(milliseconds: 0),
-                            () => setState(() {}),
+                            () => safeSetState(() {}),
                           ),
                           onFieldSubmitted: (_) async {
                             _model.med =
@@ -201,15 +201,15 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                               ),
                             );
                             _model.remedio = _model.med?.first.id;
-                            setState(() {});
+                            safeSetState(() {});
                             FFAppState().updatePrescricaoStruct(
                               (e) => e
                                 ..remedio = _model.med?.first.id
                                 ..remedNome = _model.med?.first.nome,
                             );
-                            setState(() {});
+                            safeSetState(() {});
 
-                            setState(() {});
+                            safeSetState(() {});
                           },
                           autofocus: false,
                           textInputAction: TextInputAction.done,
@@ -322,14 +322,14 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               _model.remedio = listViewStaticMedicamentosRow.id;
-                              setState(() {});
+                              safeSetState(() {});
                               FFAppState().updatePrescricaoStruct(
                                 (e) => e
                                   ..remedio = listViewStaticMedicamentosRow.id
                                   ..remedNome =
                                       listViewStaticMedicamentosRow.nome,
                               );
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             child: Material(
                               color: Colors.transparent,

@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/prescription_added/prescription_added_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -37,6 +38,19 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
 
   DateTime? date;
 
+  List<dynamic> dosagens = [];
+  void addToDosagens(dynamic item) => dosagens.add(item);
+  void removeFromDosagens(dynamic item) => dosagens.remove(item);
+  void removeAtIndexFromDosagens(int index) => dosagens.removeAt(index);
+  void insertAtIndexInDosagens(int index, dynamic item) =>
+      dosagens.insert(index, item);
+  void updateDosagensAtIndex(int index, Function(dynamic) updateFn) =>
+      dosagens[index] = updateFn(dosagens[index]);
+
+  int indx = 0;
+
+  int indx2 = 1;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TextField widget.
@@ -74,19 +88,19 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
   Future createPrescription(
     BuildContext context, {
     StaticMedicamentosRow? remedio,
+    List<dynamic>? doses,
   }) async {
     if (switchValue == true) {
       await PrescricaoTable().insert({
         'horarios': supaSerializeList<DateTime>(
             FFAppState().horarios.map((e) => e.horario).withoutNulls.toList()),
         'medicamento': remedio?.id,
-        'posologia': int.tryParse(textController1.text),
         'duracao_dias': FFAppState().prescricao.duracaoDias,
         'date_start': supaSerialize<DateTime>(date),
-        'forma_dose': dropDownValue,
         'continuo': true,
         'paciente': FFAppState().paciente.id,
         'concentracao': int.tryParse(textController2.text),
+        'doses': functions.convertHorarioToJson(FFAppState().horarios.toList()),
       });
       FFAppState().clearRemediosCache();
       await showDialog(
@@ -113,15 +127,14 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
         'horarios': supaSerializeList<DateTime>(
             FFAppState().horarios.map((e) => e.horario).withoutNulls.toList()),
         'medicamento': remedio?.id,
-        'posologia': int.tryParse(textController1.text),
         'duracao_dias': FFAppState().prescricao.duracaoDias,
         'date_start': supaSerialize<DateTime>(date),
-        'forma_dose': dropDownValue,
         'date_end': supaSerialize<DateTime>(functions.getFinalDate(
             date!, FFAppState().prescricao.duracaoDias - 1)),
         'continuo': false,
         'paciente': FFAppState().paciente.id,
         'concentracao': int.tryParse(textController2.text),
+        'doses': functions.convertHorarioToJson(FFAppState().horarios.toList()),
       });
       FFAppState().clearRemediosCache();
       await showDialog(
@@ -144,5 +157,24 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
         },
       );
     }
+  }
+
+  Future createDoses(
+    BuildContext context, {
+    StaticMedicamentosRow? remedio,
+  }) async {
+    while (indx2 <= FFAppState().horarios.length) {
+      addToDosagens(FFAppState().horarios[indx].toMap());
+      indx = indx + 1;
+      indx2 = indx2 + 1;
+    }
+    FFAppState().updatePacienteStruct(
+      (e) => e..id = FFAppState().paciente.id,
+    );
+    FFAppState().update(() {});
+    await Future.delayed(const Duration(milliseconds: 3000));
+    await CreatePrescriptionCall.call(
+      dosesJson: dosagens,
+    );
   }
 }

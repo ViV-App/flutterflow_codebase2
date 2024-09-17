@@ -32,7 +32,7 @@ class _CancelarPlanoWidgetState extends State<CancelarPlanoWidget> {
     super.initState();
     _model = createModel(context, () => CancelarPlanoModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -175,7 +175,7 @@ class _CancelarPlanoWidgetState extends State<CancelarPlanoWidget> {
                             },
                           );
 
-                          setState(() {});
+                          safeSetState(() {});
                         },
                         child: Text(
                           'Desejo cancelar',

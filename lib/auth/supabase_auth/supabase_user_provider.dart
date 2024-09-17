@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class VIVPacienteSupabaseUser extends BaseAuthUser {
-  VIVPacienteSupabaseUser(this.user);
+class VIVAssistenteSupabaseUser extends BaseAuthUser {
+  VIVAssistenteSupabaseUser(this.user);
   User? user;
   @override
   bool get loggedIn => user != null;
@@ -57,7 +57,7 @@ class VIVPacienteSupabaseUser extends BaseAuthUser {
 /// [SupaFlow.client.auth.onAuthStateChange] does not yield any values until the
 /// user is already authenticated. So we add a default null user to the stream,
 /// if we need to interact with the [currentUser] before logging in.
-Stream<BaseAuthUser> vIVPacienteSupabaseUserStream() {
+Stream<BaseAuthUser> vIVAssistenteSupabaseUserStream() {
   final supabaseAuthStream = SupaFlow.client.auth.onAuthStateChange.debounce(
       (authState) => authState.event == AuthChangeEvent.tokenRefreshed
           ? TimerStream(authState, const Duration(seconds: 1))
@@ -67,7 +67,7 @@ Stream<BaseAuthUser> vIVPacienteSupabaseUserStream() {
           : supabaseAuthStream)
       .map<BaseAuthUser>(
     (authState) {
-      currentUser = VIVPacienteSupabaseUser(authState?.session?.user);
+      currentUser = VIVAssistenteSupabaseUser(authState?.session?.user);
       return currentUser!;
     },
   );

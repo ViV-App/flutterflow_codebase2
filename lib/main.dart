@@ -35,7 +35,7 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key, this.entryPage});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -43,8 +43,6 @@ class MyApp extends StatefulWidget {
 
   static _MyAppState of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>()!;
-
-  final Widget? entryPage;
 }
 
 class _MyAppState extends State<MyApp> {
@@ -62,8 +60,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
-    _router = createRouter(_appStateNotifier, widget.entryPage);
-    userStream = vIVPacienteSupabaseUserStream()
+    _router = createRouter(_appStateNotifier);
+    userStream = vIVAssistenteSupabaseUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
       });
@@ -75,17 +73,17 @@ class _MyAppState extends State<MyApp> {
   }
 
   void setLocale(String language) {
-    setState(() => _locale = createLocale(language));
+    safeSetState(() => _locale = createLocale(language));
   }
 
-  void setThemeMode(ThemeMode mode) => setState(() {
+  void setThemeMode(ThemeMode mode) => safeSetState(() {
         _themeMode = mode;
       });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'VIV - Paciente',
+      title: 'VIV - Assistente',
       localizationsDelegates: const [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,

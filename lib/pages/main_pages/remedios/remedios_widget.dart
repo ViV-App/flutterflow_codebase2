@@ -30,14 +30,14 @@ class _RemediosWidgetState extends State<RemediosWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
+      safeSetState(() {
         FFAppState().clearRemediosCache();
         _model.requestCompleted = false;
       });
       await _model.waitForRequestCompleted();
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -139,7 +139,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
                       child: Text(
-                        'Veja abaixo que você já registrou! Você também pode editar e adicionar novos à qualquer momento.',
+                        'Veja abaixo o(s) remédio(s) que você registrou! Você também pode editar ou adicionar novos registros.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Mulish',
                               color: const Color(0xFF8798B5),
@@ -276,11 +276,17 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: EditPrescriptionWidget(
-                                                  prescricao: _model
-                                                      .rtnPrescription?.first,
-                                                  medicamento:
-                                                      listViewMeusMedicamentosRow,
+                                                child: SizedBox(
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.85,
+                                                  child: EditPrescriptionWidget(
+                                                    prescricao: _model
+                                                        .rtnPrescription?.first,
+                                                    medicamento:
+                                                        listViewMeusMedicamentosRow,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -288,7 +294,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                         },
                                       ).then((value) => safeSetState(() {}));
 
-                                      setState(() {});
+                                      safeSetState(() {});
                                     },
                                     child: RemedioCardWidget(
                                       key: Key(
@@ -317,16 +323,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                         const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed(
-                          'prescricao01',
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: const TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 0),
-                            ),
-                          },
-                        );
+                        context.pushNamed('prescricao01');
                       },
                       text: 'Adicionar novo',
                       options: FFButtonOptions(

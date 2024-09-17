@@ -46,9 +46,9 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
       await actions.conectar(
         'mensagem',
         () async {
-          setState(() => _model.requestCompleter2 = null);
+          safeSetState(() => _model.requestCompleter2 = null);
           await _model.waitForRequestCompleted2();
-          setState(() => _model.requestCompleter1 = null);
+          safeSetState(() => _model.requestCompleter1 = null);
           await _model.waitForRequestCompleted1();
           await _model.listViewController?.animateTo(
             _model.listViewController!.position.maxScrollExtent,
@@ -72,7 +72,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -203,118 +203,163 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              FutureBuilder<List<MensagemRow>>(
-                                future: (_model.requestCompleter1 ??=
-                                        Completer<List<MensagemRow>>()
-                                          ..complete(MensagemTable().queryRows(
-                                            queryFn: (q) => q
-                                                .eq(
-                                                  'chat',
-                                                  chatVivChatRow?.id,
-                                                )
-                                                .order('created_at',
-                                                    ascending: true),
-                                          )))
-                                    .future,
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
+                              Container(
+                                width: double.infinity,
+                                decoration: const BoxDecoration(),
+                                child: FutureBuilder<List<MensagemRow>>(
+                                  future: (_model.requestCompleter1 ??=
+                                          Completer<List<MensagemRow>>()
+                                            ..complete(
+                                                MensagemTable().queryRows(
+                                              queryFn: (q) => q
+                                                  .eq(
+                                                    'chat',
+                                                    chatVivChatRow?.id,
+                                                  )
+                                                  .order('created_at',
+                                                      ascending: true),
+                                            )))
+                                      .future,
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
                                           ),
                                         ),
+                                      );
+                                    }
+                                    List<MensagemRow> listViewMensagemRowList =
+                                        snapshot.data!;
+
+                                    if (listViewMensagemRowList.isEmpty) {
+                                      return Image.asset(
+                                        'assets/images/Group_12947.png',
+                                        width: double.infinity,
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.8,
+                                      );
+                                    }
+
+                                    return ListView.separated(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        0,
+                                        24.0,
+                                        0,
+                                        24.0,
                                       ),
-                                    );
-                                  }
-                                  List<MensagemRow> listViewMensagemRowList =
-                                      snapshot.data!;
-
-                                  if (listViewMensagemRowList.isEmpty) {
-                                    return Image.asset(
-                                      'assets/images/Group_12947.png',
-                                      width: double.infinity,
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              0.8,
-                                    );
-                                  }
-
-                                  return ListView.separated(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      0,
-                                      24.0,
-                                      0,
-                                      24.0,
-                                    ),
-                                    primary: false,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: listViewMensagemRowList.length,
-                                    separatorBuilder: (_, __) =>
-                                        const SizedBox(height: 18.0),
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewMensagemRow =
-                                          listViewMensagemRowList[
-                                              listViewIndex];
-                                      return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            if (listViewMensagemRow.sender ==
-                                                'Assistant')
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, -1.0),
-                                                child: Container(
-                                                  constraints: const BoxConstraints(
-                                                    maxWidth: 350.0,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        const BorderRadius.only(
-                                                      bottomLeft:
-                                                          Radius.circular(0.0),
-                                                      bottomRight:
-                                                          Radius.circular(18.0),
-                                                      topLeft:
-                                                          Radius.circular(18.0),
-                                                      topRight:
-                                                          Radius.circular(18.0),
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: listViewMensagemRowList.length,
+                                      separatorBuilder: (_, __) =>
+                                          const SizedBox(height: 18.0),
+                                      itemBuilder: (context, listViewIndex) {
+                                        final listViewMensagemRow =
+                                            listViewMensagemRowList[
+                                                listViewIndex];
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  18.0, 0.0, 18.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              if (listViewMensagemRow.sender ==
+                                                  'Assistant')
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, -1.0),
+                                                  child: Container(
+                                                    constraints: const BoxConstraints(
+                                                      maxWidth: 350.0,
                                                     ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                12.0,
-                                                                12.0,
-                                                                12.0,
-                                                                12.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          children: [
-                                                            Text(
-                                                              'Assistente',
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          const BorderRadius.only(
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                0.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                18.0),
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                18.0),
+                                                        topRight:
+                                                            Radius.circular(
+                                                                18.0),
+                                                      ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  12.0,
+                                                                  12.0,
+                                                                  12.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            children: [
+                                                              Text(
+                                                                'Assistente',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Mulish',
+                                                                      color: const Color(
+                                                                          0xFF262B37),
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        12.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                listViewMensagemRow
+                                                                    .message,
+                                                                '-',
+                                                              ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -322,27 +367,94 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                                                     fontFamily:
                                                                         'Mulish',
                                                                     color: const Color(
-                                                                        0xFF262B37),
-                                                                    fontSize:
-                                                                        16.0,
+                                                                        0xFF434854),
                                                                     letterSpacing:
                                                                         0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
                                                                   ),
                                                             ),
-                                                          ],
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      12.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
+                                                          ),
+                                                          Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    1.0, 1.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          12.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                dateTimeFormat(
+                                                                  "Hm",
+                                                                  listViewMensagemRow
+                                                                      .createdAt,
+                                                                  locale: FFLocalizations.of(
+                                                                          context)
+                                                                      .languageCode,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Mulish',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (listViewMensagemRow.sender ==
+                                                  'Pacient')
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          1.0, -1.0),
+                                                  child: Container(
+                                                    constraints: const BoxConstraints(
+                                                      maxWidth: 350.0,
+                                                    ),
+                                                    decoration: const BoxDecoration(
+                                                      color: Color(0xFFDBE4F1),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                18.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                0.0),
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                18.0),
+                                                        topRight:
+                                                            Radius.circular(
+                                                                18.0),
+                                                      ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  12.0,
+                                                                  12.0,
+                                                                  12.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
                                                             valueOrDefault<
                                                                 String>(
                                                               listViewMensagemRow
@@ -361,147 +473,52 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                                                       0.0,
                                                                 ),
                                                           ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              const AlignmentDirectional(
-                                                                  1.0, 1.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        12.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              dateTimeFormat(
-                                                                "Hm",
-                                                                listViewMensagemRow
-                                                                    .createdAt,
-                                                                locale: FFLocalizations.of(
+                                                          Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    1.0, 1.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          12.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                dateTimeFormat(
+                                                                  "Hm",
+                                                                  listViewMensagemRow
+                                                                      .createdAt,
+                                                                  locale: FFLocalizations.of(
+                                                                          context)
+                                                                      .languageCode,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .languageCode,
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Mulish',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
                                                               ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Mulish',
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                            if (listViewMensagemRow.sender ==
-                                                'Pacient')
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    1.0, -1.0),
-                                                child: Container(
-                                                  constraints: const BoxConstraints(
-                                                    maxWidth: 350.0,
-                                                  ),
-                                                  decoration: const BoxDecoration(
-                                                    color: Color(0xFFDBE4F1),
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      bottomLeft:
-                                                          Radius.circular(18.0),
-                                                      bottomRight:
-                                                          Radius.circular(0.0),
-                                                      topLeft:
-                                                          Radius.circular(18.0),
-                                                      topRight:
-                                                          Radius.circular(18.0),
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                12.0,
-                                                                12.0,
-                                                                12.0,
-                                                                12.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            listViewMensagemRow
-                                                                .message,
-                                                            '-',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Mulish',
-                                                                color: const Color(
-                                                                    0xFF434854),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              const AlignmentDirectional(
-                                                                  1.0, 1.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        12.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              dateTimeFormat(
-                                                                "Hm",
-                                                                listViewMensagemRow
-                                                                    .createdAt,
-                                                                locale: FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode,
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Mulish',
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                          ].divide(const SizedBox(height: 18.0)),
-                                        ),
-                                      );
-                                    },
-                                    controller: _model.listViewController,
-                                  );
-                                },
+                                            ].divide(const SizedBox(height: 18.0)),
+                                          ),
+                                        );
+                                      },
+                                      controller: _model.listViewController,
+                                    );
+                                  },
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
@@ -641,7 +658,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                               EasyDebounce.debounce(
                                             '_model.textController',
                                             const Duration(milliseconds: 100),
-                                            () => setState(() {}),
+                                            () => safeSetState(() {}),
                                           ),
                                           autofocus: false,
                                           obscureText: false,
@@ -694,12 +711,8 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                             _model.lastM =
                                                 _model.textController.text;
                                             _model.waiting = true;
-                                            setState(() {});
-                                            setState(() => _model
-                                                .requestCompleter1 = null);
-                                            await _model
-                                                .waitForRequestCompleted1();
-                                            setState(() {
+                                            safeSetState(() {});
+                                            safeSetState(() {
                                               _model.textController?.clear();
                                             });
                                             await _model.mainColumn?.animateTo(
@@ -726,20 +739,17 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                               curve: Curves.ease,
                                             );
                                             _model.apiResultt290 =
-                                                await CallChatCall.call(
+                                                await SenchatbCall.call(
                                               nome: FFAppState().paciente.nome,
                                               uid: currentUserUid,
-                                              pacid: FFAppState()
-                                                  .paciente
-                                                  .id
-                                                  .toString(),
+                                              pacid: FFAppState().paciente.id,
                                               threadid:
                                                   chatVivChatRow?.threadId,
                                               chat: chatVivChatRow?.id,
                                               message: _model.lastM,
                                             );
 
-                                            if (CallChatCall.response(
+                                            if (SenchatbCall.response(
                                                   (_model.apiResultt290
                                                           ?.jsonBody ??
                                                       ''),
@@ -748,7 +758,10 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                               _model.typing = false;
                                               _model.lastM = null;
                                               _model.waiting = false;
-                                              setState(() {});
+                                              safeSetState(() {});
+                                              await Future.delayed(
+                                                  const Duration(
+                                                      milliseconds: 1000));
                                               await _model.mainColumn
                                                   ?.animateTo(
                                                 _model.mainColumn!.position
@@ -775,7 +788,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                               );
                                             }
 
-                                            setState(() {});
+                                            safeSetState(() {});
                                           },
                                           child: const Icon(
                                             Icons.send_outlined,

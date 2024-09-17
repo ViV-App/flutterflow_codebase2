@@ -60,7 +60,7 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
       this,
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -204,7 +204,7 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
                                   child: Checkbox(
                                     value: _model.checkboxValue ??= true,
                                     onChanged: (newValue) async {
-                                      setState(() =>
+                                      safeSetState(() =>
                                           _model.checkboxValue = newValue!);
                                     },
                                     side: BorderSide(

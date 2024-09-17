@@ -70,20 +70,18 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
-    GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? entryPage ?? const HomePageWidget()
-          : const SplashScreenWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? const HomePageWidget() : const SplashScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? entryPage ?? const HomePageWidget()
+              ? const HomePageWidget()
               : const SplashScreenWidget(),
         ),
         FFRoute(
@@ -180,16 +178,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'consulta',
-          path: '/consulta',
-          builder: (context, params) => const ConsultaWidget(),
-        ),
-        FFRoute(
-          name: 'previousTreatment',
-          path: '/previousTreatment',
-          builder: (context, params) => const PreviousTreatmentWidget(),
-        ),
-        FFRoute(
           name: 'meuPlano',
           path: '/meuPlano',
           builder: (context, params) => const MeuPlanoWidget(),
@@ -220,10 +208,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           ),
         ),
         FFRoute(
-          name: 'newEvolucao',
-          path: '/newEvolucao',
+          name: 'evolucao',
+          path: '/evolucao',
           requireAuth: true,
-          builder: (context, params) => const NewEvolucaoWidget(),
+          builder: (context, params) => const EvolucaoWidget(),
         ),
         FFRoute(
           name: 'planoTerapeutico',
@@ -251,6 +239,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
           builder: (context, params) => AjustarDoseWidget(
             page: params.getParam(
               'page',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'questionarioBip',
+          path: '/questionarioBip',
+          builder: (context, params) => QuestionarioBipWidget(
+            questionario: params.getParam<QuestionarioRow>(
+              'questionario',
+              ParamType.SupabaseRow,
+            ),
+            bipRequisicao: params.getParam(
+              'bipRequisicao',
+              ParamType.int,
+            ),
+            queixa: params.getParam(
+              'queixa',
               ParamType.String,
             ),
           ),

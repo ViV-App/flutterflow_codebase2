@@ -26,7 +26,7 @@ class _MigrarPlanoWidgetState extends State<MigrarPlanoWidget> {
     super.initState();
     _model = createModel(context, () => MigrarPlanoModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

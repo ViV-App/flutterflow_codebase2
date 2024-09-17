@@ -33,4 +33,7 @@ class PlanosAssinaturaRow extends SupabaseDataRow {
   List<String> get beneficios => getListField<String>('beneficios');
   set beneficios(List<String>? value) =>
       setListField<String>('beneficios', value);
+
+  bool? get ativado => getField<bool>('ativado');
+  set ativado(bool? value) => setField<bool>('ativado', value);
 }

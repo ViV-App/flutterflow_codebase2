@@ -27,7 +27,7 @@ class _MeuPlanoWidgetState extends State<MeuPlanoWidget> {
     super.initState();
     _model = createModel(context, () => MeuPlanoModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -435,7 +435,7 @@ class _MeuPlanoWidgetState extends State<MeuPlanoWidget> {
                                     },
                                   ).then((value) => safeSetState(() {}));
 
-                                  setState(
+                                  safeSetState(
                                       () => _model.requestCompleter = null);
                                   await _model.waitForRequestCompleted();
                                 },

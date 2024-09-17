@@ -65,7 +65,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -131,7 +131,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     child: FFButtonWidget(
                       onPressed: () async {
                         _model.currentStep = _model.currentStep + 1;
-                        setState(() {});
+                        safeSetState(() {});
                       },
                       text: 'Continuar',
                       options: FFButtonOptions(
@@ -353,7 +353,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                           ? null
                           : () async {
                               _model.currentStep = _model.currentStep + 1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                       text: 'Continuar',
                       options: FFButtonOptions(
@@ -465,7 +465,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   'Separado(a)',
                                   'União Estável'
                                 ],
-                                onChanged: (val) => setState(
+                                onChanged: (val) => safeSetState(
                                     () => _model.civilStateValue = val),
                                 width: 300.0,
                                 height: 56.0,
@@ -512,7 +512,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                           ? null
                           : () async {
                               _model.currentStep = _model.currentStep + 1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                       text: 'Continuar',
                       options: FFButtonOptions(
@@ -794,7 +794,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     child: FFButtonWidget(
                       onPressed: () async {
                         _model.currentStep = _model.currentStep + 1;
-                        setState(() {});
+                        safeSetState(() {});
                       },
                       text: 'Continuar',
                       options: FFButtonOptions(
@@ -881,7 +881,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                               FormFieldController<String>(null),
                           options: FFAppConstants.triagemEstrangeiro,
                           onChanged: (val) =>
-                              setState(() => _model.gringoValue = val),
+                              safeSetState(() => _model.gringoValue = val),
                           width: 300.0,
                           height: 56.0,
                           textStyle:
@@ -923,7 +923,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                           ? null
                           : () async {
                               _model.currentStep = _model.currentStep + 1;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                       text: 'Continuar',
                       options: FFButtonOptions(
@@ -1050,17 +1050,16 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                   photoLibraryPermission);
                                             } else {
                                               final selectedMedia =
-                                                  await selectMedia(
-                                                mediaSource:
-                                                    MediaSource.photoGallery,
-                                                multiImage: false,
+                                                  await selectMediaWithSourceBottomSheet(
+                                                context: context,
+                                                allowPhoto: true,
                                               );
                                               if (selectedMedia != null &&
                                                   selectedMedia.every((m) =>
                                                       validateFileFormat(
                                                           m.storagePath,
                                                           context))) {
-                                                setState(() => _model
+                                                safeSetState(() => _model
                                                     .isDataUploading1 = true);
                                                 var selectedUploadedFiles =
                                                     <FFUploadedFile>[];
@@ -1092,25 +1091,29 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                 if (selectedUploadedFiles
                                                         .length ==
                                                     selectedMedia.length) {
-                                                  setState(() {
+                                                  safeSetState(() {
                                                     _model.uploadedLocalFile1 =
                                                         selectedUploadedFiles
                                                             .first;
                                                   });
                                                 } else {
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                   return;
                                                 }
                                               }
 
                                               _model.addToDocuments(
                                                   _model.uploadedLocalFile1);
-                                              setState(() {});
+                                              safeSetState(() {});
                                             }
                                           },
                                           child: Container(
                                             width: 150.0,
                                             height: 150.0,
+                                            constraints: const BoxConstraints(
+                                              minWidth: 150.0,
+                                              maxWidth: 150.0,
+                                            ),
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1186,17 +1189,16 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                   photoLibraryPermission);
                                             } else {
                                               final selectedMedia =
-                                                  await selectMedia(
-                                                mediaSource:
-                                                    MediaSource.photoGallery,
-                                                multiImage: false,
+                                                  await selectMediaWithSourceBottomSheet(
+                                                context: context,
+                                                allowPhoto: true,
                                               );
                                               if (selectedMedia != null &&
                                                   selectedMedia.every((m) =>
                                                       validateFileFormat(
                                                           m.storagePath,
                                                           context))) {
-                                                setState(() => _model
+                                                safeSetState(() => _model
                                                     .isDataUploading2 = true);
                                                 var selectedUploadedFiles =
                                                     <FFUploadedFile>[];
@@ -1228,24 +1230,28 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                 if (selectedUploadedFiles
                                                         .length ==
                                                     selectedMedia.length) {
-                                                  setState(() {
+                                                  safeSetState(() {
                                                     _model.uploadedLocalFile2 =
                                                         selectedUploadedFiles
                                                             .first;
                                                   });
                                                 } else {
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                   return;
                                                 }
                                               }
 
                                               _model.addToDocuments(
                                                   _model.uploadedLocalFile2);
-                                              setState(() {});
+                                              safeSetState(() {});
                                             }
                                           },
                                           child: Container(
                                             height: 150.0,
+                                            constraints: const BoxConstraints(
+                                              minWidth: 150.0,
+                                              maxWidth: 150.0,
+                                            ),
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1350,17 +1356,16 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                   photoLibraryPermission);
                                             } else {
                                               final selectedMedia =
-                                                  await selectMedia(
-                                                mediaSource:
-                                                    MediaSource.photoGallery,
-                                                multiImage: false,
+                                                  await selectMediaWithSourceBottomSheet(
+                                                context: context,
+                                                allowPhoto: true,
                                               );
                                               if (selectedMedia != null &&
                                                   selectedMedia.every((m) =>
                                                       validateFileFormat(
                                                           m.storagePath,
                                                           context))) {
-                                                setState(() => _model
+                                                safeSetState(() => _model
                                                     .isDataUploading3 = true);
                                                 var selectedUploadedFiles =
                                                     <FFUploadedFile>[];
@@ -1392,25 +1397,29 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                 if (selectedUploadedFiles
                                                         .length ==
                                                     selectedMedia.length) {
-                                                  setState(() {
+                                                  safeSetState(() {
                                                     _model.uploadedLocalFile3 =
                                                         selectedUploadedFiles
                                                             .first;
                                                   });
                                                 } else {
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                   return;
                                                 }
                                               }
 
                                               _model.addToDocuments(
                                                   _model.uploadedLocalFile3);
-                                              setState(() {});
+                                              safeSetState(() {});
                                             }
                                           },
                                           child: Container(
                                             width: 150.0,
                                             height: 150.0,
+                                            constraints: const BoxConstraints(
+                                              minWidth: 150.0,
+                                              maxWidth: 150.0,
+                                            ),
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1495,7 +1504,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                       validateFileFormat(
                                                           m.storagePath,
                                                           context))) {
-                                                setState(() => _model
+                                                safeSetState(() => _model
                                                     .isDataUploading4 = true);
                                                 var selectedUploadedFiles =
                                                     <FFUploadedFile>[];
@@ -1527,24 +1536,30 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                 if (selectedUploadedFiles
                                                         .length ==
                                                     selectedMedia.length) {
-                                                  setState(() {
+                                                  safeSetState(() {
                                                     _model.uploadedLocalFile4 =
                                                         selectedUploadedFiles
                                                             .first;
                                                   });
                                                 } else {
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                   return;
                                                 }
                                               }
 
                                               _model.addToDocuments(
                                                   _model.uploadedLocalFile4);
-                                              setState(() {});
+                                              safeSetState(() {});
                                             }
                                           },
                                           child: Container(
                                             height: 150.0,
+                                            constraints: const BoxConstraints(
+                                              minWidth: 150.0,
+                                              minHeight: 150.0,
+                                              maxWidth: 150.0,
+                                              maxHeight: 150.0,
+                                            ),
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1635,7 +1650,8 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                           ? null
                           : () async {
                               {
-                                setState(() => _model.isDataUploading5 = true);
+                                safeSetState(
+                                    () => _model.isDataUploading5 = true);
                                 var selectedUploadedFiles = <FFUploadedFile>[];
                                 var selectedFiles = <SelectedFile>[];
                                 var downloadUrls = <String>[];
@@ -1659,13 +1675,13 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                         selectedFiles.length &&
                                     downloadUrls.length ==
                                         selectedFiles.length) {
-                                  setState(() {
+                                  safeSetState(() {
                                     _model.uploadedLocalFiles5 =
                                         selectedUploadedFiles;
                                     _model.uploadedFileUrls5 = downloadUrls;
                                   });
                                 } else {
-                                  setState(() {});
+                                  safeSetState(() {});
                                   return;
                                 }
                               }
@@ -1719,7 +1735,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 },
                               );
 
-                              setState(() {});
+                              safeSetState(() {});
                             },
                       text: 'Continuar',
                       options: FFButtonOptions(

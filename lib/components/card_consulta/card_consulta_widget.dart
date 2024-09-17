@@ -27,7 +27,7 @@ class _CardConsultaWidgetState extends State<CardConsultaWidget> {
     super.initState();
     _model = createModel(context, () => CardConsultaModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

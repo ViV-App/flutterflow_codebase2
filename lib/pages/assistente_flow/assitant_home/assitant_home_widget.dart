@@ -28,10 +28,10 @@ class _AssitantHomeWidgetState extends State<AssitantHomeWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       FFAppState().menuChatOpen = false;
-      setState(() {});
+      safeSetState(() {});
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -332,3 +332,20 @@ int getMonthNumber(DateTime date) {
   int month = date.month;
   return month;
 }
+
+List<dynamic> dataTypeListToJsonList(List<HorariosStruct> dataList) {
+  return dataList.map((item) => jsonEncode(item.toMap())).toList();
+}
+
+List<dynamic> convertHorarioToJson(List<HorariosStruct> horarios) {
+  final List<Map<String, dynamic>> jsonList = horarios.map((horario) {
+    return {
+      'horario': horario.horario
+          .toString()
+          .substring(0, 19), // Converte DateTime para String
+      'dosagem': horario.dosagem,
+      'medida': horario.medida,
+    };
+  }).toList();
+  return jsonList;
+}

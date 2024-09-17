@@ -56,7 +56,7 @@ class AdicionarPrescricaoCall {
   }
 }
 
-class GetCall {
+class GetAgendaCall {
   static Future<ApiCallResponse> call({
     String? date = '',
     int? periodo,
@@ -69,8 +69,9 @@ class GetCall {
   "userid": $cliente
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'get',
-      apiUrl: 'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/get_agenda',
+      callName: 'GetAgenda',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/get_agenda_def',
       callType: ApiCallType.POST,
       headers: {
         'apikey':
@@ -207,6 +208,11 @@ class GetCall {
           .map((x) => castToType<int>(x))
           .withoutNulls
           .toList();
+  static List? doses(dynamic response) => getJsonField(
+        response,
+        r'''$[:].doses''',
+        true,
+      ) as List?;
 }
 
 class GetMedicamentosByNameCall {
@@ -1016,6 +1022,151 @@ class ResetFormResponsesCall {
       alwaysAllowBody: false,
     );
   }
+}
+
+class CreatePrescriptionCall {
+  static Future<ApiCallResponse> call({
+    dynamic dosesJson,
+  }) async {
+    final doses = _serializeJson(dosesJson, true);
+    final ffApiRequestBody = '''
+{
+  "medicamento": "a",
+  "paciente": "a",
+  "continuo": "a",
+  "date_start": "a",
+  "date_end": "a",
+  "doses": $doses,
+  "horarios": "a"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'create prescription',
+      apiUrl:
+          'https://primary-production-52d3.up.railway.app/webhook-test/554cd396-02a5-4030-a1f8-660b3e34c8db',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GenerateBipResponsesCall {
+  static Future<ApiCallResponse> call({
+    int? bipReq,
+    int? paciente,
+    int? questionario,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "biprequisicao": $bipReq,
+  "paciente_id": $paciente,
+  "questionario_id": $questionario
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'generate bip responses',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/create_respostas_questionario_com_bip',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzOTg0MjksImV4cCI6MjAyOTk3NDQyOX0.XczFr7OwtAY2U06zTYWsFHKDwoDzdY10ZeO9hlevcAk',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzOTg0MjksImV4cCI6MjAyOTk3NDQyOX0.XczFr7OwtAY2U06zTYWsFHKDwoDzdY10ZeO9hlevcAk',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class BuyBipCall {
+  static Future<ApiCallResponse> call({
+    int? cusId,
+    int? value,
+    String? produto = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+"customerId": $cusId,
+"value": $value
+"produto": "$produto"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'buy bip',
+      apiUrl:
+          'https://primary-production-52d3.up.railway.app/webhook/eb403ebb-986e-4c38-99eb-97983676d60d',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SenchatbCall {
+  static Future<ApiCallResponse> call({
+    String? nome = '',
+    String? uid = '',
+    int? pacid,
+    String? threadid = '',
+    int? chat,
+    String? message = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "User": {
+    "Name": "$nome",
+    "uuid": "$uid",
+    "paciente_id": "$pacid",
+    "thread_id": "$threadid"
+  },
+  "Chat": $chat,
+  "Message": "$message"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'senchatb',
+      apiUrl: 'https://primary-production-52d3.up.railway.app/webhook/chatbot',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static bool? response(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.success''',
+      ));
 }
 
 class ApiPagingParams {

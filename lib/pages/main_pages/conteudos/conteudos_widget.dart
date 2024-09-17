@@ -28,7 +28,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
     super.initState();
     _model = createModel(context, () => ConteudosModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -144,11 +144,12 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                           .withoutNulls
                                           .toList(),
                                   onChanged: (val) async {
-                                    setState(() => _model.dropDownValue = val);
-                                    setState(
+                                    safeSetState(
+                                        () => _model.dropDownValue = val);
+                                    safeSetState(
                                         () => _model.requestCompleter1 = null);
                                     await _model.waitForRequestCompleted1();
-                                    setState(
+                                    safeSetState(
                                         () => _model.requestCompleter2 = null);
                                     await _model.waitForRequestCompleted2();
                                   },
@@ -201,7 +202,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                         size: 18.0,
                                       ),
                                       onPressed: () async {
-                                        setState(() {
+                                        safeSetState(() {
                                           _model.dropDownValueController
                                               ?.reset();
                                         });

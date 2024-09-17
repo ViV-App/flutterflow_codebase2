@@ -33,7 +33,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.pickedDate = getCurrentTimestamp;
-      setState(() {});
+      safeSetState(() {});
       await _model.getAgenda(
         context,
         date: dateTimeFormat(
@@ -42,10 +42,10 @@ class _AgendaWidgetState extends State<AgendaWidget> {
           locale: FFLocalizations.of(context).languageCode,
         ),
       );
-      setState(() {});
+      safeSetState(() {});
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -124,17 +124,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed(
-                                      'remedios',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
+                                    context.pushNamed('remedios');
                                   },
                                   child: Icon(
                                     Icons.add,
@@ -268,9 +258,9 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                               .languageCode,
                                         ),
                                       );
-                                      setState(() {});
+                                      safeSetState(() {});
                                       _model.pickedDate = _model.datePicked;
-                                      setState(() {});
+                                      safeSetState(() {});
                                     },
                                     child: Container(
                                       width: double.infinity,
@@ -298,7 +288,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 _model.pickedDate =
                                                     functions.subDaysToDate(
                                                         _model.pickedDate!, 1);
-                                                setState(() {});
+                                                safeSetState(() {});
                                               },
                                               child: Icon(
                                                 Icons.arrow_back_ios_new,
@@ -337,7 +327,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 _model.pickedDate =
                                                     functions.addDaysToDate(
                                                         _model.pickedDate!, 1);
-                                                setState(() {});
+                                                safeSetState(() {});
                                               },
                                               child: Icon(
                                                 Icons.arrow_forward_ios,
@@ -376,7 +366,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                   Colors.transparent,
                                               onTap: () async {
                                                 _model.pickedDate = weekItem;
-                                                setState(() {});
+                                                safeSetState(() {});
                                                 await _model.getAgenda(
                                                   context,
                                                   date: dateTimeFormat(
@@ -387,7 +377,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                         .languageCode,
                                                   ),
                                                 );
-                                                setState(() {});
+                                                safeSetState(() {});
                                               },
                                               child: Container(
                                                 width: 50.0,
@@ -868,10 +858,10 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                                         _model.consumoQntd =
                                                                             _model.consumoQntd! +
                                                                                 1;
-                                                                        setState(
+                                                                        safeSetState(
                                                                             () {});
 
-                                                                        setState(
+                                                                        safeSetState(
                                                                             () {});
                                                                       },
                                                                       child:
@@ -921,7 +911,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                                         _model.consumoQntd =
                                                                             _model.consumoQntd! +
                                                                                 -1;
-                                                                        setState(
+                                                                        safeSetState(
                                                                             () {});
                                                                       },
                                                                       child:
@@ -970,16 +960,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                             24.0, 12.0, 24.0, 24.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            context.pushNamed(
-                              'remedios',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                ),
-                              },
-                            );
+                            context.pushNamed('prescricao01');
                           },
                           text: 'Adicionar novo',
                           options: FFButtonOptions(

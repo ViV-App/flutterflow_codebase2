@@ -25,21 +25,33 @@ class AjusteDoseRequisicaoRow extends SupabaseDataRow {
   set requisicaoData(DateTime? value) =>
       setField<DateTime>('requisicao_data', value);
 
-  bool? get formGeralPreenchido => getField<bool>('formGeralPreenchido');
-  set formGeralPreenchido(bool? value) =>
-      setField<bool>('formGeralPreenchido', value);
-
   bool? get formEspecificPreenchido =>
       getField<bool>('formEspecificPreenchido');
   set formEspecificPreenchido(bool? value) =>
       setField<bool>('formEspecificPreenchido', value);
-
-  String? get status => getField<String>('status');
-  set status(String? value) => setField<String>('status', value);
 
   int? get paciente => getField<int>('paciente');
   set paciente(int? value) => setField<int>('paciente', value);
 
   int? get bipVIgente => getField<int>('bipVIgente');
   set bipVIgente(int? value) => setField<int>('bipVIgente', value);
+
+  bool? get produto => getField<bool>('produto');
+  set produto(bool? value) => setField<bool>('produto', value);
+
+  bool? get dadosGerais => getField<bool>('dadosGerais');
+  set dadosGerais(bool? value) => setField<bool>('dadosGerais', value);
+
+  bool? get pam => getField<bool>('pam');
+  set pam(bool? value) => setField<bool>('pam', value);
+
+  List<String> get queixasNaoRespondidas =>
+      getListField<String>('queixasNaoRespondidas');
+  set queixasNaoRespondidas(List<String>? value) =>
+      setListField<String>('queixasNaoRespondidas', value);
+
+  List<String> get queixasRespondidas =>
+      getListField<String>('queixasRespondidas');
+  set queixasRespondidas(List<String>? value) =>
+      setListField<String>('queixasRespondidas', value);
 }

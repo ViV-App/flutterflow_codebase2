@@ -90,8 +90,6 @@ class CompletePerfilModel extends FlutterFlowModel<CompletePerfilWidget> {
     return null;
   }
 
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue;
   // Stores action output result for [Backend Call - API (create asaas customer)] action in Button widget.
   ApiCallResponse? cust;
 

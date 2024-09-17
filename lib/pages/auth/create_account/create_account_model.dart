@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/questionario/int_phone_number/int_phone_number_widget.dart';
@@ -107,10 +108,14 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Backend Call - API (create asaas customer)] action in Button widget.
+  ApiCallResponse? customerAsaas;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   PacienteRow? createdUser;
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.
   List<PacienteRow>? loggedUser;
+  // Stores action output result for [Backend Call - Insert Row] action in Button widget.
+  StatusPacientRow? st1;
 
   @override
   void initState(BuildContext context) {
@@ -140,6 +145,15 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   /// Action blocks.
   Future<bool?> checkCredentials(BuildContext context) async {
+    List<PacienteRow>? fgd;
+
+    fgd = await PacienteTable().queryRows(
+      queryFn: (q) => q.eq(
+        'cpf',
+        ipCPFTextController.text,
+      ),
+    );
+
     return null;
   }
 }

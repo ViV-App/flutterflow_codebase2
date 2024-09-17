@@ -32,7 +32,7 @@ class _FormsFilledWidgetState extends State<FormsFilledWidget> {
     super.initState();
     _model = createModel(context, () => FormsFilledModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

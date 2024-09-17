@@ -42,7 +42,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     _model.ipPassTextController ??= TextEditingController();
     _model.ipPassFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -257,7 +257,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                     suffixIcon: InkWell(
-                                      onTap: () => setState(
+                                      onTap: () => safeSetState(
                                         () => _model.ipPassVisibility =
                                             !_model.ipPassVisibility,
                                       ),
@@ -313,7 +313,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         child: Checkbox(
                                           value: _model.checkboxValue ??= false,
                                           onChanged: (newValue) async {
-                                            setState(() => _model
+                                            safeSetState(() => _model
                                                 .checkboxValue = newValue!);
                                           },
                                           side: BorderSide(
@@ -432,7 +432,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     foto:
                                         _model.userReturned?.first.profilePic,
                                   );
-                                  setState(() {});
+                                  safeSetState(() {});
 
                                   context.goNamedAuth(
                                     'homePage',
@@ -446,7 +446,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     },
                                   );
 
-                                  setState(() {});
+                                  safeSetState(() {});
                                 },
                                 text: 'Entrar',
                                 options: FFButtonOptions(
@@ -474,231 +474,253 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                               ),
                             ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    width: 100.0,
-                                    height: 1.0,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFF8798B5),
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  'Ou faça login com',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
-                                        fontSize: 12.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    width: 100.0,
-                                    height: 1.0,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFF8798B5),
-                                    ),
-                                  ),
-                                ),
-                              ].divide(const SizedBox(width: 18.0)),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                if (isAndroid == true)
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                              tabletLandscape: false,
+                              desktop: false,
+                            ))
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
                                   Expanded(
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        await actions.signInWithGoogle();
-                                        _model.userExist =
-                                            await PacienteTable().queryRows(
-                                          queryFn: (q) => q.eq(
-                                            'uuid',
-                                            currentUserUid,
-                                          ),
-                                        );
-                                        if ((_model.userExist != null &&
-                                                (_model.userExist)!
-                                                    .isNotEmpty) ==
-                                            false) {
-                                          FFAppState().paciente =
-                                              PacienteStruct(
-                                            nome: _model.userExist?.first.nome,
-                                            id: _model.userExist?.first.id,
-                                            uuid: _model.userExist?.first.uuid,
-                                            createdAt: _model
-                                                .userExist?.first.createdAt,
-                                            telefone: _model
-                                                .userExist?.first.telefone,
-                                            cpf: _model.userExist?.first.cpf,
-                                            foto: _model
-                                                .userExist?.first.profilePic,
-                                            perfilCompleto: _model.userExist
-                                                ?.first.perfilCompleto,
-                                            tratamentoPrevio: _model.userExist
-                                                ?.first.tramentoPrevio,
-                                            medico: _model.userExist?.first
-                                                .medicoPrescritor,
-                                          );
-                                          FFAppState().update(() {});
-
-                                          context.goNamed(
-                                            'homePage',
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  const TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType.fade,
-                                                duration:
-                                                    Duration(milliseconds: 0),
-                                              ),
-                                            },
-                                          );
-                                        } else {
-                                          await PacienteTable().insert({
-                                            'uuid': currentUserUid,
-                                          });
-
-                                          context.goNamed(
-                                            'homePage',
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  const TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType.fade,
-                                                duration:
-                                                    Duration(milliseconds: 0),
-                                              ),
-                                            },
-                                          );
-                                        }
-
-                                        setState(() {});
-                                      },
-                                      child: Container(
-                                        width: 100.0,
-                                        height: 42.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          border: Border.all(
-                                            color: const Color(0xFF8798B5),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.asset(
-                                                'assets/images/Google_svg.png',
-                                                width: 24.0,
-                                                height: 24.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Google',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Mulish',
-                                                    color: const Color(0xFF262B37),
-                                                    fontSize: 12.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w800,
-                                                  ),
-                                            ),
-                                          ].divide(const SizedBox(width: 4.0)),
-                                        ),
+                                    child: Container(
+                                      width: 100.0,
+                                      height: 1.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFF8798B5),
                                       ),
                                     ),
                                   ),
-                                if (isiOS == true)
+                                  Text(
+                                    'Ou faça login com',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Mulish',
+                                          color: const Color(0xFF8798B5),
+                                          fontSize: 12.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
                                   Expanded(
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        final user = await authManager
-                                            .signInWithGoogle(context);
-                                        if (user == null) {
-                                          return;
-                                        }
-
-                                        context.goNamedAuth(
-                                            'homePage', context.mounted);
-                                      },
-                                      child: Container(
-                                        width: 100.0,
-                                        height: 42.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          border: Border.all(
-                                            color: const Color(0xFF8798B5),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.asset(
-                                                'assets/images/Google_svg.png',
-                                                width: 24.0,
-                                                height: 24.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Text(
-                                              'Google',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Mulish',
-                                                    color: const Color(0xFF262B37),
-                                                    fontSize: 12.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w800,
-                                                  ),
-                                            ),
-                                          ].divide(const SizedBox(width: 4.0)),
-                                        ),
+                                    child: Container(
+                                      width: 100.0,
+                                      height: 1.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFF8798B5),
                                       ),
                                     ),
                                   ),
-                              ].divide(const SizedBox(width: 24.0)),
-                            ),
+                                ].divide(const SizedBox(width: 18.0)),
+                              ),
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                              tabletLandscape: false,
+                              desktop: false,
+                            ))
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  if (isAndroid == true)
+                                    Expanded(
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await actions.signInWithGoogle();
+                                          _model.userExist =
+                                              await PacienteTable().queryRows(
+                                            queryFn: (q) => q.eq(
+                                              'uuid',
+                                              currentUserUid,
+                                            ),
+                                          );
+                                          if ((_model.userExist != null &&
+                                                  (_model.userExist)!
+                                                      .isNotEmpty) ==
+                                              false) {
+                                            FFAppState().paciente =
+                                                PacienteStruct(
+                                              nome:
+                                                  _model.userExist?.first.nome,
+                                              id: _model.userExist?.first.id,
+                                              uuid:
+                                                  _model.userExist?.first.uuid,
+                                              createdAt: _model
+                                                  .userExist?.first.createdAt,
+                                              telefone: _model
+                                                  .userExist?.first.telefone,
+                                              cpf: _model.userExist?.first.cpf,
+                                              foto: _model
+                                                  .userExist?.first.profilePic,
+                                              perfilCompleto: _model.userExist
+                                                  ?.first.perfilCompleto,
+                                              tratamentoPrevio: _model.userExist
+                                                  ?.first.tramentoPrevio,
+                                              medico: _model.userExist?.first
+                                                  .medicoPrescritor,
+                                            );
+                                            FFAppState().update(() {});
+
+                                            context.goNamed(
+                                              'homePage',
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
+                                          } else {
+                                            await PacienteTable().insert({
+                                              'uuid': currentUserUid,
+                                            });
+
+                                            context.goNamed(
+                                              'homePage',
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
+                                          }
+
+                                          safeSetState(() {});
+                                        },
+                                        child: Container(
+                                          width: 100.0,
+                                          height: 42.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            border: Border.all(
+                                              color: const Color(0xFF8798B5),
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.asset(
+                                                  'assets/images/Google_svg.png',
+                                                  width: 24.0,
+                                                  height: 24.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              Text(
+                                                'Google',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                              const Color(0xFF262B37),
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                        ),
+                                              ),
+                                            ].divide(const SizedBox(width: 4.0)),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  if (isiOS == true)
+                                    Expanded(
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          final user = await authManager
+                                              .signInWithGoogle(context);
+                                          if (user == null) {
+                                            return;
+                                          }
+
+                                          context.goNamedAuth(
+                                              'homePage', context.mounted);
+                                        },
+                                        child: Container(
+                                          width: 100.0,
+                                          height: 42.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            border: Border.all(
+                                              color: const Color(0xFF8798B5),
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.asset(
+                                                  'assets/images/Google_svg.png',
+                                                  width: 24.0,
+                                                  height: 24.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              Text(
+                                                'Google',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                              const Color(0xFF262B37),
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                        ),
+                                              ),
+                                            ].divide(const SizedBox(width: 4.0)),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                ].divide(const SizedBox(width: 24.0)),
+                              ),
                           ].divide(const SizedBox(height: 24.0)),
                         ),
                       ),

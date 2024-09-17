@@ -32,7 +32,6 @@ export 'tables/status_pacient.dart';
 export 'tables/ficha_saude.dart';
 export 'tables/bem_viver.dart';
 export 'tables/assinatura.dart';
-export 'tables/resposta_questionario.dart';
 export 'tables/avaliacao_quinzenal.dart';
 export 'tables/static_conteudos.dart';
 export 'tables/cobranca.dart';

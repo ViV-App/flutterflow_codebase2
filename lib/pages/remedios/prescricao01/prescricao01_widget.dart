@@ -37,11 +37,11 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       FFAppState().prescricao = PrescricaoStruct();
-      setState(() {});
+      safeSetState(() {});
       FFAppState().prescricao = PrescricaoStruct(
         categoria: _model.dropDownValue1,
       );
-      setState(() {});
+      safeSetState(() {});
     });
 
     _model.inpCannabisTextController ??= TextEditingController();
@@ -49,7 +49,10 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
     _model.inpMedcTextController ??= TextEditingController();
     _model.inpMedcFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    _model.inpVolumeTextController ??= TextEditingController();
+    _model.inpVolumeFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -104,7 +107,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                 context.safePop();
                                 FFAppState().prescricao = PrescricaoStruct();
                                 FFAppState().horarios = [];
-                                setState(() {});
+                                safeSetState(() {});
                               },
                               child: Icon(
                                 Icons.arrow_back_ios_new,
@@ -176,12 +179,13 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                   'Suplemento'
                                 ],
                                 onChanged: (val) async {
-                                  setState(() => _model.dropDownValue1 = val);
+                                  safeSetState(
+                                      () => _model.dropDownValue1 = val);
                                   FFAppState().updatePrescricaoStruct(
                                     (e) => e..categoria = _model.dropDownValue1,
                                   );
-                                  setState(() {});
-                                  setState(() {
+                                  safeSetState(() {});
+                                  safeSetState(() {
                                     _model.inpCannabisTextController?.clear();
                                   });
                                 },
@@ -436,7 +440,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     );
                                   },
                                   onSelected: (String selection) {
-                                    setState(() => _model
+                                    safeSetState(() => _model
                                         .inpCannabisSelectedOption = selection);
                                     FocusScope.of(context).unfocus();
                                   },
@@ -463,13 +467,21 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                           if (!(_model.medCopyCopy != null &&
                                               (_model.medCopyCopy)!
                                                   .isNotEmpty)) {
-                                            setState(() {
+                                            safeSetState(() {
                                               _model.inpCannabisTextController
                                                   ?.clear();
                                             });
                                           }
+                                          FFAppState().updatePrescricaoStruct(
+                                            (e) => e
+                                              ..remedio =
+                                                  _model.medCopyCopy?.first.id
+                                              ..remedNome = _model
+                                                  .medCopyCopy?.first.nome,
+                                          );
+                                          safeSetState(() {});
 
-                                          setState(() {});
+                                          safeSetState(() {});
                                         },
                                       );
                                     }
@@ -482,31 +494,9 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                       onEditingComplete: onEditingComplete,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.inpCannabisTextController',
-                                        const Duration(milliseconds: 0),
-                                        () async {
-                                          _model.medCopy =
-                                              await StaticMedicamentosTable()
-                                                  .queryRows(
-                                            queryFn: (q) => q.eq(
-                                              'nome',
-                                              _model.inpCannabisTextController
-                                                  .text,
-                                            ),
-                                          );
-                                          if ((_model.medCopyCopy != null &&
-                                                  (_model.medCopyCopy)!
-                                                      .isNotEmpty) !=
-                                              true) {
-                                            setState(() {
-                                              _model.inpCannabisTextController
-                                                  ?.clear();
-                                            });
-                                          }
-
-                                          setState(() {});
-                                        },
+                                        const Duration(milliseconds: 500),
+                                        () => safeSetState(() {}),
                                       ),
-                                      onFieldSubmitted: (_) async {},
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -582,7 +572,12 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                             TextFormField(
                               controller: _model.inpMedcTextController,
                               focusNode: _model.inpMedcFocusNode,
-                              autofocus: true,
+                              onChanged: (_) => EasyDebounce.debounce(
+                                '_model.inpMedcTextController',
+                                const Duration(milliseconds: 0),
+                                () => safeSetState(() {}),
+                              ),
+                              autofocus: false,
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: 'Medicamento',
@@ -660,49 +655,111 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
-                            FlutterFlowDropDown<int>(
-                              controller: _model.dropDownValueController2 ??=
-                                  FormFieldController<int>(
-                                _model.dropDownValue2 ??= 100,
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                            ))
+                              FlutterFlowDropDown<int>(
+                                controller: _model.dropDownValueController2 ??=
+                                    FormFieldController<int>(
+                                  _model.dropDownValue2 ??= 100,
+                                ),
+                                options: List<int>.from([100, 125, 150, 200]),
+                                optionLabels: const ['100', '125', '150', '200'],
+                                onChanged: (val) async {
+                                  safeSetState(
+                                      () => _model.dropDownValue2 = val);
+                                  FFAppState().updatePrescricaoStruct(
+                                    (e) =>
+                                        e..volumeFrasco = _model.dropDownValue2,
+                                  );
+                                  safeSetState(() {});
+                                },
+                                width: double.infinity,
+                                height: 48.0,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Mulish',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                    ),
+                                hintText: 'Volume do Frasco',
+                                icon: Icon(
+                                  Icons.keyboard_arrow_down_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                                fillColor: const Color(0xFFF7FAFE),
+                                elevation: 2.0,
+                                borderColor: const Color(0x0E294B0D),
+                                borderWidth: 2.0,
+                                borderRadius: 8.0,
+                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                hidesUnderline: true,
+                                isOverButton: false,
+                                isSearchable: false,
+                                isMultiSelect: false,
                               ),
-                              options: List<int>.from([100, 125, 150, 200]),
-                              optionLabels: const ['100', '125', '150', '200'],
-                              onChanged: (val) async {
-                                setState(() => _model.dropDownValue2 = val);
-                                FFAppState().updatePrescricaoStruct(
-                                  (e) =>
-                                      e..volumeFrasco = _model.dropDownValue2,
-                                );
-                                setState(() {});
-                              },
-                              width: double.infinity,
-                              height: 48.0,
-                              textStyle: FlutterFlowTheme.of(context)
+                            TextFormField(
+                              controller: _model.inpVolumeTextController,
+                              focusNode: _model.inpVolumeFocusNode,
+                              autofocus: false,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                hintText: 'Volume do frasco',
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Mulish',
+                                      color: const Color(0xA457636C),
+                                      letterSpacing: 0.0,
+                                    ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Color(0x0E294B0D),
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                filled: true,
+                                fillColor: const Color(0xFFF7FAFE),
+                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    18.0, 0.0, 0.0, 0.0),
+                              ),
+                              style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'Volume do Frasco',
-                              icon: Icon(
-                                Icons.keyboard_arrow_down_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              fillColor: const Color(0xFFF7FAFE),
-                              elevation: 2.0,
-                              borderColor: const Color(0x0E294B0D),
-                              borderWidth: 2.0,
-                              borderRadius: 8.0,
-                              margin: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              hidesUnderline: true,
-                              isOverButton: false,
-                              isSearchable: false,
-                              isMultiSelect: false,
+                              validator: _model.inpVolumeTextControllerValidator
+                                  .asValidator(context),
                             ),
                           ].divide(const SizedBox(height: 6.0)),
                         ),
@@ -829,16 +886,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                   (_model.inpMedcTextController.text == '')))
                           ? null
                           : () async {
-                              context.pushNamed(
-                                'prescricao02',
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: const TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 0),
-                                  ),
-                                },
-                              );
+                              context.pushNamed('prescricao02');
 
                               if (_model.dropDownValue1 ==
                                   'Produto derivado de Cannabis') {
@@ -856,9 +904,9 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                       ..remedio = _model.medc1?.first.id
                                       ..remedNome = _model.medc1?.first.nome,
                                   );
-                                  setState(() {});
+                                  safeSetState(() {});
                                 } else {
-                                  setState(() {
+                                  safeSetState(() {
                                     _model.inpCannabisTextController?.clear();
                                   });
                                 }
@@ -868,10 +916,10 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     ..remedNome =
                                         _model.inpMedcTextController.text,
                                 );
-                                setState(() {});
+                                safeSetState(() {});
                               }
 
-                              setState(() {});
+                              safeSetState(() {});
                             },
                       text: 'Avançar',
                       options: FFButtonOptions(

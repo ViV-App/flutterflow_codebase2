@@ -31,7 +31,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -113,7 +113,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.textController1',
                                     const Duration(milliseconds: 0),
-                                    () => setState(() {}),
+                                    () => safeSetState(() {}),
                                   ),
                                   autofocus: false,
                                   obscureText: !_model.passwordVisibility1,
@@ -164,7 +164,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                         const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                     suffixIcon: InkWell(
-                                      onTap: () => setState(
+                                      onTap: () => safeSetState(
                                         () => _model.passwordVisibility1 =
                                             !_model.passwordVisibility1,
                                       ),
@@ -213,7 +213,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.textController2',
                                     const Duration(milliseconds: 0),
-                                    () => setState(() {}),
+                                    () => safeSetState(() {}),
                                   ),
                                   autofocus: false,
                                   obscureText: !_model.passwordVisibility2,
@@ -264,7 +264,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                         const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                     suffixIcon: InkWell(
-                                      onTap: () => setState(
+                                      onTap: () => safeSetState(
                                         () => _model.passwordVisibility2 =
                                             !_model.passwordVisibility2,
                                       ),
@@ -310,7 +310,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
 
                             context.pushNamed('homePage');
 
-                            setState(() {});
+                            safeSetState(() {});
                           },
                     text: 'Recuperar',
                     options: FFButtonOptions(
