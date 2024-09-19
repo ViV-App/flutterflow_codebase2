@@ -85,6 +85,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             FFAppState().paciente.id,
           ),
         );
+        _model.tkv = await actions.getFCM();
+        await PacienteTable().update(
+          data: {
+            'fcm_token': _model.tkv,
+          },
+          matchingRows: (rows) => rows.eq(
+            'uuid',
+            currentUserUid,
+          ),
+        );
         FFAppState().updatePacienteStruct(
           (e) => e
             ..assinatura = AssinaturaStruct(

@@ -4,3 +4,6 @@ export 'get_f_c_m.dart' show getFCM;
 export 'hide_keyboard.dart' show hideKeyboard;
 export 'conectar.dart' show conectar;
 export 'desconectar.dart' show desconectar;
+export 'initialize_firebase.dart' show initializeFirebase;
+export 'get_push_permission.dart' show getPushPermission;
+export 'get_f_c_m_token.dart' show getFCMToken;

@@ -2212,9 +2212,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     'processo': 'planoTerapeutico',
                                     'estagio': 'assinarPlano',
                                   });
+                                  _model.fcm = await actions.getFCMToken();
                                   await PacienteTable().update(
                                     data: {
                                       'status_atual': _model.st1?.id,
+                                      'fcm_token': _model.fcm,
                                     },
                                     matchingRows: (rows) => rows.eq(
                                       'id',

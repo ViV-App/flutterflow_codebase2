@@ -20,7 +20,7 @@ void main() async {
   await initFirebase();
 
   // Start initial custom actions code
-  await actions.onesignal();
+  await actions.getPushPermission();
   // End initial custom actions code
 
   await SupaFlow.initialize();

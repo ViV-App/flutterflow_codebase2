@@ -67,7 +67,8 @@
     <string>Para sua usabilidade, precisamos de sua permissão para coletarmos imagens. Todas as imagens são armazenadas com segurança e criptografia de ponta. </string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>Para sua usabilidade, precisamos de sua permissão para coletarmos imagens. Todas as imagens são armazenadas com segurança e criptografia de ponta. </string>
-
+	<key>PermissionGroupNotification</key>
+    <string>huu</string>
 
 
 	<key>UILaunchStoryboardName</key>

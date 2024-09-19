@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'questionario_bip_model.dart';
 export 'questionario_bip_model.dart';
 
@@ -603,8 +604,51 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                         .queixasNaoRespondidas)!
                                                                     .isNotEmpty) ==
                                                             false) {
+                                                          await StatusPacientTable()
+                                                              .update(
+                                                            data: {
+                                                              'processo':
+                                                                  'tratamentoBip',
+                                                              'estagio':
+                                                                  'receberAjusteBip',
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'paciente',
+                                                              FFAppState()
+                                                                  .paciente
+                                                                  .id,
+                                                            ),
+                                                          );
+
                                                           context.pushNamed(
                                                               'homePage');
+
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return WebViewAware(
+                                                                child:
+                                                                    AlertDialog(
+                                                                  title: const Text(
+                                                                      'Ajuste de dose solicitado'),
+                                                                  content: const Text(
+                                                                      'Dentro de 10 dias, seu ajuste de dose estará disponivel no app!'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: const Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
                                                         } else {
                                                           context.pushNamed(
                                                             'ajustarDose',

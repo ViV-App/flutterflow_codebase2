@@ -116,6 +116,8 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   List<PacienteRow>? loggedUser;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   StatusPacientRow? st1;
+  // Stores action output result for [Custom Action - getFCMToken] action in Button widget.
+  String? fcm;
 
   @override
   void initState(BuildContext context) {
