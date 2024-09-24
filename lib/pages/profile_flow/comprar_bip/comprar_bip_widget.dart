@@ -1,10 +1,10 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'comprar_bip_model.dart';
 export 'comprar_bip_model.dart';
 
@@ -37,8 +37,6 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -405,18 +403,31 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                           child: FFButtonWidget(
                                                             onPressed:
                                                                 () async {
+                                                              _model.user =
+                                                                  await PacienteTable()
+                                                                      .queryRows(
+                                                                queryFn: (q) =>
+                                                                    q.eq(
+                                                                  'uuid',
+                                                                  currentUserUid,
+                                                                ),
+                                                              );
                                                               _model.apiResult2ho =
                                                                   await BuyBipCall
                                                                       .call(
-                                                                cusId:
-                                                                    FFAppState()
-                                                                        .paciente
-                                                                        .id,
+                                                                cusId: _model
+                                                                    .user
+                                                                    ?.first
+                                                                    .id,
                                                                 value:
                                                                     listViewBipPlanosRow
                                                                         .valor,
                                                                 produto:
                                                                     'BIP ${listViewBipPlanosRow.qntdBip?.toString()}',
+                                                                asaasId: _model
+                                                                    .user
+                                                                    ?.first
+                                                                    .asaasCustomerId,
                                                               );
 
                                                               safeSetState(

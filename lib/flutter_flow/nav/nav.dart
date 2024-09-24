@@ -260,6 +260,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'htmlPage',
+          path: '/htmlPage',
+          builder: (context, params) => HtmlPageWidget(
+            html: params.getParam(
+              'html',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'emailConfirmed',
+          path: '/emailConfirmed',
+          builder: (context, params) => const EmailConfirmedWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

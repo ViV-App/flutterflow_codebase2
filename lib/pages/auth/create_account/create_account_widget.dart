@@ -3,7 +3,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/enums/enums.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/pdf_viewer/pdf_viewer_widget.dart';
 import '/components/toast/toast_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -894,31 +893,17 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                   TapGestureRecognizer()
                                                                     ..onTap =
                                                                         () async {
-                                                                      await showDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (dialogContext) {
-                                                                          return Dialog(
-                                                                            elevation:
-                                                                                0,
-                                                                            insetPadding:
-                                                                                EdgeInsets.zero,
-                                                                            backgroundColor:
-                                                                                Colors.transparent,
-                                                                            alignment:
-                                                                                const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                            child:
-                                                                                WebViewAware(
-                                                                              child: GestureDetector(
-                                                                                onTap: () => FocusScope.of(dialogContext).unfocus(),
-                                                                                child: const PdfViewerWidget(
-                                                                                  pdfPath: 'https://drive.google.com/file/d/1TnDQoBETMkScmexrGLFk4y_pCR--R_xy/preview',
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          );
-                                                                        },
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'htmlPage',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'html':
+                                                                              serializeParam(
+                                                                            'termos-uso',
+                                                                            ParamType.String,
+                                                                          ),
+                                                                        }.withoutNulls,
                                                                       );
                                                                     },
                                                             ),
@@ -946,31 +931,17 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                   TapGestureRecognizer()
                                                                     ..onTap =
                                                                         () async {
-                                                                      await showDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (dialogContext) {
-                                                                          return Dialog(
-                                                                            elevation:
-                                                                                0,
-                                                                            insetPadding:
-                                                                                EdgeInsets.zero,
-                                                                            backgroundColor:
-                                                                                Colors.transparent,
-                                                                            alignment:
-                                                                                const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                            child:
-                                                                                WebViewAware(
-                                                                              child: GestureDetector(
-                                                                                onTap: () => FocusScope.of(dialogContext).unfocus(),
-                                                                                child: const PdfViewerWidget(
-                                                                                  pdfPath: 'https://drive.google.com/file/d/1KlTzrYKhwmQVJ4B8CXi3UZ_eKkk__wKE/preview',
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          );
-                                                                        },
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'htmlPage',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'html':
+                                                                              serializeParam(
+                                                                            'politica-v',
+                                                                            ParamType.String,
+                                                                          ),
+                                                                        }.withoutNulls,
                                                                       );
                                                                     },
                                                             )
@@ -2231,6 +2202,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                       _model.iEmailTextController.text;
                                   _model.phone = _model.phone;
                                   safeSetState(() {});
+                                  _model.apiResultagx =
+                                      await NnAccCreatedCall.call(
+                                    email: currentUserEmail,
+                                  );
 
                                   safeSetState(() {});
                                 },

@@ -118,6 +118,8 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   StatusPacientRow? st1;
   // Stores action output result for [Custom Action - getFCMToken] action in Button widget.
   String? fcm;
+  // Stores action output result for [Backend Call - API (nn acc created)] action in Button widget.
+  ApiCallResponse? apiResultagx;
 
   @override
   void initState(BuildContext context) {

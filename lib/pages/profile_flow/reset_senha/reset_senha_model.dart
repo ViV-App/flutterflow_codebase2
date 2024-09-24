@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'reset_senha_widget.dart' show ResetSenhaWidget;
 import 'package:flutter/material.dart';
@@ -41,8 +40,8 @@ class ResetSenhaModel extends FlutterFlowModel<ResetSenhaWidget> {
     return null;
   }
 
-  // Stores action output result for [Backend Call - API (editUser)] action in Button widget.
-  ApiCallResponse? apiResultgol;
+  // Stores action output result for [Custom Action - resetPassword] action in Button widget.
+  String? error;
 
   @override
   void initState(BuildContext context) {

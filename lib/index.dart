@@ -40,3 +40,5 @@ export '/pages/assistente_flow/ajustar_dose/ajustar_dose_widget.dart'
     show AjustarDoseWidget;
 export '/pages/questionario/questionario_bip/questionario_bip_widget.dart'
     show QuestionarioBipWidget;
+export '/html_page/html_page_widget.dart' show HtmlPageWidget;
+export '/email_confirmed/email_confirmed_widget.dart' show EmailConfirmedWidget;

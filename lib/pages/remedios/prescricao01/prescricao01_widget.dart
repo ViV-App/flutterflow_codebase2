@@ -567,6 +567,23 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                 );
                               },
                             ),
+                          if (_model.dropDownValue1 ==
+                              'Produto derivado de Cannabis')
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                '* Se você não encontrar o Produto derivado de Cannabis na listagem é por que ainda não fazemos o tratamento com o seu produto.',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Mulish',
+                                      color: const Color(0xFF878787),
+                                      fontSize: 10.0,
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
                           if (_model.dropDownValue1 !=
                               'Produto derivado de Cannabis')
                             TextFormField(

@@ -1,10 +1,10 @@
-import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'reset_senha_model.dart';
 export 'reset_senha_model.dart';
 
@@ -298,17 +298,49 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                   padding:
                       const EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 24.0),
                   child: FFButtonWidget(
-                    onPressed: (_model.textController1.text !=
-                            _model.textController2.text)
+                    onPressed: ((_model.textController1.text == '') ||
+                            (_model.textController1.text !=
+                                _model.textController2.text))
                         ? null
                         : () async {
-                            _model.apiResultgol = await EditUserCall.call(
-                              userToken: currentUserUid,
-                              userEmail: currentUserEmail,
-                              newPass: _model.textController2.text,
+                            _model.error = await actions.resetPassword(
+                              _model.textController2.text,
                             );
-
-                            context.pushNamed('homePage');
+                            if (_model.error == null || _model.error == '') {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return WebViewAware(
+                                    child: AlertDialog(
+                                      title: const Text('Senha recuperada'),
+                                      content: const Text(
+                                          'Sua senha foi recuperada, volte para o app e faça login com sua nova senha.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: const Text(
+                                    'Ocorreu um erro inesperado, tente novamente.',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  duration: const Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).error,
+                                ),
+                              );
+                            }
 
                             safeSetState(() {});
                           },

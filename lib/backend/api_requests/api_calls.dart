@@ -650,7 +650,9 @@ class CreateAsaasCustomerCall {
         'accept': 'application/json',
         'content-type': 'application/json',
         'access_token':
-            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzRkZWQ4ZDA2LTViMDktNDQ3NS04MTI3LTQyYmE1YjEwODc0NA==',
+            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzZkZDNjMWNhLTA2OTUtNDRjZi04NDkwLTllN2E1NTgzYjkwMA==',
+        'User-Agent':
+            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzZkZDNjMWNhLTA2OTUtNDRjZi04NDkwLTllN2E1NTgzYjkwMA==',
       },
       params: {},
       body: ffApiRequestBody,
@@ -1100,17 +1102,19 @@ class BuyBipCall {
     int? cusId,
     int? value,
     String? produto = '',
+    String? asaasId = '',
   }) async {
     final ffApiRequestBody = '''
 {
 "customerId": $cusId,
-"value": $value
-"produto": "$produto"
+"value": $value,
+"produto": "$produto",
+"asaasId": "$asaasId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'buy bip',
       apiUrl:
-          'https://primary-production-52d3.up.railway.app/webhook/eb403ebb-986e-4c38-99eb-97983676d60d',
+          'https://primary-production-13e6.up.railway.app/webhook/comprarBip',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -1148,7 +1152,7 @@ class SenchatbCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'senchatb',
-      apiUrl: 'https://primary-production-52d3.up.railway.app/webhook/chatbot',
+      apiUrl: 'https://primary-production-13e6.up.railway.app/webhook/chatbot',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -1167,6 +1171,95 @@ class SenchatbCall {
         response,
         r'''$.success''',
       ));
+}
+
+class NnAccCreatedCall {
+  static Future<ApiCallResponse> call({
+    String? email = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+"email": "$email"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'nn acc created',
+      apiUrl:
+          'https://primary-production-13e6.up.railway.app/webhook/accCreated',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class HasCannabisMedicationCall {
+  static Future<ApiCallResponse> call({
+    int? value,
+  }) async {
+    final ffApiRequestBody = '''
+{ "paciente_id": "$value" }''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'has cannabis medication',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/verificar_medicamento_cannabis',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class HasContraIndicacaoBlockerCall {
+  static Future<ApiCallResponse> call({
+    int? value,
+  }) async {
+    final ffApiRequestBody = '''
+{ "pacienteid": "$value" }''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'has contra indicacao blocker',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/verificar_contra_indicacao_paciente',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNDM5ODQyOSwiZXhwIjoyMDI5OTc0NDI5fQ.1FgnQnA4ys0T-FtGMEZaBBFUdxeiCPWhNFlRcYeym88',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 class ApiPagingParams {

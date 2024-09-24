@@ -127,7 +127,31 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Periodo do dia',
+                      () {
+                        if (widget.queixaName == 'Ansiedade') {
+                          return 'Em qual periodo do dia a ansiedade é maior?';
+                        } else if (widget.queixaName == 'Dor crônica') {
+                          return 'Em qual periodo do dia [a] [dor] é maior?';
+                        } else if (widget.queixaName ==
+                            'Tremores (Parkinson e Tremor essencial)') {
+                          return 'Quando o tremor acontece, elaes são piores em qual periodo do dia?';
+                        } else if (widget.queixaName == 'Epilepsia') {
+                          return 'Quando as crises acontecem, elas são piores em qual periodo do dia?';
+                        } else if (widget.queixaName ==
+                            'Transtorno do espectro autista') {
+                          return 'Quando as comportamentos estereotipados ou comorbidades do TEA acontecem, elas são piores em qual periodo do dia?';
+                        } else if (widget.queixaName ==
+                            'Doença inflamatória Intestinal') {
+                          return 'Quando os sintomas da Doença Inflamatória Intestinal acontece, eles são piores em qual periodo do dia?';
+                        } else if (widget.queixaName == 'Demência') {
+                          return 'Quando as crises acontecem, elas são piores em qual periodo do dia?';
+                        } else if (widget.queixaName ==
+                            'Náusea e Vômitos (causado por quimioterápicos) ') {
+                          return 'Em qual periodo do dia as Náuseas e/ou Vômitos são mais intensos?';
+                        } else {
+                          return 'Periodo';
+                        }
+                      }(),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Mulish',
                             fontSize: 16.0,

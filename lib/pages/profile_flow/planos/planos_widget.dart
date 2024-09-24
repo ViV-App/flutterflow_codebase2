@@ -1,9 +1,12 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'planos_model.dart';
 export 'planos_model.dart';
 
@@ -432,8 +435,98 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                 FFButtonWidget(
                                                               onPressed:
                                                                   () async {
-                                                                await launchURL(
-                                                                    'https://app.appviv.com/version-test/payment?paciente=${FFAppState().paciente.id.toString()}&plano=${listViewPlanosAssinaturaRow.id.toString()}');
+                                                                var shouldSetState =
+                                                                    false;
+                                                                _model.hasCanMed =
+                                                                    await HasCannabisMedicationCall
+                                                                        .call();
+
+                                                                shouldSetState =
+                                                                    true;
+                                                                if ((_model
+                                                                        .hasCanMed
+                                                                        ?.succeeded ??
+                                                                    true)) {
+                                                                  _model.apiResultai4z =
+                                                                      await HasContraIndicacaoBlockerCall
+                                                                          .call(
+                                                                    value: FFAppState()
+                                                                        .paciente
+                                                                        .id,
+                                                                  );
+
+                                                                  shouldSetState =
+                                                                      true;
+                                                                  if ((_model
+                                                                          .apiResultai4z
+                                                                          ?.succeeded ??
+                                                                      true)) {
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return WebViewAware(
+                                                                          child:
+                                                                              AlertDialog(
+                                                                            title:
+                                                                                const Text('Assinatura bloqueada'),
+                                                                            content:
+                                                                                const Text('Infelizmente, você possuicontra indicacoes que não trstamos. Por isso, não podemos te auxiliar máximo com a assinatura.o ma'),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                child: const Text('Ok'),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                  } else {
+                                                                    await launchURL(
+                                                                        'https://app.appviv.com/version-test/payment?paciente=${FFAppState().paciente.id.toString()}&plano=${listViewPlanosAssinaturaRow.id.toString()}');
+                                                                  }
+
+                                                                  if (shouldSetState) {
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  }
+                                                                  return;
+                                                                } else {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (alertDialogContext) {
+                                                                      return WebViewAware(
+                                                                        child:
+                                                                            AlertDialog(
+                                                                          title:
+                                                                              const Text('Assinatura bloqueada'),
+                                                                          content:
+                                                                              const Text('Percebemos que você ainda não tem nenhum produto derivado de cannabis cadastrado. Por favor, cadastre um antes de fazer sua assinatura.'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                              child: const Text('Ok'),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  );
+                                                                  if (shouldSetState) {
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  }
+                                                                  return;
+                                                                }
+
+                                                                if (shouldSetState) {
+                                                                  safeSetState(
+                                                                      () {});
+                                                                }
                                                               },
                                                               text:
                                                                   'Assinar agora',
@@ -564,84 +657,546 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                               ),
                                                             ),
                                                           ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      12.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Builder(
-                                                            builder: (context) {
-                                                              final benf =
-                                                                  listViewPlanosAssinaturaRow
-                                                                      .beneficios
-                                                                      .toList();
-
-                                                              return Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: List.generate(
-                                                                    benf.length,
-                                                                    (benfIndex) {
-                                                                  final benfItem =
-                                                                      benf[
-                                                                          benfIndex];
-                                                                  return Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .center,
-                                                                    children: [
-                                                                      const Icon(
-                                                                        Icons
-                                                                            .check_rounded,
-                                                                        color: Color(
-                                                                            0xFF6E78FF),
-                                                                        size:
-                                                                            20.0,
+                                                        if (listViewPlanosAssinaturaRow
+                                                                .titulo ==
+                                                            'Básico')
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        12.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    const Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: Color(
+                                                                          0xFF6E78FF),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Diário de bem-viver (registro de sintomas) - Ilimitado',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
                                                                       ),
-                                                                      Expanded(
-                                                                        child:
-                                                                            Column(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          crossAxisAlignment:
-                                                                              CrossAxisAlignment.start,
-                                                                          children: [
-                                                                            Text(
-                                                                              benfItem,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Mulish',
-                                                                                    color: const Color(0xFF434854),
-                                                                                    fontSize: 16.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                  ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    const Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: Color(
+                                                                          0xFF6E78FF),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Alerta para tomada de remédios - Ilimitado',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
                                                                       ),
-                                                                    ].divide(const SizedBox(
-                                                                        width:
-                                                                            8.0)),
-                                                                  );
-                                                                }).divide(const SizedBox(
-                                                                    height:
-                                                                        12.0)),
-                                                              );
-                                                            },
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    const Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: Color(
+                                                                          0xFF6E78FF),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Histórico de evolução de sintomas - Limitado à 1 semana',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .timesCircle,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Plano terapêutico a cada 6 meses (Bônus)',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .timesCircle,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'BIP (Ajuste de dose)',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    FaIcon(
+                                                                      FontAwesomeIcons
+                                                                          .timesCircle,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Conexão com médicos e fornecedores',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                              ].divide(const SizedBox(
+                                                                  height:
+                                                                      12.0)),
+                                                            ),
                                                           ),
-                                                        ),
+                                                        if (listViewPlanosAssinaturaRow
+                                                                .titulo ==
+                                                            'Premium')
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        12.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    const Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: Color(
+                                                                          0xFF6E78FF),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Diário de bem-viver (registro de sintomas) - Ilimitado',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    const Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: Color(
+                                                                          0xFF6E78FF),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Alerta para tomada de remédios - Ilimitado',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    const Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: Color(
+                                                                          0xFF6E78FF),
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Histórico de evolução de sintomas - Limitado à 1 semana',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Plano terapêutico a cada 6 meses (Bônus)',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'BIP (Ajuste de dose)',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .check_rounded,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      size:
+                                                                          20.0,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Conexão com médicos e fornecedores',
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: const Color(0xFF434854),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ].divide(const SizedBox(
+                                                                      width:
+                                                                          8.0)),
+                                                                ),
+                                                              ].divide(const SizedBox(
+                                                                  height:
+                                                                      12.0)),
+                                                            ),
+                                                          ),
                                                       ],
                                                     ),
                                                   ),

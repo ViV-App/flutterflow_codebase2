@@ -121,7 +121,7 @@ class _PrescriptionAddedWidgetState extends State<PrescriptionAddedWidget>
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 0.0),
                                       child: Text(
-                                        'Quanto mais você completa sua prescrição, mais perto chega do seu bem viver! Deseja ir para a agenda checar a sua primeira dose?',
+                                        'Quanto mais você completa seu remédio, mais perto chega do seu bem viver! Deseja ir para a agenda checar a sua primeira dose?',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium

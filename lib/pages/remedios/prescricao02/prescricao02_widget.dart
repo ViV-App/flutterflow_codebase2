@@ -442,7 +442,7 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                 textInputAction: TextInputAction.next,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: '000 ml/mg',
+                                  hintText: '000 mg/mL',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
