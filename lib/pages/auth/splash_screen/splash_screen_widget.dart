@@ -84,7 +84,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                                 ),
                               ),
                               Text(
-                                'VIV',
+                                'VIVVVV',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
