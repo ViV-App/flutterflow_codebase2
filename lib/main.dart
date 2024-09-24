@@ -21,6 +21,7 @@ void main() async {
 
   // Start initial custom actions code
   await actions.initializeFirebase();
+  await actions.getPushPermission();
   // End initial custom actions code
 
   await SupaFlow.initialize();
