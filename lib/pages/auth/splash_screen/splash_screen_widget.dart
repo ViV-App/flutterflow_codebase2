@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
 import 'splash_screen_model.dart';
@@ -162,6 +163,8 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                                         ),
                                       },
                                     );
+
+                                    await actions.getPushPermission();
                                   },
                                   text: 'Criar conta agora!',
                                   options: FFButtonOptions(
