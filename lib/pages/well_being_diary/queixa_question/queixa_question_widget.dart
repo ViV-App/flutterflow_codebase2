@@ -131,7 +131,7 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                         if (widget.queixaName == 'Ansiedade') {
                           return 'Em qual periodo do dia a ansiedade é maior?';
                         } else if (widget.queixaName == 'Dor crônica') {
-                          return 'Em qual periodo do dia [a] [dor] é maior?';
+                          return 'Em qual periodo do dia a dor é maior?';
                         } else if (widget.queixaName ==
                             'Tremores (Parkinson e Tremor essencial)') {
                           return 'Quando o tremor acontece, elaes são piores em qual periodo do dia?';

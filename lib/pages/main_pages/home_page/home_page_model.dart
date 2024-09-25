@@ -23,8 +23,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   List<PacienteRow>? user;
   // Stores action output result for [Backend Call - Query Rows] action in homePage widget.
   List<AssinaturaRow>? assinatura;
-  // Stores action output result for [Custom Action - getFCM] action in homePage widget.
-  String? tkv;
   // Model for completeProfileAlert component.
   late CompleteProfileAlertModel completeProfileAlertModel;
   // Model for homePageStatusComponent component.
