@@ -12,7 +12,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_account_model.dart';
@@ -187,35 +186,18 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 24.0, 24.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                _model.fcmTk =
-                                                    await actions.getFCMToken();
-                                                _model.ftoken = _model.fcmTk;
-                                                safeSetState(() {});
-
-                                                safeSetState(() {});
-                                              },
-                                              child: Text(
-                                                'Insira seus dados pessoais',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Mulish',
-                                                          color:
-                                                              const Color(0xFF13294B),
-                                                          fontSize: 24.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                              ),
+                                            child: Text(
+                                              'Insira seus dados pessoais',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Mulish',
+                                                    color: const Color(0xFF13294B),
+                                                    fontSize: 24.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                             ),
                                           ),
                                           Padding(
@@ -236,25 +218,6 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         lineHeight: 1.5,
                                                       ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 24.0, 0.0, 0.0),
-                                            child: SelectionArea(
-                                                child: Text(
-                                              valueOrDefault<String>(
-                                                _model.ftoken,
-                                                'FcmTk',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Mulish',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            )),
                                           ),
                                           Padding(
                                             padding:
@@ -1341,36 +1304,6 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                     const SizedBox(height: 18.0)),
                                               ),
                                             ),
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              await Clipboard.setData(
-                                                  ClipboardData(
-                                                      text: _model.ftoken!));
-                                            },
-                                            text: 'Button',
-                                            options: FFButtonOptions(
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 16.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Mulish',
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              elevation: 0.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                          ),
                                         ].addToEnd(const SizedBox(height: 24.0)),
                                       ),
                                     ),

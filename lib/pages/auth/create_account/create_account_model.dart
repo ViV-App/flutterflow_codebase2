@@ -48,8 +48,6 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // Stores action output result for [Custom Action - getFCMToken] action in Text widget.
-  String? fcmTk;
   // State field(s) for ipNome widget.
   FocusNode? ipNomeFocusNode;
   TextEditingController? ipNomeTextController;
