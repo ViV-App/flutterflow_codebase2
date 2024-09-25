@@ -2139,24 +2139,12 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     return;
                                   }
 
-                                  _model.customerAsaas =
-                                      await CreateAsaasCustomerCall.call(
-                                    name: _model.ipNomeTextController.text,
-                                    email: currentUserEmail,
-                                    phone: _model.phone,
-                                    cpf: _model.ipCPFTextController.text,
-                                  );
-
                                   _model.createdUser =
                                       await PacienteTable().insert({
                                     'nome': _model.ipNomeTextController.text,
                                     'telefone': _model.phone,
                                     'cpf': _model.ipCPFTextController.text,
                                     'uuid': currentUserUid,
-                                    'asaas_customer_id':
-                                        CreateAsaasCustomerCall.custId(
-                                      (_model.customerAsaas?.jsonBody ?? ''),
-                                    ),
                                     'email': currentUserEmail,
                                   });
                                   _model.loggedUser =
@@ -2190,8 +2178,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                       'fcm_token': _model.fcm,
                                     },
                                     matchingRows: (rows) => rows.eq(
-                                      'id',
-                                      FFAppState().paciente.id,
+                                      'uuid',
+                                      currentUserUid,
                                     ),
                                   );
                                   _model.currentStep = 3;

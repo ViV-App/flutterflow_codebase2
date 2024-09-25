@@ -110,8 +110,6 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
-  // Stores action output result for [Backend Call - API (create asaas customer)] action in Button widget.
-  ApiCallResponse? customerAsaas;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   PacienteRow? createdUser;
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.

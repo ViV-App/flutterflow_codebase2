@@ -14,7 +14,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/well_being_diary/new_well_being/new_well_being_widget.dart';
 import '/walkthroughs/onboarding01.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
@@ -52,7 +51,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
       );
       if ((_model.user != null && (_model.user)!.isNotEmpty) == false) {
-        await _model.criarPacienteFromGoogle(context);
+        GoRouter.of(context).prepareAuthEvent();
+        await authManager.signOut();
+        GoRouter.of(context).clearRedirectLocation();
+
+        context.goNamedAuth('splashScreen', context.mounted);
+
         return;
       } else {
         FFAppState().paciente = PacienteStruct(
@@ -1252,32 +1256,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 32.0, 0.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              _model.vfbi = await actions.getFCM();
-                              _model.fcm = valueOrDefault<String>(
-                                _model.vfbi,
-                                'jyr',
-                              );
-                              safeSetState(() {});
-
-                              safeSetState(() {});
-                            },
-                            child: Text(
-                              'Conteúdos mais vistos',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Mulish',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                            ),
+                          child: Text(
+                            'Conteúdos mais vistos',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Mulish',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w800,
+                                ),
                           ),
                         ),
                         Padding(

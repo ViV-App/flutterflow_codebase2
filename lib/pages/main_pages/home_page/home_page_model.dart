@@ -5,7 +5,6 @@ import '/backend/supabase/supabase.dart';
 import '/components/complete_profile_alert/complete_profile_alert_widget.dart';
 import '/components/home_page_status_component/home_page_status_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
@@ -27,8 +26,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   late CompleteProfileAlertModel completeProfileAlertModel;
   // Model for homePageStatusComponent component.
   late HomePageStatusComponentModel homePageStatusComponentModel;
-  // Stores action output result for [Custom Action - getFCM] action in Text widget.
-  String? vfbi;
 
   @override
   void initState(BuildContext context) {
@@ -49,7 +46,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   Future criarPacienteFromGoogle(BuildContext context) async {
     ApiCallResponse? apiResulto2u;
     List<PacienteRow>? userLogged;
-    String? tk;
 
     apiResulto2u = await CreatePacienteFromGoogleCall.call(
       uid: currentUserUid,
@@ -69,17 +65,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
         uuid: userLogged.first.uuid,
       );
       FFAppState().update(() {});
-      tk = await actions.getFCM();
-      await PacienteTable().update(
-        data: {
-          'fcm_token': tk,
-          'email': currentUserEmail,
-        },
-        matchingRows: (rows) => rows.eq(
-          'uuid',
-          currentUserUid,
-        ),
-      );
     }
   }
 }
