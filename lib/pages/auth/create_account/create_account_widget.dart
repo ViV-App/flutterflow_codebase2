@@ -12,6 +12,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_account_model.dart';
@@ -240,7 +241,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 24.0, 0.0, 0.0),
-                                            child: Text(
+                                            child: SelectionArea(
+                                                child: Text(
                                               valueOrDefault<String>(
                                                 _model.ftoken,
                                                 'FcmTk',
@@ -252,7 +254,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         fontFamily: 'Mulish',
                                                         letterSpacing: 0.0,
                                                       ),
-                                            ),
+                                            )),
                                           ),
                                           Padding(
                                             padding:
@@ -1339,6 +1341,36 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                     const SizedBox(height: 18.0)),
                                               ),
                                             ),
+                                          FFButtonWidget(
+                                            onPressed: () async {
+                                              await Clipboard.setData(
+                                                  ClipboardData(
+                                                      text: _model.ftoken!));
+                                            },
+                                            text: 'Button',
+                                            options: FFButtonOptions(
+                                              height: 40.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Mulish',
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
                                         ].addToEnd(const SizedBox(height: 24.0)),
                                       ),
                                     ),
