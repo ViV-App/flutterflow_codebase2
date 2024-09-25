@@ -1229,6 +1229,11 @@ class HasCannabisMedicationCall {
       alwaysAllowBody: false,
     );
   }
+
+  static dynamic result(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+      );
 }
 
 class HasContraIndicacaoBlockerCall {
@@ -1260,6 +1265,11 @@ class HasContraIndicacaoBlockerCall {
       alwaysAllowBody: false,
     );
   }
+
+  static dynamic result(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+      );
 }
 
 class ApiPagingParams {

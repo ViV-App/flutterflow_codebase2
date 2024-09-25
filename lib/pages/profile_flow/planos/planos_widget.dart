@@ -461,10 +461,13 @@ class _PlanosWidgetState extends State<PlanosWidget> {
 
                                                                 shouldSetState =
                                                                     true;
-                                                                if ((_model
-                                                                        .hasCanMed
-                                                                        ?.succeeded ??
-                                                                    true)) {
+                                                                if (true ==
+                                                                    HasCannabisMedicationCall
+                                                                        .result(
+                                                                      (_model.hasCanMed
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                    )) {
                                                                   _model.apiResultai4z =
                                                                       await HasContraIndicacaoBlockerCall
                                                                           .call(
@@ -476,10 +479,12 @@ class _PlanosWidgetState extends State<PlanosWidget> {
 
                                                                   shouldSetState =
                                                                       true;
-                                                                  if ((_model
-                                                                          .apiResultai4z
-                                                                          ?.succeeded ??
-                                                                      true)) {
+                                                                  if (true ==
+                                                                      HasContraIndicacaoBlockerCall
+                                                                          .result(
+                                                                        (_model.apiResultai4z?.jsonBody ??
+                                                                            ''),
+                                                                      )) {
                                                                     await showDialog(
                                                                       context:
                                                                           context,

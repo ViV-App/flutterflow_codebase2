@@ -12,6 +12,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_account_model.dart';
@@ -186,37 +187,67 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 24.0, 24.0, 0.0),
-                                            child: Text(
-                                              'Insira seus dados pessoais',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Mulish',
-                                                    color: const Color(0xFF13294B),
-                                                    fontSize: 24.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                _model.fcmT =
+                                                    await actions.getFCMToken();
+
+                                                safeSetState(() {});
+                                              },
+                                              child: Text(
+                                                'Insira seus dados pessoais',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                              const Color(0xFF13294B),
+                                                          fontSize: 24.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
                                             ),
                                           ),
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 8.0, 24.0, 0.0),
-                                            child: Text(
-                                              'Preencha alguns dados pessoais para podermos criar sua conta.',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Mulish',
-                                                        color:
-                                                            const Color(0xFF8798B5),
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        lineHeight: 1.5,
-                                                      ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await Clipboard.setData(
+                                                    ClipboardData(
+                                                        text: _model.fcmT!));
+                                              },
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  _model.fcmT,
+                                                  'Sample',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                              const Color(0xFF8798B5),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          lineHeight: 1.5,
+                                                        ),
+                                              ),
                                             ),
                                           ),
                                           Padding(
