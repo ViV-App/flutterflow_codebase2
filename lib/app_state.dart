@@ -186,6 +186,12 @@ class FFAppState extends ChangeNotifier {
     respostasQuests.insert(index, value);
   }
 
+  bool _fcmTokenRefresh = false;
+  bool get fcmTokenRefresh => _fcmTokenRefresh;
+  set fcmTokenRefresh(bool value) {
+    _fcmTokenRefresh = value;
+  }
+
   final _remediosManager = FutureRequestManager<List<MeusMedicamentosRow>>();
   Future<List<MeusMedicamentosRow>> remedios({
     String? uniqueQueryKey,

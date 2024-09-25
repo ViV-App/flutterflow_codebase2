@@ -14,6 +14,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/well_being_diary/new_well_being/new_well_being_widget.dart';
 import '/walkthroughs/onboarding01.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
@@ -104,6 +105,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
         );
         safeSetState(() {});
+        await actions.onTokenRefreshFCM();
+        if (FFAppState().fcmTokenRefresh == true) {
+          FFAppState().fcmTokenRefresh = false;
+          safeSetState(() {});
+          _model.fcmTk = await actions.getFCMToken();
+          await PacienteTable().update(
+            data: {
+              'fcm_token': _model.fcmTk,
+            },
+            matchingRows: (rows) => rows.eq(
+              'uuid',
+              currentUserUid,
+            ),
+          );
+        }
         if (_model.user?.first.firstOnboarding == 0) {
           safeSetState(() =>
               _model.onboarding01Controller = createPageWalkthrough(context));
