@@ -105,7 +105,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
         );
         safeSetState(() {});
-        await actions.onTokenRefreshFCM();
         if (FFAppState().fcmTokenRefresh == true) {
           FFAppState().fcmTokenRefresh = false;
           safeSetState(() {});
@@ -119,14 +118,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               currentUserUid,
             ),
           );
-        }
-        if (_model.user?.first.firstOnboarding == 0) {
-          safeSetState(() =>
-              _model.onboarding01Controller = createPageWalkthrough(context));
-          _model.onboarding01Controller?.show(context: context);
-          return;
+          if (_model.user?.first.firstOnboarding == 0) {
+            safeSetState(() =>
+                _model.onboarding01Controller = createPageWalkthrough(context));
+            _model.onboarding01Controller?.show(context: context);
+            return;
+          } else {
+            return;
+          }
         } else {
-          return;
+          if (_model.user?.first.firstOnboarding == 0) {
+            safeSetState(() =>
+                _model.onboarding01Controller = createPageWalkthrough(context));
+            _model.onboarding01Controller?.show(context: context);
+            return;
+          } else {
+            return;
+          }
         }
       }
     });
