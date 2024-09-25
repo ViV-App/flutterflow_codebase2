@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -437,11 +438,24 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                   () async {
                                                                 var shouldSetState =
                                                                     false;
+                                                                _model.currentUser =
+                                                                    await PacienteTable()
+                                                                        .queryRows(
+                                                                  queryFn:
+                                                                      (q) =>
+                                                                          q.eq(
+                                                                    'uuid',
+                                                                    currentUserUid,
+                                                                  ),
+                                                                );
+                                                                shouldSetState =
+                                                                    true;
                                                                 _model.hasCanMed =
                                                                     await HasCannabisMedicationCall
                                                                         .call(
-                                                                  value: FFAppState()
-                                                                      .paciente
+                                                                  value: _model
+                                                                      .currentUser
+                                                                      ?.first
                                                                       .id,
                                                                 );
 
@@ -454,8 +468,9 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                   _model.apiResultai4z =
                                                                       await HasContraIndicacaoBlockerCall
                                                                           .call(
-                                                                    value: FFAppState()
-                                                                        .paciente
+                                                                    value: _model
+                                                                        .currentUser
+                                                                        ?.first
                                                                         .id,
                                                                   );
 
