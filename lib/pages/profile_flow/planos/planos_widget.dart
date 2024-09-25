@@ -439,7 +439,11 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                     false;
                                                                 _model.hasCanMed =
                                                                     await HasCannabisMedicationCall
-                                                                        .call();
+                                                                        .call(
+                                                                  value: FFAppState()
+                                                                      .paciente
+                                                                      .id,
+                                                                );
 
                                                                 shouldSetState =
                                                                     true;
@@ -472,7 +476,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             title:
                                                                                 const Text('Assinatura bloqueada'),
                                                                             content:
-                                                                                const Text('Infelizmente, você possuicontra indicacoes que não trstamos. Por isso, não podemos te auxiliar máximo com a assinatura.o ma'),
+                                                                                const Text('Infelizmente, você possui contra indicações que não trstamos. Por isso, não podemos te auxiliar máximo com a assinatura.o ma'),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
