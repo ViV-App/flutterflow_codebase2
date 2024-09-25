@@ -186,18 +186,35 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 24.0, 24.0, 0.0),
-                                            child: Text(
-                                              'Insira seus dados pessoais',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Mulish',
-                                                    color: const Color(0xFF13294B),
-                                                    fontSize: 24.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                _model.fcmTk =
+                                                    await actions.getFCMToken();
+                                                _model.ftoken = _model.fcmTk;
+                                                safeSetState(() {});
+
+                                                safeSetState(() {});
+                                              },
+                                              child: Text(
+                                                'Insira seus dados pessoais',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                              const Color(0xFF13294B),
+                                                          fontSize: 24.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
                                             ),
                                           ),
                                           Padding(
@@ -216,6 +233,24 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         lineHeight: 1.5,
+                                                      ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 24.0, 0.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                _model.ftoken,
+                                                'FcmTk',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Mulish',
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ),
