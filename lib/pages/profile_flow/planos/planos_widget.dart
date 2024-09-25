@@ -476,7 +476,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             title:
                                                                                 const Text('Assinatura bloqueada'),
                                                                             content:
-                                                                                const Text('Infelizmente, você possui contra indicações que não trstamos. Por isso, não podemos te auxiliar máximo com a assinatura.o ma'),
+                                                                                const Text('Infelizmente, você possui contra indicações que não tratamos. Por isso, não podemos te auxiliar ao máximo com a assinatura.'),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
