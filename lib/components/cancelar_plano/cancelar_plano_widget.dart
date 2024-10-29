@@ -123,6 +123,12 @@ class _CancelarPlanoWidgetState extends State<CancelarPlanoWidget> {
                       child: FFButtonWidget(
                         onPressed: () async {
                           Navigator.pop(context);
+                          _model.apiResult23r =
+                              await SegmentGroup.trackingCall.call(
+                            eventName: 'subscription not-canceled',
+                          );
+
+                          safeSetState(() {});
                         },
                         text: 'Desejo continuar com meu plano!',
                         options: FFButtonOptions(
@@ -173,6 +179,11 @@ class _CancelarPlanoWidgetState extends State<CancelarPlanoWidget> {
                                 duration: Duration(milliseconds: 0),
                               ),
                             },
+                          );
+
+                          _model.apiResult23rf =
+                              await SegmentGroup.trackingCall.call(
+                            eventName: 'subscription canceled',
                           );
 
                           safeSetState(() {});

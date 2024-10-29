@@ -1,15 +1,15 @@
 import '/backend/supabase/supabase.dart';
+import '/components/custom_date_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'agenda_model.dart';
 export 'agenda_model.dart';
 
@@ -174,93 +174,51 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      await showModalBottomSheet<bool>(
-                                          context: context,
-                                          builder: (context) {
-                                            final datePickedCupertinoTheme =
-                                                CupertinoTheme.of(context);
-                                            return ScrollConfiguration(
-                                              behavior:
-                                                  const MaterialScrollBehavior()
-                                                      .copyWith(
-                                                dragDevices: {
-                                                  PointerDeviceKind.mouse,
-                                                  PointerDeviceKind.touch,
-                                                  PointerDeviceKind.stylus,
-                                                  PointerDeviceKind.unknown
-                                                },
-                                              ),
-                                              child: Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    3,
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                child: CupertinoTheme(
-                                                  data:
-                                                      datePickedCupertinoTheme
-                                                          .copyWith(
-                                                    textTheme:
-                                                        datePickedCupertinoTheme
-                                                            .textTheme
-                                                            .copyWith(
-                                                      dateTimePickerTextStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Mulish',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  child: CupertinoDatePicker(
-                                                    mode:
-                                                        CupertinoDatePickerMode
-                                                            .date,
-                                                    minimumDate: DateTime(1900),
-                                                    initialDateTime:
-                                                        (_model.datePicked ??
-                                                            DateTime.now()),
-                                                    maximumDate: DateTime(2050),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondaryBackground,
-                                                    use24hFormat: false,
-                                                    onDateTimeChanged:
-                                                        (newDateTime) =>
-                                                            safeSetState(() {
-                                                      _model.datePicked =
-                                                          newDateTime;
-                                                    }),
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        context: context,
+                                        builder: (context) {
+                                          return WebViewAware(
+                                            child: GestureDetector(
+                                              onTap: () =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: SizedBox(
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.4,
+                                                  child: CustomDatePickerWidget(
+                                                    hasInitDate: true,
+                                                    initDate: _model.pickedDate,
+                                                    callback: (dateSet) async {
+                                                      await _model.getAgenda(
+                                                        context,
+                                                        date: dateTimeFormat(
+                                                          "y-M-d",
+                                                          dateSet,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                      );
+                                                      _model.pickedDate =
+                                                          dateSet;
+                                                      safeSetState(() {});
+                                                    },
                                                   ),
                                                 ),
                                               ),
-                                            );
-                                          });
-                                      await _model.getAgenda(
-                                        context,
-                                        date: dateTimeFormat(
-                                          "y-M-d",
-                                          _model.datePicked,
-                                          locale: FFLocalizations.of(context)
-                                              .languageCode,
-                                        ),
-                                      );
-                                      safeSetState(() {});
-                                      _model.pickedDate = _model.datePicked;
-                                      safeSetState(() {});
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => safeSetState(() {}));
                                     },
                                     child: Container(
                                       width: double.infinity,
@@ -288,6 +246,17 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 _model.pickedDate =
                                                     functions.subDaysToDate(
                                                         _model.pickedDate!, 1);
+                                                safeSetState(() {});
+                                                await _model.getAgenda(
+                                                  context,
+                                                  date: dateTimeFormat(
+                                                    "y-M-d",
+                                                    _model.pickedDate,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
+                                                );
                                                 safeSetState(() {});
                                               },
                                               child: Icon(
@@ -327,6 +296,17 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 _model.pickedDate =
                                                     functions.addDaysToDate(
                                                         _model.pickedDate!, 1);
+                                                safeSetState(() {});
+                                                await _model.getAgenda(
+                                                  context,
+                                                  date: dateTimeFormat(
+                                                    "y-M-d",
+                                                    _model.pickedDate,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
+                                                );
                                                 safeSetState(() {});
                                               },
                                               child: Icon(

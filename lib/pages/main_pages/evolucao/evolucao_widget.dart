@@ -1,16 +1,17 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/custom_date_picker_widget.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'evolucao_model.dart';
 export 'evolucao_model.dart';
 
@@ -262,6 +263,16 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   await _model
                                                       .getSintomas(context);
                                                   safeSetState(() {});
+                                                  _model.apiResult38y =
+                                                      await SegmentGroup
+                                                          .trackingCall
+                                                          .call(
+                                                    userId: currentUserUid,
+                                                    eventName:
+                                                        'date-picker-back clicked',
+                                                  );
+
+                                                  safeSetState(() {});
                                                 },
                                                 child: Icon(
                                                   Icons.arrow_back_ios_new,
@@ -282,109 +293,57 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    await showModalBottomSheet<
-                                                            bool>(
-                                                        context: context,
-                                                        builder: (context) {
-                                                          final datePicked1CupertinoTheme =
-                                                              CupertinoTheme.of(
-                                                                  context);
-                                                          return ScrollConfiguration(
-                                                            behavior:
-                                                                const MaterialScrollBehavior()
-                                                                    .copyWith(
-                                                              dragDevices: {
-                                                                PointerDeviceKind
-                                                                    .mouse,
-                                                                PointerDeviceKind
-                                                                    .touch,
-                                                                PointerDeviceKind
-                                                                    .stylus,
-                                                                PointerDeviceKind
-                                                                    .unknown
-                                                              },
-                                                            ),
-                                                            child: Container(
-                                                              height: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .height /
-                                                                  3,
-                                                              width:
-                                                                  MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              child:
-                                                                  CupertinoTheme(
-                                                                data: datePicked1CupertinoTheme
-                                                                    .copyWith(
-                                                                  textTheme: datePicked1CupertinoTheme
-                                                                      .textTheme
-                                                                      .copyWith(
-                                                                    dateTimePickerTextStyle: FlutterFlowTheme.of(
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () =>
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child: SizedBox(
+                                                                height: MediaQuery.sizeOf(
                                                                             context)
-                                                                        .headlineMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Mulish',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                                  ),
-                                                                ),
+                                                                        .height *
+                                                                    0.4,
                                                                 child:
-                                                                    CupertinoDatePicker(
-                                                                  mode:
-                                                                      CupertinoDatePickerMode
-                                                                          .date,
-                                                                  minimumDate:
-                                                                      DateTime(
-                                                                          1900),
-                                                                  initialDateTime: (_model
-                                                                          .dataInicio ??
-                                                                      DateTime
-                                                                          .now()),
-                                                                  maximumDate:
-                                                                      DateTime(
-                                                                          2050),
-                                                                  backgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                  use24hFormat:
-                                                                      false,
-                                                                  onDateTimeChanged:
-                                                                      (newDateTime) =>
-                                                                          safeSetState(
-                                                                              () {
-                                                                    _model.datePicked1 =
-                                                                        newDateTime;
-                                                                  }),
+                                                                    CustomDatePickerWidget(
+                                                                  hasInitDate:
+                                                                      true,
+                                                                  initDate: _model
+                                                                      .dataInicio,
+                                                                  callback:
+                                                                      (dateSet) async {
+                                                                    _model.dataInicio =
+                                                                        dateSet;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    await _model
+                                                                        .getSintomas(
+                                                                            context);
+                                                                    safeSetState(() =>
+                                                                        _model.apiRequestCompleter =
+                                                                            null);
+                                                                    await _model
+                                                                        .waitForApiRequestCompleted();
+                                                                  },
                                                                 ),
                                                               ),
                                                             ),
-                                                          );
-                                                        });
-                                                    if (!(_model.datePicked1 ==
-                                                        null)) {
-                                                      _model.dataInicio =
-                                                          _model.datePicked1;
-                                                      safeSetState(() {});
-                                                      safeSetState(() => _model
-                                                              .apiRequestCompleter =
-                                                          null);
-                                                      await _model
-                                                          .waitForApiRequestCompleted();
-                                                      await _model
-                                                          .getSintomas(context);
-                                                      safeSetState(() {});
-                                                    }
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
                                                   },
                                                   child: Container(
                                                     height: 37.0,
@@ -462,112 +421,57 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    await showModalBottomSheet<
-                                                            bool>(
-                                                        context: context,
-                                                        builder: (context) {
-                                                          final datePicked2CupertinoTheme =
-                                                              CupertinoTheme.of(
-                                                                  context);
-                                                          return ScrollConfiguration(
-                                                            behavior:
-                                                                const MaterialScrollBehavior()
-                                                                    .copyWith(
-                                                              dragDevices: {
-                                                                PointerDeviceKind
-                                                                    .mouse,
-                                                                PointerDeviceKind
-                                                                    .touch,
-                                                                PointerDeviceKind
-                                                                    .stylus,
-                                                                PointerDeviceKind
-                                                                    .unknown
-                                                              },
-                                                            ),
-                                                            child: Container(
-                                                              height: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .height /
-                                                                  3,
-                                                              width:
-                                                                  MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              child:
-                                                                  CupertinoTheme(
-                                                                data: datePicked2CupertinoTheme
-                                                                    .copyWith(
-                                                                  textTheme: datePicked2CupertinoTheme
-                                                                      .textTheme
-                                                                      .copyWith(
-                                                                    dateTimePickerTextStyle: FlutterFlowTheme.of(
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () =>
+                                                                FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child: SizedBox(
+                                                                height: MediaQuery.sizeOf(
                                                                             context)
-                                                                        .headlineMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Mulish',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                                  ),
-                                                                ),
+                                                                        .height *
+                                                                    0.4,
                                                                 child:
-                                                                    CupertinoDatePicker(
-                                                                  mode:
-                                                                      CupertinoDatePickerMode
-                                                                          .date,
-                                                                  minimumDate:
-                                                                      DateTime(
-                                                                          1900),
-                                                                  initialDateTime: (_model
-                                                                          .dataFinal ??
-                                                                      DateTime
-                                                                          .now()),
-                                                                  maximumDate: (functions.addDaysToDate(
-                                                                          _model
-                                                                              .dataInicio!,
-                                                                          6) ??
-                                                                      DateTime(
-                                                                          2050)),
-                                                                  backgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                  use24hFormat:
-                                                                      false,
-                                                                  onDateTimeChanged:
-                                                                      (newDateTime) =>
-                                                                          safeSetState(
-                                                                              () {
-                                                                    _model.datePicked2 =
-                                                                        newDateTime;
-                                                                  }),
+                                                                    CustomDatePickerWidget(
+                                                                  hasInitDate:
+                                                                      true,
+                                                                  initDate: _model
+                                                                      .dataFinal,
+                                                                  callback:
+                                                                      (dateSet) async {
+                                                                    _model.dataFinal =
+                                                                        dateSet;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    await _model
+                                                                        .getSintomas(
+                                                                            context);
+                                                                    safeSetState(() =>
+                                                                        _model.apiRequestCompleter =
+                                                                            null);
+                                                                    await _model
+                                                                        .waitForApiRequestCompleted();
+                                                                  },
                                                                 ),
                                                               ),
                                                             ),
-                                                          );
-                                                        });
-                                                    if (!(_model.datePicked2 ==
-                                                        null)) {
-                                                      _model.dataFinal =
-                                                          _model.datePicked2;
-                                                      safeSetState(() {});
-                                                      safeSetState(() => _model
-                                                              .apiRequestCompleter =
-                                                          null);
-                                                      await _model
-                                                          .waitForApiRequestCompleted();
-                                                      await _model
-                                                          .getSintomas(context);
-                                                      safeSetState(() {});
-                                                    }
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
                                                   },
                                                   child: Container(
                                                     height: 37.0,
@@ -634,6 +538,16 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   safeSetState(() {});
                                                   await _model
                                                       .getSintomas(context);
+                                                  safeSetState(() {});
+                                                  _model.apiResult38yz =
+                                                      await SegmentGroup
+                                                          .trackingCall
+                                                          .call(
+                                                    userId: currentUserUid,
+                                                    eventName:
+                                                        'date-picker-front clicked',
+                                                  );
+
                                                   safeSetState(() {});
                                                 },
                                                 child: Icon(
@@ -959,107 +873,184 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                           MainAxisAlignment
                                                                               .center,
                                                                       children: [
-                                                                        Expanded(
-                                                                          child:
-                                                                              SizedBox(
-                                                                            width:
-                                                                                double.infinity,
-                                                                            height:
-                                                                                230.0,
+                                                                        if (responsiveVisibility(
+                                                                          context:
+                                                                              context,
+                                                                          phone:
+                                                                              false,
+                                                                          tablet:
+                                                                              false,
+                                                                          tabletLandscape:
+                                                                              false,
+                                                                          desktop:
+                                                                              false,
+                                                                        ))
+                                                                          Expanded(
                                                                             child:
-                                                                                FlutterFlowLineChart(
-                                                                              data: [
-                                                                                FFLineChartData(
-                                                                                  xData: GetLatestBemViverScoreCall.createdAt(
-                                                                                    mainGetLatestBemViverScoreResponse.jsonBody,
-                                                                                  )!,
-                                                                                  yData: GetLatestBemViverScoreCall.humor(
-                                                                                    mainGetLatestBemViverScoreResponse.jsonBody,
-                                                                                  )!,
-                                                                                  settings: LineChartBarData(
-                                                                                    color: FlutterFlowTheme.of(context).primary,
-                                                                                    barWidth: 2.0,
-                                                                                    belowBarData: BarAreaData(
-                                                                                      show: true,
-                                                                                      color: FlutterFlowTheme.of(context).accent1,
+                                                                                SizedBox(
+                                                                              width: double.infinity,
+                                                                              height: 230.0,
+                                                                              child: FlutterFlowLineChart(
+                                                                                data: [
+                                                                                  FFLineChartData(
+                                                                                    xData: GetLatestBemViverScoreCall.createdAt(
+                                                                                      mainGetLatestBemViverScoreResponse.jsonBody,
+                                                                                    )!,
+                                                                                    yData: GetLatestBemViverScoreCall.humor(
+                                                                                      mainGetLatestBemViverScoreResponse.jsonBody,
+                                                                                    )!,
+                                                                                    settings: LineChartBarData(
+                                                                                      color: FlutterFlowTheme.of(context).primary,
+                                                                                      barWidth: 2.0,
+                                                                                      belowBarData: BarAreaData(
+                                                                                        show: true,
+                                                                                        color: FlutterFlowTheme.of(context).accent1,
+                                                                                      ),
                                                                                     ),
-                                                                                  ),
-                                                                                )
-                                                                              ],
-                                                                              chartStylingInfo: const ChartStylingInfo(
-                                                                                enableTooltip: true,
-                                                                                tooltipBackgroundColor: Colors.white,
-                                                                                backgroundColor: Color(0x00FFFFFF),
-                                                                                showGrid: true,
-                                                                                showBorder: false,
-                                                                              ),
-                                                                              axisBounds: const AxisBounds(),
-                                                                              xAxisLabelInfo: const AxisLabelInfo(
-                                                                                reservedSize: 7.0,
-                                                                              ),
-                                                                              yAxisLabelInfo: const AxisLabelInfo(
-                                                                                reservedSize: 40.0,
+                                                                                  )
+                                                                                ],
+                                                                                chartStylingInfo: const ChartStylingInfo(
+                                                                                  enableTooltip: true,
+                                                                                  tooltipBackgroundColor: Colors.white,
+                                                                                  backgroundColor: Color(0x00FFFFFF),
+                                                                                  showGrid: true,
+                                                                                  showBorder: false,
+                                                                                ),
+                                                                                axisBounds: const AxisBounds(),
+                                                                                xAxisLabelInfo: const AxisLabelInfo(
+                                                                                  reservedSize: 7.0,
+                                                                                ),
+                                                                                yAxisLabelInfo: const AxisLabelInfo(
+                                                                                  reservedSize: 40.0,
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                           ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              8.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Builder(
-                                                                            builder:
-                                                                                (context) {
-                                                                              final list = GetLatestBemViverScoreCall.createdAt(
-                                                                                    mainGetLatestBemViverScoreResponse.jsonBody,
-                                                                                  )?.toList() ??
-                                                                                  [];
+                                                                        if (responsiveVisibility(
+                                                                          context:
+                                                                              context,
+                                                                          phone:
+                                                                              false,
+                                                                          tablet:
+                                                                              false,
+                                                                          tabletLandscape:
+                                                                              false,
+                                                                          desktop:
+                                                                              false,
+                                                                        ))
+                                                                          Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                8.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Builder(
+                                                                              builder: (context) {
+                                                                                final list = GetLatestBemViverScoreCall.createdAt(
+                                                                                      mainGetLatestBemViverScoreResponse.jsonBody,
+                                                                                    )?.toList() ??
+                                                                                    [];
 
-                                                                              return Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: List.generate(list.length, (listIndex) {
-                                                                                  final listItem = list[listIndex];
-                                                                                  return Column(
-                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      Text(
-                                                                                        dateTimeFormat(
-                                                                                          "d",
-                                                                                          functions.convertStringToDateTime(listItem),
-                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                return Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: List.generate(list.length, (listIndex) {
+                                                                                    final listItem = list[listIndex];
+                                                                                    return Column(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                      children: [
+                                                                                        Text(
+                                                                                          dateTimeFormat(
+                                                                                            "d",
+                                                                                            functions.convertStringToDateTime(listItem),
+                                                                                            locale: FFLocalizations.of(context).languageCode,
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Mulish',
+                                                                                                color: const Color(0xFF434854),
+                                                                                                fontSize: 14.0,
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                              ),
                                                                                         ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              color: const Color(0xFF434854),
-                                                                                              fontSize: 14.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                            ),
-                                                                                      ),
-                                                                                      Text(
-                                                                                        dateTimeFormat(
-                                                                                          "EE",
-                                                                                          functions.convertStringToDateTime(listItem),
-                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                        Text(
+                                                                                          dateTimeFormat(
+                                                                                            "EE",
+                                                                                            functions.convertStringToDateTime(listItem),
+                                                                                            locale: FFLocalizations.of(context).languageCode,
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Mulish',
+                                                                                                color: const Color(0xFF434854),
+                                                                                                fontSize: 14.0,
+                                                                                                letterSpacing: 0.0,
+                                                                                                fontWeight: FontWeight.w600,
+                                                                                              ),
                                                                                         ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              color: const Color(0xFF434854),
-                                                                                              fontSize: 14.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  );
-                                                                                }),
-                                                                              );
-                                                                            },
+                                                                                      ],
+                                                                                    );
+                                                                                  }),
+                                                                                );
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                        Expanded(
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Expanded(
+                                                                                child: SizedBox(
+                                                                                  width: double.infinity,
+                                                                                  height: 200.0,
+                                                                                  child: custom_widgets.DynamicLineChart(
+                                                                                    width: double.infinity,
+                                                                                    height: 200.0,
+                                                                                    dates: functions.convertStringsToDateTimes(GetLatestBemViverScoreCall.createdAt(
+                                                                                      mainGetLatestBemViverScoreResponse.jsonBody,
+                                                                                    )!
+                                                                                        .toList()),
+                                                                                    values: functions.convertIntegersToDoubles(GetLatestBemViverScoreCall.humor(
+                                                                                      mainGetLatestBemViverScoreResponse.jsonBody,
+                                                                                    )!
+                                                                                        .toList()),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                                                                                child: Builder(
+                                                                                  builder: (context) {
+                                                                                    final dates = GetLatestBemViverScoreCall.createdAt(
+                                                                                          mainGetLatestBemViverScoreResponse.jsonBody,
+                                                                                        )?.toList() ??
+                                                                                        [];
+
+                                                                                    return Row(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                      children: List.generate(dates.length, (datesIndex) {
+                                                                                        final datesItem = dates[datesIndex];
+                                                                                        return Text(
+                                                                                          dateTimeFormat(
+                                                                                            "d/E",
+                                                                                            functions.convertStringToDateTime(datesItem),
+                                                                                            locale: FFLocalizations.of(context).languageCode,
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Mulish',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        );
+                                                                                      }),
+                                                                                    );
+                                                                                  },
+                                                                                ),
+                                                                              ),
+                                                                            ],
                                                                           ),
                                                                         ),
                                                                       ],
@@ -1244,97 +1235,36 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                       children: [
                                                                         Expanded(
                                                                           child:
-                                                                              Stack(
-                                                                            children: [
-                                                                              Container(
-                                                                                width: double.infinity,
-                                                                                height: double.infinity,
-                                                                                decoration: BoxDecoration(
-                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                ),
-                                                                                child: Column(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  children: [
-                                                                                    Expanded(
-                                                                                      flex: 1,
-                                                                                      child: Container(
-                                                                                        width: double.infinity,
-                                                                                        height: 100.0,
-                                                                                        decoration: const BoxDecoration(
-                                                                                          color: Color(0xFFE9EDFE),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Expanded(
-                                                                                      flex: 3,
-                                                                                      child: Container(
-                                                                                        width: double.infinity,
-                                                                                        height: 100.0,
-                                                                                        decoration: const BoxDecoration(
-                                                                                          color: Color(0xFFDEE3F9),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Expanded(
-                                                                                      flex: 1,
-                                                                                      child: Container(
-                                                                                        width: double.infinity,
-                                                                                        height: 100.0,
-                                                                                        decoration: const BoxDecoration(
-                                                                                          color: Color(0xFFCCD1EB),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
                                                                               SizedBox(
-                                                                                width: double.infinity,
-                                                                                height: 230.0,
-                                                                                child: FlutterFlowLineChart(
-                                                                                  data: [
-                                                                                    FFLineChartData(
-                                                                                      xData: GetLatestBemViverScoreCall.createdAt(
-                                                                                        mainGetLatestBemViverScoreResponse.jsonBody,
-                                                                                      )!,
-                                                                                      yData: GetLatestBemViverScoreCall.scoreViV(
-                                                                                        mainGetLatestBemViverScoreResponse.jsonBody,
-                                                                                      )!,
-                                                                                      settings: LineChartBarData(
-                                                                                        color: FlutterFlowTheme.of(context).primary,
-                                                                                        barWidth: 2.0,
-                                                                                      ),
-                                                                                    )
-                                                                                  ],
-                                                                                  chartStylingInfo: const ChartStylingInfo(
-                                                                                    enableTooltip: true,
-                                                                                    tooltipBackgroundColor: Colors.white,
-                                                                                    backgroundColor: Color(0x00FFFFFF),
-                                                                                    showBorder: false,
-                                                                                  ),
-                                                                                  axisBounds: const AxisBounds(),
-                                                                                  xAxisLabelInfo: const AxisLabelInfo(
-                                                                                    reservedSize: 32.0,
-                                                                                  ),
-                                                                                  yAxisLabelInfo: const AxisLabelInfo(
-                                                                                    reservedSize: 40.0,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
+                                                                            width:
+                                                                                double.infinity,
+                                                                            height:
+                                                                                300.0,
+                                                                            child:
+                                                                                custom_widgets.DynamicLineChart(
+                                                                              width: double.infinity,
+                                                                              height: 300.0,
+                                                                              dates: functions.convertStringsToDateTimes(GetLatestBemViverScoreCall.createdAt(
+                                                                                mainGetLatestBemViverScoreResponse.jsonBody,
+                                                                              )!
+                                                                                  .toList()),
+                                                                              values: GetLatestBemViverScoreCall.scoreViV(
+                                                                                mainGetLatestBemViverScoreResponse.jsonBody,
+                                                                              )!,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                         Padding(
                                                                           padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                              24.0,
                                                                               0.0,
-                                                                              8.0,
                                                                               0.0,
                                                                               0.0),
                                                                           child:
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final list = GetLatestBemViverScoreCall.createdAt(
+                                                                              final dates = GetLatestBemViverScoreCall.createdAt(
                                                                                     mainGetLatestBemViverScoreResponse.jsonBody,
                                                                                   )?.toList() ??
                                                                                   [];
@@ -1342,41 +1272,18 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               return Row(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: List.generate(list.length, (listIndex) {
-                                                                                  final listItem = list[listIndex];
-                                                                                  return Column(
-                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      Text(
-                                                                                        dateTimeFormat(
-                                                                                          "d",
-                                                                                          functions.convertStringToDateTime(listItem),
-                                                                                          locale: FFLocalizations.of(context).languageCode,
+                                                                                children: List.generate(dates.length, (datesIndex) {
+                                                                                  final datesItem = dates[datesIndex];
+                                                                                  return Text(
+                                                                                    dateTimeFormat(
+                                                                                      "d/E",
+                                                                                      functions.convertStringToDateTime(datesItem),
+                                                                                      locale: FFLocalizations.of(context).languageCode,
+                                                                                    ),
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Mulish',
+                                                                                          letterSpacing: 0.0,
                                                                                         ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              color: const Color(0xFF434854),
-                                                                                              fontSize: 14.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                            ),
-                                                                                      ),
-                                                                                      Text(
-                                                                                        dateTimeFormat(
-                                                                                          "EE",
-                                                                                          functions.convertStringToDateTime(listItem),
-                                                                                          locale: FFLocalizations.of(context).languageCode,
-                                                                                        ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              color: const Color(0xFF434854),
-                                                                                              fontSize: 14.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ],
                                                                                   );
                                                                                 }),
                                                                               );
@@ -1446,7 +1353,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                       .start,
                                                               children: [
                                                                 Text(
-                                                                  'Detalhe',
+                                                                  'Evolução de sintomas',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -1580,6 +1487,15 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                             onTap:
                                                                                 () async {
                                                                               _model.queixa = rowViewQueixasPacienteRow.queixaId!;
+                                                                              safeSetState(() {});
+                                                                              _model.apiResult38yfd = await SegmentGroup.trackingCall.call(
+                                                                                userId: currentUserUid,
+                                                                                eventName: 'evolution condition selected',
+                                                                                propertiesJson: <String, dynamic>{
+                                                                                  'selected': rowViewQueixasPacienteRow.queixaNome,
+                                                                                },
+                                                                              );
+
                                                                               safeSetState(() {});
                                                                             },
                                                                             child:
@@ -1763,107 +1679,100 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                 ),
                                                                               );
                                                                             }
-                                                                            final chartGetQueixaValuesResponse =
+                                                                            final dynamicLineChartGetQueixaValuesResponse =
                                                                                 snapshot.data!;
 
                                                                             return SizedBox(
                                                                               width: double.infinity,
-                                                                              height: 150.0,
-                                                                              child: FlutterFlowLineChart(
-                                                                                data: [
-                                                                                  FFLineChartData(
-                                                                                    xData: GetQueixaValuesCall.createdA6(
-                                                                                      chartGetQueixaValuesResponse.jsonBody,
-                                                                                    )!,
-                                                                                    yData: GetQueixaValuesCall.score(
-                                                                                      chartGetQueixaValuesResponse.jsonBody,
-                                                                                    )!,
-                                                                                    settings: LineChartBarData(
-                                                                                      color: FlutterFlowTheme.of(context).primary,
-                                                                                      barWidth: 2.0,
-                                                                                      belowBarData: BarAreaData(
-                                                                                        show: true,
-                                                                                        color: FlutterFlowTheme.of(context).accent1,
-                                                                                      ),
-                                                                                    ),
-                                                                                  )
-                                                                                ],
-                                                                                chartStylingInfo: const ChartStylingInfo(
-                                                                                  enableTooltip: true,
-                                                                                  tooltipBackgroundColor: Colors.white,
-                                                                                  backgroundColor: Color(0x00FFFFFF),
-                                                                                  showGrid: true,
-                                                                                  showBorder: false,
-                                                                                ),
-                                                                                axisBounds: const AxisBounds(),
-                                                                                xAxisLabelInfo: const AxisLabelInfo(
-                                                                                  reservedSize: 7.0,
-                                                                                ),
-                                                                                yAxisLabelInfo: const AxisLabelInfo(
-                                                                                  reservedSize: 40.0,
-                                                                                ),
+                                                                              height: 180.0,
+                                                                              child: custom_widgets.DynamicLineChart(
+                                                                                width: double.infinity,
+                                                                                height: 180.0,
+                                                                                dates: functions.convertStringsToDateTimes(GetQueixaValuesCall.createdA6(
+                                                                                  dynamicLineChartGetQueixaValuesResponse.jsonBody,
+                                                                                )!
+                                                                                    .toList()),
+                                                                                values: GetQueixaValuesCall.score(
+                                                                                  dynamicLineChartGetQueixaValuesResponse.jsonBody,
+                                                                                )!,
                                                                               ),
                                                                             );
                                                                           },
                                                                         ),
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              8.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Builder(
-                                                                            builder:
-                                                                                (context) {
-                                                                              final list = GetLatestBemViverScoreCall.createdAt(
-                                                                                    mainGetLatestBemViverScoreResponse.jsonBody,
-                                                                                  )?.toList() ??
-                                                                                  [];
-
-                                                                              return Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                children: List.generate(list.length, (listIndex) {
-                                                                                  final listItem = list[listIndex];
-                                                                                  return Column(
-                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                    children: [
-                                                                                      Text(
-                                                                                        dateTimeFormat(
-                                                                                          "d",
-                                                                                          functions.convertStringToDateTime(listItem),
-                                                                                          locale: FFLocalizations.of(context).languageCode,
-                                                                                        ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              color: const Color(0xFF434854),
-                                                                                              fontSize: 14.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                            ),
-                                                                                      ),
-                                                                                      Text(
-                                                                                        dateTimeFormat(
-                                                                                          "EE",
-                                                                                          functions.convertStringToDateTime(listItem),
-                                                                                          locale: FFLocalizations.of(context).languageCode,
-                                                                                        ),
-                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              color: const Color(0xFF434854),
-                                                                                              fontSize: 14.0,
-                                                                                              letterSpacing: 0.0,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  );
-                                                                                }),
-                                                                              );
-                                                                            },
+                                                                        FutureBuilder<
+                                                                            ApiCallResponse>(
+                                                                          future:
+                                                                              GetQueixaValuesCall.call(
+                                                                            dateInit:
+                                                                                dateTimeFormat(
+                                                                              "y-M-d",
+                                                                              _model.dataInicio,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
+                                                                            dateEnd:
+                                                                                dateTimeFormat(
+                                                                              "y-M-d",
+                                                                              _model.dataFinal,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
+                                                                            paciente:
+                                                                                FFAppState().paciente.id,
+                                                                            queixa:
+                                                                                _model.queixa,
                                                                           ),
+                                                                          builder:
+                                                                              (context, snapshot) {
+                                                                            // Customize what your widget looks like when it's loading.
+                                                                            if (!snapshot.hasData) {
+                                                                              return Center(
+                                                                                child: SizedBox(
+                                                                                  width: 50.0,
+                                                                                  height: 50.0,
+                                                                                  child: CircularProgressIndicator(
+                                                                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                      FlutterFlowTheme.of(context).primary,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            }
+                                                                            final containerGetQueixaValuesResponse =
+                                                                                snapshot.data!;
+
+                                                                            return Container(
+                                                                              decoration: const BoxDecoration(),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                                                                                child: Builder(
+                                                                                  builder: (context) {
+                                                                                    final datess = GetQueixaValuesCall.createdA6(
+                                                                                          containerGetQueixaValuesResponse.jsonBody,
+                                                                                        )?.toList() ??
+                                                                                        [];
+
+                                                                                    return Row(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                      children: List.generate(datess.length, (datessIndex) {
+                                                                                        final datessItem = datess[datessIndex];
+                                                                                        return Text(
+                                                                                          dateTimeFormat(
+                                                                                            "d/E",
+                                                                                            functions.convertStringToDateTime(datessItem),
+                                                                                            locale: FFLocalizations.of(context).languageCode,
+                                                                                          ),
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                fontFamily: 'Mulish',
+                                                                                                letterSpacing: 0.0,
+                                                                                              ),
+                                                                                        );
+                                                                                      }),
+                                                                                    );
+                                                                                  },
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
                                                                         ),
                                                                       ],
                                                                     ),
@@ -2157,105 +2066,51 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                await showModalBottomSheet<
-                                                        bool>(
-                                                    context: context,
-                                                    builder: (context) {
-                                                      final datePicked3CupertinoTheme =
-                                                          CupertinoTheme.of(
-                                                              context);
-                                                      return ScrollConfiguration(
-                                                        behavior:
-                                                            const MaterialScrollBehavior()
-                                                                .copyWith(
-                                                          dragDevices: {
-                                                            PointerDeviceKind
-                                                                .mouse,
-                                                            PointerDeviceKind
-                                                                .touch,
-                                                            PointerDeviceKind
-                                                                .stylus,
-                                                            PointerDeviceKind
-                                                                .unknown
-                                                          },
-                                                        ),
-                                                        child: Container(
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height /
-                                                              3,
-                                                          width: MediaQuery.of(
-                                                                  context)
-                                                              .size
-                                                              .width,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          child: CupertinoTheme(
-                                                            data:
-                                                                datePicked3CupertinoTheme
-                                                                    .copyWith(
-                                                              textTheme:
-                                                                  datePicked3CupertinoTheme
-                                                                      .textTheme
-                                                                      .copyWith(
-                                                                dateTimePickerTextStyle:
-                                                                    FlutterFlowTheme.of(
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return WebViewAware(
+                                                      child: GestureDetector(
+                                                        onTap: () =>
+                                                            FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child: SizedBox(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
                                                                             context)
-                                                                        .headlineMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Mulish',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                              ),
-                                                            ),
+                                                                    .height *
+                                                                0.4,
                                                             child:
-                                                                CupertinoDatePicker(
-                                                              mode:
-                                                                  CupertinoDatePickerMode
-                                                                      .date,
-                                                              minimumDate:
-                                                                  DateTime(
-                                                                      1900),
-                                                              initialDateTime:
-                                                                  (_model.dataInicio ??
-                                                                      DateTime
-                                                                          .now()),
-                                                              maximumDate:
-                                                                  DateTime(
-                                                                      2050),
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              use24hFormat:
-                                                                  false,
-                                                              onDateTimeChanged:
-                                                                  (newDateTime) =>
-                                                                      safeSetState(
-                                                                          () {
-                                                                _model.datePicked3 =
-                                                                    newDateTime;
-                                                              }),
+                                                                CustomDatePickerWidget(
+                                                              hasInitDate: true,
+                                                              initDate: _model
+                                                                  .dataInicio,
+                                                              callback:
+                                                                  (dateSet) async {
+                                                                _model.dataInicio =
+                                                                    dateSet;
+                                                                safeSetState(
+                                                                    () {});
+                                                                await _model
+                                                                    .getSintomas(
+                                                                        context);
+                                                              },
                                                             ),
                                                           ),
                                                         ),
-                                                      );
-                                                    });
-                                                if (!(_model.datePicked3 ==
-                                                    null)) {
-                                                  _model.dataInicio =
-                                                      _model.datePicked3;
-                                                  safeSetState(() {});
-                                                  await _model
-                                                      .getSintomas(context);
-                                                  safeSetState(() {});
-                                                }
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then((value) =>
+                                                    safeSetState(() {}));
                                               },
                                               child: Container(
                                                 height: 37.0,
@@ -2324,109 +2179,51 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                await showModalBottomSheet<
-                                                        bool>(
-                                                    context: context,
-                                                    builder: (context) {
-                                                      final datePicked4CupertinoTheme =
-                                                          CupertinoTheme.of(
-                                                              context);
-                                                      return ScrollConfiguration(
-                                                        behavior:
-                                                            const MaterialScrollBehavior()
-                                                                .copyWith(
-                                                          dragDevices: {
-                                                            PointerDeviceKind
-                                                                .mouse,
-                                                            PointerDeviceKind
-                                                                .touch,
-                                                            PointerDeviceKind
-                                                                .stylus,
-                                                            PointerDeviceKind
-                                                                .unknown
-                                                          },
-                                                        ),
-                                                        child: Container(
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height /
-                                                              3,
-                                                          width: MediaQuery.of(
-                                                                  context)
-                                                              .size
-                                                              .width,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          child: CupertinoTheme(
-                                                            data:
-                                                                datePicked4CupertinoTheme
-                                                                    .copyWith(
-                                                              textTheme:
-                                                                  datePicked4CupertinoTheme
-                                                                      .textTheme
-                                                                      .copyWith(
-                                                                dateTimePickerTextStyle:
-                                                                    FlutterFlowTheme.of(
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return WebViewAware(
+                                                      child: GestureDetector(
+                                                        onTap: () =>
+                                                            FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child: SizedBox(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
                                                                             context)
-                                                                        .headlineMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Mulish',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                              ),
-                                                            ),
+                                                                    .height *
+                                                                0.4,
                                                             child:
-                                                                CupertinoDatePicker(
-                                                              mode:
-                                                                  CupertinoDatePickerMode
-                                                                      .date,
-                                                              minimumDate:
-                                                                  DateTime(
-                                                                      1900),
-                                                              initialDateTime:
-                                                                  (_model.dataFinal ??
-                                                                      DateTime
-                                                                          .now()),
-                                                              maximumDate: (functions
-                                                                      .addDaysToDate(
-                                                                          _model
-                                                                              .dataInicio!,
-                                                                          6) ??
-                                                                  DateTime(
-                                                                      2050)),
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              use24hFormat:
-                                                                  false,
-                                                              onDateTimeChanged:
-                                                                  (newDateTime) =>
-                                                                      safeSetState(
-                                                                          () {
-                                                                _model.datePicked4 =
-                                                                    newDateTime;
-                                                              }),
+                                                                CustomDatePickerWidget(
+                                                              hasInitDate: true,
+                                                              initDate: _model
+                                                                  .dataFinal,
+                                                              callback:
+                                                                  (dateSet) async {
+                                                                _model.dataFinal =
+                                                                    dateSet;
+                                                                safeSetState(
+                                                                    () {});
+                                                                await _model
+                                                                    .getSintomas(
+                                                                        context);
+                                                              },
                                                             ),
                                                           ),
                                                         ),
-                                                      );
-                                                    });
-                                                if (!(_model.datePicked4 ==
-                                                    null)) {
-                                                  _model.dataFinal =
-                                                      _model.datePicked4;
-                                                  safeSetState(() {});
-                                                  await _model
-                                                      .getSintomas(context);
-                                                  safeSetState(() {});
-                                                }
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then((value) =>
+                                                    safeSetState(() {}));
                                               },
                                               child: Container(
                                                 height: 37.0,
@@ -2794,7 +2591,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Detalhe',
+                                                              'Evolução de sintomas',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium

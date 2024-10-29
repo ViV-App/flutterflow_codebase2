@@ -40,4 +40,7 @@ class BemViverRow extends SupabaseDataRow {
 
   String? get periodo => getField<String>('periodo');
   set periodo(String? value) => setField<String>('periodo', value);
+
+  String? get frequencia => getField<String>('frequencia');
+  set frequencia(String? value) => setField<String>('frequencia', value);
 }

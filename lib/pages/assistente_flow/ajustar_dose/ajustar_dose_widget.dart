@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/bip_geral_infos/bip_geral_infos_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -67,7 +68,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
               currentUserUid,
             ),
           );
-          await AjusteDoseRequisicaoTable().insert({
+          _model.reCreat = await AjusteDoseRequisicaoTable().insert({
             'paciente': FFAppState().paciente.id,
             'bipVIgente': _model.bipV?.first.id,
             'requisicao_data': supaSerialize<DateTime>(getCurrentTimestamp),
@@ -75,6 +76,8 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                 _model.cUser!.first.queixas.toList(),
                 _model.cUser!.first.queixaPrincipal!),
           });
+          _model.reqAtual = _model.reCreat;
+          safeSetState(() {});
         } else {
           _model.reqAt = await AjusteDoseRequisicaoTable().queryRows(
             queryFn: (q) => q.eq(
@@ -234,37 +237,107 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                       alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            context: context,
-                                            builder: (context) {
-                                              return WebViewAware(
-                                                child: GestureDetector(
-                                                  onTap: () =>
-                                                      FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: SizedBox(
-                                                      height: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .height *
-                                                          0.8,
-                                                      child:
-                                                          BipGeralInfosWidget(
-                                                        reqBip: _model.reqAtual,
-                                                        bip: 'geral',
-                                                      ),
-                                                    ),
-                                                  ),
+                                          var shouldSetState = false;
+                                          _model.qst1 =
+                                              await QuestionarioTable()
+                                                  .queryRows(
+                                            queryFn: (q) => q.eq(
+                                              'nome',
+                                              'BIP Geral',
+                                            ),
+                                          );
+                                          shouldSetState = true;
+                                          _model.res1 =
+                                              await RespostasQuestionarioTable()
+                                                  .queryRows(
+                                            queryFn: (q) => q
+                                                .eq(
+                                                  'bipRequisicao',
+                                                  _model.reqAtual?.id,
+                                                )
+                                                .eq(
+                                                  'questionario',
+                                                  _model.qst1?.first.id,
                                                 ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
+                                          );
+                                          shouldSetState = true;
+                                          if ((_model.res1 != null &&
+                                                  (_model.res1)!.isNotEmpty) ==
+                                              true) {
+                                            context.pushNamed(
+                                              'questionarioBip',
+                                              queryParameters: {
+                                                'questionario': serializeParam(
+                                                  _model.qst1?.first,
+                                                  ParamType.SupabaseRow,
+                                                ),
+                                                'bipRequisicao': serializeParam(
+                                                  _model.reqAtual?.id,
+                                                  ParamType.int,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
+
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
+                                            return;
+                                          } else {
+                                            _model.apiResulte7s =
+                                                await GenerateBipResponsesCall
+                                                    .call(
+                                              bipReq: _model.reqAtual?.id,
+                                              paciente:
+                                                  FFAppState().paciente.id,
+                                              questionario:
+                                                  _model.qst1?.first.id,
+                                            );
+
+                                            shouldSetState = true;
+
+                                            context.pushNamed(
+                                              'questionarioBip',
+                                              queryParameters: {
+                                                'questionario': serializeParam(
+                                                  _model.qst1?.first,
+                                                  ParamType.SupabaseRow,
+                                                ),
+                                                'bipRequisicao': serializeParam(
+                                                  _model.reqAtual?.id,
+                                                  ParamType.int,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
+
+                                            if (shouldSetState) {
+                                              safeSetState(() {});
+                                            }
+                                            return;
+                                          }
+
+                                          if (shouldSetState) {
+                                            safeSetState(() {});
+                                          }
                                         },
                                         text: 'Preencher Formulário Geral',
                                         options: FFButtonOptions(
@@ -304,7 +377,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                         onPressed: () {
                                           print('Button pressed ...');
                                         },
-                                        text: 'Preencher Formulário Geral',
+                                        text: 'Formulário Geral',
                                         icon: const Icon(
                                           Icons.check_circle,
                                           size: 24.0,
@@ -317,8 +390,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                           iconPadding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                          color: const Color(0x5E6E78FF),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -329,7 +401,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
-                                          elevation: 3.0,
+                                          elevation: 0.0,
                                           borderSide: const BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
@@ -467,7 +539,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
 
                                           safeSetState(() {});
                                         },
-                                        text: 'Preencher Formulário Específico',
+                                        text: 'Formulário Específico',
                                         icon: const Icon(
                                           Icons.check_circle,
                                           size: 24.0,
@@ -480,8 +552,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                           iconPadding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                          color: const Color(0x5E6E78FF),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -492,7 +563,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
-                                          elevation: 3.0,
+                                          elevation: 0.0,
                                           borderSide: const BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
@@ -632,142 +703,264 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               fontWeight: FontWeight.bold,
                                             ),
                                       ),
-                                      Text(
-                                        'Acesse o arquivo para validar qual a dosagem ideal deve ser utilizada pelos próximos dias.',
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Mulish',
-                                              color: const Color(0xFF8798B5),
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await launchURL(columnAjusteDeDoseRow!
+                                              .propostaT!);
+                                        },
+                                        child: Text(
+                                          'Acesse o arquivo para validar qual a dosagem ideal deve ser utilizada pelos próximos dias.',
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Mulish',
+                                                color: const Color(0xFF8798B5),
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                        ),
                                       ),
                                     ].divide(const SizedBox(height: 8.0)),
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 72.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      await launchURL(
-                                          columnAjusteDeDoseRow!.file!);
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 62.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(18.0),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            18.0, 0.0, 18.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Container(
-                                                  width: 32.0,
-                                                  height: 32.0,
-                                                  decoration: BoxDecoration(
-                                                    color: const Color(0x3D6D98F4),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            200.0),
-                                                  ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                        child: Image.asset(
-                                                          'assets/images/Vector.png',
-                                                          width: 16.0,
-                                                          height: 16.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
+                                      24.0, 0.0, 24.0, 24.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 62.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          18.0, 0.0, 18.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: 32.0,
+                                                height: 32.0,
+                                                decoration: BoxDecoration(
+                                                  color: const Color(0x3D6D98F4),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          200.0),
                                                 ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 0.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Dosagem do Remédio',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.asset(
+                                                        'assets/images/Vector.png',
+                                                        width: 16.0,
+                                                        height: 16.0,
+                                                        fit: BoxFit.cover,
                                                       ),
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          columnAjusteDeDoseRow
-                                                              ?.profissionalUploader,
-                                                          'd',
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Mulish',
-                                                              color: const Color(
-                                                                  0xFF8798B5),
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                            const Icon(
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Proposta de Dosagem',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                    ),
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        columnAjusteDeDoseRow
+                                                            ?.profissionalUploader,
+                                                        'ViV - Assistente',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            color: const Color(
+                                                                0xFF8798B5),
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await launchURL(
+                                                  columnAjusteDeDoseRow!
+                                                      .propostaT!);
+                                            },
+                                            child: const Icon(
                                               Icons.arrow_forward_ios_sharp,
                                               color: Color(0xFF8798B5),
                                               size: 24.0,
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 72.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 62.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          18.0, 0.0, 18.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: 32.0,
+                                                height: 32.0,
+                                                decoration: BoxDecoration(
+                                                  color: const Color(0x3D6D98F4),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          200.0),
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.asset(
+                                                        'assets/images/Vector.png',
+                                                        width: 16.0,
+                                                        height: 16.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Proposta de Receita',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                    ),
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        columnAjusteDeDoseRow
+                                                            ?.profissionalUploader,
+                                                        'ViV - Assistente',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            color: const Color(
+                                                                0xFF8798B5),
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await launchURL(
+                                                  columnAjusteDeDoseRow!
+                                                      .planoT!);
+                                            },
+                                            child: const Icon(
+                                              Icons.arrow_forward_ios_sharp,
+                                              color: Color(0xFF8798B5),
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),

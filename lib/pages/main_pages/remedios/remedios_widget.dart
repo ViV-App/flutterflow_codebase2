@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/edit_prescription/edit_prescription_widget.dart';
 import '/components/remedio_card/remedio_card_widget.dart';
@@ -35,6 +37,11 @@ class _RemediosWidgetState extends State<RemediosWidget> {
         _model.requestCompleted = false;
       });
       await _model.waitForRequestCompleted();
+      _model.apiResultwcv = await SegmentGroup.trackingCall.call(
+        userId: currentUserUid,
+        eventName: 'medicine-list screen viewed',
+        propertyOne: 'medicine',
+      );
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -294,6 +301,14 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                         },
                                       ).then((value) => safeSetState(() {}));
 
+                                      _model.apiResultltc =
+                                          await SegmentGroup.trackingCall.call(
+                                        userId: currentUserUid,
+                                        eventName: 'medicine-list clicked',
+                                        propertyOne:
+                                            'medicine-${remedioCardStaticMedicamentosRow?.categoria}',
+                                      );
+
                                       safeSetState(() {});
                                     },
                                     child: RemedioCardWidget(
@@ -324,6 +339,15 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                     child: FFButtonWidget(
                       onPressed: () async {
                         context.pushNamed('prescricao01');
+
+                        _model.apiResultwcvv =
+                            await SegmentGroup.trackingCall.call(
+                          userId: currentUserUid,
+                          eventName: 'new-medicine started',
+                          propertyOne: 'medicine',
+                        );
+
+                        safeSetState(() {});
                       },
                       text: 'Adicionar novo',
                       options: FFButtonOptions(

@@ -133,7 +133,8 @@ class _FormsFilledWidgetState extends State<FormsFilledWidget> {
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                  text: 'Agora é só aguardar sua consulta!',
+                                  text:
+                                      'Agora você pode requisitar o seu ajuste de dose',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(

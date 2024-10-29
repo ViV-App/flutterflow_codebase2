@@ -35,9 +35,9 @@ class DadosCadastraisRow extends SupabaseDataRow {
   set principalProfissao(String? value) =>
       setField<String>('principal_profissao', value);
 
-  int? get qntdTempoTrabalhado => getField<int>('qntd_tempo_trabalhado');
-  set qntdTempoTrabalhado(int? value) =>
-      setField<int>('qntd_tempo_trabalhado', value);
+  String? get dedicacaoTrabalho => getField<String>('dedicacao_trabalho');
+  set dedicacaoTrabalho(String? value) =>
+      setField<String>('dedicacao_trabalho', value);
 
   bool? get isEstrangeiro => getField<bool>('is_estrangeiro');
   set isEstrangeiro(bool? value) => setField<bool>('is_estrangeiro', value);
@@ -51,4 +51,17 @@ class DadosCadastraisRow extends SupabaseDataRow {
 
   String? get passaporte => getField<String>('passaporte');
   set passaporte(String? value) => setField<String>('passaporte', value);
+
+  int? get altura => getField<int>('altura');
+  set altura(int? value) => setField<int>('altura', value);
+
+  int? get peso => getField<int>('peso');
+  set peso(int? value) => setField<int>('peso', value);
+
+  String? get sexo => getField<String>('sexo');
+  set sexo(String? value) => setField<String>('sexo', value);
+
+  String? get identidadeGenero => getField<String>('identidade_genero');
+  set identidadeGenero(String? value) =>
+      setField<String>('identidade_genero', value);
 }

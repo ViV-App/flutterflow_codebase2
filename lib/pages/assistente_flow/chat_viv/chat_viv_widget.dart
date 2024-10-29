@@ -657,7 +657,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                       ),
                                     if (_model.typing == true)
                                       Lottie.asset(
-                                        'assets/lottie_animations/Animation_-_1718360753366.json',
+                                        'assets/jsons/Animation_-_1718360753366.json',
                                         width: 72.0,
                                         height: 35.0,
                                         fit: BoxFit.contain,

@@ -1,9 +1,9 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/remedio_card/remedio_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'edit_prescription_widget.dart' show EditPrescriptionWidget;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EditPrescriptionModel extends FlutterFlowModel<EditPrescriptionWidget> {
@@ -30,8 +30,12 @@ class EditPrescriptionModel extends FlutterFlowModel<EditPrescriptionWidget> {
   void updateDatsAtIndex(int index, Function(dynamic) updateFn) =>
       dats[index] = updateFn(dats[index]);
 
+  DateTime? newDate;
+
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Backend Call - API (tracking)] action in editPrescription widget.
+  ApiCallResponse? apiResultnh7;
   // Model for remedioCard component.
   late RemedioCardModel remedioCardModel;
   // State field(s) for TextField widget.
@@ -45,9 +49,12 @@ class EditPrescriptionModel extends FlutterFlowModel<EditPrescriptionWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  DateTime? datePicked;
   // State field(s) for Switch widget.
   bool? switchValue;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? apiResult23o;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? apiResult5h9;
 
   @override
   void initState(BuildContext context) {

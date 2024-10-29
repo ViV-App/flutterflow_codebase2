@@ -20,7 +20,8 @@ class QueixaQuestionWidget extends StatefulWidget {
   final StaticQueixasSaudeRow? queixa;
   final String? queixaName;
   final bool principal;
-  final Future Function(dynamic response, String? periodo)? setReturn;
+  final Future Function(dynamic response, String? periodo, String frequencia)?
+      setReturn;
 
   @override
   State<QueixaQuestionWidget> createState() => _QueixaQuestionWidgetState();
@@ -116,10 +117,7 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                 ],
               ),
             ),
-            if ((widget.queixaName == 'Disturbio do Sono') &&
-                    (widget.principal == false)
-                ? false
-                : true)
+            if (widget.queixaName == 'Distúrbios do Sono' ? false : true)
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
                 child: Column(
@@ -129,27 +127,27 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                     Text(
                       () {
                         if (widget.queixaName == 'Ansiedade') {
-                          return 'Em qual periodo do dia a ansiedade é maior?';
+                          return 'Quantas vezes por dia voce está sentindo ansiedade?';
                         } else if (widget.queixaName == 'Dor crônica') {
-                          return 'Em qual periodo do dia a dor é maior?';
+                          return 'Quantas vezes por dia voce está sentindo dor?';
                         } else if (widget.queixaName ==
                             'Tremores (Parkinson e Tremor essencial)') {
-                          return 'Quando o tremor acontece, elaes são piores em qual periodo do dia?';
+                          return 'Quantas vezes por dia voce está sentindo o tremor?';
                         } else if (widget.queixaName == 'Epilepsia') {
-                          return 'Quando as crises acontecem, elas são piores em qual periodo do dia?';
+                          return 'Quantas vezes por dia voce apresentou epilesia?';
                         } else if (widget.queixaName ==
                             'Transtorno do espectro autista') {
-                          return 'Quando as comportamentos estereotipados ou comorbidades do TEA acontecem, elas são piores em qual periodo do dia?';
+                          return 'Quantas vezes por dia voce apresentou compartamentos estereotipados ou comorbidades do TEA?';
                         } else if (widget.queixaName ==
                             'Doença inflamatória Intestinal') {
-                          return 'Quando os sintomas da Doença Inflamatória Intestinal acontece, eles são piores em qual periodo do dia?';
+                          return 'Quantas vezes por dia voce está sentindo sintomas da Doença Inflamatória Intestinal?';
                         } else if (widget.queixaName == 'Demência') {
-                          return 'Quando as crises acontecem, elas são piores em qual periodo do dia?';
+                          return 'Qual a frequência que o paciente apresentou crises: ansiedade, agitação, humor ruim, tristeza ou deficit cognitivo?';
                         } else if (widget.queixaName ==
                             'Náusea e Vômitos (causado por quimioterápicos) ') {
-                          return 'Em qual periodo do dia as Náuseas e/ou Vômitos são mais intensos?';
+                          return 'Quantas vezes por dia voce está sentindo Náuseas e/ou Vômitos?';
                         } else {
-                          return 'Periodo';
+                          return 'Período';
                         }
                       }(),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -163,11 +161,100 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: FlutterFlowDropDown<String>(
-                        controller: _model.dropDownValueController ??=
+                        controller: _model.dpFequValueController ??=
+                            FormFieldController<String>(null),
+                        options: const ['0', '1 a 2', '3 ou mais', 'O tempo todo'],
+                        onChanged: (val) =>
+                            safeSetState(() => _model.dpFequValue = val),
+                        width: double.infinity,
+                        height: 48.0,
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Mulish',
+                                  letterSpacing: 0.0,
+                                ),
+                        hintText: 'Selecione uma opção',
+                        icon: Icon(
+                          Icons.keyboard_arrow_down_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24.0,
+                        ),
+                        fillColor: const Color(0xFFF7FAFE),
+                        elevation: 2.0,
+                        borderColor: const Color(0x0E294B0D),
+                        borderWidth: 2.0,
+                        borderRadius: 8.0,
+                        margin: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        hidesUnderline: true,
+                        isOverButton: true,
+                        isSearchable: false,
+                        isMultiSelect: false,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            if (() {
+              if ((widget.queixaName == 'Distúrbios do Sono') &&
+                  (widget.principal == false)) {
+                return false;
+              } else if ((_model.dpFequValue == null ||
+                      _model.dpFequValue == '') ||
+                  (_model.dpFequValue == '0')) {
+                return false;
+              } else {
+                return true;
+              }
+            }())
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      () {
+                        if (widget.queixaName == 'Ansiedade') {
+                          return 'Em qual período do dia a ansiedade é maior?';
+                        } else if (widget.queixaName == 'Dor crônica') {
+                          return 'Em qual período do dia a dor é maior?';
+                        } else if (widget.queixaName ==
+                            'Tremores (Parkinson e Tremor essencial)') {
+                          return 'Quando o tremor acontece, elaes são piores em qual período do dia?';
+                        } else if (widget.queixaName == 'Epilepsia') {
+                          return 'Quando as crises acontecem, elas são piores em qual periodo do dia?';
+                        } else if (widget.queixaName ==
+                            'Transtorno do espectro autista') {
+                          return 'Quando as comportamentos estereótipados ou comorbidades do TEA acontecem, elas são piores em qual período do dia?';
+                        } else if (widget.queixaName ==
+                            'Doença inflamatória Intestinal') {
+                          return 'Quando os sintomas da Doença Inflamatória Intestinal acontece, eles são piores em qual período do dia?';
+                        } else if (widget.queixaName == 'Demência') {
+                          return 'Quando as crises acontecem, elas são piores em qual período do dia?';
+                        } else if (widget.queixaName ==
+                            'Náusea e Vômitos (causado por quimioterápicos) ') {
+                          return 'Em qual período do dia as Náuseas e/ou Vômitos são mais intensos?';
+                        } else {
+                          return 'Período';
+                        }
+                      }(),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Mulish',
+                            fontSize: 16.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                      child: FlutterFlowDropDown<String>(
+                        controller: _model.dpPeriodoValueController ??=
                             FormFieldController<String>(null),
                         options: const ['Manhã', 'Tarde', 'Noite'],
                         onChanged: (val) =>
-                            safeSetState(() => _model.dropDownValue = val),
+                            safeSetState(() => _model.dpPeriodoValue = val),
                         width: double.infinity,
                         height: 48.0,
                         textStyle:
@@ -199,11 +286,11 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
               ),
             if (() {
               if ((widget.principal == false) &&
-                  (_model.dropDownValue != null &&
-                      _model.dropDownValue != '')) {
+                  ((_model.dpFequValue != null && _model.dpFequValue != '') &&
+                      (_model.dpFequValue != '0'))) {
                 return true;
               } else if ((widget.principal == false) &&
-                  (widget.queixaName == 'Disturbio do Sono')) {
+                  (widget.queixaName == 'Distúrbios do Sono')) {
                 return true;
               } else {
                 return false;
@@ -254,7 +341,8 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                             sendRes: (resp) async {
                               await widget.setReturn?.call(
                                 resp!,
-                                _model.dropDownValue,
+                                _model.dpFequValue,
+                                _model.dpFequValue!,
                               );
                             },
                           ),
@@ -264,8 +352,18 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                   },
                 ),
               ),
-            if ((widget.principal == true) &&
-                (_model.dropDownValue != null && _model.dropDownValue != ''))
+            if (() {
+              if ((widget.principal == true) &&
+                  ((_model.dpFequValue != '0') &&
+                      (_model.dpFequValue != null &&
+                          _model.dpFequValue != ''))) {
+                return true;
+              } else if (widget.queixaName == 'Distúrbios do Sono') {
+                return true;
+              } else {
+                return false;
+              }
+            }())
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
                 child: Builder(
@@ -303,7 +401,8 @@ class _QueixaQuestionWidgetState extends State<QueixaQuestionWidget> {
                           sendRes: (resp) async {
                             await widget.setReturn?.call(
                               resp!,
-                              _model.dropDownValue,
+                              _model.dpPeriodoValue,
+                              _model.dpFequValue!,
                             );
                           },
                         );

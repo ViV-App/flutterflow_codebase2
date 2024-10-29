@@ -153,7 +153,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     context.pushNamed(
-                                      'createAccount',
+                                      'tourViv',
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
                                           hasTransition: true,
@@ -201,7 +201,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
-                                        'Você ja tem uma conta?',
+                                        'Você já tem uma conta?',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(

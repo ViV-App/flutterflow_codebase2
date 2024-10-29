@@ -4,6 +4,7 @@ import '/flutter_flow/form_field_controller.dart';
 import 'dados_cadastrais_form_widget.dart' show DadosCadastraisFormWidget;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class DadosCadastraisFormModel
     extends FlutterFlowModel<DadosCadastraisFormWidget> {
@@ -30,18 +31,32 @@ class DadosCadastraisFormModel
 
   ///  State fields for stateful widgets in this component.
 
+  // State field(s) for sexo widget.
+  String? sexoValue;
+  FormFieldController<String>? sexoValueController;
+  // State field(s) for identidade widget.
+  String? identidadeValue;
+  FormFieldController<String>? identidadeValueController;
   DateTime? datePicked;
-  // State field(s) for civilState widget.
-  String? civilStateValue;
-  FormFieldController<String>? civilStateValueController;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for years widget.
-  FocusNode? yearsFocusNode;
-  TextEditingController? yearsTextController;
-  String? Function(BuildContext, String?)? yearsTextControllerValidator;
+  // State field(s) for tempoTrab widget.
+  String? tempoTrabValue;
+  FormFieldController<String>? tempoTrabValueController;
+  // State field(s) for altura widget.
+  FocusNode? alturaFocusNode;
+  TextEditingController? alturaTextController;
+  final alturaMask = MaskTextInputFormatter(mask: '#,##');
+  String? Function(BuildContext, String?)? alturaTextControllerValidator;
+  // State field(s) for peso widget.
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+  // State field(s) for civilState widget.
+  String? civilStateValue;
+  FormFieldController<String>? civilStateValueController;
   // State field(s) for gringo widget.
   String? gringoValue;
   FormFieldController<String>? gringoValueController;
@@ -76,7 +91,10 @@ class DadosCadastraisFormModel
     textFieldFocusNode?.dispose();
     textController1?.dispose();
 
-    yearsFocusNode?.dispose();
-    yearsTextController?.dispose();
+    alturaFocusNode?.dispose();
+    alturaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
   }
 }

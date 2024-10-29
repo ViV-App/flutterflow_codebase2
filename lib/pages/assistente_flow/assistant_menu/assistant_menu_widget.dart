@@ -754,62 +754,69 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         ),
                       ).animateOnPageLoad(
                           animationsMap['containerOnPageLoadAnimation7']!),
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed(
-                          'chatViv',
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: const TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 0),
-                            ),
-                          },
-                        );
-
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        height: 44.0,
-                        decoration: BoxDecoration(
-                          color: const Color(0x0057636C),
-                          borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(32.0),
-                            bottomRight: Radius.circular(32.0),
-                            topLeft: Radius.circular(32.0),
-                            topRight: Radius.circular(32.0),
-                          ),
-                          border: Border.all(
-                            color: const Color(0xFFB5C0D3),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              42.0, 8.0, 42.0, 8.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Dúvidas Gerais',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Mulish',
-                                      color: const Color(0xFFB5C0D3),
-                                      letterSpacing: 0.0,
-                                    ),
+                    if (responsiveVisibility(
+                      context: context,
+                      phone: false,
+                      tablet: false,
+                      tabletLandscape: false,
+                      desktop: false,
+                    ))
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(
+                            'chatViv',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 0),
                               ),
-                            ],
+                            },
+                          );
+
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 44.0,
+                          decoration: BoxDecoration(
+                            color: const Color(0x0057636C),
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(32.0),
+                              bottomRight: Radius.circular(32.0),
+                              topLeft: Radius.circular(32.0),
+                              topRight: Radius.circular(32.0),
+                            ),
+                            border: Border.all(
+                              color: const Color(0xFFB5C0D3),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                42.0, 8.0, 42.0, 8.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Dúvidas Gerais',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Mulish',
+                                        color: const Color(0xFFB5C0D3),
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ).animateOnPageLoad(
-                        animationsMap['containerOnPageLoadAnimation8']!),
+                      ).animateOnPageLoad(
+                          animationsMap['containerOnPageLoadAnimation8']!),
                   ].divide(const SizedBox(height: 12.0)),
                 ),
               ),

@@ -579,7 +579,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                               _model.qst1 = await QuestionarioTable().queryRows(
                                 queryFn: (q) => q.eq(
                                   'nome',
-                                  'Produto',
+                                  'BIP Geral',
                                 ),
                               );
                               shouldSetState = true;

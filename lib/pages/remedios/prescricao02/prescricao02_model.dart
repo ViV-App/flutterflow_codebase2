@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/prescription_added/prescription_added_widget.dart';
@@ -53,6 +54,8 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (tracking)] action in prescricao02 widget.
+  ApiCallResponse? apiResultwcv;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -64,7 +67,6 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  DateTime? datePicked;
   // State field(s) for Switch widget.
   bool? switchValue;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
@@ -90,8 +92,11 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
     StaticMedicamentosRow? remedio,
     List<dynamic>? doses,
   }) async {
+    PrescricaoRow? p01;
+    PrescricaoRow? p02;
+
     if (switchValue == true) {
-      await PrescricaoTable().insert({
+      p01 = await PrescricaoTable().insert({
         'horarios': supaSerializeList<DateTime>(
             FFAppState().horarios.map((e) => e.horario).withoutNulls.toList()),
         'medicamento': remedio?.id,
@@ -103,6 +108,17 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
         'doses': functions.convertHorarioToJson(FFAppState().horarios.toList()),
       });
       FFAppState().clearRemediosCache();
+      await SegmentGroup.trackingMedicineCall.call(
+        userId: currentUserUid,
+        eventName: 'new-medicine registered',
+        medicamento: p01.medicamento,
+        prescricaoId: p01.id,
+        dosagensJson: p01.doses,
+        duracao: p01.duracaoDias,
+        dateStart: p01.dateStart?.toString(),
+        dateEnd: p01.dateEnd?.toString(),
+      );
+
       await showDialog(
         barrierDismissible: false,
         context: context,
@@ -123,7 +139,7 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
         },
       );
     } else {
-      await PrescricaoTable().insert({
+      p02 = await PrescricaoTable().insert({
         'horarios': supaSerializeList<DateTime>(
             FFAppState().horarios.map((e) => e.horario).withoutNulls.toList()),
         'medicamento': remedio?.id,
@@ -137,6 +153,17 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
         'doses': functions.convertHorarioToJson(FFAppState().horarios.toList()),
       });
       FFAppState().clearRemediosCache();
+      await SegmentGroup.trackingMedicineCall.call(
+        userId: currentUserUid,
+        eventName: 'new-medicine registered',
+        medicamento: p02.medicamento,
+        prescricaoId: p02.id,
+        dosagensJson: p02.doses,
+        duracao: p02.duracaoDias,
+        dateStart: p02.dateStart?.toString(),
+        dateEnd: p02.dateEnd?.toString(),
+      );
+
       await showDialog(
         barrierDismissible: false,
         context: context,

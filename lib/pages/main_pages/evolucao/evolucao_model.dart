@@ -4,7 +4,6 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import 'evolucao_widget.dart' show EvolucaoWidget;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EvolucaoModel extends FlutterFlowModel<EvolucaoWidget> {
@@ -33,10 +32,12 @@ class EvolucaoModel extends FlutterFlowModel<EvolucaoWidget> {
   Completer<ApiCallResponse>? apiRequestCompleter;
   // Stores action output result for [Backend Call - Query Rows] action in evolucao widget.
   List<StaticQueixasSaudeRow>? queix;
-  DateTime? datePicked1;
-  DateTime? datePicked2;
-  DateTime? datePicked3;
-  DateTime? datePicked4;
+  // Stores action output result for [Backend Call - API (tracking)] action in Icon widget.
+  ApiCallResponse? apiResult38y;
+  // Stores action output result for [Backend Call - API (tracking)] action in Icon widget.
+  ApiCallResponse? apiResult38yz;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResult38yfd;
 
   @override
   void initState(BuildContext context) {}

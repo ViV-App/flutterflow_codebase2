@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/assistant_hub/assistant_hub_widget.dart';
@@ -45,98 +46,134 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.user = await PacienteTable().queryRows(
-        queryFn: (q) => q.eq(
-          'uuid',
-          currentUserUid,
-        ),
-      );
-      if ((_model.user != null && (_model.user)!.isNotEmpty) == false) {
-        GoRouter.of(context).prepareAuthEvent();
-        await authManager.signOut();
-        GoRouter.of(context).clearRedirectLocation();
-
-        context.goNamedAuth('splashScreen', context.mounted);
-
-        return;
-      } else {
-        FFAppState().paciente = PacienteStruct(
-          nome: _model.user?.first.nome,
-          id: _model.user?.first.id,
-          uuid: _model.user?.first.uuid,
-          createdAt: _model.user?.first.createdAt,
-          telefone: _model.user?.first.telefone,
-          cpf: _model.user?.first.cpf,
-          foto: _model.user?.first.profilePic,
-          perfilCompleto: _model.user?.first.perfilCompleto,
-          tratamentoPrevio: _model.user?.first.tramentoPrevio,
-          medico: _model.user?.first.medicoPrescritor,
-          queixas: _model.user?.map((e) => e.queixas.first).toList(),
-          contraIndicacoes:
-              _model.user?.map((e) => e.contraIndicacoes.first).toList(),
-          peso: valueOrDefault<double>(
-            _model.user?.first.peso,
-            0.0,
-          ),
-          altura: valueOrDefault<double>(
-            _model.user?.first.altura,
-            0.0,
-          ),
-        );
-        FFAppState().update(() {});
-        _model.assinatura = await AssinaturaTable().queryRows(
-          queryFn: (q) => q.eq(
-            'paciente',
-            FFAppState().paciente.id,
-          ),
-        );
-        FFAppState().updatePacienteStruct(
-          (e) => e
-            ..assinatura = AssinaturaStruct(
-              assinaturaId: _model.assinatura?.first.id,
-              plano: _model.assinatura?.first.plano,
-              status: _model.assinatura?.first.status,
-              registroBemViver: _model.assinatura?.first.registroBemViver,
-              registroAlertasMedicamento:
-                  _model.assinatura?.first.registroAlertasMedicamento,
-              evolucaoBemViver: _model.assinatura?.first.evolucaoBemViver,
-              acessoAssistente: _model.assinatura?.first.acessoAssistente,
-              bipMensal: _model.assinatura?.first.bipsDisponiveis,
-            ),
-        );
-        safeSetState(() {});
-        if (FFAppState().fcmTokenRefresh == true) {
-          FFAppState().fcmTokenRefresh = false;
-          safeSetState(() {});
-          _model.fcmTk = await actions.getFCMToken();
-          await PacienteTable().update(
-            data: {
-              'fcm_token': _model.fcmTk,
-            },
-            matchingRows: (rows) => rows.eq(
+      await Future.wait([
+        Future(() async {
+          _model.user = await PacienteTable().queryRows(
+            queryFn: (q) => q.eq(
               'uuid',
               currentUserUid,
             ),
           );
-          if (_model.user?.first.firstOnboarding == 0) {
-            safeSetState(() =>
-                _model.onboarding01Controller = createPageWalkthrough(context));
-            _model.onboarding01Controller?.show(context: context);
+          if ((_model.user != null && (_model.user)!.isNotEmpty) == false) {
+            GoRouter.of(context).prepareAuthEvent();
+            await authManager.signOut();
+            GoRouter.of(context).clearRedirectLocation();
+
+            context.goNamedAuth('splashScreen', context.mounted);
+
+            return;
+          } else {
+            FFAppState().paciente = PacienteStruct(
+              nome: _model.user?.first.nome,
+              id: _model.user?.first.id,
+              uuid: _model.user?.first.uuid,
+              createdAt: _model.user?.first.createdAt,
+              telefone: _model.user?.first.telefone,
+              cpf: _model.user?.first.cpf,
+              foto: _model.user?.first.profilePic,
+              perfilCompleto: _model.user?.first.perfilCompleto,
+              tratamentoPrevio: _model.user?.first.tramentoPrevio,
+              medico: _model.user?.first.medicoPrescritor,
+              queixas: _model.user?.first.queixas,
+              contraIndicacoes:
+                  _model.user?.map((e) => e.contraIndicacoes.first).toList(),
+              peso: valueOrDefault<double>(
+                _model.user?.first.peso,
+                0.0,
+              ),
+              altura: valueOrDefault<double>(
+                _model.user?.first.altura,
+                0.0,
+              ),
+              queixaPrincipal: _model.user?.first.queixaPrincipal,
+            );
+            FFAppState().update(() {});
+            _model.assinatura = await AssinaturaTable().queryRows(
+              queryFn: (q) => q.eq(
+                'paciente',
+                FFAppState().paciente.id,
+              ),
+            );
+            FFAppState().updatePacienteStruct(
+              (e) => e
+                ..assinatura = AssinaturaStruct(
+                  assinaturaId: _model.assinatura?.first.id,
+                  plano: _model.assinatura?.first.plano,
+                  status: _model.assinatura?.first.status,
+                  registroBemViver: _model.assinatura?.first.registroBemViver,
+                  registroAlertasMedicamento:
+                      _model.assinatura?.first.registroAlertasMedicamento,
+                  evolucaoBemViver: _model.assinatura?.first.evolucaoBemViver,
+                  acessoAssistente: _model.assinatura?.first.acessoAssistente,
+                  bipMensal: _model.assinatura?.first.bipsDisponiveis,
+                ),
+            );
+            safeSetState(() {});
+            if (FFAppState().fcmTokenRefresh == true) {
+              FFAppState().fcmTokenRefresh = false;
+              safeSetState(() {});
+              _model.fcmTk = await actions.getFCMToken();
+              await PacienteTable().update(
+                data: {
+                  'fcm_token': _model.fcmTk,
+                },
+                matchingRows: (rows) => rows.eq(
+                  'uuid',
+                  currentUserUid,
+                ),
+              );
+              if (_model.user?.first.firstOnboarding == 0) {
+                safeSetState(() => _model.onboarding01Controller =
+                    createPageWalkthrough(context));
+                _model.onboarding01Controller?.show(context: context);
+                return;
+              } else {
+                return;
+              }
+            } else {
+              if (_model.user?.first.firstOnboarding == 0) {
+                safeSetState(() => _model.onboarding01Controller =
+                    createPageWalkthrough(context));
+                _model.onboarding01Controller?.show(context: context);
+                return;
+              } else {
+                return;
+              }
+            }
+          }
+        }),
+        Future(() async {
+          _model.checktk = await PacienteTable().queryRows(
+            queryFn: (q) => q.eq(
+              'uuid',
+              currentUserUid,
+            ),
+          );
+          if (_model.checktk?.first.fcmToken == null ||
+              _model.checktk?.first.fcmToken == '') {
+            _model.fctk = await actions.getFCMToken();
+            await PacienteTable().update(
+              data: {
+                'fcm_token': _model.fctk,
+              },
+              matchingRows: (rows) => rows.eq(
+                'uuid',
+                currentUserUid,
+              ),
+            );
             return;
           } else {
             return;
           }
-        } else {
-          if (_model.user?.first.firstOnboarding == 0) {
-            safeSetState(() =>
-                _model.onboarding01Controller = createPageWalkthrough(context));
-            _model.onboarding01Controller?.show(context: context);
-            return;
-          } else {
-            return;
-          }
-        }
-      }
+        }),
+        Future(() async {
+          _model.apiResultfzn = await SegmentGroup.trackingCall.call(
+            userId: currentUserUid,
+            eventName: 'home screen viewed',
+            propertyOne: 'homePage',
+          );
+        }),
+      ]);
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -229,6 +266,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             context.pushNamed('profilePage');
+
+                                            _model.apiResult6x1 =
+                                                await SegmentGroup.trackingCall
+                                                    .call(
+                                              userId: currentUserUid,
+                                              eventName:
+                                                  'header profile clicked',
+                                              propertyOne: 'homePage',
+                                            );
+
+                                            safeSetState(() {});
                                           },
                                           child: Container(
                                             width: 52.0,
@@ -255,6 +303,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
+                                              Text(
+                                                'Olá, ${valueOrDefault<String>(
+                                                  homePagePacienteRow?.nome,
+                                                  'name',
+                                                )}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.white,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                              ),
                                               InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -262,48 +327,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  context.pushNamed(
-                                                    'ajustarDose',
-                                                    queryParameters: {
-                                                      'page': serializeParam(
-                                                        'preencher',
-                                                        ParamType.String,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
+                                                  context.pushNamed('tourViv');
                                                 },
                                                 child: Text(
-                                                  'Olá, ${valueOrDefault<String>(
-                                                    homePagePacienteRow?.nome,
-                                                    'name',
-                                                  )}',
+                                                  'O que vamos fazer hoje?',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Mulish',
-                                                        color: Colors.white,
-                                                        fontSize: 16.0,
+                                                        color:
+                                                            const Color(0xFFDBE4F1),
+                                                        fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w600,
                                                       ),
                                                 ),
-                                              ),
-                                              Text(
-                                                'O que vamos fazer hoje?',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Mulish',
-                                                          color:
-                                                              const Color(0xFFDBE4F1),
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
                                               ),
                                             ].divide(const SizedBox(height: 4.0)),
                                           ),
@@ -338,6 +378,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed('agenda');
+
+                                    _model.apiResultzmj =
+                                        await SegmentGroup.trackingCall.call(
+                                      userId: currentUserUid,
+                                      eventName: 'agenda clicked',
+                                      propertyOne: 'menu',
+                                    );
+
+                                    safeSetState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -390,6 +439,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed('remedios');
+
+                                    _model.apiResultzmjc =
+                                        await SegmentGroup.trackingCall.call(
+                                      userId: currentUserUid,
+                                      eventName: 'medicine clicked',
+                                      propertyOne: 'menu',
+                                    );
+
+                                    safeSetState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -442,6 +500,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed('conteudos');
+
+                                    _model.apiResultzmjf =
+                                        await SegmentGroup.trackingCall.call(
+                                      userId: currentUserUid,
+                                      eventName: 'content clicked',
+                                      propertyOne: 'menu',
+                                    );
+
+                                    safeSetState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -470,7 +537,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             size: 24.0,
                                           ),
                                           Text(
-                                            'Conteudo',
+                                            'Conteúdo',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -494,6 +561,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed('evolucao');
+
+                                    _model.apiResultzmjz =
+                                        await SegmentGroup.trackingCall.call(
+                                      userId: currentUserUid,
+                                      eventName: 'content clicked',
+                                      propertyOne: 'menu',
+                                    );
+
+                                    safeSetState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -750,6 +826,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       );
                                     },
                                   ).then((value) => safeSetState(() {}));
+
+                                  _model.apiResultwcv =
+                                      await SegmentGroup.trackingCall.call(
+                                    userId: currentUserUid,
+                                    eventName: 'well-being started',
+                                    propertyOne: 'homePage',
+                                  );
                                 } else {
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
@@ -776,7 +859,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       );
                                     },
                                   ).then((value) => safeSetState(() {}));
+
+                                  _model.apiResultwcvz =
+                                      await SegmentGroup.trackingCall.call(
+                                    userId: currentUserUid,
+                                    eventName: 'well-being started',
+                                    propertyOne: 'homePage',
+                                  );
                                 }
+
+                                safeSetState(() {});
                               },
                               child: Material(
                                 color: Colors.transparent,
@@ -1189,6 +1281,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                 },
                               );
+
+                              _model.apiResultwcf =
+                                  await SegmentGroup.trackingCall.call(
+                                userId: currentUserUid,
+                                eventName: 'medicine clicked',
+                                propertyOne: 'homePage',
+                              );
+
+                              safeSetState(() {});
                             },
                             child: Material(
                               color: Colors.transparent,
@@ -1489,6 +1590,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     );
                                                                   },
                                                                 );
+
+                                                                _model.apiResultwcp =
+                                                                    await SegmentGroup
+                                                                        .trackingCall
+                                                                        .call(
+                                                                  userId:
+                                                                      currentUserUid,
+                                                                  eventName:
+                                                                      'content clicked',
+                                                                  propertyOne:
+                                                                      'homePage',
+                                                                );
+
+                                                                safeSetState(
+                                                                    () {});
                                                               },
                                                               text: 'Ler mais',
                                                               options:
@@ -1580,6 +1696,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   sharePositionOrigin:
                                       getWidgetBoundingBox(context),
                                 );
+                                _model.apiResultwcb =
+                                    await SegmentGroup.trackingCall.call(
+                                  userId: currentUserUid,
+                                  eventName: 'share clicked',
+                                  propertyOne: 'homePage',
+                                );
+
+                                safeSetState(() {});
                               },
                               child: Material(
                                 color: Colors.transparent,
@@ -1693,6 +1817,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               currentUserUid,
             ),
           );
+          _model.apiResult23r = await SegmentGroup.trackingCall.call(
+            eventName: 'onboarding viewed',
+            propertyOne: 'profilePage',
+          );
+
+          safeSetState(() {});
         },
         onSkip: () {
           () async {
@@ -1724,6 +1854,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 currentUserUid,
               ),
             );
+            _model.apiResult23rbh = await SegmentGroup.trackingCall.call(
+              eventName: 'onboarding skipped',
+              propertyOne: 'profilePage',
+            );
+
+            safeSetState(() {});
           }();
           return true;
         },

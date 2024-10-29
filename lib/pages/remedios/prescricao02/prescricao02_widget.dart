@@ -1,5 +1,8 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/custom_date_picker_widget.dart';
 import '/components/duracao_dias/duracao_dias_widget.dart';
 import '/components/horario_prescricao/horario_prescricao_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -8,10 +11,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,6 +41,11 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       FFAppState().horarios = [];
       safeSetState(() {});
+      _model.apiResultwcv = await SegmentGroup.trackingCall.call(
+        userId: currentUserUid,
+        eventName: 'new-medicine screen viewed',
+        propertyOne: 'step 2',
+      );
     });
 
     _model.textController1 ??= TextEditingController();
@@ -537,101 +542,96 @@ class _Prescricao02WidgetState extends State<Prescricao02Widget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              _model.date =
-                                                  functions.convertStringToDate(
-                                                      getCurrentTimestamp
-                                                          .toString());
-                                              safeSetState(() {});
-                                              await showModalBottomSheet<bool>(
+                                              if (_model.date != null) {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
                                                   context: context,
                                                   builder: (context) {
-                                                    final datePickedCupertinoTheme =
-                                                        CupertinoTheme.of(
-                                                            context);
-                                                    return ScrollConfiguration(
-                                                      behavior:
-                                                          const MaterialScrollBehavior()
-                                                              .copyWith(
-                                                        dragDevices: {
-                                                          PointerDeviceKind
-                                                              .mouse,
-                                                          PointerDeviceKind
-                                                              .touch,
-                                                          PointerDeviceKind
-                                                              .stylus,
-                                                          PointerDeviceKind
-                                                              .unknown
-                                                        },
-                                                      ),
-                                                      child: Container(
-                                                        height: MediaQuery.of(
+                                                    return WebViewAware(
+                                                      child: GestureDetector(
+                                                        onTap: () =>
+                                                            FocusScope.of(
                                                                     context)
-                                                                .size
-                                                                .height /
-                                                            3,
-                                                        width: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .width,
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        child: CupertinoTheme(
-                                                          data:
-                                                              datePickedCupertinoTheme
-                                                                  .copyWith(
-                                                            textTheme:
-                                                                datePickedCupertinoTheme
-                                                                    .textTheme
-                                                                    .copyWith(
-                                                              dateTimePickerTextStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Mulish',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child: SizedBox(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                0.4,
+                                                            child:
+                                                                CustomDatePickerWidget(
+                                                              hasInitDate: true,
+                                                              initDate:
+                                                                  _model.date,
+                                                              callback:
+                                                                  (dateSet) async {
+                                                                _model.date =
+                                                                    dateSet;
+                                                                safeSetState(
+                                                                    () {});
+                                                                await actions
+                                                                    .hideKeyboard();
+                                                              },
                                                             ),
-                                                          ),
-                                                          child:
-                                                              CupertinoDatePicker(
-                                                            mode:
-                                                                CupertinoDatePickerMode
-                                                                    .date,
-                                                            minimumDate:
-                                                                DateTime(1900),
-                                                            initialDateTime:
-                                                                getCurrentTimestamp,
-                                                            maximumDate:
-                                                                DateTime(2050),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                            use24hFormat: false,
-                                                            onDateTimeChanged:
-                                                                (newDateTime) =>
-                                                                    safeSetState(
-                                                                        () {
-                                                              _model.datePicked =
-                                                                  newDateTime;
-                                                            }),
                                                           ),
                                                         ),
                                                       ),
                                                     );
-                                                  });
-                                              if (_model.datePicked != null) {
-                                                _model.date = _model.datePicked;
-                                                safeSetState(() {});
-                                                await actions.hideKeyboard();
+                                                  },
+                                                ).then((value) =>
+                                                    safeSetState(() {}));
+                                              } else {
+                                                await showModalBottomSheet(
+                                                  isScrollControlled: true,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return WebViewAware(
+                                                      child: GestureDetector(
+                                                        onTap: () =>
+                                                            FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child: SizedBox(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                0.4,
+                                                            child:
+                                                                CustomDatePickerWidget(
+                                                              hasInitDate:
+                                                                  false,
+                                                              callback:
+                                                                  (dateSet) async {
+                                                                _model.date =
+                                                                    dateSet;
+                                                                safeSetState(
+                                                                    () {});
+                                                                await actions
+                                                                    .hideKeyboard();
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then((value) =>
+                                                    safeSetState(() {}));
                                               }
-                                              await actions.hideKeyboard();
                                             },
                                             child: Container(
                                               width: double.infinity,

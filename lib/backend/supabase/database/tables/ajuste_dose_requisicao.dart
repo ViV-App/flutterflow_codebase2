@@ -54,4 +54,16 @@ class AjusteDoseRequisicaoRow extends SupabaseDataRow {
       getListField<String>('queixasRespondidas');
   set queixasRespondidas(List<String>? value) =>
       setListField<String>('queixasRespondidas', value);
+
+  String? get planoTerapeutico => getField<String>('planoTerapeutico');
+  set planoTerapeutico(String? value) =>
+      setField<String>('planoTerapeutico', value);
+
+  String? get propostaTerapeutica => getField<String>('propostaTerapeutica');
+  set propostaTerapeutica(String? value) =>
+      setField<String>('propostaTerapeutica', value);
+
+  String? get statusProposta => getField<String>('statusProposta');
+  set statusProposta(String? value) =>
+      setField<String>('statusProposta', value);
 }

@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/cancelar_plano/cancelar_plano_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'meu_plano_model.dart';
@@ -26,6 +28,14 @@ class _MeuPlanoWidgetState extends State<MeuPlanoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MeuPlanoModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult23r = await SegmentGroup.trackingCall.call(
+        eventName: 'my-plan screen viewed',
+        propertyOne: 'profilePage',
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

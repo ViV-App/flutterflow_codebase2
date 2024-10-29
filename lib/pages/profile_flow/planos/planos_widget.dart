@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -27,6 +28,14 @@ class _PlanosWidgetState extends State<PlanosWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PlanosModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult23r = await SegmentGroup.trackingCall.call(
+        eventName: 'subscription screen viewed',
+        propertyOne: 'profilePage',
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -450,74 +459,11 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                 );
                                                                 shouldSetState =
                                                                     true;
-                                                                _model.hasCanMed =
-                                                                    await HasCannabisMedicationCall
-                                                                        .call(
-                                                                  value: _model
-                                                                      .currentUser
-                                                                      ?.first
-                                                                      .id,
-                                                                );
-
-                                                                shouldSetState =
-                                                                    true;
-                                                                if (true ==
-                                                                    HasCannabisMedicationCall
-                                                                        .result(
-                                                                      (_model.hasCanMed
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                    )) {
-                                                                  _model.apiResultai4z =
-                                                                      await HasContraIndicacaoBlockerCall
-                                                                          .call(
-                                                                    value: _model
+                                                                if (_model
                                                                         .currentUser
                                                                         ?.first
-                                                                        .id,
-                                                                  );
-
-                                                                  shouldSetState =
-                                                                      true;
-                                                                  if (true ==
-                                                                      HasContraIndicacaoBlockerCall
-                                                                          .result(
-                                                                        (_model.apiResultai4z?.jsonBody ??
-                                                                            ''),
-                                                                      )) {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return WebViewAware(
-                                                                          child:
-                                                                              AlertDialog(
-                                                                            title:
-                                                                                const Text('Assinatura bloqueada'),
-                                                                            content:
-                                                                                const Text('Infelizmente, você possui contra indicações que não tratamos. Por isso, não podemos te auxiliar ao máximo com a assinatura.'),
-                                                                            actions: [
-                                                                              TextButton(
-                                                                                onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                child: const Text('Ok'),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    );
-                                                                  } else {
-                                                                    await launchURL(
-                                                                        'https://app.appviv.com/version-test/payment?paciente=${FFAppState().paciente.id.toString()}&plano=${listViewPlanosAssinaturaRow.id.toString()}');
-                                                                  }
-
-                                                                  if (shouldSetState) {
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  }
-                                                                  return;
-                                                                } else {
+                                                                        .queixaPrincipal ==
+                                                                    'Outra queixa não listada') {
                                                                   await showDialog(
                                                                     context:
                                                                         context,
@@ -529,7 +475,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                           title:
                                                                               const Text('Assinatura bloqueada'),
                                                                           content:
-                                                                              const Text('Percebemos que você ainda não tem nenhum produto derivado de cannabis cadastrado. Por favor, cadastre um antes de fazer sua assinatura.'),
+                                                                              const Text('Percebemos que você tem queixas que não cobrimos, dessa forma, não podemos ativar sua assinatura.'),
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () => Navigator.pop(alertDialogContext),
@@ -545,6 +491,159 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         () {});
                                                                   }
                                                                   return;
+                                                                } else {
+                                                                  if (_model
+                                                                          .currentUser
+                                                                          ?.first
+                                                                          .queixas
+                                                                          .contains(
+                                                                              'Outra queixa não listada') ==
+                                                                      true) {
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return WebViewAware(
+                                                                          child:
+                                                                              AlertDialog(
+                                                                            title:
+                                                                                const Text('Assinatura bloqueada'),
+                                                                            content:
+                                                                                const Text('Percebemos que você tem queixas que não cobrimos, dessa forma, não podemos ativar sua assinatura.'),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                child: const Text('Ok'),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                    if (shouldSetState) {
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    }
+                                                                    return;
+                                                                  } else {
+                                                                    _model.res =
+                                                                        await VerifyContraIndicacoesCall
+                                                                            .call(
+                                                                      id: FFAppState()
+                                                                          .paciente
+                                                                          .id,
+                                                                    );
+
+                                                                    shouldSetState =
+                                                                        true;
+                                                                    if (true ==
+                                                                        VerifyContraIndicacoesCall
+                                                                            .res(
+                                                                          (_model.res?.jsonBody ??
+                                                                              ''),
+                                                                        )) {
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (alertDialogContext) {
+                                                                          return WebViewAware(
+                                                                            child:
+                                                                                AlertDialog(
+                                                                              title: const Text('Assinatura bloqueada'),
+                                                                              content: const Text('Não é possível realizar uma assinatura devido à sua condição de saúde, o uso de Cannabis pode ser contraindicado. Somente um médico poderá avaliar essa possibilidade. Infelizmente, não poderemos oferecer acompanhamento através da nossa assinatura, considerando o potencial risco em seu caso.'),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                  child: const Text('Ok'),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                      if (shouldSetState) {
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      }
+                                                                      return;
+                                                                    } else {
+                                                                      _model.hasCanMed =
+                                                                          await HasCannabisMedicationCall
+                                                                              .call(
+                                                                        value: _model
+                                                                            .currentUser
+                                                                            ?.first
+                                                                            .id,
+                                                                      );
+
+                                                                      shouldSetState =
+                                                                          true;
+                                                                      if (true ==
+                                                                          HasCannabisMedicationCall
+                                                                              .result(
+                                                                            (_model.hasCanMed?.jsonBody ??
+                                                                                ''),
+                                                                          )) {
+                                                                        await launchURL(
+                                                                            'https://maya2024v.bubbleapps.io/version-test/payment?paciente=${FFAppState().paciente.id.toString()}&plano=${listViewPlanosAssinaturaRow.id.toString()}');
+                                                                        _model.apiResult23rmv = await SegmentGroup
+                                                                            .trackingCall
+                                                                            .call(
+                                                                          eventName:
+                                                                              'purchase started',
+                                                                          propertyOne:
+                                                                              listViewPlanosAssinaturaRow.titulo,
+                                                                        );
+
+                                                                        shouldSetState =
+                                                                            true;
+                                                                        if (shouldSetState) {
+                                                                          safeSetState(
+                                                                              () {});
+                                                                        }
+                                                                        return;
+                                                                      } else {
+                                                                        var confirmDialogResponse = await showDialog<bool>(
+                                                                              context: context,
+                                                                              builder: (alertDialogContext) {
+                                                                                return WebViewAware(
+                                                                                  child: AlertDialog(
+                                                                                    title: const Text('Assinatura bloqueada'),
+                                                                                    content: const Text('Percebemos que você ainda não tem nenhum produto derivado de cannabis registrado. Por favor, cadastre um para efetuar sua asinatura.'),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                        child: const Text('Depois'),
+                                                                                      ),
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                        child: const Text('Cadastrar'),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            ) ??
+                                                                            false;
+                                                                        if (confirmDialogResponse) {
+                                                                          context
+                                                                              .pushNamed('prescricao01');
+
+                                                                          if (shouldSetState) {
+                                                                            safeSetState(() {});
+                                                                          }
+                                                                          return;
+                                                                        } else {
+                                                                          if (shouldSetState) {
+                                                                            safeSetState(() {});
+                                                                          }
+                                                                          return;
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
                                                                 }
 
                                                                 if (shouldSetState) {

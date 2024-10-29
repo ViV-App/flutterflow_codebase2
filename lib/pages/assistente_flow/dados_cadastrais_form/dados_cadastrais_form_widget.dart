@@ -46,8 +46,11 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    _model.yearsTextController ??= TextEditingController();
-    _model.yearsFocusNode ??= FocusNode();
+    _model.alturaTextController ??= TextEditingController();
+    _model.alturaFocusNode ??= FocusNode();
+
+    _model.pesoTextController ??= TextEditingController();
+    _model.pesoFocusNode ??= FocusNode();
 
     animationsMap.addAll({
       'columnOnPageLoadAnimation': AnimationInfo(
@@ -82,7 +85,9 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: const BoxDecoration(),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+      ),
       child: Builder(
         builder: (context) {
           if (_model.currentStep == 1) {
@@ -162,6 +167,237 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
               ],
             );
           } else if (_model.currentStep == 2) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                      child: LinearPercentIndicator(
+                        percent: 0.1,
+                        width: MediaQuery.sizeOf(context).width * 0.85,
+                        lineHeight: 12.0,
+                        animation: true,
+                        animateFromLastPercent: true,
+                        progressColor: FlutterFlowTheme.of(context).primary,
+                        backgroundColor: const Color(0xFFE0E3E7),
+                        barRadius: const Radius.circular(12.0),
+                        padding: EdgeInsets.zero,
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                      child: Text(
+                        'Dados Cadastrais',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Mulish',
+                              color: FlutterFlowTheme.of(context).primary,
+                              fontSize: 24.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Qual foi o sexo atribuído a você ao nascer?',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Mulish',
+                                  color: const Color(0xFF8798B5),
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: Container(
+                              width: double.infinity,
+                              height: 48.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF7FAFE),
+                                borderRadius: BorderRadius.circular(8.0),
+                                border: Border.all(
+                                  color: const Color(0x13294B0D),
+                                  width: 2.0,
+                                ),
+                              ),
+                              child: FlutterFlowDropDown<String>(
+                                controller: _model.sexoValueController ??=
+                                    FormFieldController<String>(null),
+                                options: const [
+                                  'Feminino',
+                                  'Masculino',
+                                  'Outro',
+                                  'Prefiro não dizer'
+                                ],
+                                onChanged: (val) =>
+                                    safeSetState(() => _model.sexoValue = val),
+                                width: 300.0,
+                                height: 56.0,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Mulish',
+                                      letterSpacing: 0.0,
+                                    ),
+                                hintText: 'Sexo',
+                                icon: const Icon(
+                                  Icons.keyboard_arrow_down_rounded,
+                                  color: Color(0xFF8798B5),
+                                  size: 24.0,
+                                ),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 2.0,
+                                borderColor: Colors.transparent,
+                                borderWidth: 2.0,
+                                borderRadius: 8.0,
+                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 4.0, 16.0, 4.0),
+                                hidesUnderline: true,
+                                isOverButton: false,
+                                isSearchable: false,
+                                isMultiSelect: false,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Qual é a sua identidade de gênero? (A identidade de gênero é como a gente se sente por dentro, se é homem, mulher ou algo diferente disso.',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Mulish',
+                                  color: const Color(0xFF8798B5),
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: Container(
+                              width: double.infinity,
+                              height: 48.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF7FAFE),
+                                borderRadius: BorderRadius.circular(8.0),
+                                border: Border.all(
+                                  color: const Color(0x13294B0D),
+                                  width: 2.0,
+                                ),
+                              ),
+                              child: FlutterFlowDropDown<String>(
+                                controller: _model.identidadeValueController ??=
+                                    FormFieldController<String>(null),
+                                options: const [
+                                  'Mulher',
+                                  'Homem',
+                                  'Outro',
+                                  'Prefiro não dizer'
+                                ],
+                                onChanged: (val) => safeSetState(
+                                    () => _model.identidadeValue = val),
+                                width: 300.0,
+                                height: 56.0,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Mulish',
+                                      letterSpacing: 0.0,
+                                    ),
+                                hintText: 'Identidade',
+                                icon: const Icon(
+                                  Icons.keyboard_arrow_down_rounded,
+                                  color: Color(0xFF8798B5),
+                                  size: 24.0,
+                                ),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 2.0,
+                                borderColor: Colors.transparent,
+                                borderWidth: 2.0,
+                                borderRadius: 8.0,
+                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 4.0, 16.0, 4.0),
+                                hidesUnderline: true,
+                                isOverButton: false,
+                                isSearchable: false,
+                                isMultiSelect: false,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                    child: FFButtonWidget(
+                      onPressed:
+                          (_model.sexoValue == null || _model.sexoValue == '')
+                              ? null
+                              : () async {
+                                  _model.currentStep = _model.currentStep + 1;
+                                  safeSetState(() {});
+                                },
+                      text: 'Continuar',
+                      options: FFButtonOptions(
+                        width: 200.0,
+                        height: 48.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Mulish',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                        elevation: 3.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(60.0),
+                        disabledColor: FlutterFlowTheme.of(context).alternate,
+                        disabledTextColor: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          } else if (_model.currentStep == 3) {
             return Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -385,7 +621,229 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                 ),
               ],
             );
-          } else if (_model.currentStep == 3) {
+          } else if (_model.currentStep == 4) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                      child: LinearPercentIndicator(
+                        percent: 0.4,
+                        width: MediaQuery.sizeOf(context).width * 0.85,
+                        lineHeight: 12.0,
+                        animation: true,
+                        animateFromLastPercent: true,
+                        progressColor: FlutterFlowTheme.of(context).primary,
+                        backgroundColor: const Color(0xFFE0E3E7),
+                        barRadius: const Radius.circular(12.0),
+                        padding: EdgeInsets.zero,
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                      child: Text(
+                        'Dados Cadastrais',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Mulish',
+                              color: FlutterFlowTheme.of(context).primary,
+                              fontSize: 24.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Qual a profissão que você exerce atualmente ou que exerceu o maior tempo da sua vida? (Se for estudante, escreva \"Estudante\". Se nunca trabalhou, escreva \"Nenhuma\")',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Mulish',
+                                  color: const Color(0xFF8798B5),
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: TextFormField(
+                              controller: _model.textController1,
+                              focusNode: _model.textFieldFocusNode,
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                hintText: 'Profissão',
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Mulish',
+                                      color: const Color(0xA357636C),
+                                      letterSpacing: 0.0,
+                                    ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Color(0x13294B0D),
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    18.0, 0.0, 0.0, 0.0),
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Mulish',
+                                    letterSpacing: 0.0,
+                                  ),
+                              validator: _model.textController1Validator
+                                  .asValidator(context),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Qual das seguintes categorias descreve melhor sua dedicação profissional?',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Mulish',
+                                  color: const Color(0xFF8798B5),
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: FlutterFlowDropDown<String>(
+                              controller: _model.tempoTrabValueController ??=
+                                  FormFieldController<String>(null),
+                              options: const [
+                                'Trabalhando 1-39 horas por semana',
+                                'Trabalhando 40 horas ou mais por semana',
+                                'Sem trabalho no momento',
+                                'Não está em busca de trabalho',
+                                'Aposentadoria',
+                                'Sem capacidade de trabalhar'
+                              ],
+                              onChanged: (val) => safeSetState(
+                                  () => _model.tempoTrabValue = val),
+                              width: double.infinity,
+                              height: 56.0,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Mulish',
+                                    letterSpacing: 0.0,
+                                  ),
+                              hintText: 'Selecione',
+                              icon: const Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color: Color(0xFF8798B5),
+                                size: 24.0,
+                              ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor: const Color(0x13294B0D),
+                              borderWidth: 2.0,
+                              borderRadius: 8.0,
+                              margin: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 4.0, 16.0, 4.0),
+                              hidesUnderline: true,
+                              isOverButton: false,
+                              isSearchable: false,
+                              isMultiSelect: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        _model.currentStep = _model.currentStep + 1;
+                        safeSetState(() {});
+                      },
+                      text: 'Continuar',
+                      options: FFButtonOptions(
+                        width: 200.0,
+                        height: 48.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Mulish',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                        elevation: 3.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(60.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          } else if (_model.currentStep == 5) {
             return Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -399,6 +857,321 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                           const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: LinearPercentIndicator(
                         percent: 0.5,
+                        width: MediaQuery.sizeOf(context).width * 0.85,
+                        lineHeight: 12.0,
+                        animation: true,
+                        animateFromLastPercent: true,
+                        progressColor: FlutterFlowTheme.of(context).primary,
+                        backgroundColor: const Color(0xFFE0E3E7),
+                        barRadius: const Radius.circular(12.0),
+                        padding: EdgeInsets.zero,
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                      child: Text(
+                        'Dados Cadastrais',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Mulish',
+                              color: FlutterFlowTheme.of(context).primary,
+                              fontSize: 24.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Qual é a sua altura aproximada?',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Mulish',
+                                  color: const Color(0xFF8798B5),
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: 48.0,
+                              child: Stack(
+                                children: [
+                                  TextFormField(
+                                    controller: _model.alturaTextController,
+                                    focusNode: _model.alturaFocusNode,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      hintText: '0,00',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Mulish',
+                                            color: const Color(0xA357636C),
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: Color(0x13294B0D),
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      contentPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              18.0, 0.0, 0.0, 0.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Mulish',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    keyboardType: TextInputType.number,
+                                    validator: _model
+                                        .alturaTextControllerValidator
+                                        .asValidator(context),
+                                    inputFormatters: [_model.alturaMask],
+                                  ),
+                                  Align(
+                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 24.0, 0.0),
+                                      child: Text(
+                                        'cm',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Mulish',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Qual é o seu peso aproximado?',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Mulish',
+                                  color: const Color(0xFF8798B5),
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: Container(
+                              width: double.infinity,
+                              height: 48.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF7FAFE),
+                                borderRadius: BorderRadius.circular(8.0),
+                                border: Border.all(
+                                  color: (_model.pesoFocusNode?.hasFocus ??
+                                              false) ==
+                                          true
+                                      ? const Color(0xFF5D67E2)
+                                      : const Color(0x13294B0D),
+                                  width: 2.0,
+                                ),
+                              ),
+                              child: Stack(
+                                children: [
+                                  TextFormField(
+                                    controller: _model.pesoTextController,
+                                    focusNode: _model.pesoFocusNode,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      hintText: '00',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Mulish',
+                                            color: const Color(0xA357636C),
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Mulish',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    keyboardType: TextInputType.number,
+                                    validator: _model
+                                        .pesoTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                  Align(
+                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 24.0, 0.0),
+                                      child: Text(
+                                        'kg',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Mulish',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        _model.currentStep = _model.currentStep + 1;
+                        safeSetState(() {});
+                      },
+                      text: 'Continuar',
+                      options: FFButtonOptions(
+                        width: 200.0,
+                        height: 48.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Mulish',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                        elevation: 3.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(60.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          } else if (_model.currentStep == 6) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                      child: LinearPercentIndicator(
+                        percent: 0.7,
                         width: MediaQuery.sizeOf(context).width * 0.85,
                         lineHeight: 12.0,
                         animation: true,
@@ -544,7 +1317,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                 ),
               ],
             );
-          } else if (_model.currentStep == 4) {
+          } else if (_model.currentStep == 7) {
             return Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -557,287 +1330,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: LinearPercentIndicator(
-                        percent: 0.76,
-                        width: MediaQuery.sizeOf(context).width * 0.85,
-                        lineHeight: 12.0,
-                        animation: true,
-                        animateFromLastPercent: true,
-                        progressColor: FlutterFlowTheme.of(context).primary,
-                        backgroundColor: const Color(0xFFE0E3E7),
-                        barRadius: const Radius.circular(12.0),
-                        padding: EdgeInsets.zero,
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
-                      child: Text(
-                        'Dados Cadastrais',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Mulish',
-                              color: FlutterFlowTheme.of(context).primary,
-                              fontSize: 24.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Qual a ocupação que a(o) paciente exerce ou exerceu o maior tempo da vida? ',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: TextFormField(
-                              controller: _model.textController1,
-                              focusNode: _model.textFieldFocusNode,
-                              autofocus: true,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                hintText: 'Profissão',
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Mulish',
-                                      color: const Color(0xA357636C),
-                                      letterSpacing: 0.0,
-                                    ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0x13294B0D),
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                filled: true,
-                                fillColor: Colors.white,
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    18.0, 0.0, 0.0, 0.0),
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Mulish',
-                                    letterSpacing: 0.0,
-                                  ),
-                              validator: _model.textController1Validator
-                                  .asValidator(context),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Por quanto tempo? ',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: Container(
-                              width: double.infinity,
-                              height: 48.0,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF7FAFE),
-                                borderRadius: BorderRadius.circular(8.0),
-                                border: Border.all(
-                                  color: (_model.yearsFocusNode?.hasFocus ??
-                                              false) ==
-                                          true
-                                      ? const Color(0xFF5D67E2)
-                                      : const Color(0x13294B0D),
-                                  width: 2.0,
-                                ),
-                              ),
-                              child: Stack(
-                                children: [
-                                  TextFormField(
-                                    controller: _model.yearsTextController,
-                                    focusNode: _model.yearsFocusNode,
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: '00',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Mulish',
-                                            color: const Color(0xA357636C),
-                                            letterSpacing: 0.0,
-                                          ),
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      errorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: Colors.white,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Mulish',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    keyboardType: TextInputType.number,
-                                    validator: _model
-                                        .yearsTextControllerValidator
-                                        .asValidator(context),
-                                  ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 24.0, 0.0),
-                                      child: Text(
-                                        'anos',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Mulish',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        _model.currentStep = _model.currentStep + 1;
-                        safeSetState(() {});
-                      },
-                      text: 'Continuar',
-                      options: FFButtonOptions(
-                        width: 200.0,
-                        height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Mulish',
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                        elevation: 3.0,
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(60.0),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          } else if (_model.currentStep == 5) {
-            return Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
-                      child: LinearPercentIndicator(
-                        percent: 0.9,
+                        percent: 0.8,
                         width: MediaQuery.sizeOf(context).width * 0.85,
                         lineHeight: 12.0,
                         animation: true,
@@ -955,7 +1448,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                 ),
               ],
             );
-          } else if (_model.currentStep == 6) {
+          } else if (_model.currentStep == 8) {
             return Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1048,6 +1541,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                 photoLibraryPermission))) {
                                               await requestPermission(
                                                   photoLibraryPermission);
+                                              return;
                                             } else {
                                               final selectedMedia =
                                                   await selectMediaWithSourceBottomSheet(
@@ -1105,6 +1599,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               _model.addToDocuments(
                                                   _model.uploadedLocalFile1);
                                               safeSetState(() {});
+                                              return;
                                             }
                                           },
                                           child: Container(
@@ -1694,8 +2189,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 'estado_civil': _model.civilStateValue,
                                 'principal_profissao':
                                     _model.textController1.text,
-                                'qntd_tempo_trabalhado': int.tryParse(
-                                    _model.yearsTextController.text),
+                                'dedicacao_trabalho': _model.tempoTrabValue,
                                 'is_estrangeiro': (_model.gringoValue ==
                                             'Sou estrangeira(o), mas possuo documentos brasileiros') ||
                                         (_model.gringoValue ==
@@ -1703,10 +2197,20 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                     ? true
                                     : false,
                                 'documentos': _model.uploadedFileUrls5,
+                                'altura': int.tryParse(
+                                    _model.alturaTextController.text),
+                                'peso': int.tryParse(
+                                    _model.pesoTextController.text),
+                                'sexo': _model.sexoValue,
+                                'identidade_genero': _model.identidadeValue,
                               });
                               await PacienteTable().update(
                                 data: {
                                   'dados_cad_preenchidos': true,
+                                  'altura': double.tryParse(
+                                      _model.alturaTextController.text),
+                                  'Peso': double.tryParse(
+                                      _model.pesoTextController.text),
                                 },
                                 matchingRows: (rows) => rows.eq(
                                   'uuid',

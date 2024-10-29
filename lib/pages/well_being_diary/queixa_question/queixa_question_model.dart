@@ -18,9 +18,12 @@ class QueixaQuestionModel extends FlutterFlowModel<QueixaQuestionWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for dpFequ widget.
+  String? dpFequValue;
+  FormFieldController<String>? dpFequValueController;
+  // State field(s) for dpPeriodo widget.
+  String? dpPeriodoValue;
+  FormFieldController<String>? dpPeriodoValueController;
   // Models for queixaQuestionDrop dynamic component.
   late FlutterFlowDynamicModels<QueixaQuestionDropModel>
       queixaQuestionDropModels1;

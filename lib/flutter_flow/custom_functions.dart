@@ -349,3 +349,122 @@ List<dynamic> convertHorarioToJson(List<HorariosStruct> horarios) {
   }).toList();
   return jsonList;
 }
+
+List<DateTime> convertStringsToDateTimes(List<String> dateStrings) {
+  final dateFormat = DateFormat('yyyy-MM-ddTHH:mm:ss');
+
+  // Mapear cada string na lista para um DateTime
+  List<DateTime> dateTimes = dateStrings.map((dateString) {
+    DateTime date = dateFormat.parse(dateString);
+
+    // Criar um novo objeto DateTime sem segundos e milissegundos
+    DateTime finalDate = DateTime(
+      date.year,
+      date.month,
+      date.day,
+      date.hour,
+      date.minute,
+    );
+
+    return finalDate;
+  }).toList();
+
+  return dateTimes;
+}
+
+List<double> convertIntegersToDoubles(List<int> integers) {
+  // Mapear cada inteiro para um double
+  List<double> doubles = integers.map((int value) {
+    return value.toDouble(); // Converte o inteiro em double
+  }).toList();
+
+  return doubles;
+}
+
+List<int> listOfHours() {
+  // return a list of numbers from 0 to 24
+  return List<int>.generate(24, (index) => index);
+}
+
+List<int> listOfMinutes() {
+  // return a list of numbers from 0 to 59
+  return List<int>.generate(60, (index) => index);
+}
+
+int getCurrentHour(DateTime date) {
+  // extract month number of a date
+  int hour = date.hour;
+  return hour;
+}
+
+int getCurrentMin(DateTime date) {
+  int min = date.minute;
+  return min;
+}
+
+List<int> yearsList() {
+  // generate a list of years from 1950 to 2050
+  List<int> years = List.generate(101, (index) => 1950 + index);
+  return years;
+}
+
+List<int> returnMonths() {
+  // return a list of numbers from 1 to 12
+  return List<int>.generate(12, (index) => index + 1);
+}
+
+List<int> diasNoMes(
+  int mes,
+  int ano,
+) {
+  int diasNoMes = 0;
+  if (mes == 2) {
+    // Verifica se é um ano bissexto
+    if ((ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0) {
+      diasNoMes = 29;
+    } else {
+      diasNoMes = 28;
+    }
+  } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+    diasNoMes = 30;
+  } else {
+    diasNoMes = 31;
+  }
+
+// Gera a lista de dias do mês
+  List<int> dias = [];
+  for (int i = 1; i <= diasNoMes; i++) {
+    dias.add(i);
+  }
+
+  return dias;
+}
+
+int getDayNumber(DateTime date) {
+  int month = date.day;
+  return month;
+}
+
+DateTime hourDate(String hour) {
+  // create a function that receive a paramater called hour (string) this paramater will come in the formato hh:mm, the function return the current date with the hour changed by the hour of the parameter
+  List<String> hourSplit = hour.split(':');
+  DateTime now = DateTime.now();
+  DateTime newDate = DateTime(now.year, now.month, now.day,
+      int.parse(hourSplit[0]), int.parse(hourSplit[1]));
+  return newDate;
+}
+
+DateTime newDateCustom(
+  int year,
+  int month,
+  int day,
+) {
+  // function that receive a paramater day, month and year (all int), and generate a datetime with this data
+  return DateTime(year, month, day);
+}
+
+String formateToDE(DateTime date) {
+  // receive a date time and return a string formatted as "d/dd" where D is the number of the day in the month and DD is the day on the weem
+  String formattedDate = DateFormat('d/E').format(date);
+  return formattedDate;
+}

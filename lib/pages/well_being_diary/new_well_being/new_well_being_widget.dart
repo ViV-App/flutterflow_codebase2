@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/well_being_diary/queixa_question/queixa_question_widget.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'new_well_being_model.dart';
@@ -44,6 +45,10 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
       await Future.delayed(const Duration(milliseconds: 2000));
       await _model.setComponent(context);
       safeSetState(() {});
+      _model.apiResultgd4 = await SegmentGroup.trackingCall.call(
+        userId: currentUserUid,
+        eventName: 'well-being screen viewed',
+      );
     });
 
     _model.efeitoCustomTextController ??= TextEditingController();
@@ -161,7 +166,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                               alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 20.0, 0.0, 0.0),
+                                    0.0, 20.0, 0.0, 8.0),
                                 child: Text(
                                   'Meu diário de bem estar',
                                   style: FlutterFlowTheme.of(context)
@@ -171,25 +176,6 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                         fontSize: 24.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 8.0, 0.0, 0.0),
-                                child: Text(
-                                  'É importante que você responda com sinceridade.',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Mulish',
-                                        color: const Color(0xFF42526D),
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -218,6 +204,9 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFEFF4F9),
                                     borderRadius: BorderRadius.circular(9.0),
+                                    border: Border.all(
+                                      color: const Color(0x00D11F1F),
+                                    ),
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -280,6 +269,15 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 onTap: () async {
                                                   _model.mood = 4;
                                                   safeSetState(() {});
+                                                  _model.apiResultgd4v =
+                                                      await SegmentGroup
+                                                          .trackingCall
+                                                          .call(
+                                                    userId: currentUserUid,
+                                                    eventName: 'humor selected',
+                                                  );
+
+                                                  safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -330,6 +328,15 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   _model.mood = 3;
+                                                  safeSetState(() {});
+                                                  _model.apiResultgd4vv =
+                                                      await SegmentGroup
+                                                          .trackingCall
+                                                          .call(
+                                                    userId: currentUserUid,
+                                                    eventName: 'humor selected',
+                                                  );
+
                                                   safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
@@ -382,6 +389,15 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 onTap: () async {
                                                   _model.mood = 2;
                                                   safeSetState(() {});
+                                                  _model.apiResultgd4vzs =
+                                                      await SegmentGroup
+                                                          .trackingCall
+                                                          .call(
+                                                    userId: currentUserUid,
+                                                    eventName: 'humor selected',
+                                                  );
+
+                                                  safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -433,6 +449,15 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 onTap: () async {
                                                   _model.mood = 1;
                                                   safeSetState(() {});
+                                                  _model.apiResultgd4vnr =
+                                                      await SegmentGroup
+                                                          .trackingCall
+                                                          .call(
+                                                    userId: currentUserUid,
+                                                    eventName: 'humor selected',
+                                                  );
+
+                                                  safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -483,6 +508,15 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   _model.mood = 0;
+                                                  safeSetState(() {});
+                                                  _model.apiResultgd4vrefg =
+                                                      await SegmentGroup
+                                                          .trackingCall
+                                                          .call(
+                                                    userId: currentUserUid,
+                                                    eventName: 'humor selected',
+                                                  );
+
                                                   safeSetState(() {});
                                                 },
                                                 child: ClipRRect(
@@ -582,7 +616,8 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                         principal: true,
                                         queixa:
                                             queixaQuestionStaticQueixasSaudeRow,
-                                        setReturn: (response, periodo) async {
+                                        setReturn: (response, periodo,
+                                            frequencia) async {
                                           _model
                                               .addToRespostas(<String, dynamic>{
                                             'queixa':
@@ -617,6 +652,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                             'paciente':
                                                 containerPacienteRow?.id,
                                             'periodo': periodo,
+                                            'frequencia': frequencia,
                                           });
                                           safeSetState(() {});
                                         },
@@ -680,8 +716,8 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                               queixa:
                                                   columnStaticQueixasSaudeRow,
                                               principal: false,
-                                              setReturn:
-                                                  (response, periodo) async {
+                                              setReturn: (response, periodo,
+                                                  frequencia) async {
                                                 _model.addToRespostas(<String,
                                                     dynamic>{
                                                   'queixa':
@@ -931,6 +967,21 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                               safeSetState(
                                                                   () {});
                                                             }
+
+                                                            _model.apiResultgd4verg =
+                                                                await SegmentGroup
+                                                                    .trackingCall
+                                                                    .call(
+                                                              userId:
+                                                                  currentUserUid,
+                                                              eventName:
+                                                                  'side-effect selected',
+                                                              propertyOne:
+                                                                  wrapStaticEfeitosAdversosRow
+                                                                      .efeito,
+                                                            );
+
+                                                            safeSetState(() {});
                                                           },
                                                           child: Container(
                                                             decoration:
@@ -1088,6 +1139,21 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                   safeSetState(
                                                                       () {});
                                                                 }
+
+                                                                _model.apiResultgd4vergfrv =
+                                                                    await SegmentGroup
+                                                                        .trackingCall
+                                                                        .call(
+                                                                  userId:
+                                                                      currentUserUid,
+                                                                  eventName:
+                                                                      'side-effect selected',
+                                                                  propertyOne:
+                                                                      effecstCustomItem,
+                                                                );
+
+                                                                safeSetState(
+                                                                    () {});
                                                               },
                                                               child: Container(
                                                                 decoration:
@@ -1337,6 +1403,16 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                             .efeitoCustomTextController
                                                             ?.clear();
                                                       });
+                                                      _model.apiResultgd4vergwh =
+                                                          await SegmentGroup
+                                                              .trackingCall
+                                                              .call(
+                                                        userId: currentUserUid,
+                                                        eventName:
+                                                            'new- side-effect added',
+                                                      );
+
+                                                      safeSetState(() {});
                                                     },
                                                   ),
                                                 ],
@@ -1459,6 +1535,23 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                   _model.textController2,
                                               focusNode:
                                                   _model.textFieldFocusNode,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                '_model.textController2',
+                                                const Duration(milliseconds: 2000),
+                                                () async {
+                                                  _model.apiResultgd4vergCopy =
+                                                      await SegmentGroup
+                                                          .trackingCall
+                                                          .call(
+                                                    userId: currentUserUid,
+                                                    eventName:
+                                                        'observation tiped',
+                                                  );
+
+                                                  safeSetState(() {});
+                                                },
+                                              ),
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -1564,15 +1657,18 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                   ((_model.effects.isNotEmpty) == false))
                               ? null
                               : () async {
-                                  _model.apiResult7x9 =
-                                      await SendBemViverResponseCall.call(
-                                    responseJson: _model.respostas,
-                                    humor: _model.mood,
-                                    adversosList: _model.effects,
-                                    observacoes: _model.textController2.text,
-                                  );
+                                  if (!((_model.mood == null) ||
+                                      ((_model.effects.isNotEmpty) == false))) {
+                                    _model.apiResult7x9 =
+                                        await SendBemViverResponseCall.call(
+                                      responseJson: _model.respostas,
+                                      humor: _model.mood,
+                                      adversosList: _model.effects,
+                                      observacoes: _model.textController2.text,
+                                    );
 
-                                  Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  }
 
                                   safeSetState(() {});
                                 },
@@ -1584,12 +1680,18 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                 24.0, 0.0, 24.0, 0.0),
                             iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: (_model.mood == null) ||
+                                    ((_model.effects.isNotEmpty) == false)
+                                ? FlutterFlowTheme.of(context).alternate
+                                : FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: Colors.white,
+                                  color: (_model.mood == null) ||
+                                          ((_model.effects.isNotEmpty) == false)
+                                      ? const Color(0x6414181B)
+                                      : Colors.white,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),

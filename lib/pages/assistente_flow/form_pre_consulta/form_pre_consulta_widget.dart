@@ -688,7 +688,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                'História Clinica',
+                                                                'Queixa e Diagnóstico',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -793,7 +793,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                'História Familiar',
+                                                                'Histórico de Saúde',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1003,7 +1003,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                'História Psicosocial',
+                                                                'Histórico Famíliar e Psicosocial',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium

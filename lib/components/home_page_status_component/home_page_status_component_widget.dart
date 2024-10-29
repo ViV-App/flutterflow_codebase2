@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -54,28 +56,79 @@ class _HomePageStatusComponentWidgetState
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: () async {
+        var shouldSetState = false;
         if (widget.status?.processo == 'planoTerapeutico') {
           if (widget.status?.estagio == 'visualizarPlano') {
             context.pushNamed('planoTerapeutico');
+
+            _model.apiResult38yzd = await SegmentGroup.trackingCall.call(
+              userId: currentUserUid,
+              eventName: 'therapeutic-plan started',
+            );
+
+            shouldSetState = true;
           } else if (widget.status?.estagio == 'confirmarRecebimento') {
             context.pushNamed('confirmarRecebimento');
           } else if (widget.status?.estagio == 'formularioDeSaude') {
             context.pushNamed('formPreConsulta');
+
+            _model.apiResult38yfv = await SegmentGroup.trackingCall.call(
+              userId: currentUserUid,
+              eventName: 'health-form started',
+            );
+
+            shouldSetState = true;
           } else if (widget.status?.estagio == 'assinarPlano') {
             context.pushNamed('planos');
+
+            _model.apiResult38yzfvg = await SegmentGroup.trackingCall.call(
+              userId: currentUserUid,
+              eventName: 'bip started',
+              propertiesJson: <String, String?>{
+                'page': 'home',
+                'stage': 'unsubscribed',
+              },
+            );
+
+            shouldSetState = true;
           } else {
+            if (shouldSetState) safeSetState(() {});
             return;
           }
 
+          if (shouldSetState) safeSetState(() {});
           return;
         } else if (widget.status?.processo == 'tratamentoBip') {
           if (widget.status?.estagio == 'comprarBip') {
             if (FFAppState().paciente.assinatura.plano != 1) {
               context.pushNamed('comprarBip');
+
+              _model.apiResult38y = await SegmentGroup.trackingCall.call(
+                userId: currentUserUid,
+                eventName: 'bip started',
+                propertiesJson: <String, String?>{
+                  'page': 'home',
+                  'stage': 'subscribed',
+                },
+              );
+
+              shouldSetState = true;
             } else {
               context.pushNamed('planos');
+
+              _model.apiResult38yz = await SegmentGroup.trackingCall.call(
+                userId: currentUserUid,
+                eventName: 'bip started',
+                propertiesJson: <String, String?>{
+                  'page': 'home',
+                  'stage': 'unsubscribed',
+                },
+              );
+
+              shouldSetState = true;
             }
 
+            if (shouldSetState) safeSetState(() {});
             return;
           } else if (widget.status?.estagio == 'preencherFormularioBip') {
             context.pushNamed(
@@ -88,6 +141,13 @@ class _HomePageStatusComponentWidgetState
               }.withoutNulls,
             );
 
+            _model.apiResult38yzgfdv = await SegmentGroup.trackingCall.call(
+              userId: currentUserUid,
+              eventName: 'bip started',
+            );
+
+            shouldSetState = true;
+            if (shouldSetState) safeSetState(() {});
             return;
           } else if (widget.status?.estagio == 'visualizarAjusteBip') {
             context.pushNamed(
@@ -100,13 +160,28 @@ class _HomePageStatusComponentWidgetState
               }.withoutNulls,
             );
 
+            _model.apiResult38yzrg = await SegmentGroup.trackingCall.call(
+              userId: currentUserUid,
+              eventName: 'new-posology started',
+              propertiesJson: <String, String?>{
+                'page': 'home',
+                'stage': 'unsubscribed',
+              },
+            );
+
+            shouldSetState = true;
+            if (shouldSetState) safeSetState(() {});
             return;
           } else {
+            if (shouldSetState) safeSetState(() {});
             return;
           }
         } else {
+          if (shouldSetState) safeSetState(() {});
           return;
         }
+
+        if (shouldSetState) safeSetState(() {});
       },
       child: Material(
         color: Colors.transparent,
@@ -270,7 +345,7 @@ class _HomePageStatusComponentWidgetState
                                     'planoTerapeutico') &&
                                 (widget.status?.estagio ==
                                     'formularioDeSaude')) {
-                              return 'Preencha o Formulário de Saúde para te conhecer melhor';
+                              return 'Preencha aqui as suas informações de saúde para te conhecermos melhor';
                             } else if ((widget.status?.processo ==
                                     'planoTerapeutico') &&
                                 (widget.status?.estagio ==

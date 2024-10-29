@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -77,7 +79,7 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     child: Text(
-                      'Ao confirmar esta ação, sua prescrição e todos os registros relacionados serão removidos.',
+                      'Ao confirmar esta ação, seu remédio e todos os registros relacionados serão removidos.',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Mulish',
@@ -141,6 +143,14 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                                   );
                                 },
                               );
+                              _model.apiResult23ov =
+                                  await SegmentGroup.trackingCall.call(
+                                userId: currentUserUid,
+                                eventName: 'medicine delete concluded',
+                                propertiesJson: <String, dynamic>{
+                                  'medicineId': widget.prescricao?.medicamento,
+                                },
+                              );
 
                               safeSetState(() {});
                             },
@@ -173,6 +183,13 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                           child: FFButtonWidget(
                             onPressed: () async {
                               Navigator.pop(context);
+                              _model.apiResult23o =
+                                  await SegmentGroup.trackingCall.call(
+                                userId: currentUserUid,
+                                eventName: 'medicine delete not-concluded',
+                              );
+
+                              safeSetState(() {});
                             },
                             text: 'Não',
                             options: FFButtonOptions(

@@ -20,6 +20,7 @@ void main() async {
   // Start initial custom actions code
   await actions.initializeFirebase();
   await actions.getPushPermission();
+  await actions.inAppUpdate();
   // End initial custom actions code
 
   await SupaFlow.initialize();
@@ -92,6 +93,8 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        FallbackMaterialLocalizationDelegate(),
+        FallbackCupertinoLocalizationDelegate(),
       ],
       locale: _locale,
       supportedLocales: const [

@@ -275,6 +275,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'emailConfirmed',
           path: '/emailConfirmed',
           builder: (context, params) => const EmailConfirmedWidget(),
+        ),
+        FFRoute(
+          name: 'splashScreenCopy',
+          path: '/splashScreenCopy',
+          builder: (context, params) => const SplashScreenCopyWidget(),
+        ),
+        FFRoute(
+          name: 'tourViv',
+          path: '/tourViv',
+          builder: (context, params) => const TourVivWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

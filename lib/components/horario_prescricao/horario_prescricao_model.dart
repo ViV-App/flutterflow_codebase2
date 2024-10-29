@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'horario_prescricao_widget.dart' show HorarioPrescricaoWidget;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HorarioPrescricaoModel extends FlutterFlowModel<HorarioPrescricaoWidget> {
@@ -18,7 +17,6 @@ class HorarioPrescricaoModel extends FlutterFlowModel<HorarioPrescricaoWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  DateTime? datePicked;
 
   @override
   void initState(BuildContext context) {}

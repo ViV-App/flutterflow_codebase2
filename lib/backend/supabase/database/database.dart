@@ -35,6 +35,7 @@ export 'tables/assinatura.dart';
 export 'tables/avaliacao_quinzenal.dart';
 export 'tables/static_conteudos.dart';
 export 'tables/cobranca.dart';
+export 'tables/questionario_perguntas_duplicate.dart';
 export 'tables/agendamento.dart';
 export 'tables/bip_planos.dart';
 export 'tables/ajuste_de_dose.dart';

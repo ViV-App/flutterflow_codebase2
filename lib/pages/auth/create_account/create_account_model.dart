@@ -48,8 +48,8 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // Stores action output result for [Custom Action - getFCMToken] action in Text widget.
-  String? fcmT;
+  // Stores action output result for [Backend Call - API (tracking)] action in createAccount widget.
+  ApiCallResponse? apiResult23o;
   // State field(s) for ipNome widget.
   FocusNode? ipNomeFocusNode;
   TextEditingController? ipNomeTextController;
@@ -112,16 +112,20 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? apiResult23ot;
+  // Stores action output result for [Backend Call - API (create asaas customer)] action in Button widget.
+  ApiCallResponse? customerAsaas;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   PacienteRow? createdUser;
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.
   List<PacienteRow>? loggedUser;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   StatusPacientRow? st1;
-  // Stores action output result for [Custom Action - getFCMToken] action in Button widget.
-  String? fcm;
   // Stores action output result for [Backend Call - API (nn acc created)] action in Button widget.
   ApiCallResponse? apiResultagx;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? apiResult23oc;
 
   @override
   void initState(BuildContext context) {

@@ -58,18 +58,40 @@ class NewWellBeingModel extends FlutterFlowModel<NewWellBeingWidget> {
   void updateQueixasAtIndex(int index, Function(String) updateFn) =>
       queixas[index] = updateFn(queixas[index]);
 
+  dynamic emptyFields;
+
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Backend Call - API (tracking)] action in newWellBeing widget.
+  ApiCallResponse? apiResultgd4;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultgd4v;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultgd4vv;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultgd4vzs;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultgd4vnr;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultgd4vrefg;
   // Model for queixaQuestion component.
   late QueixaQuestionModel queixaQuestionModel;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultgd4verg;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultgd4vergfrv;
   // State field(s) for EfeitoCustom widget.
   FocusNode? efeitoCustomFocusNode;
   TextEditingController? efeitoCustomTextController;
   String? Function(BuildContext, String?)? efeitoCustomTextControllerValidator;
+  // Stores action output result for [Backend Call - API (tracking)] action in IconButton widget.
+  ApiCallResponse? apiResultgd4vergwh;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
+  // Stores action output result for [Backend Call - API (tracking)] action in TextField widget.
+  ApiCallResponse? apiResultgd4vergCopy;
   // Stores action output result for [Backend Call - API (send bem viver response)] action in Button widget.
   ApiCallResponse? apiResult7x9;
 

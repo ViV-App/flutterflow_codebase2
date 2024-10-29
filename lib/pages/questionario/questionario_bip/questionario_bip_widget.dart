@@ -396,11 +396,11 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                         true) {
                                                       if (widget.questionario
                                                               ?.nome ==
-                                                          'Produto') {
+                                                          'BIP Geral') {
                                                         await AjusteDoseRequisicaoTable()
                                                             .update(
                                                           data: {
-                                                            'produto': true,
+                                                            'pam': true,
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(

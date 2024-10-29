@@ -7,3 +7,4 @@ export 'reset_password.dart' show resetPassword;
 export 'subscribe.dart' show subscribe;
 export 'unsubscribe.dart' show unsubscribe;
 export 'on_token_refresh_f_c_m.dart' show onTokenRefreshFCM;
+export 'in_app_update.dart' show inAppUpdate;

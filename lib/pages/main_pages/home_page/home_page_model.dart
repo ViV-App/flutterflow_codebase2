@@ -15,19 +15,51 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   String? fcm;
 
+  DateTime? date;
+
   ///  State fields for stateful widgets in this page.
 
   TutorialCoachMark? onboarding01Controller;
+  // Stores action output result for [Backend Call - API (tracking)] action in homePage widget.
+  ApiCallResponse? apiResult23r;
+  // Stores action output result for [Backend Call - API (tracking)] action in homePage widget.
+  ApiCallResponse? apiResult23rbh;
   // Stores action output result for [Backend Call - Query Rows] action in homePage widget.
   List<PacienteRow>? user;
   // Stores action output result for [Backend Call - Query Rows] action in homePage widget.
   List<AssinaturaRow>? assinatura;
   // Stores action output result for [Custom Action - getFCMToken] action in homePage widget.
   String? fcmTk;
+  // Stores action output result for [Backend Call - Query Rows] action in homePage widget.
+  List<PacienteRow>? checktk;
+  // Stores action output result for [Custom Action - getFCMToken] action in homePage widget.
+  String? fctk;
+  // Stores action output result for [Backend Call - API (tracking)] action in homePage widget.
+  ApiCallResponse? apiResultfzn;
+  // Stores action output result for [Backend Call - API (tracking)] action in CircleImage widget.
+  ApiCallResponse? apiResult6x1;
   // Model for completeProfileAlert component.
   late CompleteProfileAlertModel completeProfileAlertModel;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultzmj;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultzmjc;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultzmjf;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultzmjz;
   // Model for homePageStatusComponent component.
   late HomePageStatusComponentModel homePageStatusComponentModel;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultwcv;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultwcvz;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultwcf;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? apiResultwcp;
+  // Stores action output result for [Backend Call - API (tracking)] action in Container widget.
+  ApiCallResponse? apiResultwcb;
 
   @override
   void initState(BuildContext context) {

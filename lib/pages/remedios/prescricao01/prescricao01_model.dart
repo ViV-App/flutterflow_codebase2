@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -7,6 +8,8 @@ import 'package:flutter/material.dart';
 class Prescricao01Model extends FlutterFlowModel<Prescricao01Widget> {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (tracking)] action in prescricao01 widget.
+  ApiCallResponse? apiResultwcv;
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
@@ -33,6 +36,8 @@ class Prescricao01Model extends FlutterFlowModel<Prescricao01Widget> {
   String? Function(BuildContext, String?)? inpVolumeTextControllerValidator;
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.
   List<StaticMedicamentosRow>? medc1;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? apiResultwcvb;
 
   @override
   void initState(BuildContext context) {}

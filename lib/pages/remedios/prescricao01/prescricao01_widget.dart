@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/choose_med/choose_med_widget.dart';
@@ -42,6 +44,11 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
         categoria: _model.dropDownValue1,
       );
       safeSetState(() {});
+      _model.apiResultwcv = await SegmentGroup.trackingCall.call(
+        userId: currentUserUid,
+        eventName: 'new-medicine screen viewed',
+        propertyOne: 'step 1',
+      );
     });
 
     _model.inpCannabisTextController ??= TextEditingController();
@@ -500,7 +507,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                       autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        hintText: 'Medicamento',
+                                        hintText: 'Remédio',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
@@ -597,7 +604,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                               autofocus: false,
                               obscureText: false,
                               decoration: InputDecoration(
-                                hintText: 'Medicamento',
+                                hintText: 'Remédio',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -935,6 +942,13 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                 );
                                 safeSetState(() {});
                               }
+
+                              _model.apiResultwcvb =
+                                  await SegmentGroup.trackingCall.call(
+                                userId: currentUserUid,
+                                eventName: 'next new-medicine clicked',
+                                propertyOne: 'step 1',
+                              );
 
                               safeSetState(() {});
                             },

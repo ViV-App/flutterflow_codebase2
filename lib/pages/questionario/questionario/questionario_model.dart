@@ -43,12 +43,22 @@ class QuestionarioModel extends FlutterFlowModel<QuestionarioWidget> {
   late FlutterFlowDynamicModels<QuestionarioAskModel> questionarioAskModels;
   // Stores action output result for [Backend Call - API (generate responses)] action in Button widget.
   ApiCallResponse? apiResultr3x;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? wrverfvr;
   // Stores action output result for [Backend Call - API (generate responses)] action in Button widget.
   ApiCallResponse? apiResultr3xd3;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? rg435g54;
   // Stores action output result for [Backend Call - API (generate responses)] action in Button widget.
   ApiCallResponse? apiResultr3xd3a;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? rg545gt4g;
   // Stores action output result for [Backend Call - Update Row(s)] action in Button widget.
   List<StatusPacientRow>? qefef;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? rfg534g45;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? apiResultoio;
 
   /// Query cache managers for this widget.
 

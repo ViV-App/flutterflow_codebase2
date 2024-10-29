@@ -1,5 +1,8 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/custom_date_picker_widget.dart';
 import '/components/delete_prescription/delete_prescription_widget.dart';
 import '/components/duracao_dias/duracao_dias_widget.dart';
 import '/components/horario_prescricao/horario_prescricao_widget.dart';
@@ -12,8 +15,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -76,6 +77,10 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
       }
       _model.dats = widget.prescricao!.doses.toList().cast<dynamic>();
       safeSetState(() {});
+      _model.apiResultnh7 = await SegmentGroup.trackingCall.call(
+        userId: currentUserUid,
+        eventName: 'medicine-detail screen viewed',
+      );
     });
 
     _model.textController1 ??=
@@ -593,99 +598,39 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  await showModalBottomSheet<
-                                                          bool>(
-                                                      context: context,
-                                                      builder: (context) {
-                                                        final datePickedCupertinoTheme =
-                                                            CupertinoTheme.of(
-                                                                context);
-                                                        return ScrollConfiguration(
-                                                          behavior:
-                                                              const MaterialScrollBehavior()
-                                                                  .copyWith(
-                                                            dragDevices: {
-                                                              PointerDeviceKind
-                                                                  .mouse,
-                                                              PointerDeviceKind
-                                                                  .touch,
-                                                              PointerDeviceKind
-                                                                  .stylus,
-                                                              PointerDeviceKind
-                                                                  .unknown
-                                                            },
-                                                          ),
-                                                          child: Container(
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height /
-                                                                3,
-                                                            width:
-                                                                MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            child:
-                                                                CupertinoTheme(
-                                                              data:
-                                                                  datePickedCupertinoTheme
-                                                                      .copyWith(
-                                                                textTheme:
-                                                                    datePickedCupertinoTheme
-                                                                        .textTheme
-                                                                        .copyWith(
-                                                                  dateTimePickerTextStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Mulish',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              child:
-                                                                  CupertinoDatePicker(
-                                                                mode:
-                                                                    CupertinoDatePickerMode
-                                                                        .date,
-                                                                minimumDate:
-                                                                    DateTime(
-                                                                        1900),
-                                                                initialDateTime:
-                                                                    (_model.datePicked ??
-                                                                        DateTime
-                                                                            .now()),
-                                                                maximumDate:
-                                                                    DateTime(
-                                                                        2050),
-                                                                backgroundColor:
-                                                                    FlutterFlowTheme.of(
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return WebViewAware(
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child: SizedBox(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
                                                                             context)
-                                                                        .secondaryBackground,
-                                                                use24hFormat:
-                                                                    false,
-                                                                onDateTimeChanged:
-                                                                    (newDateTime) =>
-                                                                        safeSetState(
-                                                                            () {
-                                                                  _model.datePicked =
-                                                                      newDateTime;
-                                                                }),
-                                                              ),
+                                                                    .height *
+                                                                0.4,
+                                                            child:
+                                                                CustomDatePickerWidget(
+                                                              callback:
+                                                                  (dateSet) async {
+                                                                _model.newDate =
+                                                                    dateSet;
+                                                                safeSetState(
+                                                                    () {});
+                                                              },
                                                             ),
                                                           ),
-                                                        );
-                                                      });
-                                                  _model.alterado = true;
-                                                  safeSetState(() {});
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() {}));
                                                 },
                                                 child: Container(
                                                   width: double.infinity,
@@ -713,12 +658,11 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                               .spaceBetween,
                                                       children: [
                                                         Text(
-                                                          _model.datePicked !=
-                                                                  null
+                                                          _model.newDate != null
                                                               ? dateTimeFormat(
                                                                   "d/M/y",
                                                                   _model
-                                                                      .datePicked,
+                                                                      .newDate,
                                                                   locale: FFLocalizations.of(
                                                                           context)
                                                                       .languageCode,
@@ -1268,6 +1212,14 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         );
                                       },
                                     );
+
+                                    _model.apiResult23o =
+                                        await SegmentGroup.trackingCall.call(
+                                      userId: currentUserUid,
+                                      eventName: 'medicine delete started',
+                                    );
+
+                                    safeSetState(() {});
                                   },
                                   text: 'Deletar',
                                   options: FFButtonOptions(
@@ -1313,7 +1265,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                               .prescricao
                                               .duracaoDias,
                                           'date_start': supaSerialize<DateTime>(
-                                              _model.datePicked ?? widget
+                                              _model.newDate ?? widget
                                                       .prescricao?.dateStart),
                                           'concentracao': int.tryParse(
                                               _model.textController2.text),
@@ -1364,13 +1316,13 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                               .prescricao
                                               .duracaoDias,
                                           'date_start': supaSerialize<DateTime>(
-                                              _model.datePicked ?? widget
+                                              _model.newDate ?? widget
                                                       .prescricao?.dateStart),
                                           'concentracao': int.tryParse(
                                               _model.textController2.text),
                                           'continuo': false,
                                           'date_end': supaSerialize<DateTime>(
-                                              _model.datePicked == null
+                                              _model.newDate == null
                                                   ? functions.getFinalDate(
                                                       widget.prescricao!
                                                           .dateStart!,
@@ -1379,7 +1331,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                               .duracaoDias -
                                                           1)
                                                   : functions.getFinalDate(
-                                                      _model.datePicked!,
+                                                      _model.newDate!,
                                                       FFAppState()
                                                               .prescricao
                                                               .duracaoDias -
@@ -1417,6 +1369,14 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         },
                                       );
                                     }
+
+                                    _model.apiResult5h9 =
+                                        await SegmentGroup.trackingCall.call(
+                                      userId: currentUserUid,
+                                      eventName: 'medicine edited',
+                                    );
+
+                                    safeSetState(() {});
                                   },
                                   text: 'Salvar',
                                   options: FFButtonOptions(

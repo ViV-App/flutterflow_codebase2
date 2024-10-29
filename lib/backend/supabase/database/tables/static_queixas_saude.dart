@@ -33,4 +33,7 @@ class StaticQueixasSaudeRow extends SupabaseDataRow {
 
   String? get descritivo => getField<String>('descritivo');
   set descritivo(String? value) => setField<String>('descritivo', value);
+
+  int? get order => getField<int>('order');
+  set order(int? value) => setField<int>('order', value);
 }

@@ -280,6 +280,8 @@ dynamic deserializeParam<T>(
             return StaticConteudosRow(data);
           case CobrancaRow:
             return CobrancaRow(data);
+          case QuestionarioPerguntasDuplicateRow:
+            return QuestionarioPerguntasDuplicateRow(data);
           case AgendamentoRow:
             return AgendamentoRow(data);
           case BipPlanosRow:

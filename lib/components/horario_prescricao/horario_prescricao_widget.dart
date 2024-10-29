@@ -1,13 +1,13 @@
 import '/backend/schema/structs/index.dart';
+import '/components/custom_time_picker_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'horario_prescricao_model.dart';
 export 'horario_prescricao_model.dart';
 
@@ -260,74 +260,33 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await showModalBottomSheet<bool>(
-                          context: context,
-                          builder: (context) {
-                            final datePickedCupertinoTheme =
-                                CupertinoTheme.of(context);
-                            return ScrollConfiguration(
-                              behavior: const MaterialScrollBehavior().copyWith(
-                                dragDevices: {
-                                  PointerDeviceKind.mouse,
-                                  PointerDeviceKind.touch,
-                                  PointerDeviceKind.stylus,
-                                  PointerDeviceKind.unknown
-                                },
-                              ),
-                              child: Container(
-                                height: MediaQuery.of(context).size.height / 3,
-                                width: MediaQuery.of(context).size.width,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                child: CupertinoTheme(
-                                  data: datePickedCupertinoTheme.copyWith(
-                                    textTheme: datePickedCupertinoTheme
-                                        .textTheme
-                                        .copyWith(
-                                      dateTimePickerTextStyle:
-                                          FlutterFlowTheme.of(context)
-                                              .headlineMedium
-                                              .override(
-                                                fontFamily: 'Mulish',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                letterSpacing: 0.0,
-                                              ),
-                                    ),
-                                  ),
-                                  child: CupertinoDatePicker(
-                                    mode: CupertinoDatePickerMode.time,
-                                    minimumDate: DateTime(1900),
-                                    initialDateTime:
-                                        (widget.horario?.horario ??
-                                            DateTime.now()),
-                                    maximumDate: DateTime(2050),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    use24hFormat: false,
-                                    onDateTimeChanged: (newDateTime) =>
-                                        safeSetState(() {
-                                      _model.datePicked = newDateTime;
-                                    }),
-                                  ),
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) {
+                          return WebViewAware(
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: SizedBox(
+                                height: MediaQuery.sizeOf(context).height * 0.4,
+                                child: CustomTimePickerWidget(
+                                  callback: (timeSet) async {
+                                    FFAppState().updateHorariosAtIndex(
+                                      widget.index!,
+                                      (e) => e..horario = timeSet,
+                                    );
+                                    FFAppState().update(() {});
+                                    _model.time = timeSet;
+                                    _model.updatePage(() {});
+                                    await actions.hideKeyboard();
+                                  },
                                 ),
                               ),
-                            );
-                          });
-                      if (_model.datePicked != null) {
-                        FFAppState().updateHorariosAtIndex(
-                          widget.index!,
-                          (e) => e..horario = _model.datePicked,
-                        );
-                        FFAppState().update(() {});
-                        _model.time = _model.datePicked;
-                        _model.updatePage(() {});
-                        await actions.hideKeyboard();
-                      } else {
-                        return;
-                      }
+                            ),
+                          );
+                        },
+                      ).then((value) => safeSetState(() {}));
                     },
                     child: Container(
                       width: 150.0,

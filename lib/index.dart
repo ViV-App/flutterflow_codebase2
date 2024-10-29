@@ -40,5 +40,8 @@ export '/pages/assistente_flow/ajustar_dose/ajustar_dose_widget.dart'
     show AjustarDoseWidget;
 export '/pages/questionario/questionario_bip/questionario_bip_widget.dart'
     show QuestionarioBipWidget;
-export '/html_page/html_page_widget.dart' show HtmlPageWidget;
+export '/components/html_page/html_page_widget.dart' show HtmlPageWidget;
 export '/email_confirmed/email_confirmed_widget.dart' show EmailConfirmedWidget;
+export '/pages/auth/splash_screen_copy/splash_screen_copy_widget.dart'
+    show SplashScreenCopyWidget;
+export '/tour_viv/tour_viv_widget.dart' show TourVivWidget;

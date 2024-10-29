@@ -12,7 +12,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_account_model.dart';
@@ -39,6 +39,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CreateAccountModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult23o = await SegmentGroup.trackingCall.call(
+        eventName: 'sign-up screen viewed',
+        propertyOne: 'step 1',
+      );
+    });
 
     _model.ipNomeTextController ??= TextEditingController();
     _model.ipNomeFocusNode ??= FocusNode();
@@ -187,33 +195,18 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 24.0, 24.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                _model.fcmT =
-                                                    await actions.getFCMToken();
-
-                                                safeSetState(() {});
-                                              },
-                                              child: Text(
-                                                'Insira seus dados pessoais',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Mulish',
-                                                          color:
-                                                              const Color(0xFF13294B),
-                                                          fontSize: 24.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                              ),
+                                            child: Text(
+                                              'Insira seus dados pessoais',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Mulish',
+                                                    color: const Color(0xFF13294B),
+                                                    fontSize: 24.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                             ),
                                           ),
                                           Padding(
@@ -227,15 +220,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                await Clipboard.setData(
-                                                    ClipboardData(
-                                                        text: _model.fcmT!));
+                                                _model.currentStep = 3;
+                                                safeSetState(() {});
                                               },
                                               child: Text(
-                                                valueOrDefault<String>(
-                                                  _model.fcmT,
-                                                  'Sample2',
-                                                ),
+                                                'Preencha alguns dados pessoais para podermos criar sua conta.',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -947,7 +936,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             ),
                                                             TextSpan(
                                                               text:
-                                                                  'Politicas de Privacidade',
+                                                                  'Políticas de Privacidade',
                                                               style: const TextStyle(
                                                                 color: Color(
                                                                     0xFF6E78FF),
@@ -1432,7 +1421,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 8.0, 24.0, 0.0),
                                     child: Text(
-                                      'Agora nós só precisamos preencher alguns dados importantes sobre você, ta bom?',
+                                      'Para te conhecer melhor, precisamos de algumas informações sobre você, ok?  ',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -1489,7 +1478,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         List<StaticQueixasSaudeRow>>(
                                       future:
                                           StaticQueixasSaudeTable().queryRows(
-                                        queryFn: (q) => q,
+                                        queryFn: (q) =>
+                                            q.order('order', ascending: true),
                                       ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
@@ -1558,6 +1548,37 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         listViewStaticQueixasSaudeRow
                                                             .nome!);
                                                     safeSetState(() {});
+                                                  }
+
+                                                  if (listViewStaticQueixasSaudeRow
+                                                          .nome ==
+                                                      'Outra queixa não listada') {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            title: const Text(
+                                                                'Assinatura bloqueada'),
+                                                            content: const Text(
+                                                                'Caso não possua uma queixa que não cobrimos, não poderemos prosseguir com sua assinatura futuramente.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                    return;
+                                                  } else {
+                                                    return;
                                                   }
                                                 },
                                                 child: Container(
@@ -1816,7 +1837,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 8.0, 24.0, 0.0),
                                     child: Text(
-                                      'Agora, vou fazer mais algumas perguntas para entender como eu posso te guiar no seu tratamento! Vamos lá?',
+                                      'Agora, vou fazer mais algumas perguntas para entender como podemos te guiar no seu tratamento! Vamos lá?',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -2093,33 +2114,112 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     _model.currentStep =
                                         _model.currentStep! + 1;
                                     safeSetState(() {});
+                                    _model.apiResult23ot =
+                                        await SegmentGroup.trackingCall.call(
+                                      eventName: 'sign-up screen viewed',
+                                      propertyOne: 'step 3',
+                                    );
                                   } else if (_model.currentStep == 4) {
-                                    await PacienteTable().update(
-                                      data: {
-                                        'queixas': functions.removeItemAtString(
-                                            _model.queixas.toList(),
-                                            _model.queixas.first),
-                                        'contra_indicacoes': _model.contra,
-                                        'perfil_completo': true,
-                                        'queixa_principal':
-                                            _model.queixas.first,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'uuid',
-                                        currentUserUid,
-                                      ),
-                                    );
-                                    FFAppState().updatePacienteStruct(
-                                      (e) => e
-                                        ..perfilCompleto = true
-                                        ..contraIndicacoes =
-                                            _model.contra.toList()
-                                        ..queixas = _model.queixas.toList(),
-                                    );
-                                    safeSetState(() {});
+                                    if (_model.contra.length > 1) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              title: const Text('Condição de saúde'),
+                                              content: const Text(
+                                                  'Devido à sua condição de saúde, o uso de Cannabis pode ser contraindicado. Somente um médico poderá avaliar essa possibilidade. Infelizmente, não poderemos oferecer acompanhamento através da nossa assinatura, considerando o potencial risco em seu caso. (botão: Entendi) que leve para dentro do App'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+                                      await PacienteTable().update(
+                                        data: {
+                                          'queixas':
+                                              functions.removeItemAtString(
+                                                  _model.queixas.toList(),
+                                                  _model.queixas.first),
+                                          'contra_indicacoes': _model.contra,
+                                          'perfil_completo': true,
+                                          'queixa_principal':
+                                              _model.queixas.first,
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'uuid',
+                                          currentUserUid,
+                                        ),
+                                      );
+                                      FFAppState().updatePacienteStruct(
+                                        (e) => e
+                                          ..perfilCompleto = true
+                                          ..contraIndicacoes =
+                                              _model.contra.toList()
+                                          ..queixas = _model.queixas.toList(),
+                                      );
+                                      safeSetState(() {});
+                                      await SegmentGroup.identifyCall.call(
+                                        userId: currentUserUid,
+                                        userMail: currentUserEmail,
+                                        userCpf:
+                                            _model.ipCPFTextController.text,
+                                        userName:
+                                            _model.ipNomeTextController.text,
+                                        userQueixasList: _model.queixas,
+                                        timestamp:
+                                            getCurrentTimestamp.toString(),
+                                      );
 
-                                    context.goNamed('homePage');
+                                      context.goNamed('homePage');
+                                    } else {
+                                      await PacienteTable().update(
+                                        data: {
+                                          'queixas':
+                                              functions.removeItemAtString(
+                                                  _model.queixas.toList(),
+                                                  _model.queixas.first),
+                                          'contra_indicacoes': _model.contra,
+                                          'perfil_completo': true,
+                                          'queixa_principal':
+                                              _model.queixas.first,
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'uuid',
+                                          currentUserUid,
+                                        ),
+                                      );
+                                      FFAppState().updatePacienteStruct(
+                                        (e) => e
+                                          ..perfilCompleto = true
+                                          ..contraIndicacoes =
+                                              _model.contra.toList()
+                                          ..queixas = _model.queixas.toList(),
+                                      );
+                                      safeSetState(() {});
+                                      await SegmentGroup.identifyCall.call(
+                                        userId: currentUserUid,
+                                        userMail: currentUserEmail,
+                                        userCpf:
+                                            _model.ipCPFTextController.text,
+                                        userName:
+                                            _model.ipNomeTextController.text,
+                                        userQueixasList: _model.queixas,
+                                        timestamp:
+                                            getCurrentTimestamp.toString(),
+                                      );
+
+                                      context.goNamed('homePage');
+                                    }
                                   }
+
+                                  safeSetState(() {});
                                 },
                           text: 'Continuar',
                           options: FFButtonOptions(
@@ -2170,6 +2270,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     return;
                                   }
 
+                                  _model.customerAsaas =
+                                      await CreateAsaasCustomerCall.call(
+                                    name: _model.ipNomeTextController.text,
+                                    email: currentUserEmail,
+                                    phone: _model.phone,
+                                    cpf: _model.ipCPFTextController.text,
+                                  );
+
                                   _model.createdUser =
                                       await PacienteTable().insert({
                                     'nome': _model.ipNomeTextController.text,
@@ -2202,11 +2310,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     'processo': 'planoTerapeutico',
                                     'estagio': 'assinarPlano',
                                   });
-                                  _model.fcm = await actions.getFCMToken();
                                   await PacienteTable().update(
                                     data: {
                                       'status_atual': _model.st1?.id,
-                                      'fcm_token': _model.fcm,
                                     },
                                     matchingRows: (rows) => rows.eq(
                                       'uuid',
@@ -2224,6 +2330,12 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   _model.apiResultagx =
                                       await NnAccCreatedCall.call(
                                     email: currentUserEmail,
+                                  );
+
+                                  _model.apiResult23oc =
+                                      await SegmentGroup.trackingCall.call(
+                                    eventName: 'sign-up screen viewed',
+                                    propertyOne: 'step 2',
                                   );
 
                                   safeSetState(() {});

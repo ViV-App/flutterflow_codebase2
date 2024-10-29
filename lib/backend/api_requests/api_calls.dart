@@ -9,6 +9,168 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
+/// Start Segment Group Code
+
+class SegmentGroup {
+  static String getBaseUrl() => 'https://api.segment.io/v1';
+  static Map<String, String> headers = {
+    'Content-Type': 'application/json',
+  };
+  static IdentifyCall identifyCall = IdentifyCall();
+  static TrackingCall trackingCall = TrackingCall();
+  static TrackingMedicineCall trackingMedicineCall = TrackingMedicineCall();
+}
+
+class IdentifyCall {
+  Future<ApiCallResponse> call({
+    String? wirteKey = 'gg51PBFpDMf2jGcqf7Rbbu0FwMEqG2Uc',
+    String? userId = '',
+    String? userMail = '',
+    String? userName = '',
+    String? userCpf = '',
+    List<String>? userQueixasList,
+    String? timestamp = '',
+  }) async {
+    final baseUrl = SegmentGroup.getBaseUrl();
+    final userQueixas = _serializeList(userQueixasList);
+
+    final ffApiRequestBody = '''
+{
+  "userId": "$userId",
+  "traits": {
+    "email": "$userMail",
+    "name": "$userName",
+    "phone": "<userPhone>",
+    "cpf": "$userCpf",
+    "userQueixas": $userQueixas
+  },
+  "context": {
+    "ip": "24.5.68.47"
+  },
+  "timestamp": "$timestamp",
+  "writeKey": "$wirteKey"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'identify',
+      apiUrl: '$baseUrl/identify',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class TrackingCall {
+  Future<ApiCallResponse> call({
+    String? writeKey = 'gg51PBFpDMf2jGcqf7Rbbu0FwMEqG2Uc',
+    String? userId = '',
+    String? eventName = '',
+    String? propertyOne = '',
+    dynamic propertiesJson,
+  }) async {
+    final baseUrl = SegmentGroup.getBaseUrl();
+
+    final properties = _serializeJson(propertiesJson);
+    final ffApiRequestBody = '''
+{
+  "userId": "$userId",
+  "event": "$eventName",
+  "properties": {
+    "name": "$propertyOne",
+    "customized": $properties
+  },
+  "context": {
+    "ip": "24.5.68.47"
+  },
+  "timestamp": "<timestamp>",
+  "writeKey": "$writeKey"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'tracking',
+      apiUrl: '$baseUrl/track',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class TrackingMedicineCall {
+  Future<ApiCallResponse> call({
+    String? writeKey = 'gg51PBFpDMf2jGcqf7Rbbu0FwMEqG2Uc',
+    String? userId = '',
+    String? eventName = '',
+    int? medicamento,
+    List<String>? propertiesList,
+    int? prescricaoId,
+    dynamic dosagensJson,
+    int? duracao,
+    String? dateStart = '',
+    String? dateEnd = '',
+  }) async {
+    final baseUrl = SegmentGroup.getBaseUrl();
+    final properties = _serializeList(propertiesList);
+    final dosagens = _serializeJson(dosagensJson, true);
+    final ffApiRequestBody = '''
+{
+  "userId": "$userId",
+  "event": "$eventName",
+  "properties": {
+    "medicamento": "$medicamento",
+    "prescricaoId": $prescricaoId,
+    "dosagens": $dosagens,
+    "duracao": $duracao,
+    "dateStart": "$dateStart",
+    "dateEnd": "$dateEnd"
+  },
+  "context": {
+    "ip": "24.5.68.47"
+  },
+  "timestamp": "<timestamp>",
+  "writeKey": "$writeKey"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'tracking medicine',
+      apiUrl: '$baseUrl/track',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End Segment Group Code
+
 class AdicionarPrescricaoCall {
   static Future<ApiCallResponse> call({
     int? medicamento,
@@ -691,7 +853,7 @@ class SendBemViverResponseCall {
     return ApiManager.instance.makeApiCall(
       callName: 'send bem viver response',
       apiUrl:
-          'https://primary-production-52d3.up.railway.app/webhook/genvivscore',
+          'https://primary-production-13e6.up.railway.app/webhook/genvivscore',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -978,10 +1140,10 @@ class CancelSubscriptionCall {
       callType: ApiCallType.DELETE,
       headers: {
         'User-Agent':
-            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzRkZWQ4ZDA2LTViMDktNDQ3NS04MTI3LTQyYmE1YjEwODc0NA==',
+            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzkyZWQ3YjZiLTkwYzktNGQ3Mi1iNWJmLWU0Yzc2MGIyMTk5NA==',
         'accept': 'application/json',
         'access_token':
-            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzRkZWQ4ZDA2LTViMDktNDQ3NS04MTI3LTQyYmE1YjEwODc0NA==',
+            '\$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA0Mzk4MTY6OiRhYWNoXzkyZWQ3YjZiLTkwYzktNGQ3Mi1iNWJmLWU0Yzc2MGIyMTk5NA==',
       },
       params: {},
       returnBody: true,
@@ -1270,6 +1432,43 @@ class HasContraIndicacaoBlockerCall {
         response,
         r'''$''',
       );
+}
+
+class VerifyContraIndicacoesCall {
+  static Future<ApiCallResponse> call({
+    int? id,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "paciente_id": $id
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'verify contra indicacoes',
+      apiUrl:
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/rpc/verificar_contra_indicacoes',
+      callType: ApiCallType.POST,
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzOTg0MjksImV4cCI6MjAyOTk3NDQyOX0.XczFr7OwtAY2U06zTYWsFHKDwoDzdY10ZeO9hlevcAk',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzOTg0MjksImV4cCI6MjAyOTk3NDQyOX0.XczFr7OwtAY2U06zTYWsFHKDwoDzdY10ZeO9hlevcAk',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static bool? res(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$''',
+      ));
 }
 
 class ApiPagingParams {

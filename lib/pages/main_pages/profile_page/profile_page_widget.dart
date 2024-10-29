@@ -1,4 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/complete_profile_alert/complete_profile_alert_widget.dart';
@@ -11,6 +12,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -33,6 +36,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfilePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult23o = await SegmentGroup.trackingCall.call(
+        eventName: 'profile screen viewed',
+        propertyOne: 'profilePage',
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -345,10 +356,33 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                               ),
                                             ],
                                           ),
-                                          const Icon(
-                                            Icons.content_copy_sharp,
-                                            color: Color(0xFF8798B5),
-                                            size: 24.0,
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await Clipboard.setData(
+                                                  ClipboardData(
+                                                      text:
+                                                          profilePagePacienteRow!
+                                                              .id
+                                                              .toString()));
+                                              _model.apiResult23rbv =
+                                                  await SegmentGroup
+                                                      .trackingCall
+                                                      .call(
+                                                eventName: 'copy id clicked',
+                                                propertyOne: 'profilePage',
+                                              );
+
+                                              safeSetState(() {});
+                                            },
+                                            child: const Icon(
+                                              Icons.content_copy_sharp,
+                                              color: Color(0xFF8798B5),
+                                              size: 24.0,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -365,7 +399,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           onPressed: () async {
                                             context.pushNamed('planos');
                                           },
-                                          text: 'Seja premium',
+                                          text: 'Seja Premium',
                                           icon: FaIcon(
                                             FontAwesomeIcons.crown,
                                             color: FlutterFlowTheme.of(context)
@@ -491,6 +525,15 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     );
                                   },
                                 ).then((value) => safeSetState(() {}));
+
+                                _model.apiResulty70z =
+                                    await SegmentGroup.trackingCall.call(
+                                  userId: currentUserUid,
+                                  eventName: 'personal data clicked',
+                                  propertyOne: 'profilePage',
+                                );
+
+                                safeSetState(() {});
                               },
                               child: Container(
                                 width: double.infinity,
@@ -587,6 +630,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     );
                                   },
                                 ).then((value) => safeSetState(() {}));
+
+                                _model.apiResult23r =
+                                    await SegmentGroup.trackingCall.call(
+                                  eventName: 'health info clicked',
+                                  propertyOne: 'profilePage',
+                                );
+
+                                safeSetState(() {});
                               },
                               child: Container(
                                 width: double.infinity,
@@ -684,6 +735,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     );
                                   },
                                 ).then((value) => safeSetState(() {}));
+
+                                _model.apiResult23rg =
+                                    await SegmentGroup.trackingCall.call(
+                                  eventName: 'security clicked',
+                                  propertyOne: 'profilePage',
+                                );
+
+                                safeSetState(() {});
                               },
                               child: Container(
                                 width: double.infinity,
@@ -768,6 +827,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       ),
                                     },
                                   );
+
+                                  _model.apiResult23rr =
+                                      await SegmentGroup.trackingCall.call(
+                                    eventName: 'my-plan clicked',
+                                    propertyOne: 'profilePage',
+                                  );
+
+                                  safeSetState(() {});
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -811,7 +878,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     size: 28.0,
                                                   ),
                                                   Text(
-                                                    'Meu pano',
+                                                    'Meu plano',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -851,11 +918,19 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           FFAppState().prescricao = PrescricaoStruct();
                           FFAppState().onboardingHomePage = 0;
                           safeSetState(() {});
+                          _model.apiResult23rgv =
+                              await SegmentGroup.trackingCall.call(
+                            eventName: 'logout clicked',
+                            propertyOne: 'profilePage',
+                          );
+
                           GoRouter.of(context).prepareAuthEvent();
                           await authManager.signOut();
                           GoRouter.of(context).clearRedirectLocation();
 
                           context.goNamedAuth('splashScreen', context.mounted);
+
+                          safeSetState(() {});
                         },
                         text: 'Sair da conta',
                         options: FFButtonOptions(

@@ -21,6 +21,7 @@ class PacienteStruct extends BaseStruct {
     String? tratamentoPrevio,
     int? medico,
     AssinaturaStruct? assinatura,
+    String? queixaPrincipal,
   })  : _id = id,
         _uuid = uuid,
         _createdAt = createdAt,
@@ -35,7 +36,8 @@ class PacienteStruct extends BaseStruct {
         _altura = altura,
         _tratamentoPrevio = tratamentoPrevio,
         _medico = medico,
-        _assinatura = assinatura;
+        _assinatura = assinatura,
+        _queixaPrincipal = queixaPrincipal;
 
   // "id" field.
   int? _id;
@@ -162,6 +164,13 @@ class PacienteStruct extends BaseStruct {
 
   bool hasAssinatura() => _assinatura != null;
 
+  // "queixaPrincipal" field.
+  String? _queixaPrincipal;
+  String get queixaPrincipal => _queixaPrincipal ?? '';
+  set queixaPrincipal(String? val) => _queixaPrincipal = val;
+
+  bool hasQueixaPrincipal() => _queixaPrincipal != null;
+
   static PacienteStruct fromMap(Map<String, dynamic> data) => PacienteStruct(
         id: castToType<int>(data['id']),
         uuid: data['uuid'] as String?,
@@ -178,6 +187,7 @@ class PacienteStruct extends BaseStruct {
         tratamentoPrevio: data['tratamentoPrevio'] as String?,
         medico: castToType<int>(data['medico']),
         assinatura: AssinaturaStruct.maybeFromMap(data['assinatura']),
+        queixaPrincipal: data['queixaPrincipal'] as String?,
       );
 
   static PacienteStruct? maybeFromMap(dynamic data) =>
@@ -199,6 +209,7 @@ class PacienteStruct extends BaseStruct {
         'tratamentoPrevio': _tratamentoPrevio,
         'medico': _medico,
         'assinatura': _assinatura?.toMap(),
+        'queixaPrincipal': _queixaPrincipal,
       }.withoutNulls;
 
   @override
@@ -264,6 +275,10 @@ class PacienteStruct extends BaseStruct {
         'assinatura': serializeParam(
           _assinatura,
           ParamType.DataStruct,
+        ),
+        'queixaPrincipal': serializeParam(
+          _queixaPrincipal,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -345,6 +360,11 @@ class PacienteStruct extends BaseStruct {
           false,
           structBuilder: AssinaturaStruct.fromSerializableMap,
         ),
+        queixaPrincipal: deserializeParam(
+          data['queixaPrincipal'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -368,7 +388,8 @@ class PacienteStruct extends BaseStruct {
         altura == other.altura &&
         tratamentoPrevio == other.tratamentoPrevio &&
         medico == other.medico &&
-        assinatura == other.assinatura;
+        assinatura == other.assinatura &&
+        queixaPrincipal == other.queixaPrincipal;
   }
 
   @override
@@ -387,7 +408,8 @@ class PacienteStruct extends BaseStruct {
         altura,
         tratamentoPrevio,
         medico,
-        assinatura
+        assinatura,
+        queixaPrincipal
       ]);
 }
 
@@ -405,6 +427,7 @@ PacienteStruct createPacienteStruct({
   String? tratamentoPrevio,
   int? medico,
   AssinaturaStruct? assinatura,
+  String? queixaPrincipal,
 }) =>
     PacienteStruct(
       id: id,
@@ -420,4 +443,5 @@ PacienteStruct createPacienteStruct({
       tratamentoPrevio: tratamentoPrevio,
       medico: medico,
       assinatura: assinatura ?? AssinaturaStruct(),
+      queixaPrincipal: queixaPrincipal,
     );

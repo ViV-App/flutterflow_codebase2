@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
@@ -19,8 +20,14 @@ class RemediosModel extends FlutterFlowModel<RemediosWidget> {
 
   bool requestCompleted = false;
   String? requestLastUniqueKey;
+  // Stores action output result for [Backend Call - API (tracking)] action in remedios widget.
+  ApiCallResponse? apiResultwcv;
   // Stores action output result for [Backend Call - Query Rows] action in remedioCard widget.
   List<PrescricaoRow>? rtnPrescription;
+  // Stores action output result for [Backend Call - API (tracking)] action in remedioCard widget.
+  ApiCallResponse? apiResultltc;
+  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
+  ApiCallResponse? apiResultwcvv;
 
   @override
   void initState(BuildContext context) {}

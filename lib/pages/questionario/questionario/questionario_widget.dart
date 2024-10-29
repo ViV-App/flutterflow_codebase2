@@ -386,271 +386,389 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                 ? null
                                                 : () async {
                                                     var shouldSetState = false;
-                                                    if (_model.lastQuestion ==
-                                                        true) {
-                                                      if (widget.questionario
-                                                              ?.nome ==
-                                                          'Históra Clinica') {
-                                                        await PacienteTable()
-                                                            .update(
-                                                          data: {
-                                                            'hist_medico_preenchido':
-                                                                true,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'uuid',
-                                                            currentUserUid,
-                                                          ),
-                                                        );
-                                                        _model.apiResultr3x =
-                                                            await GenerateResponsesCall
-                                                                .call(
-                                                          paciente: FFAppState()
-                                                              .paciente
-                                                              .id,
-                                                          questionario: 4,
-                                                        );
-
-                                                        shouldSetState = true;
-
-                                                        context.goNamed(
-                                                          'formPreConsulta',
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            kTransitionInfoKey:
-                                                                const TransitionInfo(
-                                                              hasTransition:
-                                                                  true,
-                                                              transitionType:
-                                                                  PageTransitionType
-                                                                      .fade,
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      0),
-                                                            ),
-                                                          },
-                                                        );
-
-                                                        if (shouldSetState) {
-                                                          safeSetState(() {});
-                                                        }
-                                                        return;
-                                                      } else if (widget
-                                                              .questionario
-                                                              ?.nome ==
-                                                          'História Familiar') {
-                                                        await PacienteTable()
-                                                            .update(
-                                                          data: {
-                                                            'fam_social_hist_preenchido':
-                                                                true,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'uuid',
-                                                            currentUserUid,
-                                                          ),
-                                                        );
-                                                        _model.apiResultr3xd3 =
-                                                            await GenerateResponsesCall
-                                                                .call(
-                                                          paciente: FFAppState()
-                                                              .paciente
-                                                              .id,
-                                                          questionario: 5,
-                                                        );
-
-                                                        shouldSetState = true;
-
-                                                        context.goNamed(
-                                                          'formPreConsulta',
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            kTransitionInfoKey:
-                                                                const TransitionInfo(
-                                                              hasTransition:
-                                                                  true,
-                                                              transitionType:
-                                                                  PageTransitionType
-                                                                      .fade,
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      0),
-                                                            ),
-                                                          },
-                                                        );
-
-                                                        if (shouldSetState) {
-                                                          safeSetState(() {});
-                                                        }
-                                                        return;
-                                                      } else if (widget
-                                                              .questionario
-                                                              ?.nome ==
-                                                          'Hábitos de Vida') {
-                                                        await PacienteTable()
-                                                            .update(
-                                                          data: {
-                                                            'lifestyle_preenchido':
-                                                                true,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'uuid',
-                                                            currentUserUid,
-                                                          ),
-                                                        );
-                                                        _model.apiResultr3xd3a =
-                                                            await GenerateResponsesCall
-                                                                .call(
-                                                          paciente: FFAppState()
-                                                              .paciente
-                                                              .id,
-                                                          questionario: 6,
-                                                        );
-
-                                                        shouldSetState = true;
-
-                                                        context.goNamed(
-                                                          'formPreConsulta',
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            kTransitionInfoKey:
-                                                                const TransitionInfo(
-                                                              hasTransition:
-                                                                  true,
-                                                              transitionType:
-                                                                  PageTransitionType
-                                                                      .fade,
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      0),
-                                                            ),
-                                                          },
-                                                        );
-
-                                                        if (shouldSetState) {
-                                                          safeSetState(() {});
-                                                        }
-                                                        return;
-                                                      } else if (widget
-                                                              .questionario
-                                                              ?.nome ==
-                                                          'História Psicosocial') {
-                                                        await PacienteTable()
-                                                            .update(
-                                                          data: {
-                                                            'funcionalidade_preenchida':
-                                                                true,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'uuid',
-                                                            currentUserUid,
-                                                          ),
-                                                        );
-                                                        await StatusPacientTable()
-                                                            .update(
-                                                          data: {
-                                                            'processo':
-                                                                'planoTerapeutico',
-                                                            'estagio':
-                                                                'receberPlano',
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'paciente',
-                                                            pageViewRespostasQuestionarioRow
-                                                                .paciente,
-                                                          ),
-                                                        );
-                                                        shouldSetState = true;
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return WebViewAware(
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () =>
-                                                                    FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      SizedBox(
-                                                                    height: MediaQuery.sizeOf(context)
-                                                                            .height *
-                                                                        0.85,
-                                                                    child:
-                                                                        const FormsFilledWidget(),
-                                                                  ),
-                                                                ),
+                                                    await Future.wait([
+                                                      Future(() async {
+                                                        if (_model
+                                                                .lastQuestion ==
+                                                            true) {
+                                                          if (widget
+                                                                  .questionario
+                                                                  ?.nome ==
+                                                              'Queixa e Diagnóstico') {
+                                                            await PacienteTable()
+                                                                .update(
+                                                              data: {
+                                                                'hist_medico_preenchido':
+                                                                    true,
+                                                              },
+                                                              matchingRows:
+                                                                  (rows) =>
+                                                                      rows.eq(
+                                                                'uuid',
+                                                                currentUserUid,
                                                               ),
                                                             );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
+                                                            _model.apiResultr3x =
+                                                                await GenerateResponsesCall
+                                                                    .call(
+                                                              paciente:
+                                                                  FFAppState()
+                                                                      .paciente
+                                                                      .id,
+                                                              questionario: 4,
+                                                            );
 
-                                                        context.goNamed(
-                                                          'homePage',
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            kTransitionInfoKey:
-                                                                const TransitionInfo(
-                                                              hasTransition:
+                                                            shouldSetState =
+                                                                true;
+
+                                                            context.goNamed(
+                                                              'formPreConsulta',
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                kTransitionInfoKey:
+                                                                    const TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .fade,
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          0),
+                                                                ),
+                                                              },
+                                                            );
+
+                                                            _model.wrverfvr =
+                                                                await SegmentGroup
+                                                                    .trackingCall
+                                                                    .call(
+                                                              userId:
+                                                                  currentUserUid,
+                                                              eventName:
+                                                                  'pre-appointment concluded',
+                                                              propertiesJson: <String,
+                                                                  dynamic>{
+                                                                'questionario':
+                                                                    widget
+                                                                        .questionario,
+                                                              },
+                                                            );
+
+                                                            shouldSetState =
+                                                                true;
+                                                            if (shouldSetState) {
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
+                                                            return;
+                                                          } else if (widget
+                                                                  .questionario
+                                                                  ?.nome ==
+                                                              'Histórico de Saúde') {
+                                                            await PacienteTable()
+                                                                .update(
+                                                              data: {
+                                                                'fam_social_hist_preenchido':
+                                                                    true,
+                                                              },
+                                                              matchingRows:
+                                                                  (rows) =>
+                                                                      rows.eq(
+                                                                'uuid',
+                                                                currentUserUid,
+                                                              ),
+                                                            );
+                                                            _model.apiResultr3xd3 =
+                                                                await GenerateResponsesCall
+                                                                    .call(
+                                                              paciente:
+                                                                  FFAppState()
+                                                                      .paciente
+                                                                      .id,
+                                                              questionario: 5,
+                                                            );
+
+                                                            shouldSetState =
+                                                                true;
+
+                                                            context.goNamed(
+                                                              'formPreConsulta',
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                kTransitionInfoKey:
+                                                                    const TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .fade,
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          0),
+                                                                ),
+                                                              },
+                                                            );
+
+                                                            _model.rg435g54 =
+                                                                await SegmentGroup
+                                                                    .trackingCall
+                                                                    .call(
+                                                              userId:
+                                                                  currentUserUid,
+                                                              eventName:
+                                                                  'pre-appointment concluded',
+                                                              propertiesJson: <String,
+                                                                  dynamic>{
+                                                                'questionario':
+                                                                    widget
+                                                                        .questionario,
+                                                              },
+                                                            );
+
+                                                            shouldSetState =
+                                                                true;
+                                                            if (shouldSetState) {
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
+                                                            return;
+                                                          } else if (widget
+                                                                  .questionario
+                                                                  ?.nome ==
+                                                              'Hábitos de vida') {
+                                                            await PacienteTable()
+                                                                .update(
+                                                              data: {
+                                                                'lifestyle_preenchido':
+                                                                    true,
+                                                              },
+                                                              matchingRows:
+                                                                  (rows) =>
+                                                                      rows.eq(
+                                                                'uuid',
+                                                                currentUserUid,
+                                                              ),
+                                                            );
+                                                            _model.apiResultr3xd3a =
+                                                                await GenerateResponsesCall
+                                                                    .call(
+                                                              paciente:
+                                                                  FFAppState()
+                                                                      .paciente
+                                                                      .id,
+                                                              questionario: 6,
+                                                            );
+
+                                                            shouldSetState =
+                                                                true;
+
+                                                            context.goNamed(
+                                                              'formPreConsulta',
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                kTransitionInfoKey:
+                                                                    const TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .fade,
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          0),
+                                                                ),
+                                                              },
+                                                            );
+
+                                                            _model.rg545gt4g =
+                                                                await SegmentGroup
+                                                                    .trackingCall
+                                                                    .call(
+                                                              userId:
+                                                                  currentUserUid,
+                                                              eventName:
+                                                                  'pre-appointment concluded',
+                                                              propertiesJson: <String,
+                                                                  dynamic>{
+                                                                'questionario':
+                                                                    widget
+                                                                        .questionario,
+                                                              },
+                                                            );
+
+                                                            shouldSetState =
+                                                                true;
+                                                            if (shouldSetState) {
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
+                                                            return;
+                                                          } else if (widget
+                                                                  .questionario
+                                                                  ?.nome ==
+                                                              'Histórico Famíliar e Psicosocial') {
+                                                            await PacienteTable()
+                                                                .update(
+                                                              data: {
+                                                                'funcionalidade_preenchida':
+                                                                    true,
+                                                              },
+                                                              matchingRows:
+                                                                  (rows) =>
+                                                                      rows.eq(
+                                                                'uuid',
+                                                                currentUserUid,
+                                                              ),
+                                                            );
+                                                            await StatusPacientTable()
+                                                                .update(
+                                                              data: {
+                                                                'processo':
+                                                                    'tratamentoBip',
+                                                                'estagio':
+                                                                    'preencherFormularioBip',
+                                                              },
+                                                              matchingRows:
+                                                                  (rows) =>
+                                                                      rows.eq(
+                                                                'paciente',
+                                                                pageViewRespostasQuestionarioRow
+                                                                    .paciente,
+                                                              ),
+                                                            );
+                                                            shouldSetState =
+                                                                true;
+                                                            await showModalBottomSheet(
+                                                              isScrollControlled:
                                                                   true,
-                                                              transitionType:
-                                                                  PageTransitionType
-                                                                      .fade,
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      0),
-                                                            ),
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              enableDrag: false,
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return WebViewAware(
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () =>
+                                                                        FocusScope.of(context)
+                                                                            .unfocus(),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: MediaQuery
+                                                                          .viewInsetsOf(
+                                                                              context),
+                                                                      child:
+                                                                          SizedBox(
+                                                                        height: MediaQuery.sizeOf(context).height *
+                                                                            0.85,
+                                                                        child:
+                                                                            const FormsFilledWidget(),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(
+                                                                    () {}));
+
+                                                            context.goNamed(
+                                                              'homePage',
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                kTransitionInfoKey:
+                                                                    const TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .fade,
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          0),
+                                                                ),
+                                                              },
+                                                            );
+
+                                                            _model.rfg534g45 =
+                                                                await SegmentGroup
+                                                                    .trackingCall
+                                                                    .call(
+                                                              userId:
+                                                                  currentUserUid,
+                                                              eventName:
+                                                                  'pre-appointment concluded',
+                                                              propertiesJson: <String,
+                                                                  dynamic>{
+                                                                'questionario':
+                                                                    widget
+                                                                        .questionario,
+                                                              },
+                                                            );
+
+                                                            shouldSetState =
+                                                                true;
+                                                            if (shouldSetState) {
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
+                                                            return;
+                                                          } else {
+                                                            if (shouldSetState) {
+                                                              safeSetState(
+                                                                  () {});
+                                                            }
+                                                            return;
+                                                          }
+                                                        } else {
+                                                          await _model
+                                                              .pageViewController
+                                                              ?.animateToPage(
+                                                            _model
+                                                                .nextQuestion!,
+                                                            duration: const Duration(
+                                                                milliseconds:
+                                                                    500),
+                                                            curve: Curves.ease,
+                                                          );
+                                                          _model.addToPreviuousQuestions(
+                                                              pageViewRespostasQuestionarioRow
+                                                                  .ordem!);
+                                                          safeSetState(() {});
+                                                          await actions
+                                                              .hideKeyboard();
+                                                          if (shouldSetState) {
+                                                            safeSetState(() {});
+                                                          }
+                                                          return;
+                                                        }
+                                                      }),
+                                                      Future(() async {
+                                                        _model.apiResultoio =
+                                                            await SegmentGroup
+                                                                .trackingCall
+                                                                .call(
+                                                          userId:
+                                                              currentUserUid,
+                                                          eventName:
+                                                              'next assistant pre-appointment clicked',
+                                                          propertiesJson: <String,
+                                                              dynamic>{
+                                                            'questionario':
+                                                                widget
+                                                                    .questionario,
+                                                            'step':
+                                                                pageViewRespostasQuestionarioRow
+                                                                    .ordem,
                                                           },
                                                         );
 
-                                                        if (shouldSetState) {
-                                                          safeSetState(() {});
-                                                        }
-                                                        return;
-                                                      } else {
-                                                        if (shouldSetState) {
-                                                          safeSetState(() {});
-                                                        }
-                                                        return;
-                                                      }
-                                                    } else {
-                                                      await _model
-                                                          .pageViewController
-                                                          ?.animateToPage(
-                                                        _model.nextQuestion!,
-                                                        duration: const Duration(
-                                                            milliseconds: 500),
-                                                        curve: Curves.ease,
-                                                      );
-                                                      _model.addToPreviuousQuestions(
-                                                          pageViewRespostasQuestionarioRow
-                                                              .ordem!);
-                                                      safeSetState(() {});
-                                                      await actions
-                                                          .hideKeyboard();
-                                                      if (shouldSetState) {
-                                                        safeSetState(() {});
-                                                      }
-                                                      return;
-                                                    }
-
+                                                        shouldSetState = true;
+                                                      }),
+                                                    ]);
                                                     if (shouldSetState) {
                                                       safeSetState(() {});
                                                     }

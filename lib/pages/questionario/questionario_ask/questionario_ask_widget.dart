@@ -146,8 +146,29 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                             alignment: const AlignmentDirectional(-1.0, -1.0),
                             child: Text(
                               valueOrDefault<String>(
-                                columnQuestionarioPerguntasRow?.pergunta,
-                                'd',
+                                () {
+                                  if (columnQuestionarioPerguntasRow
+                                          ?.pergunta ==
+                                      'Após iniciar o tratamento, você notou melhora em sua queixa PRINCIPAL [base de dados] que busca tratar com a terapia canabinoide? ') {
+                                    return 'Após iniciar o tratamento, você notou melhora em sua queixa PRINCIPAL [ ${FFAppState().paciente.queixaPrincipal} ] que busca tratar com a terapia canabinoide? ';
+                                  } else if ((columnQuestionarioPerguntasRow
+                                              ?.pergunta ==
+                                          'Você notou melhora nas queixas SECUNDÁRIAS [Base de dados] que busca tratar com a terapia canabinoide? ') &&
+                                      (FFAppState().paciente.queixas.length ==
+                                          1)) {
+                                    return 'Você notou melhora nas queixas SECUNDÁRIAS [ ${FFAppState().paciente.queixas[0]} ] que busca tratar com a terapia canabinoide? ';
+                                  } else if ((columnQuestionarioPerguntasRow
+                                              ?.pergunta ==
+                                          'Você notou melhora nas queixas SECUNDÁRIAS [Base de dados] que busca tratar com a terapia canabinoide? ') &&
+                                      (FFAppState().paciente.queixas.length ==
+                                          2)) {
+                                    return 'Você notou melhora nas queixas SECUNDÁRIAS [ ${FFAppState().paciente.queixas[0]}, ${FFAppState().paciente.queixas[1]} ] que busca tratar com a terapia canabinoide? ';
+                                  } else {
+                                    return columnQuestionarioPerguntasRow
+                                        ?.pergunta;
+                                  }
+                                }(),
+                                'Question',
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
