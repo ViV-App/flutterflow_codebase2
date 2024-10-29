@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
 import 'splash_screen_model.dart';
 export 'splash_screen_model.dart';
@@ -112,8 +111,11 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  await requestPermission(
-                                      photoLibraryPermission);
+                                  _model.fctoken = await actions.getFCMToken();
+                                  _model.token = _model.fctoken;
+                                  safeSetState(() {});
+
+                                  safeSetState(() {});
                                 },
                                 child: AnimatedDefaultTextStyle(
                                   style: FlutterFlowTheme.of(context)
@@ -236,6 +238,20 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
                                   ),
                                 ),
                               ),
+                              SelectionArea(
+                                  child: Text(
+                                valueOrDefault<String>(
+                                  _model.token,
+                                  'token',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Mulish',
+                                      color: Colors.white,
+                                      letterSpacing: 0.0,
+                                    ),
+                              )),
                             ],
                           ),
                         ),
