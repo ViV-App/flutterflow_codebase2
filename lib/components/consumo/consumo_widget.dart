@@ -3,10 +3,13 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'consumo_model.dart';
 export 'consumo_model.dart';
 
@@ -44,7 +47,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
       _model.medicamento = await StaticMedicamentosTable().queryRows(
         queryFn: (q) => q.eq(
           'id',
-          widget.consumo?.medicamentoId,
+          widget!.consumo?.medicamentoId,
         ),
       );
     });
@@ -59,7 +62,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
             delay: 0.0.ms,
             duration: 1000.0.ms,
             hz: 5,
-            offset: const Offset(2.0, 0.0),
+            offset: Offset(2.0, 0.0),
             rotation: 0,
           ),
         ],
@@ -85,13 +88,13 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
         child: Material(
           color: Colors.transparent,
           elevation: 2.0,
-          shape: const RoundedRectangleBorder(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(8.0),
               bottomRight: Radius.circular(8.0),
@@ -100,7 +103,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
             ),
           ),
           child: ClipRRect(
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(8.0),
               bottomRight: Radius.circular(8.0),
               topLeft: Radius.circular(8.0),
@@ -109,7 +112,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
             child: Container(
               width: double.infinity,
               height: 72.0,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color(0xFFF7FAFE),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(8.0),
@@ -123,7 +126,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
                   Container(
                     width: 7.0,
                     height: 100.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFF6E78FF),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(12.0),
@@ -134,9 +137,9 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           18.0, 12.0, 12.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -145,7 +148,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              if (_model.medicamento?.first.categoria ==
+                              if (_model.medicamento?.first?.categoria ==
                                   'Suplemento')
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
@@ -156,7 +159,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                              if (_model.medicamento?.first.categoria ==
+                              if (_model.medicamento?.first?.categoria ==
                                   'Produto derivado de Cannabis')
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
@@ -167,7 +170,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                              if (_model.medicamento?.first.categoria ==
+                              if (_model.medicamento?.first?.categoria ==
                                   'Medicamento')
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
@@ -189,7 +192,7 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF434854),
+                                          color: Color(0xFF434854),
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w800,
@@ -201,15 +204,15 @@ class _ConsumoWidgetState extends State<ConsumoWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF434854),
+                                          color: Color(0xFF434854),
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                         ),
                                   ),
-                                ].divide(const SizedBox(height: 4.0)),
+                                ].divide(SizedBox(height: 4.0)),
                               ),
-                            ].divide(const SizedBox(width: 12.0)),
+                            ].divide(SizedBox(width: 12.0)),
                           ),
                           Theme(
                             data: ThemeData(

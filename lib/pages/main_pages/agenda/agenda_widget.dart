@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/custom_date_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -71,7 +73,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
               Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Color(0x00FFFFFF),
                 ),
                 child: Column(
@@ -87,7 +89,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(18.0),
+                            padding: EdgeInsets.all(18.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,9 +146,9 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, -1.0),
+                              alignment: AlignmentDirectional(-1.0, -1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 12.0, 24.0, 32.0),
                                 child: Text(
                                   'Registre se você ja tomou seu remédio hoje.',
@@ -154,7 +156,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: Color(0xFF8798B5),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -166,7 +168,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -188,7 +190,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: SizedBox(
+                                                child: Container(
                                                   height:
                                                       MediaQuery.sizeOf(context)
                                                               .height *
@@ -224,12 +226,12 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                       width: double.infinity,
                                       height: 37.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF7FAFE),
+                                        color: Color(0xFFF7FAFE),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -324,7 +326,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 12.0, 24.0, 0.0),
                                   child: Builder(
                                     builder: (context) {
@@ -498,7 +500,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                               ),
                                             ),
                                           );
-                                        }).divide(const SizedBox(width: 12.0)),
+                                        }).divide(SizedBox(width: 12.0)),
                                       );
                                     },
                                   ),
@@ -523,7 +525,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                 }
 
                                 return ListView.separated(
-                                  padding: const EdgeInsets.fromLTRB(
+                                  padding: EdgeInsets.fromLTRB(
                                     0,
                                     0,
                                     0,
@@ -534,7 +536,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                   scrollDirection: Axis.vertical,
                                   itemCount: consumoManham.length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 18.0),
+                                      SizedBox(height: 18.0),
                                   itemBuilder: (context, consumoManhamIndex) {
                                     final consumoManhamItem =
                                         consumoManham[consumoManhamIndex];
@@ -543,10 +545,10 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                       children: [
                                         if (consumoManhamItem.first == 1)
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 24.0, 0.0, 18.0),
                                               child: Text(
@@ -557,7 +559,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              const Color(0xFF434854),
+                                                              Color(0xFF434854),
                                                           fontSize: 20.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -568,15 +570,15 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                           ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             child: Material(
                                               color: Colors.transparent,
                                               elevation: 2.0,
-                                              shape: const RoundedRectangleBorder(
+                                              shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(8.0),
@@ -588,7 +590,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 ),
                                               ),
                                               child: ClipRRect(
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius: BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(8.0),
                                                   bottomRight:
@@ -600,7 +602,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: 72.0,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0xFFF7FAFE),
                                                     borderRadius:
                                                         BorderRadius.only(
@@ -631,20 +633,20 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                             } else if (consumoManhamItem
                                                                     .categoria ==
                                                                 'Produto derivado de Cannabis') {
-                                                              return const Color(
+                                                              return Color(
                                                                   0xFF0FA26D);
                                                             } else if (consumoManhamItem
                                                                     .categoria ==
                                                                 'Suplemento') {
-                                                              return const Color(
+                                                              return Color(
                                                                   0xFFFFA438);
                                                             } else {
-                                                              return const Color(
+                                                              return Color(
                                                                   0x00000000);
                                                             }
                                                           }(),
                                                           borderRadius:
-                                                              const BorderRadius.only(
+                                                              BorderRadius.only(
                                                             bottomLeft:
                                                                 Radius.circular(
                                                                     12.0),
@@ -662,11 +664,11 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
                                                                       12.0,
@@ -766,7 +768,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Mulish',
-                                                                              color: const Color(0xFF434854),
+                                                                              color: Color(0xFF434854),
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w800,
@@ -778,20 +780,129 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Mulish',
-                                                                              color: const Color(0xFF434854),
+                                                                              color: Color(0xFF434854),
                                                                               fontSize: 12.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w600,
                                                                             ),
                                                                       ),
-                                                                    ].divide(const SizedBox(
+                                                                    ].divide(SizedBox(
                                                                         height:
                                                                             4.0)),
                                                                   ),
-                                                                ].divide(const SizedBox(
+                                                                ].divide(SizedBox(
                                                                     width:
                                                                         12.0)),
                                                               ),
+                                                              if (FFAppState()
+                                                                      .paciente ==
+                                                                  null)
+                                                                Theme(
+                                                                  data:
+                                                                      ThemeData(
+                                                                    checkboxTheme:
+                                                                        CheckboxThemeData(
+                                                                      visualDensity:
+                                                                          VisualDensity
+                                                                              .compact,
+                                                                      materialTapTargetSize:
+                                                                          MaterialTapTargetSize
+                                                                              .shrinkWrap,
+                                                                      shape:
+                                                                          RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(4.0),
+                                                                      ),
+                                                                    ),
+                                                                    unselectedWidgetColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                  ),
+                                                                  child:
+                                                                      Checkbox(
+                                                                    value: _model
+                                                                            .checkboxValueMap[
+                                                                        consumoManhamItem] ??= consumoManhamItem.consumido ==
+                                                                            true
+                                                                        ? true
+                                                                        : false,
+                                                                    onChanged:
+                                                                        (newValue) async {
+                                                                      safeSetState(() =>
+                                                                          _model.checkboxValueMap[consumoManhamItem] =
+                                                                              newValue!);
+                                                                      if (newValue!) {
+                                                                        _model.outputConsumo02amCopy =
+                                                                            await ConsumotrackTable().insert({
+                                                                          'hour': supaSerialize<DateTime>(functions.combineDateAndTime(
+                                                                              _model.pickedDate!.toString(),
+                                                                              consumoManhamItem.horario)),
+                                                                          'consumido':
+                                                                              true,
+                                                                          'prescricao':
+                                                                              consumoManhamItem.prescricaoId,
+                                                                          'medicamento':
+                                                                              consumoManhamItem.medicamentoId,
+                                                                        });
+                                                                        _model
+                                                                            .updateConsumoAtIndex(
+                                                                          consumoManhamIndex,
+                                                                          (e) => e
+                                                                            ..consumoId =
+                                                                                _model.outputConsumo02amCopy?.id
+                                                                            ..consumido = true,
+                                                                        );
+                                                                        _model.consumoQntd =
+                                                                            _model.consumoQntd! +
+                                                                                1;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                        await _model
+                                                                            .activeLottie(context);
+                                                                        safeSetState(
+                                                                            () {});
+
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      } else {
+                                                                        await ConsumotrackTable()
+                                                                            .delete(
+                                                                          matchingRows: (rows) =>
+                                                                              rows.eq(
+                                                                            'id',
+                                                                            consumoManhamItem.consumoId,
+                                                                          ),
+                                                                        );
+                                                                        _model
+                                                                            .updateConsumoAtIndex(
+                                                                          consumoManhamIndex,
+                                                                          (e) => e
+                                                                            ..consumido =
+                                                                                false
+                                                                            ..consumoId = null,
+                                                                        );
+                                                                        _model.consumoQntd =
+                                                                            _model.consumoQntd! +
+                                                                                -1;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      }
+                                                                    },
+                                                                    side:
+                                                                        BorderSide(
+                                                                      width: 2,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                    ),
+                                                                    activeColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    checkColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                  ),
+                                                                ),
                                                               Row(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -924,8 +1035,8 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                               },
                             ),
                           ]
-                              .addToStart(const SizedBox(height: 8.0))
-                              .addToEnd(const SizedBox(height: 24.0)),
+                              .addToStart(SizedBox(height: 8.0))
+                              .addToEnd(SizedBox(height: 24.0)),
                         ),
                       ),
                     ),
@@ -936,7 +1047,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 12.0, 24.0, 24.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -946,9 +1057,9 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -960,7 +1071,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
                                   fontWeight: FontWeight.bold,
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -974,7 +1085,7 @@ class _AgendaWidgetState extends State<AgendaWidget> {
               ),
               if (_model.lottieOn == true)
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Lottie.network(
                     'https://lottie.host/e32057d4-7626-4bec-bb50-94affc3148e2/Gwm7uJAVIT.json',
                     width: 300.0,

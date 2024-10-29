@@ -8,11 +8,15 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:math';
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'dados_cadastrais_form_model.dart';
@@ -85,7 +89,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
       ),
       child: Builder(
@@ -101,7 +105,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 62.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 62.0, 0.0, 0.0),
                       child: Text(
                         'Dados Cadastrais',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -115,12 +119,12 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 18.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 18.0, 28.0, 0.0),
                       child: Text(
                         'Para garantir sua segurança e eficiência no cuidado à saúde, é essencial manter seus dados cadastrais atualizados na plataforma ViV.\n\nIsso permite uma comunicação rápida e eficaz com nossa equipe de saúde, seja para resultados de exames, alterações em consultas ou situações críticas.\n\nAlém disso, dados corretos e acessíveis facilitam a coordenação de cuidados entre diversos profissionais de saúde, otimizando seu tratamento e otimizando o tratamento.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Mulish',
-                              color: const Color(0xFF8798B5),
+                              color: Color(0xFF8798B5),
                               letterSpacing: 0.0,
                             ),
                       ),
@@ -129,10 +133,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                 ).animateOnPageLoad(
                     animationsMap['columnOnPageLoadAnimation']!),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         _model.currentStep = _model.currentStep + 1;
@@ -142,10 +146,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -155,7 +159,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -177,7 +181,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: LinearPercentIndicator(
                         percent: 0.1,
                         width: MediaQuery.sizeOf(context).width * 0.85,
@@ -185,14 +189,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                         animation: true,
                         animateFromLastPercent: true,
                         progressColor: FlutterFlowTheme.of(context).primary,
-                        backgroundColor: const Color(0xFFE0E3E7),
-                        barRadius: const Radius.circular(12.0),
+                        backgroundColor: Color(0xFFE0E3E7),
+                        barRadius: Radius.circular(12.0),
                         padding: EdgeInsets.zero,
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
                       child: Text(
                         'Dados Cadastrais',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -206,7 +210,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,28 +221,28 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               height: 48.0,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFF7FAFE),
+                                color: Color(0xFFF7FAFE),
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
-                                  color: const Color(0x13294B0D),
+                                  color: Color(0x13294B0D),
                                   width: 2.0,
                                 ),
                               ),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.sexoValueController ??=
                                     FormFieldController<String>(null),
-                                options: const [
+                                options: [
                                   'Feminino',
                                   'Masculino',
                                   'Outro',
@@ -255,7 +259,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                       letterSpacing: 0.0,
                                     ),
                                 hintText: 'Sexo',
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.keyboard_arrow_down_rounded,
                                   color: Color(0xFF8798B5),
                                   size: 24.0,
@@ -266,7 +270,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 borderColor: Colors.transparent,
                                 borderWidth: 2.0,
                                 borderRadius: 8.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 4.0),
                                 hidesUnderline: true,
                                 isOverButton: false,
@@ -280,7 +284,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,28 +295,28 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               height: 48.0,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFF7FAFE),
+                                color: Color(0xFFF7FAFE),
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
-                                  color: const Color(0x13294B0D),
+                                  color: Color(0x13294B0D),
                                   width: 2.0,
                                 ),
                               ),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.identidadeValueController ??=
                                     FormFieldController<String>(null),
-                                options: const [
+                                options: [
                                   'Mulher',
                                   'Homem',
                                   'Outro',
@@ -329,7 +333,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                       letterSpacing: 0.0,
                                     ),
                                 hintText: 'Identidade',
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.keyboard_arrow_down_rounded,
                                   color: Color(0xFF8798B5),
                                   size: 24.0,
@@ -340,7 +344,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 borderColor: Colors.transparent,
                                 borderWidth: 2.0,
                                 borderRadius: 8.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 4.0),
                                 hidesUnderline: true,
                                 isOverButton: false,
@@ -355,10 +359,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: FFButtonWidget(
                       onPressed:
                           (_model.sexoValue == null || _model.sexoValue == '')
@@ -371,10 +375,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -384,7 +388,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -408,7 +412,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: LinearPercentIndicator(
                         percent: 0.25,
                         width: MediaQuery.sizeOf(context).width * 0.85,
@@ -416,14 +420,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                         animation: true,
                         animateFromLastPercent: true,
                         progressColor: FlutterFlowTheme.of(context).primary,
-                        backgroundColor: const Color(0xFFE0E3E7),
-                        barRadius: const Radius.circular(12.0),
+                        backgroundColor: Color(0xFFE0E3E7),
+                        barRadius: Radius.circular(12.0),
                         padding: EdgeInsets.zero,
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
                       child: Text(
                         'Dados Cadastrais',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -437,7 +441,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -448,12 +452,12 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -464,7 +468,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 await showModalBottomSheet<bool>(
                                     context: context,
                                     builder: (context) {
-                                      final datePickedCupertinoTheme =
+                                      final _datePickedCupertinoTheme =
                                           CupertinoTheme.of(context);
                                       return ScrollConfiguration(
                                         behavior: const MaterialScrollBehavior()
@@ -486,10 +490,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                           child: CupertinoTheme(
-                                            data: datePickedCupertinoTheme
+                                            data: _datePickedCupertinoTheme
                                                 .copyWith(
                                               textTheme:
-                                                  datePickedCupertinoTheme
+                                                  _datePickedCupertinoTheme
                                                       .textTheme
                                                       .copyWith(
                                                 dateTimePickerTextStyle:
@@ -534,12 +538,12 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(8.0),
                                   border: Border.all(
-                                    color: const Color(0x13294B0D),
+                                    color: Color(0x13294B0D),
                                     width: 2.0,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -563,7 +567,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.calendar_today_outlined,
                                         color: Color(0xFF8798B5),
                                         size: 18.0,
@@ -580,10 +584,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: FFButtonWidget(
                       onPressed: (_model.datePicked == null)
                           ? null
@@ -595,10 +599,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -608,7 +612,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -632,7 +636,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: LinearPercentIndicator(
                         percent: 0.4,
                         width: MediaQuery.sizeOf(context).width * 0.85,
@@ -640,14 +644,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                         animation: true,
                         animateFromLastPercent: true,
                         progressColor: FlutterFlowTheme.of(context).primary,
-                        backgroundColor: const Color(0xFFE0E3E7),
-                        barRadius: const Radius.circular(12.0),
+                        backgroundColor: Color(0xFFE0E3E7),
+                        barRadius: Radius.circular(12.0),
                         padding: EdgeInsets.zero,
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
                       child: Text(
                         'Dados Cadastrais',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -661,7 +665,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -672,12 +676,12 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: TextFormField(
                               controller: _model.textController1,
@@ -690,11 +694,11 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                     .labelMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xA357636C),
+                                      color: Color(0xA357636C),
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x13294B0D),
                                     width: 2.0,
                                   ),
@@ -723,7 +727,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 0.0, 0.0),
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -741,7 +745,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -752,17 +756,17 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: FlutterFlowDropDown<String>(
                               controller: _model.tempoTrabValueController ??=
                                   FormFieldController<String>(null),
-                              options: const [
+                              options: [
                                 'Trabalhando 1-39 horas por semana',
                                 'Trabalhando 40 horas ou mais por semana',
                                 'Sem trabalho no momento',
@@ -781,7 +785,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                     letterSpacing: 0.0,
                                   ),
                               hintText: 'Selecione',
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color: Color(0xFF8798B5),
                                 size: 24.0,
@@ -789,10 +793,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               elevation: 2.0,
-                              borderColor: const Color(0x13294B0D),
+                              borderColor: Color(0x13294B0D),
                               borderWidth: 2.0,
                               borderRadius: 8.0,
-                              margin: const EdgeInsetsDirectional.fromSTEB(
+                              margin: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 4.0, 16.0, 4.0),
                               hidesUnderline: true,
                               isOverButton: false,
@@ -806,10 +810,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         _model.currentStep = _model.currentStep + 1;
@@ -819,10 +823,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -832,7 +836,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -854,7 +858,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: LinearPercentIndicator(
                         percent: 0.5,
                         width: MediaQuery.sizeOf(context).width * 0.85,
@@ -862,14 +866,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                         animation: true,
                         animateFromLastPercent: true,
                         progressColor: FlutterFlowTheme.of(context).primary,
-                        backgroundColor: const Color(0xFFE0E3E7),
-                        barRadius: const Radius.circular(12.0),
+                        backgroundColor: Color(0xFFE0E3E7),
+                        barRadius: Radius.circular(12.0),
                         padding: EdgeInsets.zero,
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
                       child: Text(
                         'Dados Cadastrais',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -883,7 +887,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -894,14 +898,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
-                            child: SizedBox(
+                            child: Container(
                               width: double.infinity,
                               height: 48.0,
                               child: Stack(
@@ -917,11 +921,11 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0xA357636C),
+                                            color: Color(0xA357636C),
                                             letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x13294B0D),
                                           width: 2.0,
                                         ),
@@ -958,7 +962,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                       filled: true,
                                       fillColor: Colors.white,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               18.0, 0.0, 0.0, 0.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -974,9 +978,9 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                     inputFormatters: [_model.alturaMask],
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    alignment: AlignmentDirectional(1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 24.0, 0.0),
                                       child: Text(
                                         'cm',
@@ -998,7 +1002,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1009,25 +1013,25 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               height: 48.0,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFF7FAFE),
+                                color: Color(0xFFF7FAFE),
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
                                   color: (_model.pesoFocusNode?.hasFocus ??
                                               false) ==
                                           true
-                                      ? const Color(0xFF5D67E2)
-                                      : const Color(0x13294B0D),
+                                      ? Color(0xFF5D67E2)
+                                      : Color(0x13294B0D),
                                   width: 2.0,
                                 ),
                               ),
@@ -1044,11 +1048,11 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0xA357636C),
+                                            color: Color(0xA357636C),
                                             letterSpacing: 0.0,
                                           ),
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 2.0,
                                         ),
@@ -1056,7 +1060,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 2.0,
                                         ),
@@ -1096,9 +1100,9 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                         .asValidator(context),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    alignment: AlignmentDirectional(1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 24.0, 0.0),
                                       child: Text(
                                         'kg',
@@ -1121,10 +1125,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         _model.currentStep = _model.currentStep + 1;
@@ -1134,10 +1138,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -1147,7 +1151,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -1169,7 +1173,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: LinearPercentIndicator(
                         percent: 0.7,
                         width: MediaQuery.sizeOf(context).width * 0.85,
@@ -1177,14 +1181,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                         animation: true,
                         animateFromLastPercent: true,
                         progressColor: FlutterFlowTheme.of(context).primary,
-                        backgroundColor: const Color(0xFFE0E3E7),
-                        barRadius: const Radius.circular(12.0),
+                        backgroundColor: Color(0xFFE0E3E7),
+                        barRadius: Radius.circular(12.0),
                         padding: EdgeInsets.zero,
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
                       child: Text(
                         'Dados Cadastrais',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1198,7 +1202,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1209,28 +1213,28 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Container(
                               width: double.infinity,
                               height: 48.0,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFF7FAFE),
+                                color: Color(0xFFF7FAFE),
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
-                                  color: const Color(0x13294B0D),
+                                  color: Color(0x13294B0D),
                                   width: 2.0,
                                 ),
                               ),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.civilStateValueController ??=
                                     FormFieldController<String>(null),
-                                options: const [
+                                options: [
                                   'Solteiro(a)',
                                   'Casado(a)',
                                   'Divorciado(a)',
@@ -1249,7 +1253,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                       letterSpacing: 0.0,
                                     ),
                                 hintText: 'Estado civil',
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.keyboard_arrow_down_rounded,
                                   color: Color(0xFF8798B5),
                                   size: 24.0,
@@ -1260,7 +1264,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                 borderColor: Colors.transparent,
                                 borderWidth: 2.0,
                                 borderRadius: 8.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 4.0),
                                 hidesUnderline: true,
                                 isOverButton: false,
@@ -1275,10 +1279,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: FFButtonWidget(
                       onPressed: (_model.civilStateValue == null ||
                               _model.civilStateValue == '')
@@ -1291,10 +1295,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -1304,7 +1308,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -1328,7 +1332,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: LinearPercentIndicator(
                         percent: 0.8,
                         width: MediaQuery.sizeOf(context).width * 0.85,
@@ -1336,14 +1340,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                         animation: true,
                         animateFromLastPercent: true,
                         progressColor: FlutterFlowTheme.of(context).primary,
-                        backgroundColor: const Color(0xFFE0E3E7),
-                        barRadius: const Radius.circular(12.0),
+                        backgroundColor: Color(0xFFE0E3E7),
+                        barRadius: Radius.circular(12.0),
                         padding: EdgeInsets.zero,
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 24.0, 0.0, 0.0),
                       child: Text(
                         'Você é estrangeira(o)?',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1357,15 +1361,15 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(28.0, 12.0, 28.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(28.0, 12.0, 28.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 48.0,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFF7FAFE),
+                          color: Color(0xFFF7FAFE),
                           borderRadius: BorderRadius.circular(8.0),
                           border: Border.all(
-                            color: const Color(0x13294B0D),
+                            color: Color(0x13294B0D),
                             width: 2.0,
                           ),
                         ),
@@ -1383,7 +1387,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                     letterSpacing: 0.0,
                                   ),
                           hintText: 'Selecione',
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: Color(0xFF8798B5),
                             size: 24.0,
@@ -1394,7 +1398,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                           borderColor: Colors.transparent,
                           borderWidth: 2.0,
                           borderRadius: 8.0,
-                          margin: const EdgeInsetsDirectional.fromSTEB(
+                          margin: EdgeInsetsDirectional.fromSTEB(
                               16.0, 4.0, 16.0, 4.0),
                           hidesUnderline: true,
                           isOverButton: false,
@@ -1406,10 +1410,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: FFButtonWidget(
                       onPressed: (_model.gringoValue == null ||
                               _model.gringoValue == '')
@@ -1422,10 +1426,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -1435,7 +1439,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -1455,14 +1459,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 32.0, 32.0, 32.0, 0.0),
                             child: LinearPercentIndicator(
                               percent: 1.0,
@@ -1472,13 +1476,13 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                               animateFromLastPercent: true,
                               progressColor:
                                   FlutterFlowTheme.of(context).primary,
-                              backgroundColor: const Color(0xFFE0E3E7),
-                              barRadius: const Radius.circular(12.0),
+                              backgroundColor: Color(0xFFE0E3E7),
+                              barRadius: Radius.circular(12.0),
                               padding: EdgeInsets.zero,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 24.0, 0.0, 0.0),
                             child: Text(
                               'Enviar documentos',
@@ -1494,7 +1498,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 18.0, 28.0, 0.0),
                             child: Text(
                               'Por gentileza, mande uma foto de um documento com foto (frente e verso) para nossos registros.',
@@ -1502,13 +1506,13 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 32.0, 28.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -1520,12 +1524,12 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: Color(0xFF8798B5),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -1605,7 +1609,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           child: Container(
                                             width: 150.0,
                                             height: 150.0,
-                                            constraints: const BoxConstraints(
+                                            constraints: BoxConstraints(
                                               minWidth: 150.0,
                                               maxWidth: 150.0,
                                             ),
@@ -1624,7 +1628,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0x13294B0D),
+                                                color: Color(0x13294B0D),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -1632,7 +1636,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -1663,7 +1667,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                                 ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(width: 12.0)),
+                                                        SizedBox(width: 12.0)),
                                                   ),
                                                 ),
                                               ],
@@ -1743,7 +1747,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           },
                                           child: Container(
                                             height: 150.0,
-                                            constraints: const BoxConstraints(
+                                            constraints: BoxConstraints(
                                               minWidth: 150.0,
                                               maxWidth: 150.0,
                                             ),
@@ -1762,7 +1766,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0x13294B0D),
+                                                color: Color(0x13294B0D),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -1770,7 +1774,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -1801,7 +1805,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                                 ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(width: 12.0)),
+                                                        SizedBox(width: 12.0)),
                                                   ),
                                                 ),
                                               ],
@@ -1809,14 +1813,14 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 24.0)),
+                                    ].divide(SizedBox(width: 24.0)),
                                   ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 32.0, 28.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -1828,12 +1832,12 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: Color(0xFF8798B5),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -1911,7 +1915,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           child: Container(
                                             width: 150.0,
                                             height: 150.0,
-                                            constraints: const BoxConstraints(
+                                            constraints: BoxConstraints(
                                               minWidth: 150.0,
                                               maxWidth: 150.0,
                                             ),
@@ -1930,7 +1934,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0x13294B0D),
+                                                color: Color(0x13294B0D),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -1938,7 +1942,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -1969,7 +1973,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                                 ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(width: 12.0)),
+                                                        SizedBox(width: 12.0)),
                                                   ),
                                                 ),
                                               ],
@@ -2049,7 +2053,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           },
                                           child: Container(
                                             height: 150.0,
-                                            constraints: const BoxConstraints(
+                                            constraints: BoxConstraints(
                                               minWidth: 150.0,
                                               minHeight: 150.0,
                                               maxWidth: 150.0,
@@ -2070,7 +2074,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0x13294B0D),
+                                                color: Color(0x13294B0D),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -2078,7 +2082,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -2109,7 +2113,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                                                 ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(width: 12.0)),
+                                                        SizedBox(width: 12.0)),
                                                   ),
                                                 ),
                                               ],
@@ -2117,7 +2121,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 24.0)),
+                                    ].divide(SizedBox(width: 24.0)),
                                   ),
                                 ),
                               ],
@@ -2129,18 +2133,22 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: FFButtonWidget(
-                      onPressed: (((_model.uploadedLocalFile1.bytes?.isEmpty ??
+                      onPressed: ((_model.uploadedLocalFile1 == null ||
+                                  (_model.uploadedLocalFile1.bytes?.isEmpty ??
                                       true)) ||
-                              ((_model.uploadedLocalFile2.bytes?.isEmpty ??
+                              (_model.uploadedLocalFile2 == null ||
+                                  (_model.uploadedLocalFile2.bytes?.isEmpty ??
                                       true)) ||
-                              ((_model.uploadedLocalFile3.bytes?.isEmpty ??
+                              (_model.uploadedLocalFile3 == null ||
+                                  (_model.uploadedLocalFile3.bytes?.isEmpty ??
                                       true)) ||
-                              ((_model.uploadedLocalFile4.bytes?.isEmpty ??
+                              (_model.uploadedLocalFile4 == null ||
+                                  (_model.uploadedLocalFile4.bytes?.isEmpty ??
                                       true)))
                           ? null
                           : () async {
@@ -2231,7 +2239,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   ),
                                 }.withoutNulls,
                                 extra: <String, dynamic>{
-                                  kTransitionInfoKey: const TransitionInfo(
+                                  kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
                                     transitionType: PageTransitionType.fade,
                                     duration: Duration(milliseconds: 0),
@@ -2245,10 +2253,10 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -2258,7 +2266,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

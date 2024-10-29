@@ -3,10 +3,13 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'toast_model.dart';
 export 'toast_model.dart';
 
@@ -64,8 +67,8 @@ class _ToastWidgetState extends State<ToastWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, -70.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, -70.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -77,8 +80,8 @@ class _ToastWidgetState extends State<ToastWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(0.0, -500.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -500.0),
           ),
         ],
       ),
@@ -103,16 +106,16 @@ class _ToastWidgetState extends State<ToastWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 0.0),
       child: Container(
         width: double.infinity,
-        constraints: const BoxConstraints(
+        constraints: BoxConstraints(
           minHeight: 70.0,
           maxHeight: 80.0,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x33000000),
@@ -124,11 +127,11 @@ class _ToastWidgetState extends State<ToastWidget>
           ],
           borderRadius: BorderRadius.circular(12.0),
           border: Border.all(
-            color: const Color(0xFFE5E7EB),
+            color: Color(0xFFE5E7EB),
           ),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+          padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -137,14 +140,14 @@ class _ToastWidgetState extends State<ToastWidget>
                 height: 36.0,
                 decoration: BoxDecoration(
                   color: () {
-                    if (widget.type == ToastTypes.red) {
+                    if (widget!.type == ToastTypes.red) {
                       return FlutterFlowTheme.of(context).error;
-                    } else if (widget.type == ToastTypes.yellow) {
+                    } else if (widget!.type == ToastTypes.yellow) {
                       return FlutterFlowTheme.of(context).warning;
-                    } else if (widget.type == ToastTypes.puprle) {
+                    } else if (widget!.type == ToastTypes.puprle) {
                       return FlutterFlowTheme.of(context).primary;
                     } else {
-                      return const Color(0x00000000);
+                      return Color(0x00000000);
                     }
                   }(),
                   shape: BoxShape.circle,
@@ -153,19 +156,19 @@ class _ToastWidgetState extends State<ToastWidget>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    if (widget.type == ToastTypes.red)
+                    if (widget!.type == ToastTypes.red)
                       Icon(
                         Icons.block_outlined,
                         color: FlutterFlowTheme.of(context).primaryBackground,
                         size: 24.0,
                       ),
-                    if (widget.type == ToastTypes.yellow)
+                    if (widget!.type == ToastTypes.yellow)
                       Icon(
                         Icons.info_outline,
                         color: FlutterFlowTheme.of(context).primaryBackground,
                         size: 24.0,
                       ),
-                    if (widget.type == ToastTypes.puprle)
+                    if (widget!.type == ToastTypes.puprle)
                       FaIcon(
                         FontAwesomeIcons.checkCircle,
                         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -182,12 +185,12 @@ class _ToastWidgetState extends State<ToastWidget>
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget.title,
+                        widget!.title,
                         'Toast Title',
                       ),
                       style: FlutterFlowTheme.of(context).bodyLarge.override(
                             fontFamily: 'Figtree',
-                            color: const Color(0xFF15161E),
+                            color: Color(0xFF15161E),
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
@@ -195,26 +198,26 @@ class _ToastWidgetState extends State<ToastWidget>
                     ),
                     Text(
                       valueOrDefault<String>(
-                        widget.message,
+                        widget!.message,
                         'Toast Message',
                       ),
                       style: FlutterFlowTheme.of(context).labelMedium.override(
                             fontFamily: 'Figtree',
-                            color: const Color(0xFF606A85),
+                            color: Color(0xFF606A85),
                             fontSize: 14.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
                           ),
                     ),
-                  ].divide(const SizedBox(height: 4.0)),
+                  ].divide(SizedBox(height: 4.0)),
                 ),
               ),
               FlutterFlowIconButton(
                 borderRadius: 20.0,
                 borderWidth: 1.0,
                 buttonSize: 40.0,
-                hoverColor: const Color(0xFFF1F4F8),
-                icon: const Icon(
+                hoverColor: Color(0xFFF1F4F8),
+                icon: Icon(
                   Icons.close_rounded,
                   color: Color(0xFF606A85),
                   size: 24.0,
@@ -229,7 +232,7 @@ class _ToastWidgetState extends State<ToastWidget>
                   Navigator.pop(context);
                 },
               ),
-            ].divide(const SizedBox(width: 8.0)),
+            ].divide(SizedBox(width: 8.0)),
           ),
         ),
       )

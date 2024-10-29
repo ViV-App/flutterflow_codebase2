@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'onboarding_texts_model.dart';
 export 'onboarding_texts_model.dart';
@@ -48,7 +49,7 @@ class _OnboardingTextsWidgetState extends State<OnboardingTextsWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,10 +59,10 @@ class _OnboardingTextsWidgetState extends State<OnboardingTextsWidget> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (widget.title != 'kapa')
+              if (widget!.title != 'kapa')
                 Text(
                   valueOrDefault<String>(
-                    widget.title,
+                    widget!.title,
                     '-',
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -71,7 +72,7 @@ class _OnboardingTextsWidgetState extends State<OnboardingTextsWidget> {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-              if (widget.title == 'kapa')
+              if (widget!.title == 'kapa')
                 Text(
                   'Olá, ${valueOrDefault<String>(
                     FFAppState().paciente.nome,
@@ -86,7 +87,7 @@ class _OnboardingTextsWidgetState extends State<OnboardingTextsWidget> {
                 ),
               Text(
                 valueOrDefault<String>(
-                  widget.description,
+                  widget!.description,
                   '-',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -95,9 +96,9 @@ class _OnboardingTextsWidgetState extends State<OnboardingTextsWidget> {
                       letterSpacing: 0.0,
                     ),
               ),
-            ].divide(const SizedBox(height: 12.0)),
+            ].divide(SizedBox(height: 12.0)),
           ),
-        ].divide(const SizedBox(height: 30.0)),
+        ].divide(SizedBox(height: 30.0)),
       ),
     );
   }

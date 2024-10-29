@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'object_description_model.dart';
 export 'object_description_model.dart';
 
@@ -57,11 +59,11 @@ class _ObjectDescriptionWidgetState extends State<ObjectDescriptionWidget> {
           width: double.infinity,
           height: 180.0,
           decoration: BoxDecoration(
-            color: const Color(0x0F5D67E2),
+            color: Color(0x0F5D67E2),
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+            padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -71,7 +73,7 @@ class _ObjectDescriptionWidgetState extends State<ObjectDescriptionWidget> {
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget.queixa,
+                        widget!.queixa,
                         's',
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -86,12 +88,13 @@ class _ObjectDescriptionWidgetState extends State<ObjectDescriptionWidget> {
                       focusNode: _model.textFieldFocusNode,
                       onChanged: (_) => EasyDebounce.debounce(
                         '_model.textController',
-                        const Duration(milliseconds: 500),
+                        Duration(milliseconds: 500),
                         () async {
-                          if (_model.textController.text != '') {
+                          if (_model.textController.text != null &&
+                              _model.textController.text != '') {
                             await widget.callbck?.call(
                               functions.concatenString2(
-                                  widget.queixa!, _model.textController.text),
+                                  widget!.queixa!, _model.textController.text),
                             );
                           } else {
                             await widget.callbck?.call(
@@ -107,12 +110,12 @@ class _ObjectDescriptionWidgetState extends State<ObjectDescriptionWidget> {
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFFB5C0D3),
+                                  color: Color(0xFFB5C0D3),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x0E294B0D),
                             width: 2.0,
                           ),
@@ -140,8 +143,8 @@ class _ObjectDescriptionWidgetState extends State<ObjectDescriptionWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         filled: true,
-                        fillColor: const Color(0xFFF7FAFE),
-                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                        fillColor: Color(0xFFF7FAFE),
+                        contentPadding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 32.0, 0.0, 0.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -152,9 +155,9 @@ class _ObjectDescriptionWidgetState extends State<ObjectDescriptionWidget> {
                       validator:
                           _model.textControllerValidator.asValidator(context),
                     ),
-                  ].divide(const SizedBox(height: 6.0)),
+                  ].divide(SizedBox(height: 6.0)),
                 ),
-              ].divide(const SizedBox(height: 24.0)),
+              ].divide(SizedBox(height: 24.0)),
             ),
           ),
         ),

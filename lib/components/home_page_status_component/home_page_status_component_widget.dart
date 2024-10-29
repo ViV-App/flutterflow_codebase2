@@ -4,6 +4,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_page_status_component_model.dart';
 export 'home_page_status_component_model.dart';
@@ -56,9 +57,9 @@ class _HomePageStatusComponentWidgetState
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: () async {
-        var shouldSetState = false;
-        if (widget.status?.processo == 'planoTerapeutico') {
-          if (widget.status?.estagio == 'visualizarPlano') {
+        var _shouldSetState = false;
+        if (widget!.status?.processo == 'planoTerapeutico') {
+          if (widget!.status?.estagio == 'visualizarPlano') {
             context.pushNamed('planoTerapeutico');
 
             _model.apiResult38yzd = await SegmentGroup.trackingCall.call(
@@ -66,10 +67,10 @@ class _HomePageStatusComponentWidgetState
               eventName: 'therapeutic-plan started',
             );
 
-            shouldSetState = true;
-          } else if (widget.status?.estagio == 'confirmarRecebimento') {
+            _shouldSetState = true;
+          } else if (widget!.status?.estagio == 'confirmarRecebimento') {
             context.pushNamed('confirmarRecebimento');
-          } else if (widget.status?.estagio == 'formularioDeSaude') {
+          } else if (widget!.status?.estagio == 'formularioDeSaude') {
             context.pushNamed('formPreConsulta');
 
             _model.apiResult38yfv = await SegmentGroup.trackingCall.call(
@@ -77,8 +78,8 @@ class _HomePageStatusComponentWidgetState
               eventName: 'health-form started',
             );
 
-            shouldSetState = true;
-          } else if (widget.status?.estagio == 'assinarPlano') {
+            _shouldSetState = true;
+          } else if (widget!.status?.estagio == 'assinarPlano') {
             context.pushNamed('planos');
 
             _model.apiResult38yzfvg = await SegmentGroup.trackingCall.call(
@@ -90,16 +91,16 @@ class _HomePageStatusComponentWidgetState
               },
             );
 
-            shouldSetState = true;
+            _shouldSetState = true;
           } else {
-            if (shouldSetState) safeSetState(() {});
+            if (_shouldSetState) safeSetState(() {});
             return;
           }
 
-          if (shouldSetState) safeSetState(() {});
+          if (_shouldSetState) safeSetState(() {});
           return;
-        } else if (widget.status?.processo == 'tratamentoBip') {
-          if (widget.status?.estagio == 'comprarBip') {
+        } else if (widget!.status?.processo == 'tratamentoBip') {
+          if (widget!.status?.estagio == 'comprarBip') {
             if (FFAppState().paciente.assinatura.plano != 1) {
               context.pushNamed('comprarBip');
 
@@ -112,7 +113,7 @@ class _HomePageStatusComponentWidgetState
                 },
               );
 
-              shouldSetState = true;
+              _shouldSetState = true;
             } else {
               context.pushNamed('planos');
 
@@ -125,12 +126,12 @@ class _HomePageStatusComponentWidgetState
                 },
               );
 
-              shouldSetState = true;
+              _shouldSetState = true;
             }
 
-            if (shouldSetState) safeSetState(() {});
+            if (_shouldSetState) safeSetState(() {});
             return;
-          } else if (widget.status?.estagio == 'preencherFormularioBip') {
+          } else if (widget!.status?.estagio == 'preencherFormularioBip') {
             context.pushNamed(
               'ajustarDose',
               queryParameters: {
@@ -146,10 +147,10 @@ class _HomePageStatusComponentWidgetState
               eventName: 'bip started',
             );
 
-            shouldSetState = true;
-            if (shouldSetState) safeSetState(() {});
+            _shouldSetState = true;
+            if (_shouldSetState) safeSetState(() {});
             return;
-          } else if (widget.status?.estagio == 'visualizarAjusteBip') {
+          } else if (widget!.status?.estagio == 'visualizarAjusteBip') {
             context.pushNamed(
               'ajustarDose',
               queryParameters: {
@@ -169,19 +170,19 @@ class _HomePageStatusComponentWidgetState
               },
             );
 
-            shouldSetState = true;
-            if (shouldSetState) safeSetState(() {});
+            _shouldSetState = true;
+            if (_shouldSetState) safeSetState(() {});
             return;
           } else {
-            if (shouldSetState) safeSetState(() {});
+            if (_shouldSetState) safeSetState(() {});
             return;
           }
         } else {
-          if (shouldSetState) safeSetState(() {});
+          if (_shouldSetState) safeSetState(() {});
           return;
         }
 
-        if (shouldSetState) safeSetState(() {});
+        if (_shouldSetState) safeSetState(() {});
       },
       child: Material(
         color: Colors.transparent,
@@ -194,38 +195,38 @@ class _HomePageStatusComponentWidgetState
           height: 80.0,
           decoration: BoxDecoration(
             color: () {
-              if ((widget.status?.processo == 'tratamentoBip') &&
-                  (widget.status?.estagio == 'comprarBip')) {
-                return const Color(0xFFF17373);
-              } else if ((widget.status?.processo == 'planoTerapeutico') &&
-                  (widget.status?.estagio == 'formularioDeSaude')) {
-                return const Color(0xFFFFA438);
-              } else if ((widget.status?.processo == 'planoTerapeutico') &&
-                  (widget.status?.estagio == 'visualizarPlano')) {
-                return const Color(0xFF00BFD9);
-              } else if ((widget.status?.processo == 'planoTerapeutico') &&
-                  (widget.status?.estagio == 'confirmarRecebimento')) {
-                return const Color(0xFF00BFD9);
-              } else if ((widget.status?.processo == 'planoTerapeutico') &&
-                  (widget.status?.estagio == 'assinarPlano')) {
-                return const Color(0xFFF17373);
-              } else if ((widget.status?.processo == 'tratamentoBip') &&
-                  (widget.status?.estagio == 'preencherFormularioBip')) {
-                return const Color(0xFF00BFD9);
-              } else if ((widget.status?.processo == 'tratamentoBip') &&
-                  (widget.status?.estagio == 'recberAjusteBip')) {
-                return const Color(0xFF00BFD9);
-              } else if ((widget.status?.processo == 'tratamentoBip') &&
-                  (widget.status?.estagio == 'visualizarAjusteBip')) {
-                return const Color(0xFF00BFD9);
+              if ((widget!.status?.processo == 'tratamentoBip') &&
+                  (widget!.status?.estagio == 'comprarBip')) {
+                return Color(0xFFF17373);
+              } else if ((widget!.status?.processo == 'planoTerapeutico') &&
+                  (widget!.status?.estagio == 'formularioDeSaude')) {
+                return Color(0xFFFFA438);
+              } else if ((widget!.status?.processo == 'planoTerapeutico') &&
+                  (widget!.status?.estagio == 'visualizarPlano')) {
+                return Color(0xFF00BFD9);
+              } else if ((widget!.status?.processo == 'planoTerapeutico') &&
+                  (widget!.status?.estagio == 'confirmarRecebimento')) {
+                return Color(0xFF00BFD9);
+              } else if ((widget!.status?.processo == 'planoTerapeutico') &&
+                  (widget!.status?.estagio == 'assinarPlano')) {
+                return Color(0xFFF17373);
+              } else if ((widget!.status?.processo == 'tratamentoBip') &&
+                  (widget!.status?.estagio == 'preencherFormularioBip')) {
+                return Color(0xFF00BFD9);
+              } else if ((widget!.status?.processo == 'tratamentoBip') &&
+                  (widget!.status?.estagio == 'recberAjusteBip')) {
+                return Color(0xFF00BFD9);
+              } else if ((widget!.status?.processo == 'tratamentoBip') &&
+                  (widget!.status?.estagio == 'visualizarAjusteBip')) {
+                return Color(0xFF00BFD9);
               } else {
-                return const Color(0x00000000);
+                return Color(0x00000000);
               }
             }(),
             borderRadius: BorderRadius.circular(9.0),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -234,40 +235,40 @@ class _HomePageStatusComponentWidgetState
                   height: 32.0,
                   decoration: BoxDecoration(
                     color: () {
-                      if ((widget.status?.processo == 'planoTerapeutico') &&
-                          (widget.status?.estagio == 'assinarPlano')) {
-                        return const Color(0xFF7C0000);
-                      } else if ((widget.status?.processo ==
+                      if ((widget!.status?.processo == 'planoTerapeutico') &&
+                          (widget!.status?.estagio == 'assinarPlano')) {
+                        return Color(0xFF7C0000);
+                      } else if ((widget!.status?.processo ==
                               'planoTerapeutico') &&
-                          (widget.status?.estagio == 'formularioDeSaude')) {
-                        return const Color(0xFFC16A02);
-                      } else if ((widget.status?.processo ==
+                          (widget!.status?.estagio == 'formularioDeSaude')) {
+                        return Color(0xFFC16A02);
+                      } else if ((widget!.status?.processo ==
                               'planoTerapeutico') &&
-                          (widget.status?.estagio == 'visualizarPlano')) {
-                        return const Color(0xFF007E8F);
-                      } else if ((widget.status?.processo ==
+                          (widget!.status?.estagio == 'visualizarPlano')) {
+                        return Color(0xFF007E8F);
+                      } else if ((widget!.status?.processo ==
                               'planoTerapeutico') &&
-                          (widget.status?.estagio == 'confirmarRecebimento')) {
-                        return const Color(0xFF007E8F);
-                      } else if ((widget.status?.processo ==
+                          (widget!.status?.estagio == 'confirmarRecebimento')) {
+                        return Color(0xFF007E8F);
+                      } else if ((widget!.status?.processo ==
                               'tratamentoBip') &&
-                          (widget.status?.estagio == 'comprarBip')) {
-                        return const Color(0xFFB50707);
-                      } else if ((widget.status?.processo ==
+                          (widget!.status?.estagio == 'comprarBip')) {
+                        return Color(0xFFB50707);
+                      } else if ((widget!.status?.processo ==
                               'tratamentoBip') &&
-                          (widget.status?.estagio ==
+                          (widget!.status?.estagio ==
                               'preencherFormularioBip')) {
-                        return const Color(0xFF007E8F);
-                      } else if ((widget.status?.processo ==
+                        return Color(0xFF007E8F);
+                      } else if ((widget!.status?.processo ==
                               'tratamentoBip') &&
-                          (widget.status?.estagio == 'recberAjusteBip')) {
-                        return const Color(0xFF007E8F);
-                      } else if ((widget.status?.processo ==
+                          (widget!.status?.estagio == 'recberAjusteBip')) {
+                        return Color(0xFF007E8F);
+                      } else if ((widget!.status?.processo ==
                               'tratamentoBip') &&
-                          (widget.status?.estagio == 'visualizarAjusteBip')) {
-                        return const Color(0xFF007E8F);
+                          (widget!.status?.estagio == 'visualizarAjusteBip')) {
+                        return Color(0xFF007E8F);
                       } else {
-                        return const Color(0x00000000);
+                        return Color(0x00000000);
                       }
                     }(),
                     shape: BoxShape.circle,
@@ -284,35 +285,35 @@ class _HomePageStatusComponentWidgetState
                         width: 18.0,
                         height: 18.0,
                         decoration: BoxDecoration(
-                          color: const Color(0x00FFFFFF),
+                          color: Color(0x00FFFFFF),
                           image: DecorationImage(
                             fit: BoxFit.contain,
                             image: Image.network(
                               valueOrDefault<String>(
                                 () {
-                                  if ((widget.status?.processo ==
+                                  if ((widget!.status?.processo ==
                                           'consulta') &&
-                                      (widget.status?.estagio ==
+                                      (widget!.status?.estagio ==
                                           'agendarConsulta')) {
                                     return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/v-i-v-pacientes-n1581s/assets/ygt09lezwut9/Vector.png';
-                                  } else if ((widget.status?.processo ==
+                                  } else if ((widget!.status?.processo ==
                                           'consulta') &&
-                                      (widget.status?.estagio ==
+                                      (widget!.status?.estagio ==
                                           'pagarConsulta')) {
                                     return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/v-i-v-pacientes-n1581s/assets/4bypz0n1pdtw/Vector-2.png';
-                                  } else if ((widget.status?.processo ==
+                                  } else if ((widget!.status?.processo ==
                                           'consulta') &&
-                                      (widget.status?.estagio ==
+                                      (widget!.status?.estagio ==
                                           'formularioPreConsulta')) {
                                     return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/v-i-v-pacientes-n1581s/assets/bcvt8ip5q060/Vector-1.png';
-                                  } else if ((widget.status?.processo ==
+                                  } else if ((widget!.status?.processo ==
                                           'planoTerapeutico') &&
-                                      (widget.status?.estagio ==
+                                      (widget!.status?.estagio ==
                                           'confirmarRecebimento')) {
                                     return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/v-i-v-pacientes-n1581s/assets/hyhu19qkrql8/Vector.png';
-                                  } else if ((widget.status?.processo ==
+                                  } else if ((widget!.status?.processo ==
                                           'planoTerapeutico') &&
-                                      (widget.status?.estagio ==
+                                      (widget!.status?.estagio ==
                                           'assinarPlano')) {
                                     return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/v-i-v-pacientes-n1581s/assets/4bypz0n1pdtw/Vector-2.png';
                                   } else {
@@ -337,37 +338,37 @@ class _HomePageStatusComponentWidgetState
                       Text(
                         valueOrDefault<String>(
                           () {
-                            if ((widget.status?.processo ==
+                            if ((widget!.status?.processo ==
                                     'planoTerapeutico') &&
-                                (widget.status?.estagio == 'assinarPlano')) {
+                                (widget!.status?.estagio == 'assinarPlano')) {
                               return 'Assine o BIP, Ajustes de Dose, para seu tratamento';
-                            } else if ((widget.status?.processo ==
+                            } else if ((widget!.status?.processo ==
                                     'planoTerapeutico') &&
-                                (widget.status?.estagio ==
+                                (widget!.status?.estagio ==
                                     'formularioDeSaude')) {
                               return 'Preencha aqui as suas informações de saúde para te conhecermos melhor';
-                            } else if ((widget.status?.processo ==
+                            } else if ((widget!.status?.processo ==
                                     'planoTerapeutico') &&
-                                (widget.status?.estagio ==
+                                (widget!.status?.estagio ==
                                     'visualizarPlano')) {
                               return 'Confira aqui o seu Plano Terapêutico, e comece já o seu tratamento.';
-                            } else if ((widget.status?.processo ==
+                            } else if ((widget!.status?.processo ==
                                     'planoTerapeutico') &&
-                                (widget.status?.estagio ==
+                                (widget!.status?.estagio ==
                                     'confirmarRecebimento')) {
                               return 'Confirmar recebimento do remédio para iniciar o tratamento.';
-                            } else if ((widget.status?.processo ==
+                            } else if ((widget!.status?.processo ==
                                     'tratamentoBip') &&
-                                (widget.status?.estagio == 'comprarBip')) {
+                                (widget!.status?.estagio == 'comprarBip')) {
                               return 'Você precisa de Ajuste de Dose para seu atual tratamento? Toque aqui para conhecer.';
-                            } else if ((widget.status?.processo ==
+                            } else if ((widget!.status?.processo ==
                                     'tratamentoBip') &&
-                                (widget.status?.estagio ==
+                                (widget!.status?.estagio ==
                                     'preencherFormularioBip')) {
                               return 'Você precisa de Ajuste de Dose para seu atual tratamento? Faça aqui.';
-                            } else if ((widget.status?.processo ==
+                            } else if ((widget!.status?.processo ==
                                     'tratamentoBip') &&
-                                (widget.status?.estagio ==
+                                (widget!.status?.estagio ==
                                     'visualizarAjusteBip')) {
                               return 'Nova dosagem disponível para continuar seu tratamento.';
                             } else {
@@ -387,7 +388,7 @@ class _HomePageStatusComponentWidgetState
                     ],
                   ),
                 ),
-              ].divide(const SizedBox(width: 12.0)),
+              ].divide(SizedBox(width: 12.0)),
             ),
           ),
         ),

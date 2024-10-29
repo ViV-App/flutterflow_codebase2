@@ -468,3 +468,7 @@ String formateToDE(DateTime date) {
   String formattedDate = DateFormat('d/E').format(date);
   return formattedDate;
 }
+
+String? getDeviceData() {
+  return null;
+}

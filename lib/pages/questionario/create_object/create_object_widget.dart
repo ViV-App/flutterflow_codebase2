@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'create_object_model.dart';
 export 'create_object_model.dart';
 
@@ -62,11 +64,11 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
           width: double.infinity,
           height: 215.0,
           decoration: BoxDecoration(
-            color: const Color(0x0F5D67E2),
+            color: Color(0x0F5D67E2),
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+            padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -88,7 +90,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                       focusNode: _model.textFieldFocusNode1,
                       onChanged: (_) => EasyDebounce.debounce(
                         '_model.textController1',
-                        const Duration(milliseconds: 0),
+                        Duration(milliseconds: 0),
                         () => safeSetState(() {}),
                       ),
                       autofocus: false,
@@ -98,12 +100,12 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFFB5C0D3),
+                                  color: Color(0xFFB5C0D3),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x0E294B0D),
                             width: 2.0,
                           ),
@@ -131,9 +133,9 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         filled: true,
-                        fillColor: const Color(0xFFF7FAFE),
+                        fillColor: Color(0xFFF7FAFE),
                         contentPadding:
-                            const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Mulish',
@@ -142,7 +144,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                       validator:
                           _model.textController1Validator.asValidator(context),
                     ),
-                  ].divide(const SizedBox(height: 6.0)),
+                  ].divide(SizedBox(height: 6.0)),
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
@@ -169,7 +171,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                       focusNode: _model.textFieldFocusNode2,
                       onChanged: (_) => EasyDebounce.debounce(
                         '_model.textController2',
-                        const Duration(milliseconds: 0),
+                        Duration(milliseconds: 0),
                         () => safeSetState(() {}),
                       ),
                       autofocus: false,
@@ -179,12 +181,12 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFFB5C0D3),
+                                  color: Color(0xFFB5C0D3),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x0E294B0D),
                             width: 2.0,
                           ),
@@ -212,9 +214,9 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         filled: true,
-                        fillColor: const Color(0xFFF7FAFE),
+                        fillColor: Color(0xFFF7FAFE),
                         contentPadding:
-                            const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Mulish',
@@ -223,9 +225,9 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                       validator:
                           _model.textController2Validator.asValidator(context),
                     ),
-                  ].divide(const SizedBox(height: 6.0)),
+                  ].divide(SizedBox(height: 6.0)),
                 ),
-              ].divide(const SizedBox(height: 24.0)),
+              ].divide(SizedBox(height: 24.0)),
             ),
           ),
         ),
@@ -236,33 +238,35 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
           desktop: false,
         ))
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
               borderRadius: 20.0,
               borderWidth: 0.0,
               buttonSize: 40.0,
               fillColor: FlutterFlowTheme.of(context).primary,
               disabledColor: FlutterFlowTheme.of(context).alternate,
-              icon: const Icon(
+              icon: Icon(
                 Icons.add,
                 color: Colors.white,
                 size: 24.0,
               ),
-              onPressed: ((_model.textController1.text == '') ||
-                      (_model.textController2.text == ''))
+              onPressed: ((_model.textController1.text == null ||
+                          _model.textController1.text == '') ||
+                      (_model.textController2.text == null ||
+                          _model.textController2.text == ''))
                   ? null
                   : () async {
                       await RespostasQuestionarioTable().update(
                         data: {
                           'multi_text_response': functions.addItemToList(
-                              widget.resposta!.multiTextResponse.toList(),
+                              widget!.resposta!.multiTextResponse.toList(),
                               functions.concatenString2(
                                   _model.textController1.text,
                                   _model.textController2.text)),
                         },
                         matchingRows: (rows) => rows.eq(
                           'id',
-                          widget.resposta?.id,
+                          widget!.resposta?.id,
                         ),
                       );
                       safeSetState(() {
@@ -274,23 +278,25 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
             ),
           ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
           child: FFButtonWidget(
-            onPressed: ((_model.textController1.text == '') ||
-                    (_model.textController2.text == ''))
+            onPressed: ((_model.textController1.text == null ||
+                        _model.textController1.text == '') ||
+                    (_model.textController2.text == null ||
+                        _model.textController2.text == ''))
                 ? null
                 : () async {
                     await RespostasQuestionarioTable().update(
                       data: {
                         'multi_text_response': functions.addItemToList(
-                            widget.resposta!.multiTextResponse.toList(),
+                            widget!.resposta!.multiTextResponse.toList(),
                             functions.concatenString2(
                                 _model.textController1.text,
                                 _model.textController2.text)),
                       },
                       matchingRows: (rows) => rows.eq(
                         'id',
-                        widget.resposta?.id,
+                        widget!.resposta?.id,
                       ),
                     );
                     safeSetState(() {
@@ -300,14 +306,14 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                     await widget.callbck?.call();
                   },
             text: 'Salvar',
-            icon: const Icon(
+            icon: Icon(
               Icons.add,
               size: 15.0,
             ),
             options: FFButtonOptions(
               height: 40.0,
-              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: FlutterFlowTheme.of(context).primary,
               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                     fontFamily: 'Mulish',
@@ -315,7 +321,7 @@ class _CreateObjectWidgetState extends State<CreateObjectWidget> {
                     letterSpacing: 0.0,
                   ),
               elevation: 3.0,
-              borderSide: const BorderSide(
+              borderSide: BorderSide(
                 color: Colors.transparent,
                 width: 1.0,
               ),

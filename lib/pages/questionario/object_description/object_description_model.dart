@@ -1,6 +1,11 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'object_description_widget.dart' show ObjectDescriptionWidget;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ObjectDescriptionModel extends FlutterFlowModel<ObjectDescriptionWidget> {
   ///  State fields for stateful widgets in this component.

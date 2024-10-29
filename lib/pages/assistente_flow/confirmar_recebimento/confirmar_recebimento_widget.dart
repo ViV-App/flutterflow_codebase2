@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'confirmar_recebimento_model.dart';
 export 'confirmar_recebimento_model.dart';
@@ -11,7 +12,7 @@ class ConfirmarRecebimentoWidget extends StatefulWidget {
   const ConfirmarRecebimentoWidget({
     super.key,
     bool? verDosagem,
-  }) : verDosagem = verDosagem ?? false;
+  }) : this.verDosagem = verDosagem ?? false;
 
   final bool verDosagem;
 
@@ -55,7 +56,7 @@ class _ConfirmarRecebimentoWidgetState
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Stack(
               children: [
                 Column(
@@ -63,9 +64,9 @@ class _ConfirmarRecebimentoWidgetState
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -79,7 +80,7 @@ class _ConfirmarRecebimentoWidgetState
                           ],
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(18.0),
+                          padding: EdgeInsets.all(18.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +94,7 @@ class _ConfirmarRecebimentoWidgetState
                                   context.goNamed(
                                     'homePage',
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
+                                      kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 0),
@@ -121,7 +122,7 @@ class _ConfirmarRecebimentoWidgetState
                                       fontWeight: FontWeight.w800,
                                     ),
                               ),
-                              const Icon(
+                              Icon(
                                 Icons.add,
                                 color: Color(0x015D67E2),
                                 size: 32.0,
@@ -132,14 +133,14 @@ class _ConfirmarRecebimentoWidgetState
                       ),
                     ),
                     if ((_model.currentStep == 1) &&
-                        (widget.verDosagem != true))
+                        (widget!.verDosagem != true))
                       Expanded(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 0.0, 32.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -171,24 +172,24 @@ class _ConfirmarRecebimentoWidgetState
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () {
                                         print('Button pressed ...');
                                       },
                                       text: 'Tirar foto',
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.photo_camera_outlined,
                                         size: 15.0,
                                       ),
                                       options: FFButtonOptions(
                                         width: 150.0,
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -201,7 +202,7 @@ class _ConfirmarRecebimentoWidgetState
                                               letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -210,17 +211,17 @@ class _ConfirmarRecebimentoWidgetState
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 8.0)),
+                                ].divide(SizedBox(height: 8.0)),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 0.0, 32.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         _model.currentStep = 2;
@@ -270,10 +271,10 @@ class _ConfirmarRecebimentoWidgetState
                                       options: FFButtonOptions(
                                         width: double.infinity,
                                         height: 48.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -286,7 +287,7 @@ class _ConfirmarRecebimentoWidgetState
                                               fontWeight: FontWeight.bold,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -303,36 +304,36 @@ class _ConfirmarRecebimentoWidgetState
                                     options: FFButtonOptions(
                                       width: double.infinity,
                                       height: 48.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: Colors.white,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0xFF5D67E2),
+                                            color: Color(0xFF5D67E2),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                       elevation: 3.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0xFF5D67E2),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(60.0),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 18.0)),
+                                ].divide(SizedBox(height: 18.0)),
                               ),
                             ),
                           ],
                         ),
                       ),
                     if ((_model.currentStep == 2) ||
-                        (widget.verDosagem == true))
+                        (widget!.verDosagem == true))
                       Expanded(
                         child: FutureBuilder<List<PlanoTerapeuticoRow>>(
                           future: PlanoTerapeuticoTable().querySingleRow(
@@ -369,7 +370,7 @@ class _ConfirmarRecebimentoWidgetState
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       32.0, 0.0, 32.0, 24.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -398,17 +399,17 @@ class _ConfirmarRecebimentoWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color: const Color(0xFF8798B5),
+                                              color: Color(0xFF8798B5),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
                                       ),
-                                    ].divide(const SizedBox(height: 8.0)),
+                                    ].divide(SizedBox(height: 8.0)),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 52.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -429,7 +430,7 @@ class _ConfirmarRecebimentoWidgetState
                                             BorderRadius.circular(18.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             18.0, 0.0, 18.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -443,7 +444,7 @@ class _ConfirmarRecebimentoWidgetState
                                                   width: 32.0,
                                                   height: 32.0,
                                                   decoration: BoxDecoration(
-                                                    color: const Color(0x3D6D98F4),
+                                                    color: Color(0x3D6D98F4),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             200.0),
@@ -470,7 +471,7 @@ class _ConfirmarRecebimentoWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Column(
@@ -508,7 +509,7 @@ class _ConfirmarRecebimentoWidgetState
                                                             .override(
                                                               fontFamily:
                                                                   'Mulish',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF8798B5),
                                                               fontSize: 12.0,
                                                               letterSpacing:
@@ -520,7 +521,7 @@ class _ConfirmarRecebimentoWidgetState
                                                 ),
                                               ],
                                             ),
-                                            const Icon(
+                                            Icon(
                                               Icons.arrow_forward_ios_sharp,
                                               color: Color(0xFF8798B5),
                                               size: 24.0,

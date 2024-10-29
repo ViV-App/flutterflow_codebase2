@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:typed_data';
+import '../schema/structs/index.dart';
 
 import 'package:flutter/foundation.dart';
 
@@ -36,23 +38,23 @@ class IdentifyCall {
 
     final ffApiRequestBody = '''
 {
-  "userId": "$userId",
+  "userId": "${userId}",
   "traits": {
-    "email": "$userMail",
-    "name": "$userName",
+    "email": "${userMail}",
+    "name": "${userName}",
     "phone": "<userPhone>",
-    "cpf": "$userCpf",
-    "userQueixas": $userQueixas
+    "cpf": "${userCpf}",
+    "userQueixas": ${userQueixas}
   },
   "context": {
     "ip": "24.5.68.47"
   },
-  "timestamp": "$timestamp",
-  "writeKey": "$wirteKey"
+  "timestamp": "${timestamp}",
+  "writeKey": "${wirteKey}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'identify',
-      apiUrl: '$baseUrl/identify',
+      apiUrl: '${baseUrl}/identify',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -76,28 +78,28 @@ class TrackingCall {
     String? userId = '',
     String? eventName = '',
     String? propertyOne = '',
-    dynamic propertiesJson,
+    dynamic? propertiesJson,
   }) async {
     final baseUrl = SegmentGroup.getBaseUrl();
 
     final properties = _serializeJson(propertiesJson);
     final ffApiRequestBody = '''
 {
-  "userId": "$userId",
-  "event": "$eventName",
+  "userId": "${userId}",
+  "event": "${eventName}",
   "properties": {
-    "name": "$propertyOne",
-    "customized": $properties
+    "name": "${propertyOne}",
+    "customized": ${properties}
   },
   "context": {
     "ip": "24.5.68.47"
   },
   "timestamp": "<timestamp>",
-  "writeKey": "$writeKey"
+  "writeKey": "${writeKey}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'tracking',
-      apiUrl: '$baseUrl/track',
+      apiUrl: '${baseUrl}/track',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -123,7 +125,7 @@ class TrackingMedicineCall {
     int? medicamento,
     List<String>? propertiesList,
     int? prescricaoId,
-    dynamic dosagensJson,
+    dynamic? dosagensJson,
     int? duracao,
     String? dateStart = '',
     String? dateEnd = '',
@@ -133,25 +135,25 @@ class TrackingMedicineCall {
     final dosagens = _serializeJson(dosagensJson, true);
     final ffApiRequestBody = '''
 {
-  "userId": "$userId",
-  "event": "$eventName",
+  "userId": "${userId}",
+  "event": "${eventName}",
   "properties": {
-    "medicamento": "$medicamento",
-    "prescricaoId": $prescricaoId,
-    "dosagens": $dosagens,
-    "duracao": $duracao,
-    "dateStart": "$dateStart",
-    "dateEnd": "$dateEnd"
+    "medicamento": "${medicamento}",
+    "prescricaoId": ${prescricaoId},
+    "dosagens": ${dosagens},
+    "duracao": ${duracao},
+    "dateStart": "${dateStart}",
+    "dateEnd": "${dateEnd}"
   },
   "context": {
     "ip": "24.5.68.47"
   },
   "timestamp": "<timestamp>",
-  "writeKey": "$writeKey"
+  "writeKey": "${writeKey}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'tracking medicine',
-      apiUrl: '$baseUrl/track',
+      apiUrl: '${baseUrl}/track',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -188,16 +190,16 @@ class AdicionarPrescricaoCall {
 
     final ffApiRequestBody = '''
 {
-  "medicamento": $medicamento,
-  "posologia": $posologia,
-  "concentracao": $concentracao,
-  "forma_dose": "$formaDose",
-  "date_start": "$dateStart",
-  "duracao_dias": $duracaoDias,
-  "horarios": $horarios,
-  "data_atual": "$dataAtual",
-  "indice": $indice,
-  "loop": $loop
+  "medicamento": ${medicamento},
+  "posologia": ${posologia},
+  "concentracao": ${concentracao},
+  "forma_dose": "${formaDose}",
+  "date_start": "${dateStart}",
+  "duracao_dias": ${duracaoDias},
+  "horarios": ${horarios},
+  "data_atual": "${dataAtual}",
+  "indice": ${indice},
+  "loop": ${loop}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Adicionar prescricao',
@@ -226,9 +228,9 @@ class GetAgendaCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "currentdate": "$date",
+  "currentdate": "${date}",
   "periodo": 1,
-  "userid": $cliente
+  "userid": ${cliente}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GetAgenda',
@@ -383,7 +385,7 @@ class GetMedicamentosByNameCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "name": "$medicamento"
+  "name": "${medicamento}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Get Medicamentos By Name',
@@ -429,8 +431,8 @@ class SendMessageToVivCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "Chat": $chat,
-  "Message": "$message"
+  "Chat": ${chat},
+  "Message": "${message}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'sendMessageToViv',
@@ -459,7 +461,7 @@ class CreatePacienteFromGoogleCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "uid": "$uid"
+  "uid": "${uid}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'createPacienteFromGoogle',
@@ -498,13 +500,13 @@ class CallChatCall {
     final ffApiRequestBody = '''
 {
   "User": {
-    "Name": "$nome",
-    "uuid": "$uid",
-    "paciente_id": "$pacid",
-    "thread_id": "$threadid"
+    "Name": "${nome}",
+    "uuid": "${uid}",
+    "paciente_id": "${pacid}",
+    "thread_id": "${threadid}"
   },
-  "Chat": $chat,
-  "Message": "$message"
+  "Chat": ${chat},
+  "Message": "${message}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'callChat',
@@ -538,8 +540,8 @@ class EditUserCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "email": "$userEmail",
-  "password": "$newPass"
+  "email": "${userEmail}",
+  "password": "${newPass}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'editUser',
@@ -548,7 +550,7 @@ class EditUserCall {
       headers: {
         'apikey':
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icm5paWRrcnl6Z3JvZXVkcnNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzOTg0MjksImV4cCI6MjAyOTk3NDQyOX0.XczFr7OwtAY2U06zTYWsFHKDwoDzdY10ZeO9hlevcAk',
-        'Authorization': 'Bearer $userToken',
+        'Authorization': 'Bearer ${userToken}',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -572,9 +574,9 @@ class AnaliseEvolucaoCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "UserId": $userid,
-  "Init_Date": "$dateinit",
-  "End_Date": "$dateend"
+  "UserId": ${userid},
+  "Init_Date": "${dateinit}",
+  "End_Date": "${dateend}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'analiseEvolucao',
@@ -615,9 +617,9 @@ class NewGetAgendaCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "currentdate": "$date",
+  "currentdate": "${date}",
   "periodo": 1,
-  "userid": $cliente
+  "userid": ${cliente}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'newGetAgenda',
@@ -651,7 +653,7 @@ class GetUserCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getUser',
       apiUrl:
-          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/paciente?uuid=eq.$uid',
+          'https://obrniidkryzgroeudrsj.supabase.co/rest/v1/paciente?uuid=eq.${uid}',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -678,9 +680,9 @@ class GetSintomasPlotCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "end_date": "$endDate",
-  "start_date": "$initDate",
-  "user_id": $pId
+  "end_date": "${endDate}",
+  "start_date": "${initDate}",
+  "user_id": ${pId}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getSintomasPlot',
@@ -733,8 +735,8 @@ class GenerateResponsesCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "paciente_id": $paciente,
-  "questionario_id": $questionario
+  "paciente_id": ${paciente},
+  "questionario_id": ${questionario}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'generate responses',
@@ -768,8 +770,8 @@ class SubscriptionRequestCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "plano": $plano,
-  "paciente": $paciente
+  "plano": ${plano},
+  "paciente": ${paciente}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'subscription request',
@@ -799,10 +801,10 @@ class CreateAsaasCustomerCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "name": "$name",
-  "email": "$email",
-  "phone": "$phone",
-  "cpfCnpj": "$cpf"
+  "name": "${name}",
+  "email": "${email}",
+  "phone": "${phone}",
+  "cpfCnpj": "${cpf}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'create asaas customer',
@@ -836,7 +838,7 @@ class CreateAsaasCustomerCall {
 
 class SendBemViverResponseCall {
   static Future<ApiCallResponse> call({
-    dynamic responseJson,
+    dynamic? responseJson,
     int? humor,
     List<String>? adversosList,
     String? observacoes = '',
@@ -845,10 +847,10 @@ class SendBemViverResponseCall {
     final response = _serializeJson(responseJson, true);
     final ffApiRequestBody = '''
 {
-  "humor": $humor,
-  "adversos": $adversos,
-  "response": $response,
-  "observacoes": "$observacoes"
+  "humor": ${humor},
+  "adversos": ${adversos},
+  "response": ${response},
+  "observacoes": "${observacoes}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'send bem viver response',
@@ -877,9 +879,9 @@ class GetLatestBemViverScoreCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "p_data_end": "$dataEnd",
-  "p_data_init": "$dataInit",
-  "p_paciente": $paciente
+  "p_data_end": "${dataEnd}",
+  "p_data_init": "${dataInit}",
+  "p_paciente": ${paciente}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getLatestBemViverScore',
@@ -971,10 +973,10 @@ class GetQueixaValuesCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "data_end": "$dateEnd",
-  "data_init": "$dateInit",
-  "paciente_id": $paciente,
-  "queixa_id": $queixa
+  "data_end": "${dateEnd}",
+  "data_init": "${dateInit}",
+  "paciente_id": ${paciente},
+  "queixa_id": ${queixa}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'get queixa values',
@@ -1082,9 +1084,9 @@ class GetAgreggatedSintomasCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "p_data_end": "$dataEnd",
-  "p_data_init": "$dataInit",
-  "p_paciente": $paciente
+  "p_data_end": "${dataEnd}",
+  "p_data_init": "${dataInit}",
+  "p_paciente": ${paciente}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getAgreggatedSintomas',
@@ -1136,7 +1138,7 @@ class CancelSubscriptionCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Cancel Subscription',
-      apiUrl: 'https://api.asaas.com/v3/subscriptions/$id',
+      apiUrl: 'https://api.asaas.com/v3/subscriptions/${id}',
       callType: ApiCallType.DELETE,
       headers: {
         'User-Agent':
@@ -1164,9 +1166,9 @@ class ResetFormResponsesCall {
   }) async {
     final ffApiRequestBody = '''
 {
-"paciente": $paciente,
-"formulario": $formulario,
-"currentOrdem": $ordem
+"paciente": ${paciente},
+"formulario": ${formulario},
+"currentOrdem": ${ordem}
 }
 ''';
     return ApiManager.instance.makeApiCall(
@@ -1190,7 +1192,7 @@ class ResetFormResponsesCall {
 
 class CreatePrescriptionCall {
   static Future<ApiCallResponse> call({
-    dynamic dosesJson,
+    dynamic? dosesJson,
   }) async {
     final doses = _serializeJson(dosesJson, true);
     final ffApiRequestBody = '''
@@ -1200,7 +1202,7 @@ class CreatePrescriptionCall {
   "continuo": "a",
   "date_start": "a",
   "date_end": "a",
-  "doses": $doses,
+  "doses": ${doses},
   "horarios": "a"
 }''';
     return ApiManager.instance.makeApiCall(
@@ -1230,9 +1232,9 @@ class GenerateBipResponsesCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "biprequisicao": $bipReq,
-  "paciente_id": $paciente,
-  "questionario_id": $questionario
+  "biprequisicao": ${bipReq},
+  "paciente_id": ${paciente},
+  "questionario_id": ${questionario}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'generate bip responses',
@@ -1268,10 +1270,10 @@ class BuyBipCall {
   }) async {
     final ffApiRequestBody = '''
 {
-"customerId": $cusId,
-"value": $value,
-"produto": "$produto",
-"asaasId": "$asaasId"
+"customerId": ${cusId},
+"value": ${value},
+"produto": "${produto}",
+"asaasId": "${asaasId}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'buy bip',
@@ -1304,13 +1306,13 @@ class SenchatbCall {
     final ffApiRequestBody = '''
 {
   "User": {
-    "Name": "$nome",
-    "uuid": "$uid",
-    "paciente_id": "$pacid",
-    "thread_id": "$threadid"
+    "Name": "${nome}",
+    "uuid": "${uid}",
+    "paciente_id": "${pacid}",
+    "thread_id": "${threadid}"
   },
-  "Chat": $chat,
-  "Message": "$message"
+  "Chat": ${chat},
+  "Message": "${message}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'senchatb',
@@ -1341,7 +1343,7 @@ class NnAccCreatedCall {
   }) async {
     final ffApiRequestBody = '''
 {
-"email": "$email"
+"email": "${email}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'nn acc created',
@@ -1367,7 +1369,7 @@ class HasCannabisMedicationCall {
     int? value,
   }) async {
     final ffApiRequestBody = '''
-{ "paciente_id": "$value" }''';
+{ "paciente_id": "${value}" }''';
     return ApiManager.instance.makeApiCall(
       callName: 'has cannabis medication',
       apiUrl:
@@ -1403,7 +1405,7 @@ class HasContraIndicacaoBlockerCall {
     int? value,
   }) async {
     final ffApiRequestBody = '''
-{ "pacienteid": "$value" }''';
+{ "pacienteid": "${value}" }''';
     return ApiManager.instance.makeApiCall(
       callName: 'has contra indicacao blocker',
       apiUrl:
@@ -1440,7 +1442,7 @@ class VerifyContraIndicacoesCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "paciente_id": $id
+  "paciente_id": ${id}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'verify contra indicacoes',

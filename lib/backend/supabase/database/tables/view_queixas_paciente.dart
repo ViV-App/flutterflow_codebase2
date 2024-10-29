@@ -10,7 +10,7 @@ class ViewQueixasPacienteTable extends SupabaseTable<ViewQueixasPacienteRow> {
 }
 
 class ViewQueixasPacienteRow extends SupabaseDataRow {
-  ViewQueixasPacienteRow(super.data);
+  ViewQueixasPacienteRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ViewQueixasPacienteTable();

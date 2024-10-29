@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'select_contry_model.dart';
 export 'select_contry_model.dart';
 
@@ -45,11 +47,11 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Material(
         color: Colors.transparent,
         elevation: 3.0,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -62,7 +64,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
           height: 620.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(24.0),
@@ -73,14 +75,14 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Container(
                     width: 100.0,
                     height: 4.0,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFDBE4F1),
+                      color: Color(0xFFDBE4F1),
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
@@ -92,7 +94,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                     final contries = functions.getCountryDetails().toList();
 
                     return ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(
+                      padding: EdgeInsets.fromLTRB(
                         0,
                         24.0,
                         0,
@@ -100,11 +102,11 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                       ),
                       scrollDirection: Axis.vertical,
                       itemCount: contries.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 18.0),
+                      separatorBuilder: (_, __) => SizedBox(height: 18.0),
                       itemBuilder: (context, contriesIndex) {
                         final contriesItem = contries[contriesIndex];
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -127,7 +129,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                                 width: double.infinity,
                                 height: 45.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFEFF4F9),
+                                  color: Color(0xFFEFF4F9),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Row(
@@ -142,7 +144,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -160,7 +162,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             getJsonField(
@@ -171,7 +173,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Mulish',
-                                                  color: const Color(0xFF6E78FF),
+                                                  color: Color(0xFF6E78FF),
                                                   fontSize: 18.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
@@ -181,7 +183,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                                       ],
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 12.0, 0.0),
                                       child: Text(
                                         getJsonField(
@@ -209,7 +211,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     Navigator.pop(context);
@@ -219,9 +221,9 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                     width: double.infinity,
                     height: 48.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Mulish',
@@ -230,7 +232,7 @@ class _SelectContryWidgetState extends State<SelectContryWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                     elevation: 3.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

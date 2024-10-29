@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'prescription_edited_model.dart';
 export 'prescription_edited_model.dart';
 
@@ -46,9 +48,9 @@ class _PrescriptionEditedWidgetState extends State<PrescriptionEditedWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
         child: Container(
           width: double.infinity,
           height: 280.0,
@@ -74,7 +76,7 @@ class _PrescriptionEditedWidgetState extends State<PrescriptionEditedWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     child: Text(
                       'Seu remédio foi editado com sucesso',
                       textAlign: TextAlign.center,
@@ -85,7 +87,7 @@ class _PrescriptionEditedWidgetState extends State<PrescriptionEditedWidget> {
                           ),
                     ),
                   ),
-                ].divide(const SizedBox(height: 12.0)),
+                ].divide(SizedBox(height: 12.0)),
               ),
               FFButtonWidget(
                 onPressed: () async {
@@ -96,9 +98,9 @@ class _PrescriptionEditedWidgetState extends State<PrescriptionEditedWidget> {
                 options: FFButtonOptions(
                   width: 280.0,
                   height: 52.0,
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: Colors.white,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Mulish',
@@ -114,7 +116,7 @@ class _PrescriptionEditedWidgetState extends State<PrescriptionEditedWidget> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-            ].divide(const SizedBox(height: 32.0)),
+            ].divide(SizedBox(height: 32.0)),
           ),
         ),
       ),

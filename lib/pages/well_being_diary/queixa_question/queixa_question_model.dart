@@ -1,8 +1,13 @@
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pages/well_being_diary/queixa_question_drop/queixa_question_drop_widget.dart';
 import 'queixa_question_widget.dart' show QueixaQuestionWidget;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class QueixaQuestionModel extends FlutterFlowModel<QueixaQuestionWidget> {
   ///  Local state fields for this component.

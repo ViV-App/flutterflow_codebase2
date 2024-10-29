@@ -10,7 +10,7 @@ class HistoricoMedcoTable extends SupabaseTable<HistoricoMedcoRow> {
 }
 
 class HistoricoMedcoRow extends SupabaseDataRow {
-  HistoricoMedcoRow(super.data);
+  HistoricoMedcoRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => HistoricoMedcoTable();

@@ -1,7 +1,10 @@
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'horario_prescricao_copy_model.dart';
 export 'horario_prescricao_copy_model.dart';
 
@@ -48,18 +51,18 @@ class _HorarioPrescricaoCopyWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             () {
-              if (widget.index == 0) {
+              if (widget!.index == 0) {
                 return 'Primeira dose';
-              } else if (widget.index == 1) {
+              } else if (widget!.index == 1) {
                 return 'Segunda dose';
-              } else if (widget.index == 2) {
+              } else if (widget!.index == 2) {
                 return 'Terceira dose';
               } else {
                 return 'Dose';
@@ -67,7 +70,7 @@ class _HorarioPrescricaoCopyWidgetState
             }(),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Mulish',
-                  color: const Color(0xFF8798B5),
+                  color: Color(0xFF8798B5),
                   fontSize: 16.0,
                   letterSpacing: 0.0,
                 ),
@@ -78,19 +81,19 @@ class _HorarioPrescricaoCopyWidgetState
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
-              final datePickedTime = await showTimePicker(
+              final _datePickedTime = await showTimePicker(
                 context: context,
                 initialTime: TimeOfDay.fromDateTime(
-                    (widget.horario?.horario ?? DateTime.now())),
+                    (widget!.horario?.horario ?? DateTime.now())),
               );
-              if (datePickedTime != null) {
+              if (_datePickedTime != null) {
                 safeSetState(() {
                   _model.datePicked = DateTime(
-                    (widget.horario?.horario ?? DateTime.now()).year,
-                    (widget.horario?.horario ?? DateTime.now()).month,
-                    (widget.horario?.horario ?? DateTime.now()).day,
-                    datePickedTime.hour,
-                    datePickedTime.minute,
+                    (widget!.horario?.horario ?? DateTime.now()).year,
+                    (widget!.horario?.horario ?? DateTime.now()).month,
+                    (widget!.horario?.horario ?? DateTime.now()).day,
+                    _datePickedTime.hour,
+                    _datePickedTime.minute,
                   );
                 });
               }
@@ -98,7 +101,7 @@ class _HorarioPrescricaoCopyWidgetState
                 FFAppState().updatePrescricaoStruct(
                   (e) => e
                     ..updateTimeslots(
-                      (e) => e[widget.index!]..horario = _model.datePicked,
+                      (e) => e[widget!.index!]..horario = _model.datePicked,
                     )
                     ..updateHorarios(
                       (e) => e.add(_model.datePicked!),
@@ -115,10 +118,10 @@ class _HorarioPrescricaoCopyWidgetState
               width: 150.0,
               height: 48.0,
               decoration: BoxDecoration(
-                color: const Color(0xFFF7FAFE),
+                color: Color(0xFFF7FAFE),
                 borderRadius: BorderRadius.circular(8.0),
                 border: Border.all(
-                  color: const Color(0x13294B0D),
+                  color: Color(0x13294B0D),
                   width: 2.0,
                 ),
               ),
@@ -130,7 +133,7 @@ class _HorarioPrescricaoCopyWidgetState
                     valueOrDefault<String>(
                       dateTimeFormat(
                         "Hm",
-                        widget.horario?.horario,
+                        widget!.horario?.horario,
                         locale: FFLocalizations.of(context).languageCode,
                       ),
                       '00:00',

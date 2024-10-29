@@ -8,6 +8,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -44,7 +45,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResultwq1 = await ResetFormResponsesCall.call(
         paciente: FFAppState().paciente.id,
-        formulario: widget.questionario?.id,
+        formulario: widget!.questionario?.id,
         ordem: 0,
       );
     });
@@ -73,7 +74,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -87,11 +88,11 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                           )
                           .eq(
                             'questionario',
-                            widget.questionario?.id,
+                            widget!.questionario?.id,
                           )
                           .eq(
                             'bipRequisicao',
-                            widget.bipRequisicao,
+                            widget!.bipRequisicao,
                           )
                           .order('ordem', ascending: true),
                     ),
@@ -113,7 +114,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                       List<RespostasQuestionarioRow>
                           pageViewRespostasQuestionarioRowList = snapshot.data!;
 
-                      return SizedBox(
+                      return Container(
                         width: double.infinity,
                         height: 500.0,
                         child: PageView.builder(
@@ -163,7 +164,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       32.0, 24.0, 32.0, 12.0),
                                   child: FutureBuilder<
                                       List<RespostasQuestionarioRow>>(
@@ -178,7 +179,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                             )
                                             .eq(
                                               'questionario',
-                                              widget.questionario?.id,
+                                              widget!.questionario?.id,
                                             )
                                             .order('ordem', ascending: true),
                                       ),
@@ -218,17 +219,17 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                         progressColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
-                                        backgroundColor: const Color(0xFFE0E3E7),
-                                        barRadius: const Radius.circular(12.0),
+                                        backgroundColor: Color(0xFFE0E3E7),
+                                        barRadius: Radius.circular(12.0),
                                         padding: EdgeInsets.zero,
                                       );
                                     },
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         28.0, 12.0, 0.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -239,13 +240,13 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                         await _model.pageViewController
                                             ?.animateToPage(
                                           28,
-                                          duration: const Duration(milliseconds: 500),
+                                          duration: Duration(milliseconds: 500),
                                           curve: Curves.ease,
                                         );
                                       },
                                       child: Text(
                                         valueOrDefault<String>(
-                                          widget.questionario?.nome,
+                                          widget!.questionario?.nome,
                                           'a',
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -287,7 +288,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 8.0, 24.0, 32.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -304,10 +305,10 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                             options: FFButtonOptions(
                                               width: 200.0,
                                               height: 48.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: Colors.white,
                                               textStyle: FlutterFlowTheme.of(
@@ -315,12 +316,12 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: const Color(0xFFB5C0D3),
+                                                    color: Color(0xFFB5C0D3),
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFB5C0D3),
                                                 width: 1.0,
                                               ),
@@ -343,7 +344,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                   ?.animateToPage(
                                                 _model.previuousQuestions.last,
                                                 duration:
-                                                    const Duration(milliseconds: 500),
+                                                    Duration(milliseconds: 500),
                                                 curve: Curves.ease,
                                               );
                                               _model
@@ -356,10 +357,10 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                             options: FFButtonOptions(
                                               width: 200.0,
                                               height: 48.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: Colors.white,
                                               textStyle: FlutterFlowTheme.of(
@@ -367,12 +368,12 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: const Color(0xFFB5C0D3),
+                                                    color: Color(0xFFB5C0D3),
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFB5C0D3),
                                                 width: 1.0,
                                               ),
@@ -384,17 +385,17 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                       Expanded(
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: ((_model.nextQuestion ==
                                                         null) ||
                                                     (_model.nextQuestion == 0))
                                                 ? null
                                                 : () async {
-                                                    var shouldSetState = false;
+                                                    var _shouldSetState = false;
                                                     if (_model.lastQuestion ==
                                                         true) {
-                                                      if (widget.questionario
+                                                      if (widget!.questionario
                                                               ?.nome ==
                                                           'BIP Geral') {
                                                         await AjusteDoseRequisicaoTable()
@@ -405,7 +406,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
@@ -422,7 +423,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           extra: <String,
                                                               dynamic>{
                                                             kTransitionInfoKey:
-                                                                const TransitionInfo(
+                                                                TransitionInfo(
                                                               hasTransition:
                                                                   true,
                                                               transitionType:
@@ -435,11 +436,10 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           },
                                                         );
 
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                         return;
-                                                      } else if (widget
+                                                      } else if (widget!
                                                               .questionario
                                                               ?.nome ==
                                                           'Dados Gerais') {
@@ -451,7 +451,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
@@ -468,7 +468,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           extra: <String,
                                                               dynamic>{
                                                             kTransitionInfoKey:
-                                                                const TransitionInfo(
+                                                                TransitionInfo(
                                                               hasTransition:
                                                                   true,
                                                               transitionType:
@@ -481,11 +481,10 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           },
                                                         );
 
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                         return;
-                                                      } else if (widget
+                                                      } else if (widget!
                                                               .questionario
                                                               ?.nome ==
                                                           'PAM') {
@@ -497,7 +496,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
@@ -514,7 +513,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           extra: <String,
                                                               dynamic>{
                                                             kTransitionInfoKey:
-                                                                const TransitionInfo(
+                                                                TransitionInfo(
                                                               hasTransition:
                                                                   true,
                                                               transitionType:
@@ -527,11 +526,10 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                           },
                                                         );
 
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                         return;
-                                                      } else if (widget
+                                                      } else if (widget!
                                                               .questionario
                                                               ?.categoria ==
                                                           'BIP Especifico') {
@@ -540,11 +538,11 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                 .queryRows(
                                                           queryFn: (q) => q.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
-                                                        shouldSetState = true;
+                                                        _shouldSetState = true;
                                                         await AjusteDoseRequisicaoTable()
                                                             .update(
                                                           data: {
@@ -555,13 +553,13 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                         .first
                                                                         .queixasRespondidas
                                                                         .toList(),
-                                                                    widget
+                                                                    widget!
                                                                         .queixa!),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
@@ -575,13 +573,13 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                         .first
                                                                         .queixasNaoRespondidas
                                                                         .toList(),
-                                                                    widget
+                                                                    widget!
                                                                         .queixa!),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
@@ -590,18 +588,18 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                 .queryRows(
                                                           queryFn: (q) => q.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
-                                                        shouldSetState = true;
+                                                        _shouldSetState = true;
                                                         if ((_model.req11?.first
-                                                                        .queixasNaoRespondidas !=
+                                                                        ?.queixasNaoRespondidas !=
                                                                     null &&
                                                                 (_model
                                                                         .req11
                                                                         ?.first
-                                                                        .queixasNaoRespondidas)!
+                                                                        ?.queixasNaoRespondidas)!
                                                                     .isNotEmpty) ==
                                                             false) {
                                                           await StatusPacientTable()
@@ -632,16 +630,16 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                               return WebViewAware(
                                                                 child:
                                                                     AlertDialog(
-                                                                  title: const Text(
+                                                                  title: Text(
                                                                       'Ajuste de dose solicitado'),
-                                                                  content: const Text(
+                                                                  content: Text(
                                                                       'Dentro de 10 dias, seu ajuste de dose estará disponivel no app!'),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed:
                                                                           () =>
                                                                               Navigator.pop(alertDialogContext),
-                                                                      child: const Text(
+                                                                      child: Text(
                                                                           'Ok'),
                                                                     ),
                                                                   ],
@@ -668,18 +666,16 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                       500));
                                                         }
 
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                         return;
                                                       } else {
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                         return;
                                                       }
                                                     } else {
-                                                      if (widget.questionario
+                                                      if (widget!.questionario
                                                               ?.id ==
                                                           14) {
                                                         _model.req1 =
@@ -687,11 +683,11 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                 .queryRows(
                                                           queryFn: (q) => q.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
-                                                        shouldSetState = true;
+                                                        _shouldSetState = true;
                                                         await AjusteDoseRequisicaoTable()
                                                             .update(
                                                           data: {
@@ -702,13 +698,13 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                         .first
                                                                         .queixasRespondidas
                                                                         .toList(),
-                                                                    widget
+                                                                    widget!
                                                                         .queixa!),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
@@ -722,13 +718,13 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                         .first
                                                                         .queixasNaoRespondidas
                                                                         .toList(),
-                                                                    widget
+                                                                    widget!
                                                                         .queixa!),
                                                           },
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
@@ -737,18 +733,18 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                 .queryRows(
                                                           queryFn: (q) => q.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .bipRequisicao,
                                                           ),
                                                         );
-                                                        shouldSetState = true;
+                                                        _shouldSetState = true;
                                                         if ((_model.req12?.first
-                                                                        .queixasNaoRespondidas !=
+                                                                        ?.queixasNaoRespondidas !=
                                                                     null &&
                                                                 (_model
                                                                         .req12
                                                                         ?.first
-                                                                        .queixasNaoRespondidas)!
+                                                                        ?.queixasNaoRespondidas)!
                                                                     .isNotEmpty) ==
                                                             false) {
                                                           context.pushNamed(
@@ -772,16 +768,15 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                                       500));
                                                         }
 
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                         return;
                                                       } else {
                                                         await _model
                                                             .pageViewController
                                                             ?.animateToPage(
                                                           _model.nextQuestion!,
-                                                          duration: const Duration(
+                                                          duration: Duration(
                                                               milliseconds:
                                                                   500),
                                                           curve: Curves.ease,
@@ -792,25 +787,23 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                         safeSetState(() {});
                                                         await actions
                                                             .hideKeyboard();
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                         return;
                                                       }
                                                     }
 
-                                                    if (shouldSetState) {
+                                                    if (_shouldSetState)
                                                       safeSetState(() {});
-                                                    }
                                                   },
                                             text: 'Continuar',
                                             options: FFButtonOptions(
                                               width: 200.0,
                                               height: 48.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -826,7 +819,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                                             FontWeight.bold,
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -840,7 +833,7 @@ class _QuestionarioBipWidgetState extends State<QuestionarioBipWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 24.0)),
+                                    ].divide(SizedBox(width: 24.0)),
                                   ),
                                 ),
                               ],

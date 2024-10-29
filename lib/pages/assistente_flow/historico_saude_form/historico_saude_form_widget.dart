@@ -5,8 +5,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'historico_saude_form_model.dart';
@@ -94,7 +97,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -109,7 +112,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 62.0, 0.0, 0.0),
                         child: Text(
                           'Histórico de Saúde',
@@ -124,14 +127,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 18.0, 28.0, 0.0),
                         child: Text(
                           'A partir de agora, quero saber mais sobre seu Histórico de Saúde.\n  \nRegistrar o histórico de saúde centraliza informações importantes, facilitando o acesso e melhorando a comunicação.\n\nIsso pode levar a diagnósticos mais precisos e tratamentos eficazes, além de empoderar os pacientes na gestão de sua saúde.',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                         ),
@@ -140,10 +143,10 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ).animateOnPageLoad(
                       animationsMap['columnOnPageLoadAnimation']!),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           _model.currentStep = _model.currentStep + 1;
@@ -153,9 +156,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         options: FFButtonOptions(
                           width: 200.0,
                           height: 48.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -166,7 +169,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                     fontWeight: FontWeight.bold,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -189,7 +192,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 32.0, 32.0, 0.0),
                         child: LinearPercentIndicator(
                           percent: 0.03,
@@ -198,13 +201,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           animation: true,
                           animateFromLastPercent: true,
                           progressColor: FlutterFlowTheme.of(context).primary,
-                          backgroundColor: const Color(0xFFE0E3E7),
-                          barRadius: const Radius.circular(12.0),
+                          backgroundColor: Color(0xFFE0E3E7),
+                          barRadius: Radius.circular(12.0),
                           padding: EdgeInsets.zero,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 24.0, 0.0, 0.0),
                         child: Text(
                           'Histórico de Saúde',
@@ -219,7 +222,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 32.0, 28.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -231,21 +234,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 48.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF7FAFE),
+                                  color: Color(0xFFF7FAFE),
                                   borderRadius: BorderRadius.circular(8.0),
                                   border: Border.all(
-                                    color: const Color(0x13294B0D),
+                                    color: Color(0x13294B0D),
                                     width: 2.0,
                                   ),
                                 ),
@@ -268,7 +271,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -318,9 +321,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           .asValidator(context),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(1.0, 0.0),
+                                      alignment: AlignmentDirectional(1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 24.0, 0.0),
                                         child: Text(
                                           'cm',
@@ -341,7 +344,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 32.0, 28.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -353,21 +356,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 48.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF7FAFE),
+                                  color: Color(0xFFF7FAFE),
                                   borderRadius: BorderRadius.circular(8.0),
                                   border: Border.all(
-                                    color: const Color(0x13294B0D),
+                                    color: Color(0x13294B0D),
                                     width: 2.0,
                                   ),
                                 ),
@@ -390,7 +393,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 2.0,
                                           ),
@@ -440,9 +443,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           .asValidator(context),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(1.0, 0.0),
+                                      alignment: AlignmentDirectional(1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 24.0, 0.0),
                                         child: Text(
                                           'kg',
@@ -466,7 +469,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -480,21 +483,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -504,7 +507,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -514,9 +517,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -528,7 +531,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -537,7 +540,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -552,13 +555,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 32.0, 32.0, 32.0, 0.0),
                             child: LinearPercentIndicator(
                               percent: 0.06,
@@ -568,13 +571,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               animateFromLastPercent: true,
                               progressColor:
                                   FlutterFlowTheme.of(context).primary,
-                              backgroundColor: const Color(0xFFE0E3E7),
-                              barRadius: const Radius.circular(12.0),
+                              backgroundColor: Color(0xFFE0E3E7),
+                              barRadius: Radius.circular(12.0),
                               padding: EdgeInsets.zero,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 24.0, 0.0, 0.0),
                             child: Text(
                               'Histórico de Saúde',
@@ -590,7 +593,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 32.0, 28.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -602,21 +605,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: Color(0xFF8798B5),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 48.0,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFF7FAFE),
+                                      color: Color(0xFFF7FAFE),
                                       borderRadius: BorderRadius.circular(8.0),
                                       border: Border.all(
-                                        color: const Color(0x13294B0D),
+                                        color: Color(0x13294B0D),
                                         width: 2.0,
                                       ),
                                     ),
@@ -640,7 +643,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             letterSpacing: 0.0,
                                           ),
                                       hintText: 'Selecione',
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.keyboard_arrow_down_rounded,
                                         color: Color(0xFF8798B5),
                                         size: 24.0,
@@ -651,7 +654,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       borderColor: Colors.transparent,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: false,
@@ -669,7 +672,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -683,21 +686,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -707,7 +710,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -717,9 +720,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -731,7 +734,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -740,7 +743,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -755,14 +758,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.09,
@@ -772,13 +775,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -795,7 +798,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Quais medicações?',
@@ -803,21 +806,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFF8798B5),
+                                      color: Color(0xFF8798B5),
                                       letterSpacing: 0.0,
                                     ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0x0F5D67E2),
+                                  color: Color(0x0F5D67E2),
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 18.0, 18.0, 18.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -842,22 +845,26 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             width: double.infinity,
                                             height: 48.0,
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFF7FAFE),
+                                              color: Color(0xFFF7FAFE),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0x13294B0D),
+                                                color: Color(0x13294B0D),
                                                 width: 2.0,
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   if (FFAppState()
+                                                              .prescricao
+                                                              .remedNome ==
+                                                          null ||
+                                                      FFAppState()
                                                               .prescricao
                                                               .remedNome ==
                                                           '')
@@ -869,7 +876,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFFB5C0D3),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
@@ -878,6 +885,10 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                           ),
                                                     ),
                                                   if (FFAppState()
+                                                              .prescricao
+                                                              .remedNome !=
+                                                          null &&
+                                                      FFAppState()
                                                               .prescricao
                                                               .remedNome !=
                                                           '')
@@ -907,7 +918,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -949,12 +960,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFFB5C0D3),
+                                                            Color(0xFFB5C0D3),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x0E294B0D),
                                                   width: 2.0,
                                                 ),
@@ -993,9 +1004,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                     BorderRadius.circular(8.0),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0xFFF7FAFE),
+                                              fillColor: Color(0xFFF7FAFE),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                             ),
@@ -1010,9 +1021,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 .textController3Validator
                                                 .asValidator(context),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
-                                    ].divide(const SizedBox(height: 24.0)),
+                                    ].divide(SizedBox(height: 24.0)),
                                   ),
                                 ),
                               ),
@@ -1024,7 +1035,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -1038,21 +1049,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -1062,7 +1073,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -1072,9 +1083,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -1086,7 +1097,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -1095,7 +1106,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -1110,14 +1121,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.12,
@@ -1127,13 +1138,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -1150,7 +1161,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -1162,22 +1173,22 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 48.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF7FAFE),
+                                        color: Color(0xFFF7FAFE),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                         border: Border.all(
-                                          color: const Color(0x13294B0D),
+                                          color: Color(0x13294B0D),
                                           width: 2.0,
                                         ),
                                       ),
@@ -1202,7 +1213,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Selecione',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -1213,7 +1224,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderColor: Colors.transparent,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: false,
@@ -1232,7 +1243,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -1246,21 +1257,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -1270,7 +1281,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -1280,9 +1291,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -1294,7 +1305,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -1303,7 +1314,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -1318,14 +1329,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.15,
@@ -1335,13 +1346,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -1358,7 +1369,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Quais medicações?',
@@ -1366,21 +1377,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFF8798B5),
+                                      color: Color(0xFF8798B5),
                                       letterSpacing: 0.0,
                                     ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0x0F5D67E2),
+                                  color: Color(0x0F5D67E2),
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 18.0, 18.0, 18.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -1405,22 +1416,26 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             width: double.infinity,
                                             height: 48.0,
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFF7FAFE),
+                                              color: Color(0xFFF7FAFE),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0x13294B0D),
+                                                color: Color(0x13294B0D),
                                                 width: 2.0,
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   if (FFAppState()
+                                                              .prescricao
+                                                              .remedNome ==
+                                                          null ||
+                                                      FFAppState()
                                                               .prescricao
                                                               .remedNome ==
                                                           '')
@@ -1432,7 +1447,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFFB5C0D3),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
@@ -1441,6 +1456,10 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                           ),
                                                     ),
                                                   if (FFAppState()
+                                                              .prescricao
+                                                              .remedNome !=
+                                                          null &&
+                                                      FFAppState()
                                                               .prescricao
                                                               .remedNome !=
                                                           '')
@@ -1470,7 +1489,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -1512,12 +1531,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFFB5C0D3),
+                                                            Color(0xFFB5C0D3),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x0E294B0D),
                                                   width: 2.0,
                                                 ),
@@ -1556,9 +1575,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                     BorderRadius.circular(8.0),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0xFFF7FAFE),
+                                              fillColor: Color(0xFFF7FAFE),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                             ),
@@ -1573,9 +1592,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 .textController4Validator
                                                 .asValidator(context),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
-                                    ].divide(const SizedBox(height: 24.0)),
+                                    ].divide(SizedBox(height: 24.0)),
                                   ),
                                 ),
                               ),
@@ -1587,7 +1606,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -1601,21 +1620,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -1625,7 +1644,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -1635,9 +1654,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -1649,7 +1668,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -1658,7 +1677,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -1673,14 +1692,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.18,
@@ -1690,13 +1709,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -1713,7 +1732,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -1725,12 +1744,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -1740,11 +1759,11 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         border: Border.all(
-                                          color: const Color(0xFFDBE4F1),
+                                          color: Color(0xFFDBE4F1),
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
+                                        padding: EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -1760,7 +1779,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(4.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -1780,7 +1799,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 ],
                                               ),
                                             ),
-                                            const Icon(
+                                            Icon(
                                               Icons.circle_outlined,
                                               color: Color(0xFFDBE4F1),
                                               size: 24.0,
@@ -1792,7 +1811,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .primary,
                                               size: 24.0,
                                             ),
-                                          ].divide(const SizedBox(width: 8.0)),
+                                          ].divide(SizedBox(width: 8.0)),
                                         ),
                                       ),
                                     ),
@@ -1807,7 +1826,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -1821,21 +1840,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -1845,7 +1864,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -1855,9 +1874,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -1869,7 +1888,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -1878,7 +1897,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -1893,14 +1912,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.21,
@@ -1910,13 +1929,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -1933,7 +1952,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 28.0, 0.0),
                               child: Text(
                                 'Descreva aqui como se manifesta cada uma das suas queixas ou sintomas. Favor informar quando começou, intensidade e frequência ou qualquer outra informação que você julgue relevante ou que esteja sentindo. \n\nEsta é uma informação muito importante para o sucesso do seu tratamento. ',
@@ -1941,21 +1960,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFF8798B5),
+                                      color: Color(0xFF8798B5),
                                       letterSpacing: 0.0,
                                     ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0x0F5D67E2),
+                                  color: Color(0x0F5D67E2),
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 18.0, 18.0, 18.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -2000,12 +2019,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFFB5C0D3),
+                                                            Color(0xFFB5C0D3),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x0E294B0D),
                                                   width: 2.0,
                                                 ),
@@ -2044,9 +2063,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                     BorderRadius.circular(8.0),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0xFFF7FAFE),
+                                              fillColor: Color(0xFFF7FAFE),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                             ),
@@ -2061,9 +2080,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 .textController5Validator
                                                 .asValidator(context),
                                           ),
-                                        ].divide(const SizedBox(height: 12.0)),
+                                        ].divide(SizedBox(height: 12.0)),
                                       ),
-                                    ].divide(const SizedBox(height: 24.0)),
+                                    ].divide(SizedBox(height: 24.0)),
                                   ),
                                 ),
                               ),
@@ -2075,7 +2094,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -2089,21 +2108,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -2113,7 +2132,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -2123,9 +2142,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -2137,7 +2156,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -2146,7 +2165,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -2161,14 +2180,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.24,
@@ -2178,13 +2197,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -2201,7 +2220,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -2213,12 +2232,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
                                       controller: _model.q09ValueController1 ??=
@@ -2249,7 +2268,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -2267,7 +2286,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -2281,21 +2300,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -2305,7 +2324,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -2315,9 +2334,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -2329,7 +2348,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -2338,7 +2357,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -2353,14 +2372,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.27,
@@ -2370,13 +2389,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -2393,7 +2412,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -2405,22 +2424,22 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 48.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF7FAFE),
+                                        color: Color(0xFFF7FAFE),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                         border: Border.all(
-                                          color: const Color(0x13294B0D),
+                                          color: Color(0x13294B0D),
                                           width: 2.0,
                                         ),
                                       ),
@@ -2445,7 +2464,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Selecione',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -2456,7 +2475,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderColor: Colors.transparent,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: false,
@@ -2475,7 +2494,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -2489,21 +2508,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -2513,7 +2532,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -2523,9 +2542,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -2537,7 +2556,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -2546,7 +2565,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -2565,7 +2584,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 32.0, 32.0, 32.0, 0.0),
                             child: LinearPercentIndicator(
                               percent: 0.3,
@@ -2575,13 +2594,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               animateFromLastPercent: true,
                               progressColor:
                                   FlutterFlowTheme.of(context).primary,
-                              backgroundColor: const Color(0xFFE0E3E7),
-                              barRadius: const Radius.circular(12.0),
+                              backgroundColor: Color(0xFFE0E3E7),
+                              barRadius: Radius.circular(12.0),
                               padding: EdgeInsets.zero,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 24.0, 0.0, 0.0),
                             child: Text(
                               'Histórico de Saúde',
@@ -2597,7 +2616,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 32.0, 0.0, 0.0),
                             child: Text(
                               'Quais medicações?',
@@ -2605,21 +2624,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 32.0, 28.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: const Color(0x0F5D67E2),
+                                color: Color(0x0F5D67E2),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 18.0, 18.0, 18.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -2644,22 +2663,26 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           width: double.infinity,
                                           height: 48.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFF7FAFE),
+                                            color: Color(0xFFF7FAFE),
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             border: Border.all(
-                                              color: const Color(0x13294B0D),
+                                              color: Color(0x13294B0D),
                                               width: 2.0,
                                             ),
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 if (FFAppState()
+                                                            .prescricao
+                                                            .remedNome ==
+                                                        null ||
+                                                    FFAppState()
                                                             .prescricao
                                                             .remedNome ==
                                                         '')
@@ -2671,7 +2694,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              const Color(0xFFB5C0D3),
+                                                              Color(0xFFB5C0D3),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -2679,6 +2702,10 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                         ),
                                                   ),
                                                 if (FFAppState()
+                                                            .prescricao
+                                                            .remedNome !=
+                                                        null &&
+                                                    FFAppState()
                                                             .prescricao
                                                             .remedNome !=
                                                         '')
@@ -2707,7 +2734,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             ),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(height: 6.0)),
+                                      ].divide(SizedBox(height: 6.0)),
                                     ),
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -2746,12 +2773,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Mulish',
-                                                      color: const Color(0xFFB5C0D3),
+                                                      color: Color(0xFFB5C0D3),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0x0E294B0D),
                                                 width: 2.0,
                                               ),
@@ -2790,9 +2817,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                   BorderRadius.circular(8.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF7FAFE),
+                                            fillColor: Color(0xFFF7FAFE),
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -2806,9 +2833,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               .textController6Validator
                                               .asValidator(context),
                                         ),
-                                      ].divide(const SizedBox(height: 6.0)),
+                                      ].divide(SizedBox(height: 6.0)),
                                     ),
-                                  ].divide(const SizedBox(height: 24.0)),
+                                  ].divide(SizedBox(height: 24.0)),
                                 ),
                               ),
                             ),
@@ -2819,7 +2846,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -2833,21 +2860,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -2857,7 +2884,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -2867,9 +2894,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -2881,7 +2908,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -2890,7 +2917,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -2905,14 +2932,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.33,
@@ -2922,13 +2949,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -2945,7 +2972,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -2957,22 +2984,22 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 48.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF7FAFE),
+                                        color: Color(0xFFF7FAFE),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                         border: Border.all(
-                                          color: const Color(0x13294B0D),
+                                          color: Color(0x13294B0D),
                                           width: 2.0,
                                         ),
                                       ),
@@ -2997,7 +3024,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Selecione',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -3008,7 +3035,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderColor: Colors.transparent,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: false,
@@ -3027,7 +3054,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -3041,21 +3068,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -3065,7 +3092,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -3075,9 +3102,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -3089,7 +3116,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -3098,7 +3125,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -3113,14 +3140,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.36,
@@ -3130,13 +3157,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -3153,7 +3180,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 0.0, 0.0),
                               child: Text(
                                 'Quais medicações?',
@@ -3161,21 +3188,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFF8798B5),
+                                      color: Color(0xFF8798B5),
                                       letterSpacing: 0.0,
                                     ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0x0F5D67E2),
+                                  color: Color(0x0F5D67E2),
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 18.0, 18.0, 18.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -3200,22 +3227,26 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             width: double.infinity,
                                             height: 48.0,
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFF7FAFE),
+                                              color: Color(0xFFF7FAFE),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0x13294B0D),
+                                                color: Color(0x13294B0D),
                                                 width: 2.0,
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   if (FFAppState()
+                                                              .prescricao
+                                                              .remedNome ==
+                                                          null ||
+                                                      FFAppState()
                                                               .prescricao
                                                               .remedNome ==
                                                           '')
@@ -3227,7 +3258,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFFB5C0D3),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
@@ -3236,6 +3267,10 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                           ),
                                                     ),
                                                   if (FFAppState()
+                                                              .prescricao
+                                                              .remedNome !=
+                                                          null &&
+                                                      FFAppState()
                                                               .prescricao
                                                               .remedNome !=
                                                           '')
@@ -3265,7 +3300,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -3307,12 +3342,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFFB5C0D3),
+                                                            Color(0xFFB5C0D3),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x0E294B0D),
                                                   width: 2.0,
                                                 ),
@@ -3351,9 +3386,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                     BorderRadius.circular(8.0),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0xFFF7FAFE),
+                                              fillColor: Color(0xFFF7FAFE),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                             ),
@@ -3368,9 +3403,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 .textController7Validator
                                                 .asValidator(context),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
-                                    ].divide(const SizedBox(height: 24.0)),
+                                    ].divide(SizedBox(height: 24.0)),
                                   ),
                                 ),
                               ),
@@ -3382,7 +3417,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -3396,21 +3431,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -3420,7 +3455,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -3430,9 +3465,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -3444,7 +3479,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -3453,7 +3488,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -3468,14 +3503,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.39,
@@ -3485,13 +3520,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -3508,7 +3543,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -3520,12 +3555,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
                                       controller: _model.q14ValueController ??=
@@ -3556,7 +3591,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -3574,7 +3609,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -3588,21 +3623,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -3612,7 +3647,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -3622,9 +3657,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -3636,7 +3671,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -3645,7 +3680,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -3660,13 +3695,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 32.0, 32.0, 32.0, 0.0),
                             child: LinearPercentIndicator(
                               percent: 0.42,
@@ -3676,13 +3711,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               animateFromLastPercent: true,
                               progressColor:
                                   FlutterFlowTheme.of(context).primary,
-                              backgroundColor: const Color(0xFFE0E3E7),
-                              barRadius: const Radius.circular(12.0),
+                              backgroundColor: Color(0xFFE0E3E7),
+                              barRadius: Radius.circular(12.0),
                               padding: EdgeInsets.zero,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 24.0, 0.0, 0.0),
                             child: Text(
                               'Histórico de Saúde',
@@ -3698,7 +3733,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 32.0, 28.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -3710,12 +3745,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: Color(0xFF8798B5),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: FlutterFlowDropDown<String>(
                                     controller: _model.q09ValueController2 ??=
@@ -3746,7 +3781,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         FlutterFlowTheme.of(context).alternate,
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
+                                    margin: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 4.0, 16.0, 4.0),
                                     hidesUnderline: true,
                                     isOverButton: true,
@@ -3763,7 +3798,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -3777,21 +3812,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -3801,7 +3836,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -3811,9 +3846,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -3825,7 +3860,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -3834,7 +3869,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -3849,13 +3884,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 32.0, 32.0, 32.0, 0.0),
                             child: LinearPercentIndicator(
                               percent: 0.45,
@@ -3865,13 +3900,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               animateFromLastPercent: true,
                               progressColor:
                                   FlutterFlowTheme.of(context).primary,
-                              backgroundColor: const Color(0xFFE0E3E7),
-                              barRadius: const Radius.circular(12.0),
+                              backgroundColor: Color(0xFFE0E3E7),
+                              barRadius: Radius.circular(12.0),
                               padding: EdgeInsets.zero,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 24.0, 0.0, 0.0),
                             child: Text(
                               'Histórico de Saúde',
@@ -3887,7 +3922,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 32.0, 28.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -3899,21 +3934,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: Color(0xFF8798B5),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 48.0,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFF7FAFE),
+                                      color: Color(0xFFF7FAFE),
                                       borderRadius: BorderRadius.circular(8.0),
                                       border: Border.all(
-                                        color: const Color(0x13294B0D),
+                                        color: Color(0x13294B0D),
                                         width: 2.0,
                                       ),
                                     ),
@@ -3937,7 +3972,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             letterSpacing: 0.0,
                                           ),
                                       hintText: 'Selecione',
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.keyboard_arrow_down_rounded,
                                         color: Color(0xFF8798B5),
                                         size: 24.0,
@@ -3948,7 +3983,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       borderColor: Colors.transparent,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: false,
@@ -3966,7 +4001,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -3980,21 +4015,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -4004,7 +4039,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -4014,9 +4049,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -4028,7 +4063,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -4037,7 +4072,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -4054,7 +4089,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 32.0, 32.0, 0.0),
                         child: LinearPercentIndicator(
                           percent: 0.48,
@@ -4063,13 +4098,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           animation: true,
                           animateFromLastPercent: true,
                           progressColor: FlutterFlowTheme.of(context).primary,
-                          backgroundColor: const Color(0xFFE0E3E7),
-                          barRadius: const Radius.circular(12.0),
+                          backgroundColor: Color(0xFFE0E3E7),
+                          barRadius: Radius.circular(12.0),
                           padding: EdgeInsets.zero,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 24.0, 0.0, 0.0),
                         child: Text(
                           'Histórico de Saúde',
@@ -4084,7 +4119,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 32.0, 28.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -4096,12 +4131,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
@@ -4110,11 +4145,11 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       .secondaryBackground,
                                   borderRadius: BorderRadius.circular(12.0),
                                   border: Border.all(
-                                    color: const Color(0xFFDBE4F1),
+                                    color: Color(0xFFDBE4F1),
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -4129,7 +4164,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 'Sim',
@@ -4147,7 +4182,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           ],
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.circle_outlined,
                                         color: Color(0xFFDBE4F1),
                                         size: 24.0,
@@ -4158,7 +4193,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             .primary,
                                         size: 24.0,
                                       ),
-                                    ].divide(const SizedBox(width: 8.0)),
+                                    ].divide(SizedBox(width: 8.0)),
                                   ),
                                 ),
                               ),
@@ -4170,7 +4205,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -4184,21 +4219,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -4208,7 +4243,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -4218,9 +4253,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -4232,7 +4267,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -4241,7 +4276,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -4256,14 +4291,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.51,
@@ -4273,13 +4308,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -4296,7 +4331,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -4308,22 +4343,22 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 48.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF7FAFE),
+                                        color: Color(0xFFF7FAFE),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                         border: Border.all(
-                                          color: const Color(0x13294B0D),
+                                          color: Color(0x13294B0D),
                                           width: 2.0,
                                         ),
                                       ),
@@ -4348,7 +4383,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Selecione',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -4359,7 +4394,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderColor: Colors.transparent,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: false,
@@ -4378,7 +4413,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -4392,21 +4427,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -4416,7 +4451,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -4426,9 +4461,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -4440,7 +4475,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -4449,7 +4484,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -4466,7 +4501,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 32.0, 32.0, 0.0),
                         child: LinearPercentIndicator(
                           percent: 0.54,
@@ -4475,13 +4510,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           animation: true,
                           animateFromLastPercent: true,
                           progressColor: FlutterFlowTheme.of(context).primary,
-                          backgroundColor: const Color(0xFFE0E3E7),
-                          barRadius: const Radius.circular(12.0),
+                          backgroundColor: Color(0xFFE0E3E7),
+                          barRadius: Radius.circular(12.0),
                           padding: EdgeInsets.zero,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 24.0, 0.0, 0.0),
                         child: Text(
                           'Histórico de Saúde',
@@ -4496,7 +4531,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 32.0, 28.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -4508,12 +4543,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
@@ -4522,11 +4557,11 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       .secondaryBackground,
                                   borderRadius: BorderRadius.circular(12.0),
                                   border: Border.all(
-                                    color: const Color(0xFFDBE4F1),
+                                    color: Color(0xFFDBE4F1),
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -4541,7 +4576,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 'Sim',
@@ -4559,7 +4594,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           ],
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.circle_outlined,
                                         color: Color(0xFFDBE4F1),
                                         size: 24.0,
@@ -4570,7 +4605,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             .primary,
                                         size: 24.0,
                                       ),
-                                    ].divide(const SizedBox(width: 8.0)),
+                                    ].divide(SizedBox(width: 8.0)),
                                   ),
                                 ),
                               ),
@@ -4582,7 +4617,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -4596,21 +4631,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -4620,7 +4655,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -4630,9 +4665,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -4644,7 +4679,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -4653,7 +4688,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -4670,7 +4705,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 32.0, 32.0, 0.0),
                         child: LinearPercentIndicator(
                           percent: 0.57,
@@ -4679,13 +4714,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                           animation: true,
                           animateFromLastPercent: true,
                           progressColor: FlutterFlowTheme.of(context).primary,
-                          backgroundColor: const Color(0xFFE0E3E7),
-                          barRadius: const Radius.circular(12.0),
+                          backgroundColor: Color(0xFFE0E3E7),
+                          barRadius: Radius.circular(12.0),
                           padding: EdgeInsets.zero,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 24.0, 0.0, 0.0),
                         child: Text(
                           'Histórico de Saúde',
@@ -4700,7 +4735,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             28.0, 32.0, 28.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -4712,12 +4747,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
@@ -4726,11 +4761,11 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       .secondaryBackground,
                                   borderRadius: BorderRadius.circular(12.0),
                                   border: Border.all(
-                                    color: const Color(0xFFDBE4F1),
+                                    color: Color(0xFFDBE4F1),
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -4745,7 +4780,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 'Sim',
@@ -4763,7 +4798,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           ],
                                         ),
                                       ),
-                                      const Icon(
+                                      Icon(
                                         Icons.circle_outlined,
                                         color: Color(0xFFDBE4F1),
                                         size: 24.0,
@@ -4774,7 +4809,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             .primary,
                                         size: 24.0,
                                       ),
-                                    ].divide(const SizedBox(width: 8.0)),
+                                    ].divide(SizedBox(width: 8.0)),
                                   ),
                                 ),
                               ),
@@ -4786,7 +4821,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -4800,21 +4835,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -4824,7 +4859,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -4834,9 +4869,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -4848,7 +4883,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -4857,7 +4892,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -4872,13 +4907,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 32.0, 32.0, 32.0, 0.0),
                             child: LinearPercentIndicator(
                               percent: 0.6,
@@ -4888,13 +4923,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               animateFromLastPercent: true,
                               progressColor:
                                   FlutterFlowTheme.of(context).primary,
-                              backgroundColor: const Color(0xFFE0E3E7),
-                              barRadius: const Radius.circular(12.0),
+                              backgroundColor: Color(0xFFE0E3E7),
+                              barRadius: Radius.circular(12.0),
                               padding: EdgeInsets.zero,
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 24.0, 0.0, 0.0),
                             child: Text(
                               'Histórico de Saúde',
@@ -4910,7 +4945,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 28.0, 32.0, 28.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -4922,12 +4957,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: Color(0xFF8798B5),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: FlutterFlowDropDown<String>(
                                     controller: _model.q21ValueController ??=
@@ -4958,7 +4993,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         FlutterFlowTheme.of(context).alternate,
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
+                                    margin: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 4.0, 16.0, 4.0),
                                     hidesUnderline: true,
                                     isOverButton: true,
@@ -4975,7 +5010,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -4989,21 +5024,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -5013,7 +5048,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -5023,9 +5058,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -5037,7 +5072,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -5046,7 +5081,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -5061,14 +5096,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.63,
@@ -5078,13 +5113,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -5101,7 +5136,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -5113,12 +5148,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
                                       controller: _model.q22ValueController ??=
@@ -5149,7 +5184,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -5167,7 +5202,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -5181,21 +5216,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -5205,7 +5240,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -5215,9 +5250,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -5229,7 +5264,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -5238,7 +5273,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -5253,14 +5288,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.66,
@@ -5270,13 +5305,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -5293,7 +5328,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -5305,22 +5340,22 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 48.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF7FAFE),
+                                        color: Color(0xFFF7FAFE),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                         border: Border.all(
-                                          color: const Color(0x13294B0D),
+                                          color: Color(0x13294B0D),
                                           width: 2.0,
                                         ),
                                       ),
@@ -5345,7 +5380,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Selecione',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -5356,7 +5391,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderColor: Colors.transparent,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: false,
@@ -5375,7 +5410,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -5389,21 +5424,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -5413,7 +5448,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -5423,9 +5458,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -5437,7 +5472,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -5446,7 +5481,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -5461,14 +5496,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.69,
@@ -5478,13 +5513,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -5501,7 +5536,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 0.0, 0.0),
                               child: Text(
                                 'Quais medicações?',
@@ -5509,21 +5544,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFF8798B5),
+                                      color: Color(0xFF8798B5),
                                       letterSpacing: 0.0,
                                     ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0x0F5D67E2),
+                                  color: Color(0x0F5D67E2),
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 18.0, 18.0, 18.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -5548,22 +5583,26 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                             width: double.infinity,
                                             height: 48.0,
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFF7FAFE),
+                                              color: Color(0xFFF7FAFE),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0x13294B0D),
+                                                color: Color(0x13294B0D),
                                                 width: 2.0,
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 12.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   if (FFAppState()
+                                                              .prescricao
+                                                              .remedNome ==
+                                                          null ||
+                                                      FFAppState()
                                                               .prescricao
                                                               .remedNome ==
                                                           '')
@@ -5575,7 +5614,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFFB5C0D3),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
@@ -5584,6 +5623,10 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                           ),
                                                     ),
                                                   if (FFAppState()
+                                                              .prescricao
+                                                              .remedNome !=
+                                                          null &&
+                                                      FFAppState()
                                                               .prescricao
                                                               .remedNome !=
                                                           '')
@@ -5613,7 +5656,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -5655,12 +5698,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFFB5C0D3),
+                                                            Color(0xFFB5C0D3),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x0E294B0D),
                                                   width: 2.0,
                                                 ),
@@ -5699,9 +5742,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                     BorderRadius.circular(8.0),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0xFFF7FAFE),
+                                              fillColor: Color(0xFFF7FAFE),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                             ),
@@ -5716,9 +5759,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 .textController8Validator
                                                 .asValidator(context),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
-                                    ].divide(const SizedBox(height: 24.0)),
+                                    ].divide(SizedBox(height: 24.0)),
                                   ),
                                 ),
                               ),
@@ -5730,7 +5773,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -5744,21 +5787,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -5768,7 +5811,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -5778,9 +5821,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -5792,7 +5835,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -5801,7 +5844,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -5816,14 +5859,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.72,
@@ -5833,13 +5876,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -5856,7 +5899,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -5868,12 +5911,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
                                       controller: _model.q09ValueController3 ??=
@@ -5904,7 +5947,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -5922,7 +5965,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -5936,21 +5979,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -5960,7 +6003,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -5970,9 +6013,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -5984,7 +6027,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -5993,7 +6036,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -6008,14 +6051,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.75,
@@ -6025,13 +6068,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -6048,7 +6091,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -6060,12 +6103,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -6075,11 +6118,11 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         border: Border.all(
-                                          color: const Color(0xFFDBE4F1),
+                                          color: Color(0xFFDBE4F1),
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
+                                        padding: EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -6095,7 +6138,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(4.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -6115,7 +6158,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 ],
                                               ),
                                             ),
-                                            const Icon(
+                                            Icon(
                                               Icons.circle_outlined,
                                               color: Color(0xFFDBE4F1),
                                               size: 24.0,
@@ -6127,7 +6170,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .primary,
                                               size: 24.0,
                                             ),
-                                          ].divide(const SizedBox(width: 8.0)),
+                                          ].divide(SizedBox(width: 8.0)),
                                         ),
                                       ),
                                     ),
@@ -6142,7 +6185,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -6156,21 +6199,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -6180,7 +6223,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -6190,9 +6233,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -6204,7 +6247,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -6213,7 +6256,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -6228,14 +6271,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.78,
@@ -6245,13 +6288,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -6268,7 +6311,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -6280,22 +6323,22 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 48.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFF7FAFE),
+                                        color: Color(0xFFF7FAFE),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                         border: Border.all(
-                                          color: const Color(0x13294B0D),
+                                          color: Color(0x13294B0D),
                                           width: 2.0,
                                         ),
                                       ),
@@ -6320,7 +6363,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         hintText: 'Selecione',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -6331,7 +6374,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderColor: Colors.transparent,
                                         borderWidth: 2.0,
                                         borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
+                                        margin: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 16.0, 4.0),
                                         hidesUnderline: true,
                                         isOverButton: false,
@@ -6350,7 +6393,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -6364,21 +6407,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -6388,7 +6431,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -6398,9 +6441,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -6412,7 +6455,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -6421,7 +6464,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -6436,14 +6479,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.83,
@@ -6453,13 +6496,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -6476,7 +6519,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -6488,12 +6531,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -6503,11 +6546,11 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         border: Border.all(
-                                          color: const Color(0xFFDBE4F1),
+                                          color: Color(0xFFDBE4F1),
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
+                                        padding: EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -6523,7 +6566,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(4.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -6543,7 +6586,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 ],
                                               ),
                                             ),
-                                            const Icon(
+                                            Icon(
                                               Icons.circle_outlined,
                                               color: Color(0xFFDBE4F1),
                                               size: 24.0,
@@ -6555,7 +6598,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .primary,
                                               size: 24.0,
                                             ),
-                                          ].divide(const SizedBox(width: 8.0)),
+                                          ].divide(SizedBox(width: 8.0)),
                                         ),
                                       ),
                                     ),
@@ -6570,7 +6613,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -6584,21 +6627,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -6608,7 +6651,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -6618,9 +6661,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -6632,7 +6675,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -6641,7 +6684,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -6656,14 +6699,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 0.9,
@@ -6673,13 +6716,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -6696,7 +6739,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -6708,12 +6751,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -6723,11 +6766,11 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         border: Border.all(
-                                          color: const Color(0xFFDBE4F1),
+                                          color: Color(0xFFDBE4F1),
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
+                                        padding: EdgeInsets.all(12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -6743,7 +6786,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(4.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -6763,7 +6806,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                 ],
                                               ),
                                             ),
-                                            const Icon(
+                                            Icon(
                                               Icons.circle_outlined,
                                               color: Color(0xFFDBE4F1),
                                               size: 24.0,
@@ -6775,7 +6818,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                                       .primary,
                                               size: 24.0,
                                             ),
-                                          ].divide(const SizedBox(width: 8.0)),
+                                          ].divide(SizedBox(width: 8.0)),
                                         ),
                                       ),
                                     ),
@@ -6790,7 +6833,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -6804,21 +6847,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -6828,7 +6871,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 _model.currentStep = _model.currentStep + 1;
@@ -6838,9 +6881,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -6852,7 +6895,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -6861,7 +6904,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],
@@ -6876,14 +6919,14 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: 1.0,
@@ -6893,13 +6936,13 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                 animateFromLastPercent: true,
                                 progressColor:
                                     FlutterFlowTheme.of(context).primary,
-                                backgroundColor: const Color(0xFFE0E3E7),
-                                barRadius: const Radius.circular(12.0),
+                                backgroundColor: Color(0xFFE0E3E7),
+                                barRadius: Radius.circular(12.0),
                                 padding: EdgeInsets.zero,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 'Histórico de Saúde',
@@ -6916,7 +6959,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   28.0, 32.0, 28.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -6928,12 +6971,12 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
                                       controller: _model.q30ValueController ??=
@@ -6963,7 +7006,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -6981,7 +7024,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -6995,21 +7038,21 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 48.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFFB5C0D3),
+                                    color: Color(0xFFB5C0D3),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0xFFB5C0D3),
                                 width: 1.0,
                               ),
@@ -7019,7 +7062,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 await HistoricoMedcoTable().insert({
@@ -7053,9 +7096,9 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                               options: FFButtonOptions(
                                 width: 200.0,
                                 height: 48.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -7067,7 +7110,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -7076,7 +7119,7 @@ class _HistoricoSaudeFormWidgetState extends State<HistoricoSaudeFormWidget>
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 24.0)),
+                      ].divide(SizedBox(width: 24.0)),
                     ),
                   ),
                 ],

@@ -10,7 +10,7 @@ class BemViverScoreTable extends SupabaseTable<BemViverScoreRow> {
 }
 
 class BemViverScoreRow extends SupabaseDataRow {
-  BemViverScoreRow(super.data);
+  BemViverScoreRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => BemViverScoreTable();

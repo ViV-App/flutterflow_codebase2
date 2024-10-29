@@ -1,12 +1,16 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'complete_perfil_model.dart';
@@ -69,11 +73,11 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Material(
         color: Colors.transparent,
         elevation: 3.0,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -86,7 +90,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
           height: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(24.0),
@@ -94,20 +98,20 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
             ),
           ),
           child: Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: 100.0,
                       height: 4.0,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFDBE4F1),
+                        color: Color(0xFFDBE4F1),
                         borderRadius: BorderRadius.circular(32.0),
                       ),
                     ),
@@ -118,7 +122,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                     builder: (context) {
                       if (_model.currentStep == 1) {
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Form(
                             key: _model.formKey,
@@ -137,7 +141,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 24.0, 24.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -179,12 +183,12 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(width: 14.0)),
+                                            ].divide(SizedBox(width: 14.0)),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 24.0, 24.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -202,7 +206,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: const Color(0xFF13294B),
+                                                    color: Color(0xFF13294B),
                                                     fontSize: 24.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
@@ -212,7 +216,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 8.0, 24.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -231,7 +235,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFF8798B5),
+                                                            Color(0xFF8798B5),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         lineHeight: 1.5,
@@ -241,7 +245,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 42.0, 24.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -280,7 +284,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF8798B5),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -288,7 +292,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0x0E294B0D),
                                                           width: 2.0,
@@ -335,9 +339,9 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF7FAFE),
+                                                          Color(0xFFF7FAFE),
                                                       contentPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -355,7 +359,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                         .ipNomeTextControllerValidator
                                                         .asValidator(context),
                                                   ),
-                                                ].divide(const SizedBox(height: 6.0)),
+                                                ].divide(SizedBox(height: 6.0)),
                                               ),
                                               Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -393,7 +397,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF8798B5),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -401,7 +405,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0x0E294B0D),
                                                           width: 2.0,
@@ -448,9 +452,9 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF7FAFE),
+                                                          Color(0xFFF7FAFE),
                                                       contentPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -468,7 +472,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                         .iEmailTextControllerValidator
                                                         .asValidator(context),
                                                   ),
-                                                ].divide(const SizedBox(height: 6.0)),
+                                                ].divide(SizedBox(height: 6.0)),
                                               ),
                                               Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -496,7 +500,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.ipCPFTextController',
-                                                      const Duration(milliseconds: 0),
+                                                      Duration(milliseconds: 0),
                                                       () => safeSetState(() {}),
                                                     ),
                                                     autofocus: false,
@@ -511,7 +515,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF8798B5),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -519,7 +523,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0x0E294B0D),
                                                           width: 2.0,
@@ -566,9 +570,9 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF7FAFE),
+                                                          Color(0xFFF7FAFE),
                                                       contentPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -589,7 +593,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                       _model.ipCPFMask
                                                     ],
                                                   ),
-                                                ].divide(const SizedBox(height: 6.0)),
+                                                ].divide(SizedBox(height: 6.0)),
                                               ),
                                               Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -617,7 +621,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       '_model.ipPhoneTextController',
-                                                      const Duration(milliseconds: 0),
+                                                      Duration(milliseconds: 0),
                                                       () => safeSetState(() {}),
                                                     ),
                                                     autofocus: false,
@@ -632,7 +636,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF8798B5),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -640,7 +644,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide: BorderSide(
                                                           color:
                                                               Color(0x0E294B0D),
                                                           width: 2.0,
@@ -687,9 +691,9 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          const Color(0xFFF7FAFE),
+                                                          Color(0xFFF7FAFE),
                                                       contentPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -710,12 +714,12 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                       _model.ipPhoneMask
                                                     ],
                                                   ),
-                                                ].divide(const SizedBox(height: 6.0)),
+                                                ].divide(SizedBox(height: 6.0)),
                                               ),
-                                            ].divide(const SizedBox(height: 18.0)),
+                                            ].divide(SizedBox(height: 18.0)),
                                           ),
                                         ),
-                                      ].addToEnd(const SizedBox(height: 24.0)),
+                                      ].addToEnd(SizedBox(height: 24.0)),
                                     ),
                                   ),
                                 ),
@@ -725,9 +729,9 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                         );
                       } else if (_model.currentStep == 2) {
                         return Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 4.0, 0.0, 0.0),
                             child: SingleChildScrollView(
                               child: Column(
@@ -735,7 +739,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 24.0, 24.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -774,11 +778,11 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                             ),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(width: 14.0)),
+                                      ].divide(SizedBox(width: 14.0)),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 24.0, 18.0, 0.0),
                                     child: Text(
                                       'Complete seus dados pessoais',
@@ -786,7 +790,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0xFF13294B),
+                                            color: Color(0xFF13294B),
                                             fontSize: 24.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
@@ -794,7 +798,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 8.0, 24.0, 0.0),
                                     child: Text(
                                       'Agora, vou fazer mais algumas perguntas para entender como eu posso te guiar no seu tratamento! Vamos lá?',
@@ -802,7 +806,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0xFF8798B5),
+                                            color: Color(0xFF8798B5),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             lineHeight: 1.5,
@@ -810,7 +814,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 32.0, 24.0, 0.0),
                                     child: RichText(
                                       textScaler:
@@ -830,7 +834,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                   fontWeight: FontWeight.w800,
                                                 ),
                                           ),
-                                          const TextSpan(
+                                          TextSpan(
                                             text:
                                                 '(Selecione no máximo 3, a primeira será considerada Principal, e as demais Secundárias)',
                                             style: TextStyle(
@@ -848,7 +852,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 24.0, 0.0, 0.0),
                                     child: FutureBuilder<
                                         List<StaticQueixasSaudeRow>>(
@@ -887,14 +891,14 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                               listViewStaticQueixasSaudeRowList
                                                   .length,
                                           separatorBuilder: (_, __) =>
-                                              const SizedBox(height: 18.0),
+                                              SizedBox(height: 18.0),
                                           itemBuilder:
                                               (context, listViewIndex) {
                                             final listViewStaticQueixasSaudeRow =
                                                 listViewStaticQueixasSaudeRowList[
                                                     listViewIndex];
                                             return Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: InkWell(
@@ -942,12 +946,12 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                           ? FlutterFlowTheme.of(
                                                                   context)
                                                               .primary
-                                                          : const Color(0xFFDBE4F1),
+                                                          : Color(0xFFDBE4F1),
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(12.0),
+                                                        EdgeInsets.all(12.0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -969,7 +973,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             0.0,
@@ -1021,7 +1025,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                                 listViewStaticQueixasSaudeRow
                                                                     .nome) ==
                                                             false)
-                                                          const Icon(
+                                                          Icon(
                                                             Icons
                                                                 .circle_outlined,
                                                             color: Color(
@@ -1041,7 +1045,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                             size: 24.0,
                                                           ),
                                                       ].divide(
-                                                          const SizedBox(width: 8.0)),
+                                                          SizedBox(width: 8.0)),
                                                     ),
                                                   ),
                                                 ),
@@ -1052,7 +1056,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                       },
                                     ),
                                   ),
-                                ].addToEnd(const SizedBox(height: 24.0)),
+                                ].addToEnd(SizedBox(height: 24.0)),
                               ),
                             ),
                           ),
@@ -1060,14 +1064,14 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                       } else if (_model.currentStep == 3) {
                         return Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 24.0, 24.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -1107,11 +1111,11 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 14.0)),
+                                    ].divide(SizedBox(width: 14.0)),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 24.0, 18.0, 0.0),
                                   child: Text(
                                     'Complete seus dados pessoais',
@@ -1119,7 +1123,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF13294B),
+                                          color: Color(0xFF13294B),
                                           fontSize: 24.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
@@ -1127,7 +1131,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 8.0, 24.0, 0.0),
                                   child: Text(
                                     'Agora, vou fazer mais algumas perguntas para entender como eu posso te guiar no seu tratamento! Vamos lá?',
@@ -1135,7 +1139,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           lineHeight: 1.5,
@@ -1143,7 +1147,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 32.0, 24.0, 0.0),
                                   child: Text(
                                     'Das opções abaixo, escolha qual ou quais se aplicam a você.',
@@ -1158,7 +1162,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: FutureBuilder<
                                       List<StaticContraIndicacaoRow>>(
@@ -1196,14 +1200,14 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                             listViewStaticContraIndicacaoRowList
                                                 .length,
                                         separatorBuilder: (_, __) =>
-                                            const SizedBox(height: 18.0),
+                                            SizedBox(height: 18.0),
                                         itemBuilder: (context, listViewIndex) {
                                           final listViewStaticContraIndicacaoRow =
                                               listViewStaticContraIndicacaoRowList[
                                                   listViewIndex];
                                           return Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -1244,11 +1248,11 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primary
-                                                        : const Color(0xFFDBE4F1),
+                                                        : Color(0xFFDBE4F1),
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(12.0),
+                                                  padding: EdgeInsets.all(12.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1269,7 +1273,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -1309,7 +1313,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                               listViewStaticContraIndicacaoRow
                                                                   .nome) ==
                                                           false)
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.circle_outlined,
                                                           color:
                                                               Color(0xFFDBE4F1),
@@ -1328,7 +1332,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                                           size: 24.0,
                                                         ),
                                                     ].divide(
-                                                        const SizedBox(width: 8.0)),
+                                                        SizedBox(width: 8.0)),
                                                   ),
                                                 ),
                                               ),
@@ -1339,7 +1343,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                     },
                                   ),
                                 ),
-                              ].addToEnd(const SizedBox(height: 24.0)),
+                              ].addToEnd(SizedBox(height: 24.0)),
                             ),
                           ),
                         );
@@ -1358,17 +1362,20 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 18.0),
+                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 18.0),
                   child: FFButtonWidget(
                     onPressed: (((_model.currentStep == 1) &&
-                                ((_model.ipCPFTextController.text ==
+                                ((_model.ipCPFTextController.text == null ||
+                                        _model.ipCPFTextController.text ==
                                             '') ||
                                     (_model.ipPhoneTextController.text ==
+                                            null ||
+                                        _model.ipPhoneTextController.text ==
                                             ''))) ||
                             ((_model.currentStep == 2) &&
-                                (_model.queixas.isEmpty)) ||
+                                (_model.queixas.length == 0)) ||
                             ((_model.currentStep == 3) &&
-                                (_model.contra.isEmpty)))
+                                (_model.contra.length == 0)))
                         ? null
                         : () async {
                             if (_model.currentStep == 1) {
@@ -1424,14 +1431,14 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      title: const Text('Parabéns, perfil completo!'),
-                                      content: const Text(
+                                      title: Text('Parabéns, perfil completo!'),
+                                      content: Text(
                                           'Agora você pode usufruir de todas as funcionalidades da sua assistente ViV!'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -1449,9 +1456,9 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                       width: double.infinity,
                       height: 48.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
@@ -1461,7 +1468,7 @@ class _CompletePerfilWidgetState extends State<CompletePerfilWidget> {
                                 fontWeight: FontWeight.bold,
                               ),
                       elevation: 3.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

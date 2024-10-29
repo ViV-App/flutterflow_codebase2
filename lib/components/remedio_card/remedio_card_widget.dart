@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'remedio_card_model.dart';
 export 'remedio_card_model.dart';
 
@@ -45,12 +47,12 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: FutureBuilder<List<PrescricaoRow>>(
         future: PrescricaoTable().querySingleRow(
           queryFn: (q) => q.eq(
             'id',
-            widget.medicamentoFiltered?.prescricao,
+            widget!.medicamentoFiltered?.prescricao,
           ),
         ),
         builder: (context, snapshot) {
@@ -77,7 +79,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
           return Material(
             color: Colors.transparent,
             elevation: 2.0,
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(8.0),
                 bottomRight: Radius.circular(8.0),
@@ -86,7 +88,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
               ),
             ),
             child: ClipRRect(
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(8.0),
                 bottomRight: Radius.circular(8.0),
                 topLeft: Radius.circular(8.0),
@@ -95,7 +97,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
               child: Container(
                 width: double.infinity,
                 height: 72.0,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Color(0xFFF7FAFE),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(8.0),
@@ -111,20 +113,20 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                       height: 100.0,
                       decoration: BoxDecoration(
                         color: () {
-                          if (widget.medicamentoFiltered?.categoria ==
+                          if (widget!.medicamentoFiltered?.categoria ==
                               'Medicamento') {
-                            return const Color(0xFF8DADFE);
-                          } else if (widget.medicamentoFiltered?.categoria ==
+                            return Color(0xFF8DADFE);
+                          } else if (widget!.medicamentoFiltered?.categoria ==
                               'Produto derivado de Cannabis') {
-                            return const Color(0xFF0FA26D);
-                          } else if (widget.medicamentoFiltered?.categoria ==
+                            return Color(0xFF0FA26D);
+                          } else if (widget!.medicamentoFiltered?.categoria ==
                               'Suplemento') {
-                            return const Color(0xFFFFA438);
+                            return Color(0xFFFFA438);
                           } else {
-                            return const Color(0x00000000);
+                            return Color(0x00000000);
                           }
                         }(),
-                        borderRadius: const BorderRadius.only(
+                        borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(12.0),
                           bottomRight: Radius.circular(12.0),
                           topLeft: Radius.circular(12.0),
@@ -133,9 +135,9 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             18.0, 12.0, 12.0, 12.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -144,7 +146,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                if (widget.medicamentoFiltered?.categoria ==
+                                if (widget!.medicamentoFiltered?.categoria ==
                                     'Medicamento')
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -155,7 +157,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                if (widget.medicamentoFiltered?.categoria ==
+                                if (widget!.medicamentoFiltered?.categoria ==
                                     'Produto derivado de Cannabis')
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -166,7 +168,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                if (widget.medicamentoFiltered?.categoria ==
+                                if (widget!.medicamentoFiltered?.categoria ==
                                     'Suplemento')
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -184,7 +186,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                                   children: [
                                     Text(
                                       valueOrDefault<String>(
-                                        widget.medicamentoFiltered?.nome,
+                                        widget!.medicamentoFiltered?.nome,
                                         '-',
                                       ).maybeHandleOverflow(
                                         maxChars: 25,
@@ -194,27 +196,27 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0xFF434854),
+                                            color: Color(0xFF434854),
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w800,
                                           ),
                                     ),
                                     Text(
-                                      '${containerPrescricaoRow?.horarios.length.toString()}x ao dia',
+                                      '${containerPrescricaoRow?.horarios?.length?.toString()}x ao dia',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0xFF434854),
+                                            color: Color(0xFF434854),
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(height: 4.0)),
+                                  ].divide(SizedBox(height: 4.0)),
                                 ),
-                              ].divide(const SizedBox(width: 12.0)),
+                              ].divide(SizedBox(width: 12.0)),
                             ),
                             Container(
                               decoration: BoxDecoration(
@@ -222,7 +224,7 @@ class _RemedioCardWidgetState extends State<RemedioCardWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 8.0, 18.0, 8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,

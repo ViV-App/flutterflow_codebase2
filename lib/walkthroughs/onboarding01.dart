@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '/components/onboarding_texts/onboarding_texts_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 // Focus widget keys for this walkthrough
 final rowHm3zeowq = GlobalKey();
@@ -23,7 +25,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.bottom,
-            builder: (context, __) => const OnboardingTextsWidget(
+            builder: (context, __) => OnboardingTextsWidget(
               title: 'kapa',
               description:
                   'Este é o seu perfil, aqui você poderá acessar seus dados pessoais, informações de saúde e também gerenciar seu plano ViV.',
@@ -42,7 +44,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.bottom,
-            builder: (context, __) => const OnboardingTextsWidget(
+            builder: (context, __) => OnboardingTextsWidget(
               title: 'Seu menu de ações',
               description:
                   'Aqui você poderá interagir para visualizar sua agenda, remédios, conteúdos e até sua evolução de saúde e bem estar.',
@@ -61,7 +63,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.bottom,
-            builder: (context, __) => const OnboardingTextsWidget(
+            builder: (context, __) => OnboardingTextsWidget(
               title: 'Seu diário de bem estar',
               description:
                   'Responda diariamente o questionário de bem estar, isso nos ajuda a traçar seu perfil médico e também permite que você acompanhe sua evolução.',
@@ -80,7 +82,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => const OnboardingTextsWidget(
+            builder: (context, __) => OnboardingTextsWidget(
               title: 'Precisa de ajuda?',
               description:
                   'A ViV, sua assistente virtual está disponível 24 horas por dia, 7 dias por semana para te ajudar e tirar todas as suas dúvidas sobre sua saúde e seus tratamentos.',

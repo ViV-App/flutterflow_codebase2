@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'ajustar_dose_model.dart';
@@ -37,7 +38,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (widget.page == 'verDose') {
+      if (widget!.page == 'verDose') {
         await StatusPacientTable().update(
           data: {
             'processo': 'tratamentoBip',
@@ -70,7 +71,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
           );
           _model.reCreat = await AjusteDoseRequisicaoTable().insert({
             'paciente': FFAppState().paciente.id,
-            'bipVIgente': _model.bipV?.first.id,
+            'bipVIgente': _model.bipV?.first?.id,
             'requisicao_data': supaSerialize<DateTime>(getCurrentTimestamp),
             'queixasNaoRespondidas': functions.addItemToList(
                 _model.cUser!.first.queixas.toList(),
@@ -115,7 +116,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Stack(
               children: [
                 Column(
@@ -123,9 +124,9 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -139,7 +140,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                           ],
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(18.0),
+                          padding: EdgeInsets.all(18.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,7 +173,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                       fontWeight: FontWeight.w800,
                                     ),
                               ),
-                              const Icon(
+                              Icon(
                                 Icons.add,
                                 color: Color(0x015D67E2),
                                 size: 32.0,
@@ -182,14 +183,14 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                         ),
                       ),
                     ),
-                    if (widget.page == 'preencher')
+                    if (widget!.page == 'preencher')
                       Expanded(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 0.0, 32.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -216,28 +217,28 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                           lineHeight: 1.5,
                                         ),
                                   ),
-                                ].divide(const SizedBox(height: 8.0)),
+                                ].divide(SizedBox(height: 8.0)),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   32.0, 0.0, 32.0, 52.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   if (_model.reqAtual?.pam == false)
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          var shouldSetState = false;
+                                          var _shouldSetState = false;
                                           _model.qst1 =
                                               await QuestionarioTable()
                                                   .queryRows(
@@ -246,7 +247,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               'BIP Geral',
                                             ),
                                           );
-                                          shouldSetState = true;
+                                          _shouldSetState = true;
                                           _model.res1 =
                                               await RespostasQuestionarioTable()
                                                   .queryRows(
@@ -257,10 +258,10 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                 )
                                                 .eq(
                                                   'questionario',
-                                                  _model.qst1?.first.id,
+                                                  _model.qst1?.first?.id,
                                                 ),
                                           );
-                                          shouldSetState = true;
+                                          _shouldSetState = true;
                                           if ((_model.res1 != null &&
                                                   (_model.res1)!.isNotEmpty) ==
                                               true) {
@@ -278,7 +279,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               }.withoutNulls,
                                               extra: <String, dynamic>{
                                                 kTransitionInfoKey:
-                                                    const TransitionInfo(
+                                                    TransitionInfo(
                                                   hasTransition: true,
                                                   transitionType:
                                                       PageTransitionType.fade,
@@ -288,9 +289,8 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               },
                                             );
 
-                                            if (shouldSetState) {
+                                            if (_shouldSetState)
                                               safeSetState(() {});
-                                            }
                                             return;
                                           } else {
                                             _model.apiResulte7s =
@@ -300,10 +300,10 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               paciente:
                                                   FFAppState().paciente.id,
                                               questionario:
-                                                  _model.qst1?.first.id,
+                                                  _model.qst1?.first?.id,
                                             );
 
-                                            shouldSetState = true;
+                                            _shouldSetState = true;
 
                                             context.pushNamed(
                                               'questionarioBip',
@@ -319,7 +319,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               }.withoutNulls,
                                               extra: <String, dynamic>{
                                                 kTransitionInfoKey:
-                                                    const TransitionInfo(
+                                                    TransitionInfo(
                                                   hasTransition: true,
                                                   transitionType:
                                                       PageTransitionType.fade,
@@ -329,24 +329,22 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               },
                                             );
 
-                                            if (shouldSetState) {
+                                            if (_shouldSetState)
                                               safeSetState(() {});
-                                            }
                                             return;
                                           }
 
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                         },
                                         text: 'Preencher Formulário Geral',
                                         options: FFButtonOptions(
                                           height: 48.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   32.0, 0.0, 32.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -361,7 +359,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -372,25 +370,25 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                     ),
                                   if (_model.reqAtual?.pam == true)
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           print('Button pressed ...');
                                         },
                                         text: 'Formulário Geral',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.check_circle,
                                           size: 24.0,
                                         ),
                                         options: FFButtonOptions(
                                           height: 48.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   32.0, 0.0, 32.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: const Color(0x5E6E78FF),
+                                          color: Color(0x5E6E78FF),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -402,7 +400,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                           elevation: 0.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -418,7 +416,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               .isNotEmpty) ==
                                       true)
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed:
                                             (_model.reqAtual?.pam == false)
@@ -441,7 +439,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                               padding: MediaQuery
                                                                   .viewInsetsOf(
                                                                       context),
-                                                              child: SizedBox(
+                                                              child: Container(
                                                                 height: MediaQuery.sizeOf(
                                                                             context)
                                                                         .height *
@@ -465,10 +463,10 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                         options: FFButtonOptions(
                                           height: 48.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   32.0, 0.0, 32.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -483,7 +481,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -503,7 +501,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               .isNotEmpty) ==
                                       false)
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           context.pushNamed(
@@ -516,7 +514,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                             }.withoutNulls,
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
-                                                  const TransitionInfo(
+                                                  TransitionInfo(
                                                 hasTransition: true,
                                                 transitionType:
                                                     PageTransitionType.fade,
@@ -540,19 +538,19 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                           safeSetState(() {});
                                         },
                                         text: 'Formulário Específico',
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.check_circle,
                                           size: 24.0,
                                         ),
                                         options: FFButtonOptions(
                                           height: 48.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   32.0, 0.0, 32.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: const Color(0x5E6E78FF),
+                                          color: Color(0x5E6E78FF),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -564,7 +562,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                           elevation: 0.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -573,13 +571,13 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                         ),
                                       ),
                                     ),
-                                ].divide(const SizedBox(height: 18.0)),
+                                ].divide(SizedBox(height: 18.0)),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 42.0)),
+                          ].divide(SizedBox(height: 42.0)),
                         ),
                       ),
-                    if (widget.page == 'preenchido')
+                    if (widget!.page == 'preenchido')
                       Expanded(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -599,13 +597,13 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                   ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   context.goNamed(
                                     'homePage',
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
+                                      kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 0),
@@ -616,9 +614,9 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                 text: 'Voltar para o inicio',
                                 options: FFButtonOptions(
                                   height: 48.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       32.0, 0.0, 32.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -631,7 +629,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -639,10 +637,10 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                 ),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 42.0)),
+                          ].divide(SizedBox(height: 42.0)),
                         ),
                       ),
-                    if (widget.page == 'verDose')
+                    if (widget!.page == 'verDose')
                       Expanded(
                         child: FutureBuilder<List<AjusteDeDoseRow>>(
                           future: AjusteDeDoseTable().querySingleRow(
@@ -681,7 +679,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       32.0, 0.0, 32.0, 24.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -719,18 +717,18 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Mulish',
-                                                color: const Color(0xFF8798B5),
+                                                color: Color(0xFF8798B5),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(height: 8.0)),
+                                    ].divide(SizedBox(height: 8.0)),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 24.0),
                                   child: Container(
                                     width: double.infinity,
@@ -741,7 +739,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           18.0, 0.0, 18.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -755,7 +753,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                 width: 32.0,
                                                 height: 32.0,
                                                 decoration: BoxDecoration(
-                                                  color: const Color(0x3D6D98F4),
+                                                  color: Color(0x3D6D98F4),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           200.0),
@@ -781,7 +779,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -815,7 +813,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF8798B5),
                                                             fontSize: 12.0,
                                                             letterSpacing: 0.0,
@@ -836,7 +834,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                   columnAjusteDeDoseRow!
                                                       .propostaT!);
                                             },
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.arrow_forward_ios_sharp,
                                               color: Color(0xFF8798B5),
                                               size: 24.0,
@@ -848,7 +846,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 72.0),
                                   child: Container(
                                     width: double.infinity,
@@ -859,7 +857,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                       borderRadius: BorderRadius.circular(18.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           18.0, 0.0, 18.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -873,7 +871,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                 width: 32.0,
                                                 height: 32.0,
                                                 decoration: BoxDecoration(
-                                                  color: const Color(0x3D6D98F4),
+                                                  color: Color(0x3D6D98F4),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           200.0),
@@ -899,7 +897,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -933,7 +931,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF8798B5),
                                                             fontSize: 12.0,
                                                             letterSpacing: 0.0,
@@ -954,7 +952,7 @@ class _AjustarDoseWidgetState extends State<AjustarDoseWidget> {
                                                   columnAjusteDeDoseRow!
                                                       .planoT!);
                                             },
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.arrow_forward_ios_sharp,
                                               color: Color(0xFF8798B5),
                                               size: 24.0,

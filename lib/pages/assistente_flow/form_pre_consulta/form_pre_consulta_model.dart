@@ -1,9 +1,18 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/assistente_flow/dados_cadastrais_form/dados_cadastrais_form_widget.dart';
 import '/pages/assistente_flow/historico_saude_form/historico_saude_form_widget.dart';
+import 'dart:math';
 import 'form_pre_consulta_widget.dart' show FormPreConsultaWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
   ///  Local state fields for this page.
@@ -64,7 +73,7 @@ class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
                 'questionario',
                 queryParameters: {
                   'questionario': serializeParam(
-                    funcnCopy.first,
+                    funcnCopy?.first,
                     ParamType.SupabaseRow,
                   ),
                 }.withoutNulls,
@@ -82,7 +91,7 @@ class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
               'questionario',
               queryParameters: {
                 'questionario': serializeParam(
-                  lifestCopy.first,
+                  lifestCopy?.first,
                   ParamType.SupabaseRow,
                 ),
               }.withoutNulls,
@@ -100,7 +109,7 @@ class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
             'questionario',
             queryParameters: {
               'questionario': serializeParam(
-                famscCopy.first,
+                famscCopy?.first,
                 ParamType.SupabaseRow,
               ),
             }.withoutNulls,
@@ -118,7 +127,7 @@ class FormPreConsultaModel extends FlutterFlowModel<FormPreConsultaWidget> {
           'questionario',
           queryParameters: {
             'questionario': serializeParam(
-              histsCopy.first,
+              histsCopy?.first,
               ParamType.SupabaseRow,
             ),
           }.withoutNulls,

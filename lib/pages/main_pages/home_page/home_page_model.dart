@@ -2,13 +2,30 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/assistant_hub/assistant_hub_widget.dart';
+import '/components/av_quinzenal/av_quinzenal_widget.dart';
+import '/components/complete_perfil/complete_perfil_widget.dart';
 import '/components/complete_profile_alert/complete_profile_alert_widget.dart';
 import '/components/home_page_status_component/home_page_status_component_widget.dart';
+import '/components/onboarding_home_completed/onboarding_home_completed_widget.dart';
+import '/components/onboarding_home_skipped/onboarding_home_skipped_widget.dart';
+import '/components/pdf_viewer/pdf_viewer_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/well_being_diary/new_well_being/new_well_being_widget.dart';
+import '/walkthroughs/onboarding01.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ///  Local state fields for this page.
@@ -85,7 +102,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
       uid: currentUserUid,
     );
 
-    if ((apiResulto2u.succeeded ?? true)) {
+    if ((apiResulto2u?.succeeded ?? true)) {
       userLogged = await PacienteTable().queryRows(
         queryFn: (q) => q.eq(
           'uuid',
@@ -93,10 +110,10 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
         ),
       );
       FFAppState().paciente = PacienteStruct(
-        nome: userLogged.first.nome,
-        foto: userLogged.first.profilePic,
-        id: userLogged.first.id,
-        uuid: userLogged.first.uuid,
+        nome: userLogged?.first?.nome,
+        foto: userLogged?.first?.profilePic,
+        id: userLogged?.first?.id,
+        uuid: userLogged?.first?.uuid,
       );
       FFAppState().update(() {});
     }

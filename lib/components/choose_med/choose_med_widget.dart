@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'choose_med_model.dart';
 export 'choose_med_model.dart';
@@ -40,15 +42,19 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.remedioAtual = await StaticMedicamentosTable().queryRows(
-        queryFn: (q) => q.eq(
-          'id',
-          FFAppState().prescricao.remedio,
-        ),
-      );
-      _model.remedio = _model.remedioAtual?.first.id;
-      safeSetState(() {});
-        });
+      if (FFAppState().prescricao.remedio != null) {
+        _model.remedioAtual = await StaticMedicamentosTable().queryRows(
+          queryFn: (q) => q.eq(
+            'id',
+            FFAppState().prescricao.remedio,
+          ),
+        );
+        _model.remedio = _model.remedioAtual?.first?.id;
+        safeSetState(() {});
+      } else {
+        return;
+      }
+    });
 
     _model.textController ??= TextEditingController();
 
@@ -67,11 +73,11 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Material(
         color: Colors.transparent,
         elevation: 3.0,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -84,7 +90,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
           height: 620.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(24.0),
@@ -95,21 +101,21 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Container(
                     width: 100.0,
                     height: 4.0,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFDBE4F1),
+                      color: Color(0xFFDBE4F1),
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(23.0, 24.0, 23.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(23.0, 24.0, 23.0, 0.0),
                 child: FutureBuilder<List<StaticMedicamentosRow>>(
                   future: StaticMedicamentosTable().queryRows(
                     queryFn: (q) => q,
@@ -133,7 +139,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                         textFieldStaticMedicamentosRowList = snapshot.data!;
 
                     return Autocomplete<String>(
-                      initialValue: const TextEditingValue(),
+                      initialValue: TextEditingValue(),
                       optionsBuilder: (textEditingValue) {
                         if (textEditingValue.text == '') {
                           return const Iterable<String>.empty();
@@ -159,7 +165,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                                     fontFamily: 'Mulish',
                                     letterSpacing: 0.0,
                                   ),
-                          textHighlightStyle: const TextStyle(),
+                          textHighlightStyle: TextStyle(),
                           elevation: 4.0,
                           optionBackgroundColor:
                               FlutterFlowTheme.of(context).primaryBackground,
@@ -189,7 +195,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                           onEditingComplete: onEditingComplete,
                           onChanged: (_) => EasyDebounce.debounce(
                             '_model.textController',
-                            const Duration(milliseconds: 0),
+                            Duration(milliseconds: 0),
                             () => safeSetState(() {}),
                           ),
                           onFieldSubmitted: (_) async {
@@ -200,12 +206,12 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                                 _model.textFieldSelectedOption,
                               ),
                             );
-                            _model.remedio = _model.med?.first.id;
+                            _model.remedio = _model.med?.first?.id;
                             safeSetState(() {});
                             FFAppState().updatePrescricaoStruct(
                               (e) => e
-                                ..remedio = _model.med?.first.id
-                                ..remedNome = _model.med?.first.nome,
+                                ..remedio = _model.med?.first?.id
+                                ..remedNome = _model.med?.first?.nome,
                             );
                             safeSetState(() {});
 
@@ -220,11 +226,11 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xA457636C),
+                                  color: Color(0xA457636C),
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x0E294B0D),
                                 width: 2.0,
                               ),
@@ -252,10 +258,10 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             filled: true,
-                            fillColor: const Color(0xFFF7FAFE),
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                            fillColor: Color(0xFFF7FAFE),
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 18.0, 0.0, 0.0, 0.0),
-                            suffixIcon: const Icon(
+                            suffixIcon: Icon(
                               Icons.search_rounded,
                               color: Color(0x7057636C),
                             ),
@@ -278,7 +284,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                   future: StaticMedicamentosTable().queryRows(
                     queryFn: (q) => q.eq(
                       'categoria',
-                      widget.categoria,
+                      widget!.categoria,
                     ),
                   ),
                   builder: (context, snapshot) {
@@ -300,7 +306,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                         listViewStaticMedicamentosRowList = snapshot.data!;
 
                     return ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(
+                      padding: EdgeInsets.fromLTRB(
                         0,
                         24.0,
                         0,
@@ -308,12 +314,12 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                       ),
                       scrollDirection: Axis.vertical,
                       itemCount: listViewStaticMedicamentosRowList.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 18.0),
+                      separatorBuilder: (_, __) => SizedBox(height: 18.0),
                       itemBuilder: (context, listViewIndex) {
                         final listViewStaticMedicamentosRow =
                             listViewStaticMedicamentosRowList[listViewIndex];
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -346,7 +352,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                                 decoration: BoxDecoration(
                                   color: listViewStaticMedicamentosRow.id ==
                                           _model.remedio
-                                      ? const Color(0xFFEFF4F9)
+                                      ? Color(0xFFEFF4F9)
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
@@ -355,7 +361,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
@@ -370,7 +376,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                                                   listViewStaticMedicamentosRow
                                                               .id ==
                                                           _model.remedio
-                                                      ? const Color(0xFF6E78FF)
+                                                      ? Color(0xFF6E78FF)
                                                       : FlutterFlowTheme.of(
                                                               context)
                                                           .primaryText,
@@ -392,7 +398,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     Navigator.pop(context);
@@ -405,9 +411,9 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                     width: double.infinity,
                     height: 48.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Mulish',
@@ -416,7 +422,7 @@ class _ChooseMedWidgetState extends State<ChooseMedWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                     elevation: 3.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

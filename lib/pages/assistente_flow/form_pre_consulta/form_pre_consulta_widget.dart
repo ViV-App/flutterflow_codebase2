@@ -6,9 +6,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/assistente_flow/dados_cadastrais_form/dados_cadastrais_form_widget.dart';
 import '/pages/assistente_flow/historico_saude_form/historico_saude_form_widget.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'form_pre_consulta_model.dart';
 export 'form_pre_consulta_model.dart';
 
@@ -16,7 +19,7 @@ class FormPreConsultaWidget extends StatefulWidget {
   const FormPreConsultaWidget({
     super.key,
     bool? goToOnOpen,
-  }) : goToOnOpen = goToOnOpen ?? false;
+  }) : this.goToOnOpen = goToOnOpen ?? false;
 
   final bool goToOnOpen;
 
@@ -39,7 +42,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (widget.goToOnOpen == true) {
+      if (widget!.goToOnOpen == true) {
         _model.cUSER = await PacienteTable().queryRows(
           queryFn: (q) => q.eq(
             'uuid',
@@ -61,8 +64,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 100.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -74,8 +77,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -98,15 +101,15 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-24.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-24.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -117,8 +120,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 500.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -130,8 +133,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -155,15 +158,15 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 400.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-24.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-24.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 400.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -174,8 +177,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 900.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -186,8 +189,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeInOut,
             delay: 800.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -210,15 +213,15 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 800.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-24.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-24.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 800.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -229,8 +232,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 1300.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -241,8 +244,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeInOut,
             delay: 1200.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -253,8 +256,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeInOut,
             delay: 1400.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -265,15 +268,15 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 1000.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-24.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-24.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 1000.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -284,8 +287,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 1300.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -296,8 +299,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeInOut,
             delay: 1200.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -308,8 +311,8 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeInOut,
             delay: 1400.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -320,15 +323,15 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
             curve: Curves.easeOut,
             delay: 1000.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(-24.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-24.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 1000.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -388,14 +391,14 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -409,7 +412,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                           ],
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(18.0),
+                          padding: EdgeInsets.all(18.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -442,7 +445,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                       fontWeight: FontWeight.w800,
                                     ),
                               ),
-                              const Icon(
+                              Icon(
                                 Icons.add,
                                 color: Color(0x015D67E2),
                                 size: 32.0,
@@ -457,7 +460,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                         child: Container(
                           width: double.infinity,
                           height: double.infinity,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -478,7 +481,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         28.0, 62.0, 0.0, 0.0),
                                                 child: Text(
@@ -500,7 +503,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         28.0, 18.0, 28.0, 0.0),
                                                 child: Text(
@@ -511,13 +514,13 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFF8798B5),
+                                                            Color(0xFF8798B5),
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         32.0, 32.0, 32.0, 0.0),
                                                 child: Column(
@@ -626,7 +629,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                               animationsMap[
                                                                   'columnOnPageLoadAnimation2']!),
                                                         ),
-                                                      ].divide(const SizedBox(
+                                                      ].divide(SizedBox(
                                                           width: 18.0)),
                                                     ),
                                                     Row(
@@ -731,7 +734,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                               animationsMap[
                                                                   'columnOnPageLoadAnimation4']!),
                                                         ),
-                                                      ].divide(const SizedBox(
+                                                      ].divide(SizedBox(
                                                           width: 18.0)),
                                                     ),
                                                     Row(
@@ -836,7 +839,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                               animationsMap[
                                                                   'columnOnPageLoadAnimation6']!),
                                                         ),
-                                                      ].divide(const SizedBox(
+                                                      ].divide(SizedBox(
                                                           width: 18.0)),
                                                     ),
                                                     Row(
@@ -941,7 +944,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                               animationsMap[
                                                                   'columnOnPageLoadAnimation8']!),
                                                         ),
-                                                      ].divide(const SizedBox(
+                                                      ].divide(SizedBox(
                                                           width: 18.0)),
                                                     ),
                                                     Row(
@@ -1046,22 +1049,22 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                               animationsMap[
                                                                   'columnOnPageLoadAnimation10']!),
                                                         ),
-                                                      ].divide(const SizedBox(
+                                                      ].divide(SizedBox(
                                                           width: 18.0)),
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                            ].addToEnd(const SizedBox(height: 32.0)),
+                                            ].addToEnd(SizedBox(height: 32.0)),
                                           ),
                                         ),
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 32.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -1076,10 +1079,10 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                             options: FFButtonOptions(
                                               width: 200.0,
                                               height: 48.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1095,7 +1098,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                                             FontWeight.bold,
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -1113,7 +1116,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                                   child: wrapWithModel(
                                     model: _model.dadosCadastraisFormModel1,
                                     updateCallback: () => safeSetState(() {}),
-                                    child: const DadosCadastraisFormWidget(),
+                                    child: DadosCadastraisFormWidget(),
                                   ),
                                 ),
                             ],
@@ -1125,7 +1128,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                         child: wrapWithModel(
                           model: _model.dadosCadastraisFormModel2,
                           updateCallback: () => safeSetState(() {}),
-                          child: const DadosCadastraisFormWidget(),
+                          child: DadosCadastraisFormWidget(),
                         ),
                       ),
                     if (_model.currentForm == 2)
@@ -1133,7 +1136,7 @@ class _FormPreConsultaWidgetState extends State<FormPreConsultaWidget>
                         child: wrapWithModel(
                           model: _model.historicoSaudeFormModel,
                           updateCallback: () => safeSetState(() {}),
-                          child: const HistoricoSaudeFormWidget(),
+                          child: HistoricoSaudeFormWidget(),
                         ),
                       ),
                   ],

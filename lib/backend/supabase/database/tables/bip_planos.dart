@@ -9,7 +9,7 @@ class BipPlanosTable extends SupabaseTable<BipPlanosRow> {
 }
 
 class BipPlanosRow extends SupabaseDataRow {
-  BipPlanosRow(super.data);
+  BipPlanosRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => BipPlanosTable();

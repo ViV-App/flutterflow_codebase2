@@ -2,8 +2,11 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'assistant_menu_model.dart';
 export 'assistant_menu_model.dart';
@@ -40,15 +43,15 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 24.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 24.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 200.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -59,15 +62,15 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 24.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 24.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 200.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -78,15 +81,15 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 24.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 24.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 200.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -97,15 +100,15 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 24.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 24.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 200.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -116,15 +119,15 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 24.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 24.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 200.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -135,15 +138,15 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 24.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 24.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 200.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -154,15 +157,15 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 24.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 24.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 200.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -173,15 +176,15 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             curve: Curves.linear,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 24.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 24.0),
+            end: Offset(0.0, 0.0),
           ),
           BlurEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 200.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(2.0, 2.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -202,7 +205,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: FutureBuilder<List<StatusPacientRow>>(
         future: StatusPacientTable().querySingleRow(
           queryFn: (q) => q.eq(
@@ -235,7 +238,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 24.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 24.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -259,7 +262,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                               ),
                             }.withoutNulls,
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),
@@ -270,19 +273,19 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         child: Container(
                           height: 44.0,
                           decoration: BoxDecoration(
-                            color: const Color(0x0057636C),
-                            borderRadius: const BorderRadius.only(
+                            color: Color(0x0057636C),
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(32.0),
                               bottomRight: Radius.circular(32.0),
                               topLeft: Radius.circular(32.0),
                               topRight: Radius.circular(32.0),
                             ),
                             border: Border.all(
-                              color: const Color(0xFFB5C0D3),
+                              color: Color(0xFFB5C0D3),
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 42.0, 8.0, 42.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -294,7 +297,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFFB5C0D3),
+                                        color: Color(0xFFB5C0D3),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -337,7 +340,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                 ),
                               }.withoutNulls,
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -351,7 +354,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                             context.pushNamed(
                               'planos',
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -365,19 +368,19 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         child: Container(
                           height: 44.0,
                           decoration: BoxDecoration(
-                            color: const Color(0x0057636C),
-                            borderRadius: const BorderRadius.only(
+                            color: Color(0x0057636C),
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(32.0),
                               bottomRight: Radius.circular(32.0),
                               topLeft: Radius.circular(32.0),
                               topRight: Radius.circular(32.0),
                             ),
                             border: Border.all(
-                              color: const Color(0xFFB5C0D3),
+                              color: Color(0xFFB5C0D3),
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 42.0, 8.0, 42.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -389,7 +392,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFFB5C0D3),
+                                        color: Color(0xFFB5C0D3),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -429,7 +432,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                 ),
                               }.withoutNulls,
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -448,7 +451,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                 ),
                               }.withoutNulls,
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -462,19 +465,19 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         child: Container(
                           height: 44.0,
                           decoration: BoxDecoration(
-                            color: const Color(0x0057636C),
-                            borderRadius: const BorderRadius.only(
+                            color: Color(0x0057636C),
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(32.0),
                               bottomRight: Radius.circular(32.0),
                               topLeft: Radius.circular(32.0),
                               topRight: Radius.circular(32.0),
                             ),
                             border: Border.all(
-                              color: const Color(0xFFB5C0D3),
+                              color: Color(0xFFB5C0D3),
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 42.0, 8.0, 42.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -486,7 +489,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFFB5C0D3),
+                                        color: Color(0xFFB5C0D3),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -518,7 +521,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                           context.pushNamed(
                             'planoTerapeutico',
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),
@@ -529,19 +532,19 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         child: Container(
                           height: 44.0,
                           decoration: BoxDecoration(
-                            color: const Color(0x0057636C),
-                            borderRadius: const BorderRadius.only(
+                            color: Color(0x0057636C),
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(32.0),
                               bottomRight: Radius.circular(32.0),
                               topLeft: Radius.circular(32.0),
                               topRight: Radius.circular(32.0),
                             ),
                             border: Border.all(
-                              color: const Color(0xFFB5C0D3),
+                              color: Color(0xFFB5C0D3),
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 42.0, 8.0, 42.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -553,7 +556,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFFB5C0D3),
+                                        color: Color(0xFFB5C0D3),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -575,7 +578,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                           context.pushNamed(
                             'formPreConsulta',
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),
@@ -588,19 +591,19 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         child: Container(
                           height: 44.0,
                           decoration: BoxDecoration(
-                            color: const Color(0x0057636C),
-                            borderRadius: const BorderRadius.only(
+                            color: Color(0x0057636C),
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(32.0),
                               bottomRight: Radius.circular(32.0),
                               topLeft: Radius.circular(32.0),
                               topRight: Radius.circular(32.0),
                             ),
                             border: Border.all(
-                              color: const Color(0xFFB5C0D3),
+                              color: Color(0xFFB5C0D3),
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 42.0, 8.0, 42.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -612,7 +615,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFFB5C0D3),
+                                        color: Color(0xFFB5C0D3),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -641,7 +644,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                           context.pushNamed(
                             'evolucao',
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),
@@ -654,19 +657,19 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         child: Container(
                           height: 44.0,
                           decoration: BoxDecoration(
-                            color: const Color(0x0057636C),
-                            borderRadius: const BorderRadius.only(
+                            color: Color(0x0057636C),
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(32.0),
                               bottomRight: Radius.circular(32.0),
                               topLeft: Radius.circular(32.0),
                               topRight: Radius.circular(32.0),
                             ),
                             border: Border.all(
-                              color: const Color(0xFFB5C0D3),
+                              color: Color(0xFFB5C0D3),
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 42.0, 8.0, 42.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -678,7 +681,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFFB5C0D3),
+                                        color: Color(0xFFB5C0D3),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -707,7 +710,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                           context.pushNamed(
                             'evolucao',
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),
@@ -720,19 +723,19 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         child: Container(
                           height: 44.0,
                           decoration: BoxDecoration(
-                            color: const Color(0x0057636C),
-                            borderRadius: const BorderRadius.only(
+                            color: Color(0x0057636C),
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(32.0),
                               bottomRight: Radius.circular(32.0),
                               topLeft: Radius.circular(32.0),
                               topRight: Radius.circular(32.0),
                             ),
                             border: Border.all(
-                              color: const Color(0xFFB5C0D3),
+                              color: Color(0xFFB5C0D3),
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 42.0, 8.0, 42.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -744,7 +747,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFFB5C0D3),
+                                        color: Color(0xFFB5C0D3),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -770,7 +773,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                           context.pushNamed(
                             'chatViv',
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.fade,
                                 duration: Duration(milliseconds: 0),
@@ -783,19 +786,19 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         child: Container(
                           height: 44.0,
                           decoration: BoxDecoration(
-                            color: const Color(0x0057636C),
-                            borderRadius: const BorderRadius.only(
+                            color: Color(0x0057636C),
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(32.0),
                               bottomRight: Radius.circular(32.0),
                               topLeft: Radius.circular(32.0),
                               topRight: Radius.circular(32.0),
                             ),
                             border: Border.all(
-                              color: const Color(0xFFB5C0D3),
+                              color: Color(0xFFB5C0D3),
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 42.0, 8.0, 42.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -807,7 +810,7 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFFB5C0D3),
+                                        color: Color(0xFFB5C0D3),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -817,13 +820,13 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         ),
                       ).animateOnPageLoad(
                           animationsMap['containerOnPageLoadAnimation8']!),
-                  ].divide(const SizedBox(height: 12.0)),
+                  ].divide(SizedBox(height: 12.0)),
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -838,10 +841,10 @@ class _AssistantMenuWidgetState extends State<AssistantMenuWidget>
                         width: 50.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFB5C0D3),
+                          color: Color(0xFFB5C0D3),
                           borderRadius: BorderRadius.circular(100.0),
                         ),
-                        child: const Align(
+                        child: Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,

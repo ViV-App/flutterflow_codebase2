@@ -10,7 +10,7 @@ class MeusMedicamentosTable extends SupabaseTable<MeusMedicamentosRow> {
 }
 
 class MeusMedicamentosRow extends SupabaseDataRow {
-  MeusMedicamentosRow(super.data);
+  MeusMedicamentosRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => MeusMedicamentosTable();

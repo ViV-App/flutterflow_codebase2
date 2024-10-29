@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/questionario/pergunta_widget/pergunta_widget_widget.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'cannabis_pra_mim_model.dart';
 export 'cannabis_pra_mim_model.dart';
 
@@ -52,14 +54,14 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
@@ -73,7 +75,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                       ],
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(18.0),
+                      padding: EdgeInsets.all(18.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,7 +96,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                           ),
                           Text(
                             valueOrDefault<String>(
-                              widget.fluxo?.nome,
+                              widget!.fluxo?.nome,
                               'd',
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -107,7 +109,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                   fontWeight: FontWeight.w800,
                                 ),
                           ),
-                          const Icon(
+                          Icon(
                             Icons.add,
                             color: Color(0x015D67E2),
                             size: 32.0,
@@ -119,7 +121,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                 ),
                 Expanded(
                   child: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -127,9 +129,9 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                         if (_model.currentStep == 0)
                           Expanded(
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     32.0, 0.0, 32.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -157,10 +159,10 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                       options: FFButtonOptions(
                                         width: double.infinity,
                                         height: 48.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -173,7 +175,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                               fontWeight: FontWeight.bold,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -181,7 +183,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                             BorderRadius.circular(60.0),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 32.0)),
+                                  ].divide(SizedBox(height: 32.0)),
                                 ),
                               ),
                             ),
@@ -215,7 +217,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                   pageViewQuestionarioPerguntasRowList =
                                   snapshot.data!;
 
-                              return SizedBox(
+                              return Container(
                                 width: double.infinity,
                                 height: double.infinity,
                                 child: PageView.builder(
@@ -238,9 +240,9 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                         pageViewQuestionarioPerguntasRowList[
                                             pageViewIndex];
                                     return Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             32.0, 24.0, 32.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -306,7 +308,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                               ?.animateToPage(
                                                             _model
                                                                 .prevList.last,
-                                                            duration: const Duration(
+                                                            duration: Duration(
                                                                 milliseconds:
                                                                     500),
                                                             curve: Curves.ease,
@@ -341,14 +343,14 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                           width: 200.0,
                                                           height: 48.0,
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       24.0,
                                                                       0.0,
                                                                       24.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -411,7 +413,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                                           _model
                                                                               .nextQuestion!,
                                                                           duration:
-                                                                              const Duration(milliseconds: 500),
+                                                                              Duration(milliseconds: 500),
                                                                           curve:
                                                                               Curves.ease,
                                                                         );
@@ -430,14 +432,14 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                           width: 200.0,
                                                           height: 48.0,
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       24.0,
                                                                       0.0,
                                                                       24.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -463,7 +465,7 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,
@@ -482,11 +484,11 @@ class _CannabisPraMimWidgetState extends State<CannabisPraMimWidget> {
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      const SizedBox(width: 18.0)),
+                                                      SizedBox(width: 18.0)),
                                                 ),
                                               ],
                                             ),
-                                          ].addToEnd(const SizedBox(height: 24.0)),
+                                          ].addToEnd(SizedBox(height: 24.0)),
                                         ),
                                       ),
                                     );

@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'resposta_text_model.dart';
 export 'resposta_text_model.dart';
 
@@ -52,13 +54,13 @@ class _RespostaTextWidgetState extends State<RespostaTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: TextFormField(
         controller: _model.textController,
         focusNode: _model.textFieldFocusNode,
         onChanged: (_) => EasyDebounce.debounce(
           '_model.textController',
-          const Duration(milliseconds: 100),
+          Duration(milliseconds: 100),
           () async {
             await widget.callback?.call(
               _model.textController.text,
@@ -72,11 +74,11 @@ class _RespostaTextWidgetState extends State<RespostaTextWidget> {
           hintText: 'Escreva..',
           hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
                 fontFamily: 'Mulish',
-                color: const Color(0xFF8798B5),
+                color: Color(0xFF8798B5),
                 letterSpacing: 0.0,
               ),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
+            borderSide: BorderSide(
               color: Color(0x0E294B0D),
               width: 3.0,
             ),
@@ -105,7 +107,7 @@ class _RespostaTextWidgetState extends State<RespostaTextWidget> {
           ),
           filled: true,
           fillColor: Colors.white,
-          contentPadding: const EdgeInsetsDirectional.fromSTEB(18.0, 32.0, 18.0, 0.0),
+          contentPadding: EdgeInsetsDirectional.fromSTEB(18.0, 32.0, 18.0, 0.0),
         ),
         style: FlutterFlowTheme.of(context).bodyMedium.override(
               fontFamily: 'Mulish',

@@ -9,7 +9,7 @@ class AjusteDeDoseTable extends SupabaseTable<AjusteDeDoseRow> {
 }
 
 class AjusteDeDoseRow extends SupabaseDataRow {
-  AjusteDeDoseRow(super.data);
+  AjusteDeDoseRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AjusteDeDoseTable();

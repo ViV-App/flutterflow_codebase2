@@ -10,7 +10,9 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'questionario_ask_model.dart';
 export 'questionario_ask_model.dart';
@@ -66,14 +68,14 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
       child: FutureBuilder<List<RespostasQuestionarioRow>>(
         future: (_model.requestCompleter ??=
                 Completer<List<RespostasQuestionarioRow>>()
                   ..complete(RespostasQuestionarioTable().querySingleRow(
                     queryFn: (q) => q.eq(
                       'id',
-                      widget.resposta?.id,
+                      widget!.resposta?.id,
                     ),
                   )))
             .future,
@@ -107,12 +109,12 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(28.0, 32.0, 28.0, 0.0),
                   child: FutureBuilder<List<QuestionarioPerguntasRow>>(
                     future: QuestionarioPerguntasTable().querySingleRow(
                       queryFn: (q) => q.eq(
                         'id',
-                        widget.resposta?.pergunta,
+                        widget!.resposta?.pergunta,
                       ),
                     ),
                     builder: (context, snapshot) {
@@ -143,7 +145,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, -1.0),
+                            alignment: AlignmentDirectional(-1.0, -1.0),
                             child: Text(
                               valueOrDefault<String>(
                                 () {
@@ -174,7 +176,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -182,13 +184,13 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                           if (columnQuestionarioPerguntasRow?.answerTyype ==
                               'single selector')
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: Builder(
                                 builder: (context) {
                                   final options = columnQuestionarioPerguntasRow
                                           ?.opcoes
-                                          .toList() ??
+                                          ?.toList() ??
                                       [];
 
                                   return Column(
@@ -217,7 +219,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                             },
                                             matchingRows: (rows) => rows.eq(
                                               'id',
-                                              widget.resposta?.id,
+                                              widget!.resposta?.id,
                                             ),
                                           );
                                           safeSetState(() =>
@@ -245,11 +247,11 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       ).toString()
                                                   ? FlutterFlowTheme.of(context)
                                                       .primary
-                                                  : const Color(0xFFDBE4F1),
+                                                  : Color(0xFFDBE4F1),
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(12.0),
+                                            padding: EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -269,7 +271,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     4.0,
                                                                     0.0,
@@ -316,7 +318,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       optionsItem,
                                                       r'''$.title''',
                                                     ).toString())
-                                                  const Icon(
+                                                  Icon(
                                                     Icons.circle_outlined,
                                                     color: Color(0xFFDBE4F1),
                                                     size: 24.0,
@@ -334,12 +336,12 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                         .primary,
                                                     size: 24.0,
                                                   ),
-                                              ].divide(const SizedBox(width: 8.0)),
+                                              ].divide(SizedBox(width: 8.0)),
                                             ),
                                           ),
                                         ),
                                       );
-                                    }).divide(const SizedBox(height: 12.0)),
+                                    }).divide(SizedBox(height: 12.0)),
                                   );
                                 },
                               ),
@@ -347,13 +349,13 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                           if (columnQuestionarioPerguntasRow?.answerTyype ==
                               'multi selector')
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: Builder(
                                 builder: (context) {
                                   final options = columnQuestionarioPerguntasRow
                                           ?.opcoes
-                                          .toList() ??
+                                          ?.toList() ??
                                       [];
 
                                   return Column(
@@ -369,7 +371,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                         onTap: () async {
                                           if (mainRespostasQuestionarioRow
                                                   ?.multiTextResponse
-                                                  .contains(getJsonField(
+                                                  ?.contains(getJsonField(
                                                 optionsItem,
                                                 r'''$.title''',
                                               ).toString()) ==
@@ -393,7 +395,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               },
                                               matchingRows: (rows) => rows.eq(
                                                 'id',
-                                                widget.resposta?.id,
+                                                widget!.resposta?.id,
                                               ),
                                             );
                                             safeSetState(() =>
@@ -418,7 +420,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               },
                                               matchingRows: (rows) => rows.eq(
                                                 'id',
-                                                widget.resposta?.id,
+                                                widget!.resposta?.id,
                                               ),
                                             );
                                             safeSetState(() =>
@@ -442,7 +444,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                             border: Border.all(
                                               color: mainRespostasQuestionarioRow
                                                           ?.multiTextResponse
-                                                          .contains(
+                                                          ?.contains(
                                                               getJsonField(
                                                         optionsItem,
                                                         r'''$.title''',
@@ -450,11 +452,11 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       true
                                                   ? FlutterFlowTheme.of(context)
                                                       .primary
-                                                  : const Color(0xFFDBE4F1),
+                                                  : Color(0xFFDBE4F1),
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(12.0),
+                                            padding: EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -474,7 +476,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     4.0,
                                                                     0.0,
@@ -491,7 +493,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: mainRespostasQuestionarioRow?.multiTextResponse.contains(
+                                                                color: mainRespostasQuestionarioRow?.multiTextResponse?.contains(
                                                                             getJsonField(
                                                                           optionsItem,
                                                                           r'''$.title''',
@@ -517,19 +519,19 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                 ),
                                                 if (mainRespostasQuestionarioRow
                                                         ?.multiTextResponse
-                                                        .contains(getJsonField(
+                                                        ?.contains(getJsonField(
                                                       optionsItem,
                                                       r'''$.title''',
                                                     ).toString()) ==
                                                     false)
-                                                  const Icon(
+                                                  Icon(
                                                     Icons.circle_outlined,
                                                     color: Color(0xFFDBE4F1),
                                                     size: 24.0,
                                                   ),
                                                 if (mainRespostasQuestionarioRow
                                                         ?.multiTextResponse
-                                                        .contains(getJsonField(
+                                                        ?.contains(getJsonField(
                                                       optionsItem,
                                                       r'''$.title''',
                                                     ).toString()) ==
@@ -541,12 +543,12 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                         .primary,
                                                     size: 24.0,
                                                   ),
-                                              ].divide(const SizedBox(width: 8.0)),
+                                              ].divide(SizedBox(width: 8.0)),
                                             ),
                                           ),
                                         ),
                                       );
-                                    }).divide(const SizedBox(height: 12.0)),
+                                    }).divide(SizedBox(height: 12.0)),
                                   );
                                 },
                               ),
@@ -585,9 +587,9 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                         : null;
 
                                 return Container(
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 24.0, 0.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
@@ -595,7 +597,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                             .addItemToList(
                                                 multiQueixaPacienteRow!.queixas
                                                     .toList(),
-                                                multiQueixaPacienteRow
+                                                multiQueixaPacienteRow!
                                                     .queixaPrincipal!)
                                             .toList();
                                         if (queixas.isEmpty) {
@@ -624,8 +626,8 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                         .length <
                                                     3) {
                                                   if (mainRespostasQuestionarioRow
-                                                          .multiTextResponse
-                                                          .contains(
+                                                          ?.multiTextResponse
+                                                          ?.contains(
                                                               queixasItem) ==
                                                       true) {
                                                     await RespostasQuestionarioTable()
@@ -633,7 +635,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       data: {
                                                         'multi_text_response': functions
                                                             .removeItemAtString(
-                                                                mainRespostasQuestionarioRow
+                                                                mainRespostasQuestionarioRow!
                                                                     .multiTextResponse
                                                                     .toList(),
                                                                 queixasItem),
@@ -641,7 +643,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       matchingRows: (rows) =>
                                                           rows.eq(
                                                         'id',
-                                                        widget.resposta?.id,
+                                                        widget!.resposta?.id,
                                                       ),
                                                     );
                                                     safeSetState(() => _model
@@ -653,7 +655,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       data: {
                                                         'multi_text_response':
                                                             functions.addItemToList(
-                                                                mainRespostasQuestionarioRow
+                                                                mainRespostasQuestionarioRow!
                                                                     .multiTextResponse
                                                                     .toList(),
                                                                 queixasItem),
@@ -661,7 +663,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       matchingRows: (rows) =>
                                                           rows.eq(
                                                         'id',
-                                                        widget.resposta?.id,
+                                                        widget!.resposta?.id,
                                                       ),
                                                     );
                                                     _model.addToListQueixas(
@@ -675,15 +677,15 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                   await widget.callback?.call(
                                                     getJsonField(
                                                       columnQuestionarioPerguntasRow
-                                                          ?.opcoes.first,
+                                                          ?.opcoes?.first,
                                                       r'''$.next_question''',
                                                     ),
                                                   );
                                                   return;
                                                 } else {
                                                   if (mainRespostasQuestionarioRow
-                                                          .multiTextResponse
-                                                          .contains(
+                                                          ?.multiTextResponse
+                                                          ?.contains(
                                                               queixasItem) ==
                                                       true) {
                                                     await RespostasQuestionarioTable()
@@ -691,7 +693,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       data: {
                                                         'multi_text_response': functions
                                                             .removeItemAtString(
-                                                                mainRespostasQuestionarioRow
+                                                                mainRespostasQuestionarioRow!
                                                                     .multiTextResponse
                                                                     .toList(),
                                                                 queixasItem),
@@ -699,7 +701,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       matchingRows: (rows) =>
                                                           rows.eq(
                                                         'id',
-                                                        widget.resposta?.id,
+                                                        widget!.resposta?.id,
                                                       ),
                                                     );
                                                     safeSetState(() => _model
@@ -725,17 +727,17 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                   border: Border.all(
                                                     color: mainRespostasQuestionarioRow
                                                                 ?.multiTextResponse
-                                                                .contains(
+                                                                ?.contains(
                                                                     queixasItem) ==
                                                             true
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primary
-                                                        : const Color(0xFFDBE4F1),
+                                                        : Color(0xFFDBE4F1),
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(12.0),
+                                                  padding: EdgeInsets.all(12.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -756,7 +758,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -770,7 +772,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Mulish',
-                                                                      color: mainRespostasQuestionarioRow?.multiTextResponse.contains(queixasItem) ==
+                                                                      color: mainRespostasQuestionarioRow?.multiTextResponse?.contains(queixasItem) ==
                                                                               true
                                                                           ? FlutterFlowTheme.of(context)
                                                                               .primary
@@ -789,10 +791,10 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       ),
                                                       if (mainRespostasQuestionarioRow
                                                               ?.multiTextResponse
-                                                              .contains(
+                                                              ?.contains(
                                                                   queixasItem) ==
                                                           false)
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.circle_outlined,
                                                           color:
                                                               Color(0xFFDBE4F1),
@@ -800,7 +802,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                         ),
                                                       if (mainRespostasQuestionarioRow
                                                               ?.multiTextResponse
-                                                              .contains(
+                                                              ?.contains(
                                                                   queixasItem) ==
                                                           true)
                                                         Icon(
@@ -812,12 +814,12 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                           size: 24.0,
                                                         ),
                                                     ].divide(
-                                                        const SizedBox(width: 8.0)),
+                                                        SizedBox(width: 8.0)),
                                                   ),
                                                 ),
                                               ),
                                             );
-                                          }).divide(const SizedBox(height: 12.0)),
+                                          }).divide(SizedBox(height: 12.0)),
                                         );
                                       },
                                     ),
@@ -828,18 +830,20 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                           if (columnQuestionarioPerguntasRow?.answerTyype ==
                               'text input')
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: AlignmentDirectional(0.0, -1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 24.0, 0.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textInputTextController,
                                   focusNode: _model.textInputFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.textInputTextController',
-                                    const Duration(milliseconds: 500),
+                                    Duration(milliseconds: 500),
                                     () async {
                                       if (_model.textInputTextController.text ==
+                                              null ||
+                                          _model.textInputTextController.text ==
                                               '') {
                                         await widget.callback?.call(
                                           0,
@@ -852,19 +856,19 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                 .textInputTextController.text,
                                             'next_question': getJsonField(
                                               columnQuestionarioPerguntasRow
-                                                  ?.opcoes.first,
+                                                  ?.opcoes?.first,
                                               r'''$.next_question''',
                                             ),
                                           },
                                           matchingRows: (rows) => rows.eq(
                                             'id',
-                                            widget.resposta?.id,
+                                            widget!.resposta?.id,
                                           ),
                                         );
                                         await widget.callback?.call(
                                           getJsonField(
                                             columnQuestionarioPerguntasRow
-                                                ?.opcoes.first,
+                                                ?.opcoes?.first,
                                             r'''$.next_question''',
                                           ),
                                         );
@@ -880,11 +884,11 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x0E294B0D),
                                         width: 3.0,
                                       ),
@@ -917,7 +921,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                     filled: true,
                                     fillColor: Colors.white,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             18.0, 32.0, 18.0, 0.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -937,18 +941,21 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                           if (columnQuestionarioPerguntasRow?.answerTyype ==
                               'number input')
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: AlignmentDirectional(0.0, -1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 24.0, 0.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.numberInputTextController,
                                   focusNode: _model.numberInputFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.numberInputTextController',
-                                    const Duration(milliseconds: 500),
+                                    Duration(milliseconds: 500),
                                     () async {
                                       if (_model.numberInputTextController
+                                                  .text ==
+                                              null ||
+                                          _model.numberInputTextController
                                                   .text ==
                                               '') {
                                         await widget.callback?.call(
@@ -962,19 +969,19 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                 .numberInputTextController.text,
                                             'next_question': getJsonField(
                                               columnQuestionarioPerguntasRow
-                                                  ?.opcoes.first,
+                                                  ?.opcoes?.first,
                                               r'''$.next_question''',
                                             ),
                                           },
                                           matchingRows: (rows) => rows.eq(
                                             'id',
-                                            widget.resposta?.id,
+                                            widget!.resposta?.id,
                                           ),
                                         );
                                         await widget.callback?.call(
                                           getJsonField(
                                             columnQuestionarioPerguntasRow
-                                                ?.opcoes.first,
+                                                ?.opcoes?.first,
                                             r'''$.next_question''',
                                           ),
                                         );
@@ -1002,11 +1009,11 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x0E294B0D),
                                         width: 3.0,
                                       ),
@@ -1039,7 +1046,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                     filled: true,
                                     fillColor: Colors.white,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             18.0, 32.0, 18.0, 0.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1061,7 +1068,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                           if (columnQuestionarioPerguntasRow?.answerTyype ==
                               'create remedio')
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -1071,7 +1078,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                       final objects =
                                           mainRespostasQuestionarioRow
                                                   ?.multiTextResponse
-                                                  .toList() ??
+                                                  ?.toList() ??
                                               [];
 
                                       return Column(
@@ -1083,14 +1090,14 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                           return Container(
                                             width: double.infinity,
                                             decoration: BoxDecoration(
-                                              color: const Color(0x0F5D67E2),
+                                              color: Color(0x0F5D67E2),
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
                                             child: Stack(
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(18.0, 18.0,
                                                           18.0, 18.0),
                                                   child: Column(
@@ -1102,7 +1109,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1126,16 +1133,16 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 24.0)),
+                                                        SizedBox(height: 24.0)),
                                                   ),
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           1.0, -1.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 8.0,
                                                                 8.0, 0.0),
                                                     child: InkWell(
@@ -1161,7 +1168,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'id',
-                                                            widget
+                                                            widget!
                                                                 .resposta?.id,
                                                           ),
                                                         );
@@ -1184,17 +1191,17 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               ],
                                             ),
                                           );
-                                        }).divide(const SizedBox(height: 18.0)),
+                                        }).divide(SizedBox(height: 18.0)),
                                       );
                                     },
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 24.0, 0.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 285.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -1217,20 +1224,20 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       'next_question':
                                                           getJsonField(
                                                         columnQuestionarioPerguntasRow
-                                                            ?.opcoes.first,
+                                                            ?.opcoes?.first,
                                                         r'''$.next_question''',
                                                       ),
                                                     },
                                                     matchingRows: (rows) =>
                                                         rows.eq(
                                                       'id',
-                                                      widget.resposta?.id,
+                                                      widget!.resposta?.id,
                                                     ),
                                                   );
                                                   await widget.callback?.call(
                                                     getJsonField(
                                                       columnQuestionarioPerguntasRow
-                                                          ?.opcoes.first,
+                                                          ?.opcoes?.first,
                                                       r'''$.next_question''',
                                                     ),
                                                   );
@@ -1251,7 +1258,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: FutureBuilder<
                                       List<RespostasQuestionarioRow>>(
@@ -1307,7 +1314,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                           final prevList =
                                               columnRespostasQuestionarioRow
                                                       ?.multiTextResponse
-                                                      .toList() ??
+                                                      ?.toList() ??
                                                   [];
 
                                           return Column(
@@ -1320,7 +1327,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               return Container(
                                                 width: double.infinity,
                                                 height: 180.0,
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: ObjectDescriptionWidget(
                                                   key: Key(
                                                       'Keye7b_${prevListIndex}_of_${prevList.length}'),
@@ -1340,7 +1347,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                           rows.eq(
                                                         'id',
                                                         mainRespostasQuestionarioRow
-                                                            .id,
+                                                            ?.id,
                                                       ),
                                                     );
                                                     await RespostasQuestionarioTable()
@@ -1348,14 +1355,14 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       data: {
                                                         'multi_text_response':
                                                             functions.addItemToList(
-                                                                mainRespostasQuestionarioRow
+                                                                mainRespostasQuestionarioRow!
                                                                     .multiTextResponse
                                                                     .toList(),
                                                                 response!),
                                                         'next_question':
                                                             getJsonField(
                                                           columnQuestionarioPerguntasRow
-                                                              ?.opcoes.first,
+                                                              ?.opcoes?.first,
                                                           r'''$.next_question''',
                                                         ),
                                                       },
@@ -1363,20 +1370,20 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                           rows.eq(
                                                         'id',
                                                         mainRespostasQuestionarioRow
-                                                            .id,
+                                                            ?.id,
                                                       ),
                                                     );
                                                     await widget.callback?.call(
                                                       getJsonField(
                                                         columnQuestionarioPerguntasRow
-                                                            ?.opcoes.first,
+                                                            ?.opcoes?.first,
                                                         r'''$.next_question''',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                               );
-                                            }).divide(const SizedBox(height: 24.0)),
+                                            }).divide(SizedBox(height: 24.0)),
                                           );
                                         },
                                       );
@@ -1422,7 +1429,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 24.0, 0.0, 0.0),
                                       child: Builder(
                                         builder: (context) {
@@ -1431,7 +1438,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                   enrichQueixasPacienteRow!
                                                       .queixas
                                                       .toList(),
-                                                  enrichQueixasPacienteRow
+                                                  enrichQueixasPacienteRow!
                                                       .queixaPrincipal!)
                                               .toList();
 
@@ -1445,7 +1452,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                               return Container(
                                                 width: double.infinity,
                                                 height: 180.0,
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: ObjectDescriptionWidget(
                                                   key: Key(
                                                       'Keym31_${queixasUserIndex}_of_${queixasUser.length}'),
@@ -1465,7 +1472,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                           rows.eq(
                                                         'id',
                                                         mainRespostasQuestionarioRow
-                                                            .id,
+                                                            ?.id,
                                                       ),
                                                     );
                                                     await RespostasQuestionarioTable()
@@ -1473,14 +1480,14 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                       data: {
                                                         'multi_text_response':
                                                             functions.addItemToList(
-                                                                mainRespostasQuestionarioRow
+                                                                mainRespostasQuestionarioRow!
                                                                     .multiTextResponse
                                                                     .toList(),
                                                                 response!),
                                                         'next_question':
                                                             getJsonField(
                                                           columnQuestionarioPerguntasRow
-                                                              ?.opcoes.first,
+                                                              ?.opcoes?.first,
                                                           r'''$.next_question''',
                                                         ),
                                                       },
@@ -1488,20 +1495,20 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                           rows.eq(
                                                         'id',
                                                         mainRespostasQuestionarioRow
-                                                            .id,
+                                                            ?.id,
                                                       ),
                                                     );
                                                     await widget.callback?.call(
                                                       getJsonField(
                                                         columnQuestionarioPerguntasRow
-                                                            ?.opcoes.first,
+                                                            ?.opcoes?.first,
                                                         r'''$.next_question''',
                                                       ),
                                                     );
                                                   },
                                                 ),
                                               );
-                                            }).divide(const SizedBox(height: 24.0)),
+                                            }).divide(SizedBox(height: 24.0)),
                                           );
                                         },
                                       ),
@@ -1513,9 +1520,9 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                           if (columnQuestionarioPerguntasRow?.answerTyype ==
                               'multi image')
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 24.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -1525,7 +1532,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                         final images =
                                             mainRespostasQuestionarioRow
                                                     ?.multiTextResponse
-                                                    .toList() ??
+                                                    ?.toList() ??
                                                 [];
 
                                         return Column(
@@ -1549,11 +1556,11 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           1.0, -1.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 12.0,
                                                                 12.0, 0.0),
                                                     child:
@@ -1594,7 +1601,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                               (rows) => rows.eq(
                                                             'id',
                                                             mainRespostasQuestionarioRow
-                                                                .id,
+                                                                ?.id,
                                                           ),
                                                         );
                                                         safeSetState(() => _model
@@ -1608,12 +1615,12 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                 ),
                                               ],
                                             );
-                                          }).divide(const SizedBox(height: 24.0)),
+                                          }).divide(SizedBox(height: 24.0)),
                                         );
                                       },
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 24.0, 0.0, 0.0),
                                       child: FlutterFlowIconButton(
                                         borderRadius: 20.0,
@@ -1621,7 +1628,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                         buttonSize: 40.0,
                                         fillColor: FlutterFlowTheme.of(context)
                                             .primary,
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.add,
                                           color: Colors.white,
                                           size: 24.0,
@@ -1689,7 +1696,8 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                             }
                                           }
 
-                                          if (_model.uploadedFileUrl == '') {
+                                          if (_model.uploadedFileUrl == null ||
+                                              _model.uploadedFileUrl == '') {
                                             return;
                                           }
 
@@ -1705,7 +1713,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                             },
                                             matchingRows: (rows) => rows.eq(
                                               'id',
-                                              mainRespostasQuestionarioRow.id,
+                                              mainRespostasQuestionarioRow?.id,
                                             ),
                                           );
                                           safeSetState(() =>
@@ -1715,7 +1723,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                           await widget.callback?.call(
                                             getJsonField(
                                               columnQuestionarioPerguntasRow
-                                                  ?.opcoes.first,
+                                                  ?.opcoes?.first,
                                               r'''$.next_question''',
                                             ),
                                           );
@@ -1739,13 +1747,13 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                           if (columnQuestionarioPerguntasRow?.answerTyype ==
                               'multi image selector')
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: Builder(
                                 builder: (context) {
                                   final imags = columnQuestionarioPerguntasRow
                                           ?.opcoes
-                                          .toList() ??
+                                          ?.toList() ??
                                       [];
 
                                   return Column(
@@ -1807,7 +1815,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primary
-                                                    : const Color(0xFFDBE4F1),
+                                                    : Color(0xFFDBE4F1),
                                                 width: 3.0,
                                               ),
                                             ),
@@ -1827,7 +1835,7 @@ class _QuestionarioAskWidgetState extends State<QuestionarioAskWidget> {
                                           ),
                                         ),
                                       );
-                                    }).divide(const SizedBox(height: 24.0)),
+                                    }).divide(SizedBox(height: 24.0)),
                                   );
                                 },
                               ),

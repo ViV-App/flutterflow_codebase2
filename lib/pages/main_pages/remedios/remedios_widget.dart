@@ -6,8 +6,10 @@ import '/components/remedio_card/remedio_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'remedios_model.dart';
@@ -68,7 +70,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Color(0x00FFFFFF),
             ),
             child: Column(
@@ -84,7 +86,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: EdgeInsets.all(18.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,7 +126,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                 context.pushNamed(
                                   'prescricao01',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -132,7 +134,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                   },
                                 );
                               },
-                              child: const Icon(
+                              child: Icon(
                                 Icons.add,
                                 color: Color(0x005D67E2),
                                 size: 32.0,
@@ -144,12 +146,12 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
                       child: Text(
                         'Veja abaixo o(s) remédio(s) que você registrou! Você também pode editar ou adicionar novos registros.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Mulish',
-                              color: const Color(0xFF8798B5),
+                              color: Color(0xFF8798B5),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
@@ -160,7 +162,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: FutureBuilder<List<MeusMedicamentosRow>>(
                       future: FFAppState()
                           .remedios(
@@ -199,7 +201,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                         }
 
                         return ListView.separated(
-                          padding: const EdgeInsets.fromLTRB(
+                          padding: EdgeInsets.fromLTRB(
                             0,
                             12.0,
                             0,
@@ -208,12 +210,12 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: listViewMeusMedicamentosRowList.length,
-                          separatorBuilder: (_, __) => const SizedBox(height: 18.0),
+                          separatorBuilder: (_, __) => SizedBox(height: 18.0),
                           itemBuilder: (context, listViewIndex) {
                             final listViewMeusMedicamentosRow =
                                 listViewMeusMedicamentosRowList[listViewIndex];
                             return Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   18.0, 0.0, 18.0, 0.0),
                               child: FutureBuilder<List<StaticMedicamentosRow>>(
                                 future:
@@ -283,7 +285,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: SizedBox(
+                                                child: Container(
                                                   height:
                                                       MediaQuery.sizeOf(context)
                                                               .height *
@@ -335,7 +337,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         context.pushNamed('prescricao01');
@@ -353,10 +355,10 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -366,7 +368,7 @@ class _RemediosWidgetState extends State<RemediosWidget> {
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

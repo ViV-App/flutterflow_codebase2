@@ -18,6 +18,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'edit_prescription_model.dart';
@@ -54,28 +55,28 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       FFAppState().prescricao = PrescricaoStruct(
-        remedio: widget.prescricao?.medicamento,
-        duracaoDias: widget.prescricao?.duracaoDias,
+        remedio: widget!.prescricao?.medicamento,
+        duracaoDias: widget!.prescricao?.duracaoDias,
       );
       safeSetState(() {});
       while (
-          widget.prescricao!.horarios.length > FFAppState().horarios.length) {
+          widget!.prescricao!.horarios.length > FFAppState().horarios.length) {
         FFAppState().addToHorarios(HorariosStruct(
           dosagem: getJsonField(
-            widget.prescricao?.doses[_model.nvar],
+            widget!.prescricao?.doses?[_model.nvar],
             r'''$.dosagem''',
           ),
           medida: getJsonField(
-            widget.prescricao?.doses[_model.nvar],
+            widget!.prescricao?.doses?[_model.nvar],
             r'''$.medida''',
           ).toString().toString(),
-          horario: widget.prescricao?.horarios[_model.nvar],
+          horario: widget!.prescricao?.horarios?[_model.nvar],
         ));
         safeSetState(() {});
         _model.nvar = _model.nvar + 1;
         safeSetState(() {});
       }
-      _model.dats = widget.prescricao!.doses.toList().cast<dynamic>();
+      _model.dats = widget!.prescricao!.doses.toList().cast<dynamic>();
       safeSetState(() {});
       _model.apiResultnh7 = await SegmentGroup.trackingCall.call(
         userId: currentUserUid,
@@ -84,14 +85,14 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
     });
 
     _model.textController1 ??=
-        TextEditingController(text: widget.prescricao?.posologia?.toString());
+        TextEditingController(text: widget!.prescricao?.posologia?.toString());
     _model.textFieldFocusNode1 ??= FocusNode();
 
     _model.textController2 ??= TextEditingController(
-        text: widget.prescricao?.concentracao?.toString());
+        text: widget!.prescricao?.concentracao?.toString());
     _model.textFieldFocusNode2 ??= FocusNode();
 
-    _model.switchValue = widget.prescricao!.continuo!;
+    _model.switchValue = widget!.prescricao!.continuo!;
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -107,11 +108,11 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Material(
         color: Colors.transparent,
         elevation: 3.0,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -124,7 +125,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
           height: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(24.0),
@@ -135,14 +136,14 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Container(
                     width: 100.0,
                     height: 4.0,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFDBE4F1),
+                      color: Color(0xFFDBE4F1),
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
@@ -152,14 +153,14 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -167,9 +168,9 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
+                                  alignment: AlignmentDirectional(0.0, -1.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -180,7 +181,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         await PrescricaoTable().delete(
                                           matchingRows: (rows) => rows.eq(
                                             'id',
-                                            widget.prescricao?.id,
+                                            widget!.prescricao?.id,
                                           ),
                                         );
                                       },
@@ -199,7 +200,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 32.0, 18.0, 0.0),
                                   child:
                                       FutureBuilder<List<MeusMedicamentosRow>>(
@@ -207,7 +208,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         MeusMedicamentosTable().querySingleRow(
                                       queryFn: (q) => q.eq(
                                         'id',
-                                        widget.prescricao?.medicamento,
+                                        widget!.prescricao?.medicamento,
                                       ),
                                     ),
                                     builder: (context, snapshot) {
@@ -258,7 +259,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                   desktop: false,
                                 ))
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         18.0, 24.0, 18.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -283,7 +284,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                             FontWeight.bold,
                                                       ),
                                             ),
-                                            const Icon(
+                                            Icon(
                                               Icons.info_outlined,
                                               color: Color(0xFF8798B5),
                                               size: 18.0,
@@ -302,7 +303,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
                                                   '_model.textController1',
-                                                  const Duration(milliseconds: 0),
+                                                  Duration(milliseconds: 0),
                                                   () => safeSetState(() {}),
                                                 ),
                                                 autofocus: false,
@@ -315,13 +316,13 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFF8798B5),
+                                                            Color(0xFF8798B5),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Color(0x0E294B0D),
                                                       width: 2.0,
                                                     ),
@@ -369,9 +370,9 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: const Color(0xFFF7FAFE),
+                                                  fillColor: Color(0xFFF7FAFE),
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 0.0,
                                                               0.0, 0.0),
                                                 ),
@@ -393,10 +394,10 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                               controller: _model
                                                       .dropDownValueController ??=
                                                   FormFieldController<String>(
-                                                _model.dropDownValue ??= widget
+                                                _model.dropDownValue ??= widget!
                                                     .prescricao?.formaDose,
                                               ),
-                                              options: const [
+                                              options: [
                                                 'g',
                                                 'mg',
                                                 'mcg',
@@ -440,12 +441,12 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                         .secondaryText,
                                                 size: 24.0,
                                               ),
-                                              fillColor: const Color(0xFFF7FAFE),
+                                              fillColor: Color(0xFFF7FAFE),
                                               elevation: 2.0,
-                                              borderColor: const Color(0x0E294B0D),
+                                              borderColor: Color(0x0E294B0D),
                                               borderWidth: 2.0,
                                               borderRadius: 8.0,
-                                              margin: const EdgeInsetsDirectional
+                                              margin: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 0.0),
                                               hidesUnderline: true,
@@ -453,13 +454,13 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                               isSearchable: false,
                                               isMultiSelect: false,
                                             ),
-                                          ].divide(const SizedBox(width: 14.0)),
+                                          ].divide(SizedBox(width: 14.0)),
                                         ),
-                                      ].divide(const SizedBox(height: 6.0)),
+                                      ].divide(SizedBox(height: 6.0)),
                                     ),
                                   ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 24.0, 18.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -482,7 +483,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         focusNode: _model.textFieldFocusNode2,
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.textController2',
-                                          const Duration(milliseconds: 0),
+                                          Duration(milliseconds: 0),
                                           () async {
                                             _model.alterado = true;
                                             safeSetState(() {});
@@ -497,12 +498,12 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: const Color(0xFF8798B5),
+                                                    color: Color(0xFF8798B5),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x0E294B0D),
                                               width: 2.0,
                                             ),
@@ -541,9 +542,9 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF7FAFE),
+                                          fillColor: Color(0xFFF7FAFE),
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -557,11 +558,11 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                             .textController2Validator
                                             .asValidator(context),
                                       ),
-                                    ].divide(const SizedBox(height: 6.0)),
+                                    ].divide(SizedBox(height: 6.0)),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 24.0, 18.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -572,7 +573,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         flex: 1,
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, -1.0),
+                                              AlignmentDirectional(0.0, -1.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
@@ -609,7 +610,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                           padding: MediaQuery
                                                               .viewInsetsOf(
                                                                   context),
-                                                          child: SizedBox(
+                                                          child: Container(
                                                             height: MediaQuery
                                                                         .sizeOf(
                                                                             context)
@@ -636,18 +637,18 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                   width: double.infinity,
                                                   height: 48.0,
                                                   decoration: BoxDecoration(
-                                                    color: const Color(0xFFF7FAFE),
+                                                    color: Color(0xFFF7FAFE),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
                                                     border: Border.all(
-                                                      color: const Color(0x13294B0D),
+                                                      color: Color(0x13294B0D),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 12.0, 0.0),
                                                     child: Row(
@@ -669,7 +670,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                 )
                                                               : dateTimeFormat(
                                                                   "d/M/y",
-                                                                  widget
+                                                                  widget!
                                                                       .prescricao!
                                                                       .dateStart!,
                                                                   locale: FFLocalizations.of(
@@ -686,7 +687,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                     0.0,
                                                               ),
                                                         ),
-                                                        const Icon(
+                                                        Icon(
                                                           Icons
                                                               .calendar_today_outlined,
                                                           color:
@@ -698,7 +699,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(height: 6.0)),
+                                            ].divide(SizedBox(height: 6.0)),
                                           ),
                                         ),
                                       ),
@@ -750,13 +751,13 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                               padding: MediaQuery
                                                                   .viewInsetsOf(
                                                                       context),
-                                                              child: SizedBox(
+                                                              child: Container(
                                                                 height: MediaQuery.sizeOf(
                                                                             context)
                                                                         .height *
                                                                     0.5,
                                                                 child:
-                                                                    const DuracaoDiasWidget(),
+                                                                    DuracaoDiasWidget(),
                                                               ),
                                                             ),
                                                           );
@@ -769,19 +770,19 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                       height: 48.0,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            const Color(0xFFF7FAFE),
+                                                            Color(0xFFF7FAFE),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(8.0),
                                                         border: Border.all(
                                                           color:
-                                                              const Color(0x13294B0D),
+                                                              Color(0x13294B0D),
                                                           width: 2.0,
                                                         ),
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -796,7 +797,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           8.0,
                                                                           0.0,
@@ -830,7 +831,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF8798B5),
                                                                     letterSpacing:
                                                                         0.0,
@@ -841,7 +842,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                       ),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 6.0)),
+                                                ].divide(SizedBox(height: 6.0)),
                                               ),
                                             Row(
                                               mainAxisSize: MainAxisSize.min,
@@ -851,7 +852,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                   onChanged: (newValue) async {
                                                     safeSetState(() =>
                                                         _model.switchValue =
-                                                            newValue);
+                                                            newValue!);
                                                   },
                                                   activeColor:
                                                       FlutterFlowTheme.of(
@@ -862,7 +863,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                               context)
                                                           .primary,
                                                   inactiveTrackColor:
-                                                      const Color(0xFFDBE4F1),
+                                                      Color(0xFFDBE4F1),
                                                   inactiveThumbColor:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -876,21 +877,21 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFF262B37),
+                                                            Color(0xFF262B37),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                              ].divide(const SizedBox(width: 8.0)),
+                                              ].divide(SizedBox(width: 8.0)),
                                             ),
-                                          ].divide(const SizedBox(height: 6.0)),
+                                          ].divide(SizedBox(height: 6.0)),
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 14.0)),
+                                    ].divide(SizedBox(width: 14.0)),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       18.0, 24.0, 18.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -919,17 +920,17 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                 width: 250.0,
                                                 height: 48.0,
                                                 decoration: BoxDecoration(
-                                                  color: const Color(0xFFF7FAFE),
+                                                  color: Color(0xFFF7FAFE),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
                                                   border: Border.all(
-                                                    color: const Color(0x13294B0D),
+                                                    color: Color(0x13294B0D),
                                                     width: 2.0,
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Row(
@@ -943,7 +944,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          const FaIcon(
+                                                          FaIcon(
                                                             FontAwesomeIcons
                                                                 .clock,
                                                             color: Color(
@@ -952,7 +953,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -988,13 +989,13 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF8798B5),
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
                                                           ),
-                                                        ].divide(const SizedBox(
+                                                        ].divide(SizedBox(
                                                             width: 6.0)),
                                                       ),
                                                       Container(
@@ -1006,7 +1007,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                   .of(context)
                                                               .primary,
                                                           borderRadius:
-                                                              const BorderRadius.only(
+                                                              BorderRadius.only(
                                                             bottomLeft:
                                                                 Radius.circular(
                                                                     0.0),
@@ -1033,7 +1034,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                 width: double
                                                                     .infinity,
                                                                 decoration:
-                                                                    const BoxDecoration(),
+                                                                    BoxDecoration(),
                                                                 child: InkWell(
                                                                   splashColor:
                                                                       Colors
@@ -1069,7 +1070,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                             3
                                                                         ? Colors
                                                                             .white
-                                                                        : const Color(
+                                                                        : Color(
                                                                             0x4DFFFFFF),
                                                                     size: 18.0,
                                                                   ),
@@ -1081,7 +1082,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                 width: double
                                                                     .infinity,
                                                                 decoration:
-                                                                    const BoxDecoration(),
+                                                                    BoxDecoration(),
                                                                 child: InkWell(
                                                                   splashColor:
                                                                       Colors
@@ -1117,7 +1118,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                                                             1
                                                                         ? Colors
                                                                             .white
-                                                                        : const Color(
+                                                                        : Color(
                                                                             0x4DFFFFFF),
                                                                     size: 18.0,
                                                                   ),
@@ -1133,13 +1134,13 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(width: 12.0)),
+                                        ].divide(SizedBox(width: 12.0)),
                                       ),
-                                    ].divide(const SizedBox(height: 6.0)),
+                                    ].divide(SizedBox(height: 6.0)),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 32.0, 0.0, 0.0),
                                   child: Text(
                                     'Agenda de lembretes',
@@ -1154,7 +1155,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 12.0, 24.0, 0.0),
                                   child: Builder(
                                     builder: (context) {
@@ -1173,7 +1174,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                             horario: times2Item,
                                             index: times2Index,
                                           );
-                                        }).divide(const SizedBox(height: 18.0)),
+                                        }).divide(SizedBox(height: 18.0)),
                                       );
                                     },
                                   ),
@@ -1184,7 +1185,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             18.0, 12.0, 18.0, 24.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -1200,13 +1201,13 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                           elevation: 0,
                                           insetPadding: EdgeInsets.zero,
                                           backgroundColor: Colors.transparent,
-                                          alignment: const AlignmentDirectional(
+                                          alignment: AlignmentDirectional(
                                                   0.0, 0.0)
                                               .resolve(
                                                   Directionality.of(context)),
                                           child: WebViewAware(
                                             child: DeletePrescriptionWidget(
-                                              prescricao: widget.prescricao,
+                                              prescricao: widget!.prescricao,
                                             ),
                                           ),
                                         );
@@ -1224,21 +1225,21 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                   text: 'Deletar',
                                   options: FFButtonOptions(
                                     height: 48.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: Colors.white,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFFE25D5D),
+                                          color: Color(0xFFE25D5D),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0xFFE25D5D),
                                       width: 1.0,
                                     ),
@@ -1265,8 +1266,10 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                               .prescricao
                                               .duracaoDias,
                                           'date_start': supaSerialize<DateTime>(
-                                              _model.newDate ?? widget
-                                                      .prescricao?.dateStart),
+                                              _model.newDate == null
+                                                  ? widget!
+                                                      .prescricao?.dateStart
+                                                  : _model.newDate),
                                           'concentracao': int.tryParse(
                                               _model.textController2.text),
                                           'continuo': true,
@@ -1277,7 +1280,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         },
                                         matchingRows: (rows) => rows.eq(
                                           'id',
-                                          widget.prescricao?.id,
+                                          widget!.prescricao?.id,
                                         ),
                                       );
                                       Navigator.pop(context);
@@ -1292,11 +1295,11 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                             elevation: 0,
                                             insetPadding: EdgeInsets.zero,
                                             backgroundColor: Colors.transparent,
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                     0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
-                                            child: const WebViewAware(
+                                            child: WebViewAware(
                                               child: PrescriptionEditedWidget(),
                                             ),
                                           );
@@ -1316,15 +1319,17 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                               .prescricao
                                               .duracaoDias,
                                           'date_start': supaSerialize<DateTime>(
-                                              _model.newDate ?? widget
-                                                      .prescricao?.dateStart),
+                                              _model.newDate == null
+                                                  ? widget!
+                                                      .prescricao?.dateStart
+                                                  : _model.newDate),
                                           'concentracao': int.tryParse(
                                               _model.textController2.text),
                                           'continuo': false,
                                           'date_end': supaSerialize<DateTime>(
                                               _model.newDate == null
                                                   ? functions.getFinalDate(
-                                                      widget.prescricao!
+                                                      widget!.prescricao!
                                                           .dateStart!,
                                                       FFAppState()
                                                               .prescricao
@@ -1343,7 +1348,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                         },
                                         matchingRows: (rows) => rows.eq(
                                           'id',
-                                          widget.prescricao?.id,
+                                          widget!.prescricao?.id,
                                         ),
                                       );
                                       Navigator.pop(context);
@@ -1358,11 +1363,11 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                             elevation: 0,
                                             insetPadding: EdgeInsets.zero,
                                             backgroundColor: Colors.transparent,
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                     0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
-                                            child: const WebViewAware(
+                                            child: WebViewAware(
                                               child: PrescriptionEditedWidget(),
                                             ),
                                           );
@@ -1381,9 +1386,9 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                   text: 'Salvar',
                                   options: FFButtonOptions(
                                     height: 48.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -1395,7 +1400,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -1404,7 +1409,7 @@ class _EditPrescriptionWidgetState extends State<EditPrescriptionWidget> {
                                 ),
                               ),
                             ),
-                          ].divide(const SizedBox(width: 12.0)),
+                          ].divide(SizedBox(width: 12.0)),
                         ),
                       ),
                     ],

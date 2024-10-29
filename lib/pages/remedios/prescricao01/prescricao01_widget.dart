@@ -13,6 +13,7 @@ import '/flutter_flow/form_field_controller.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'prescricao01_model.dart';
@@ -83,7 +84,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Color(0x00FFFFFF),
             ),
             child: Column(
@@ -100,7 +101,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: EdgeInsets.all(18.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -134,7 +135,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
-                            const Icon(
+                            Icon(
                               Icons.add,
                               color: Color(0x015D67E2),
                               size: 32.0,
@@ -145,12 +146,12 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
                       child: Text(
                         'Preencha primeiro as informações básicas sobre o seu remédio.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Mulish',
-                              color: const Color(0xFF8798B5),
+                              color: Color(0xFF8798B5),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
@@ -159,7 +160,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +181,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                               FlutterFlowDropDown<String>(
                                 controller: _model.dropDownValueController1 ??=
                                     FormFieldController<String>(null),
-                                options: const [
+                                options: [
                                   'Medicamento',
                                   'Produto derivado de Cannabis',
                                   'Suplemento'
@@ -212,12 +213,12 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                fillColor: const Color(0xFFF7FAFE),
+                                fillColor: Color(0xFFF7FAFE),
                                 elevation: 2.0,
-                                borderColor: const Color(0x0E294B0D),
+                                borderColor: Color(0x0E294B0D),
                                 borderWidth: 2.0,
                                 borderRadius: 8.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 hidesUnderline: true,
                                 isOverButton: false,
@@ -228,16 +229,16 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     .labelMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFFB5C0D3),
+                                      color: Color(0xFFB5C0D3),
                                       letterSpacing: 0.0,
                                     ),
                               ),
                               if (_model.dropDownValue1 == null ||
                                   _model.dropDownValue1 == '')
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, 1.0),
+                                  alignment: AlignmentDirectional(-1.0, 1.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 14.0, 0.0, 0.0),
                                     child: Text(
                                       'Seleciona uma categoria',
@@ -245,7 +246,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0xFFB5C0D3),
+                                            color: Color(0xFFB5C0D3),
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
@@ -255,12 +256,12 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                 ),
                             ],
                           ),
-                        ].divide(const SizedBox(height: 6.0)),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -314,20 +315,22 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                 width: double.infinity,
                                 height: 48.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFF7FAFE),
+                                  color: Color(0xFFF7FAFE),
                                   borderRadius: BorderRadius.circular(8.0),
                                   border: Border.all(
-                                    color: const Color(0x13294B0D),
+                                    color: Color(0x13294B0D),
                                     width: 2.0,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       if (FFAppState().prescricao.remedNome ==
+                                              null ||
+                                          FFAppState().prescricao.remedNome ==
                                               '')
                                         Text(
                                           'Digite o nome do remédio',
@@ -335,13 +338,15 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Mulish',
-                                                color: const Color(0xFFB5C0D3),
+                                                color: Color(0xFFB5C0D3),
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
                                       if (FFAppState().prescricao.remedNome !=
+                                              null &&
+                                          FFAppState().prescricao.remedNome !=
                                               '')
                                         Text(
                                           valueOrDefault<String>(
@@ -405,7 +410,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     snapshot.data!;
 
                                 return Autocomplete<String>(
-                                  initialValue: const TextEditingValue(),
+                                  initialValue: TextEditingValue(),
                                   optionsBuilder: (textEditingValue) {
                                     if (textEditingValue.text == '') {
                                       return const Iterable<String>.empty();
@@ -435,7 +440,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                             fontFamily: 'Mulish',
                                             letterSpacing: 0.0,
                                           ),
-                                      textHighlightStyle: const TextStyle(),
+                                      textHighlightStyle: TextStyle(),
                                       elevation: 4.0,
                                       optionBackgroundColor:
                                           FlutterFlowTheme.of(context)
@@ -482,9 +487,9 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                           FFAppState().updatePrescricaoStruct(
                                             (e) => e
                                               ..remedio =
-                                                  _model.medCopyCopy?.first.id
+                                                  _model.medCopyCopy?.first?.id
                                               ..remedNome = _model
-                                                  .medCopyCopy?.first.nome,
+                                                  .medCopyCopy?.first?.nome,
                                           );
                                           safeSetState(() {});
 
@@ -501,7 +506,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                       onEditingComplete: onEditingComplete,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.inpCannabisTextController',
-                                        const Duration(milliseconds: 500),
+                                        Duration(milliseconds: 500),
                                         () => safeSetState(() {}),
                                       ),
                                       autofocus: false,
@@ -512,11 +517,11 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color: const Color(0xA457636C),
+                                              color: Color(0xA457636C),
                                               letterSpacing: 0.0,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x0E294B0D),
                                             width: 2.0,
                                           ),
@@ -551,11 +556,11 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0xFFF7FAFE),
+                                        fillColor: Color(0xFFF7FAFE),
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 18.0, 0.0, 0.0, 0.0),
-                                        suffixIcon: const Icon(
+                                        suffixIcon: Icon(
                                           Icons.search_rounded,
                                           color: Color(0x7057636C),
                                         ),
@@ -577,7 +582,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                           if (_model.dropDownValue1 ==
                               'Produto derivado de Cannabis')
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 '* Se você não encontrar o Produto derivado de Cannabis na listagem é por que ainda não fazemos o tratamento com o seu produto.',
@@ -585,7 +590,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFF878787),
+                                      color: Color(0xFF878787),
                                       fontSize: 10.0,
                                       letterSpacing: 0.0,
                                     ),
@@ -598,7 +603,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                               focusNode: _model.inpMedcFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.inpMedcTextController',
-                                const Duration(milliseconds: 0),
+                                Duration(milliseconds: 0),
                                 () => safeSetState(() {}),
                               ),
                               autofocus: false,
@@ -609,11 +614,11 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     .labelMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xA457636C),
+                                      color: Color(0xA457636C),
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x0E294B0D),
                                     width: 2.0,
                                   ),
@@ -641,8 +646,8 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 filled: true,
-                                fillColor: const Color(0xFFF7FAFE),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                fillColor: Color(0xFFF7FAFE),
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 0.0, 0.0),
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -654,15 +659,15 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                               validator: _model.inpMedcTextControllerValidator
                                   .asValidator(context),
                             ),
-                        ].divide(const SizedBox(height: 6.0)),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
                     Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                     ),
                     if (_model.dropDownValue1 == 'Produto derivado de Cannabis')
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 24.0, 24.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -690,7 +695,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                   _model.dropDownValue2 ??= 100,
                                 ),
                                 options: List<int>.from([100, 125, 150, 200]),
-                                optionLabels: const ['100', '125', '150', '200'],
+                                optionLabels: ['100', '125', '150', '200'],
                                 onChanged: (val) async {
                                   safeSetState(
                                       () => _model.dropDownValue2 = val);
@@ -717,12 +722,12 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                fillColor: const Color(0xFFF7FAFE),
+                                fillColor: Color(0xFFF7FAFE),
                                 elevation: 2.0,
-                                borderColor: const Color(0x0E294B0D),
+                                borderColor: Color(0x0E294B0D),
                                 borderWidth: 2.0,
                                 borderRadius: 8.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 hidesUnderline: true,
                                 isOverButton: false,
@@ -740,11 +745,11 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     .labelMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xA457636C),
+                                      color: Color(0xA457636C),
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x0E294B0D),
                                     width: 2.0,
                                   ),
@@ -772,8 +777,8 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 filled: true,
-                                fillColor: const Color(0xFFF7FAFE),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                fillColor: Color(0xFFF7FAFE),
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     18.0, 0.0, 0.0, 0.0),
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -785,7 +790,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                               validator: _model.inpVolumeTextControllerValidator
                                   .asValidator(context),
                             ),
-                          ].divide(const SizedBox(height: 6.0)),
+                          ].divide(SizedBox(height: 6.0)),
                         ),
                       ),
                     if (responsiveVisibility(
@@ -796,12 +801,12 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                       desktop: false,
                     ))
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 32.0, 24.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           height: 3.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Color(0x91E0E3E7),
                           ),
                         ),
@@ -814,14 +819,14 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                       desktop: false,
                     ))
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 24.0, 32.0, 0.0),
                         child: Text(
                           'Não encontrou o medicamento? Sem problemas, adicione o seu medicamento abaixo.',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
@@ -836,7 +841,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                       desktop: false,
                     ))
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 32.0, 32.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -851,7 +856,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                         FocusScope.of(context).unfocus(),
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: const CreateMedWidget(),
+                                      child: CreateMedWidget(),
                                     ),
                                   ),
                                 );
@@ -862,21 +867,21 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0x015D67E2),
+                            color: Color(0x015D67E2),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xB7BCBCBC),
+                                  color: Color(0xB7BCBCBC),
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                             elevation: 0.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0xB7BCBCBC),
                               width: 2.0,
                             ),
@@ -894,20 +899,23 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
                     child: FFButtonWidget(
                       onPressed: ((_model.dropDownValue1 == null ||
                                   _model.dropDownValue1 == '') ||
                               ((_model.dropDownValue1 ==
                                       'Produto derivado de Cannabis') &&
-                                  ((_model.inpCannabisTextController
+                                  ((_model.inpCannabisTextController.text ==
+                                              null ||
+                                          _model.inpCannabisTextController
                                                   .text ==
                                               '') ||
                                       (_model.inpCannabisFocusNode?.hasFocus ??
                                           false))) ||
                               ((_model.dropDownValue1 !=
                                       'Produto derivado de Cannabis') &&
-                                  (_model.inpMedcTextController.text == '')))
+                                  (_model.inpMedcTextController.text == null ||
+                                      _model.inpMedcTextController.text == '')))
                           ? null
                           : () async {
                               context.pushNamed('prescricao02');
@@ -925,8 +933,8 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                     (_model.medc1)!.isNotEmpty) {
                                   FFAppState().updatePrescricaoStruct(
                                     (e) => e
-                                      ..remedio = _model.medc1?.first.id
-                                      ..remedNome = _model.medc1?.first.nome,
+                                      ..remedio = _model.medc1?.first?.id
+                                      ..remedNome = _model.medc1?.first?.nome,
                                   );
                                   safeSetState(() {});
                                 } else {
@@ -956,10 +964,10 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 48.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -969,7 +977,7 @@ class _Prescricao01WidgetState extends State<Prescricao01Widget> {
                                   fontWeight: FontWeight.bold,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

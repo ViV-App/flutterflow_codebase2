@@ -1,6 +1,9 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/questionario/create_object/create_object_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'create_objects_model.dart';
 export 'create_objects_model.dart';
 
@@ -49,13 +52,13 @@ class _CreateObjectsWidgetState extends State<CreateObjectsWidget> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Builder(
             builder: (context) {
-              final jsn = widget.objects?.toList() ?? [];
+              final jsn = widget!.objects?.toList() ?? [];
 
               return Column(
                 mainAxisSize: MainAxisSize.max,
@@ -65,7 +68,7 @@ class _CreateObjectsWidgetState extends State<CreateObjectsWidget> {
                     key: Key('Keyqcn_${jsnIndex}_of_${jsn.length}'),
                     callbck: () async {},
                   );
-                }).divide(const SizedBox(height: 24.0)),
+                }).divide(SizedBox(height: 24.0)),
               );
             },
           ),

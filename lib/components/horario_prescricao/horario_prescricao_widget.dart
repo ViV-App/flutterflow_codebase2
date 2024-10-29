@@ -7,6 +7,8 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'horario_prescricao_model.dart';
 export 'horario_prescricao_model.dart';
@@ -41,9 +43,9 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
     _model = createModel(context, () => HorarioPrescricaoModel());
 
     _model.textController ??= TextEditingController(text: () {
-      if (widget.horario?.dosagem != 0.0) {
-        return widget.horario?.dosagem.toString();
-      } else if (widget.horario?.dosagem == 0.0) {
+      if (widget!.horario?.dosagem != 0.0) {
+        return widget!.horario?.dosagem?.toString();
+      } else if (widget!.horario?.dosagem == 0.0) {
         return '';
       } else {
         return '';
@@ -64,18 +66,18 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             () {
-              if (widget.index == 0) {
+              if (widget!.index == 0) {
                 return '1ª dose';
-              } else if (widget.index == 1) {
+              } else if (widget!.index == 1) {
                 return '2ª dose';
-              } else if (widget.index == 2) {
+              } else if (widget!.index == 2) {
                 return '3ª dose';
               } else {
                 return 'Dose';
@@ -83,7 +85,7 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
             }(),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Mulish',
-                  color: const Color(0xFF8798B5),
+                  color: Color(0xFF8798B5),
                   fontSize: 16.0,
                   letterSpacing: 0.0,
                 ),
@@ -93,17 +95,17 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
-                  child: SizedBox(
+                  child: Container(
                     width: 100.0,
                     child: TextFormField(
                       controller: _model.textController,
                       focusNode: _model.textFieldFocusNode,
                       onChanged: (_) => EasyDebounce.debounce(
                         '_model.textController',
-                        const Duration(milliseconds: 0),
+                        Duration(milliseconds: 0),
                         () async {
                           FFAppState().updateHorariosAtIndex(
-                            widget.index!,
+                            widget!.index!,
                             (e) => e
                               ..dosagem =
                                   double.tryParse(_model.textController.text),
@@ -118,11 +120,11 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                         hintStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF8798B5),
+                                  color: Color(0xFF8798B5),
                                   letterSpacing: 0.0,
                                 ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x0E294B0D),
                             width: 2.0,
                           ),
@@ -150,14 +152,14 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         filled: true,
-                        fillColor: const Color(0xFFF7FAFE),
+                        fillColor: Color(0xFFF7FAFE),
                         contentPadding:
-                            const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Mulish',
-                            color: widget.horario?.dosagem == null
-                                ? const Color(0xFF8798B5)
+                            color: widget!.horario?.dosagem == null
+                                ? Color(0xFF8798B5)
                                 : FlutterFlowTheme.of(context).primaryText,
                             letterSpacing: 0.0,
                           ),
@@ -169,7 +171,7 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                   ),
                 ),
                 Expanded(
-                  child: SizedBox(
+                  child: Container(
                     height: 48.0,
                     child: Stack(
                       children: [
@@ -177,11 +179,11 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                           controller: _model.dropDownValueController ??=
                               FormFieldController<String>(
                             _model.dropDownValue ??= valueOrDefault<String>(
-                              widget.horario?.medida,
+                              widget!.horario?.medida,
                               'Med.',
                             ),
                           ),
-                          options: const [
+                          options: [
                             'g',
                             'mg',
                             'mcg',
@@ -195,7 +197,7 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                           onChanged: (val) async {
                             safeSetState(() => _model.dropDownValue = val);
                             FFAppState().updateHorariosAtIndex(
-                              widget.index!,
+                              widget!.index!,
                               (e) => e..medida = _model.dropDownValue,
                             );
                             FFAppState().update(() {});
@@ -206,9 +208,9 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                               .bodyMedium
                               .override(
                                 fontFamily: 'Mulish',
-                                color: widget.horario?.medida == null ||
-                                        widget.horario?.medida == ''
-                                    ? const Color(0xFF8798B5)
+                                color: widget!.horario?.medida == null ||
+                                        widget!.horario?.medida == ''
+                                    ? Color(0xFF8798B5)
                                     : FlutterFlowTheme.of(context).primaryText,
                                 letterSpacing: 0.0,
                               ),
@@ -217,24 +219,24 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                             color: FlutterFlowTheme.of(context).secondaryText,
                             size: 24.0,
                           ),
-                          fillColor: const Color(0xFFF7FAFE),
+                          fillColor: Color(0xFFF7FAFE),
                           elevation: 2.0,
-                          borderColor: const Color(0x0E294B0D),
+                          borderColor: Color(0x0E294B0D),
                           borderWidth: 2.0,
                           borderRadius: 8.0,
-                          margin: const EdgeInsetsDirectional.fromSTEB(
+                          margin: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 16.0, 0.0),
                           hidesUnderline: true,
                           isOverButton: true,
                           isSearchable: false,
                           isMultiSelect: false,
                         ),
-                        if (widget.horario?.medida == null ||
-                            widget.horario?.medida == '')
+                        if (widget!.horario?.medida == null ||
+                            widget!.horario?.medida == '')
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Med.',
@@ -242,7 +244,7 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFF8798B5),
+                                      color: Color(0xFF8798B5),
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                     ),
@@ -268,12 +270,12 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                           return WebViewAware(
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: SizedBox(
+                              child: Container(
                                 height: MediaQuery.sizeOf(context).height * 0.4,
                                 child: CustomTimePickerWidget(
                                   callback: (timeSet) async {
                                     FFAppState().updateHorariosAtIndex(
-                                      widget.index!,
+                                      widget!.index!,
                                       (e) => e..horario = timeSet,
                                     );
                                     FFAppState().update(() {});
@@ -292,10 +294,10 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                       width: 150.0,
                       height: 48.0,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF7FAFE),
+                        color: Color(0xFFF7FAFE),
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
-                          color: const Color(0x13294B0D),
+                          color: Color(0x13294B0D),
                           width: 2.0,
                         ),
                       ),
@@ -307,7 +309,7 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                             valueOrDefault<String>(
                               dateTimeFormat(
                                 "Hm",
-                                widget.horario?.horario,
+                                widget!.horario?.horario,
                                 locale:
                                     FFLocalizations.of(context).languageCode,
                               ),
@@ -317,8 +319,8 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: widget.horario?.horario == null
-                                      ? const Color(0xFF8798B5)
+                                  color: widget!.horario?.horario == null
+                                      ? Color(0xFF8798B5)
                                       : FlutterFlowTheme.of(context)
                                           .primaryText,
                                   letterSpacing: 0.0,
@@ -329,10 +331,10 @@ class _HorarioPrescricaoWidgetState extends State<HorarioPrescricaoWidget> {
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(width: 12.0)),
+              ].divide(SizedBox(width: 12.0)),
             ),
           ),
-        ].divide(const SizedBox(width: 24.0)),
+        ].divide(SizedBox(width: 24.0)),
       ),
     );
   }

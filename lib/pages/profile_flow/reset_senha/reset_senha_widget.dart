@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'reset_senha_model.dart';
 export 'reset_senha_model.dart';
@@ -65,16 +67,16 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                   autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: Text(
                                 'Recuperar senha',
@@ -90,7 +92,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 24.0, 24.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -112,7 +114,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                   focusNode: _model.textFieldFocusNode1,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.textController1',
-                                    const Duration(milliseconds: 0),
+                                    Duration(milliseconds: 0),
                                     () => safeSetState(() {}),
                                   ),
                                   autofocus: false,
@@ -123,12 +125,12 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x0E294B0D),
                                         width: 2.0,
                                       ),
@@ -159,9 +161,9 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: const Color(0xFFF7FAFE),
+                                    fillColor: Color(0xFFF7FAFE),
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                     suffixIcon: InkWell(
                                       onTap: () => safeSetState(
@@ -186,11 +188,11 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                   validator: _model.textController1Validator
                                       .asValidator(context),
                                 ),
-                              ].divide(const SizedBox(height: 6.0)),
+                              ].divide(SizedBox(height: 6.0)),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 24.0, 24.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -212,7 +214,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                   focusNode: _model.textFieldFocusNode2,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.textController2',
-                                    const Duration(milliseconds: 0),
+                                    Duration(milliseconds: 0),
                                     () => safeSetState(() {}),
                                   ),
                                   autofocus: false,
@@ -223,12 +225,12 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: const Color(0xFF8798B5),
+                                          color: Color(0xFF8798B5),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x0E294B0D),
                                         width: 2.0,
                                       ),
@@ -259,9 +261,9 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: const Color(0xFFF7FAFE),
+                                    fillColor: Color(0xFFF7FAFE),
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                     suffixIcon: InkWell(
                                       onTap: () => safeSetState(
@@ -286,7 +288,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                   validator: _model.textController2Validator
                                       .asValidator(context),
                                 ),
-                              ].divide(const SizedBox(height: 6.0)),
+                              ].divide(SizedBox(height: 6.0)),
                             ),
                           ),
                         ],
@@ -296,9 +298,10 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 24.0),
+                      EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 24.0),
                   child: FFButtonWidget(
-                    onPressed: ((_model.textController1.text == '') ||
+                    onPressed: ((_model.textController1.text == null ||
+                                _model.textController1.text == '') ||
                             (_model.textController1.text !=
                                 _model.textController2.text))
                         ? null
@@ -312,14 +315,14 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      title: const Text('Senha recuperada'),
-                                      content: const Text(
+                                      title: Text('Senha recuperada'),
+                                      content: Text(
                                           'Sua senha foi recuperada, volte para o app e faça login com sua nova senha.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -329,13 +332,13 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: const Text(
+                                  content: Text(
                                     'Ocorreu um erro inesperado, tente novamente.',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
                                   ),
-                                  duration: const Duration(milliseconds: 4000),
+                                  duration: Duration(milliseconds: 4000),
                                   backgroundColor:
                                       FlutterFlowTheme.of(context).error,
                                 ),
@@ -349,9 +352,9 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                       width: double.infinity,
                       height: 48.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
@@ -361,7 +364,7 @@ class _ResetSenhaWidgetState extends State<ResetSenhaWidget> {
                                 fontWeight: FontWeight.bold,
                               ),
                       elevation: 3.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

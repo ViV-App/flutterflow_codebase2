@@ -3,8 +3,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/well_being_diary/new_well_being/new_well_being_widget.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'onboarding_home_completed_model.dart';
 export 'onboarding_home_completed_model.dart';
@@ -42,8 +46,8 @@ class _OnboardingHomeCompletedWidgetState
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, -48.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, -48.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -62,30 +66,30 @@ class _OnboardingHomeCompletedWidgetState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(10.0, 32.0, 10.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(10.0, 32.0, 10.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.0),
           ),
-          child: SizedBox(
+          child: Container(
             height: 220.0,
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Container(
                     width: double.infinity,
                     height: 200.0,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF7FAFE),
+                      color: Color(0xFFF7FAFE),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 18.0, 8.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 18.0, 8.0, 12.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,14 +99,14 @@ class _OnboardingHomeCompletedWidgetState
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
                                     child: Text(
                                       'Você aprendeu um pouco mais sobre a sua Assistente ViV!',
@@ -117,9 +121,9 @@ class _OnboardingHomeCompletedWidgetState
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, -1.0),
+                                    alignment: AlignmentDirectional(0.0, -1.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 0.0),
                                       child: Text(
                                         'Para começar com o pé direito, o que acha de preencher o seu primeiro diário de bem estar?',
@@ -128,7 +132,7 @@ class _OnboardingHomeCompletedWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color: const Color(0xFF42526D),
+                                              color: Color(0xFF42526D),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -142,7 +146,7 @@ class _OnboardingHomeCompletedWidgetState
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 12.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -157,21 +161,21 @@ class _OnboardingHomeCompletedWidgetState
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0xFFEFF4F9),
+                                  color: Color(0xFFEFF4F9),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: const Color(0xFF8798B5),
+                                        color: Color(0xFF8798B5),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -193,11 +197,11 @@ class _OnboardingHomeCompletedWidgetState
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: SizedBox(
+                                          child: Container(
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
                                                 0.85,
-                                            child: const NewWellBeingWidget(),
+                                            child: NewWellBeingWidget(),
                                           ),
                                         ),
                                       );
@@ -208,9 +212,9 @@ class _OnboardingHomeCompletedWidgetState
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -222,7 +226,7 @@ class _OnboardingHomeCompletedWidgetState
                                         fontWeight: FontWeight.bold,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -230,7 +234,7 @@ class _OnboardingHomeCompletedWidgetState
                                 ),
                               ),
                             ),
-                          ].divide(const SizedBox(width: 12.0)),
+                          ].divide(SizedBox(width: 12.0)),
                         ),
                       ),
                     ],

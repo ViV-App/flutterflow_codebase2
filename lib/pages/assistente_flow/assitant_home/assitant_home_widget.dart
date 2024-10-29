@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/assistente_flow/assistant_menu/assistant_menu_widget.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'assitant_home_model.dart';
@@ -55,7 +58,7 @@ class _AssitantHomeWidgetState extends State<AssitantHomeWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Stack(
               children: [
                 Column(
@@ -63,7 +66,7 @@ class _AssitantHomeWidgetState extends State<AssitantHomeWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
@@ -77,7 +80,7 @@ class _AssitantHomeWidgetState extends State<AssitantHomeWidget> {
                         ],
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(18.0),
+                        padding: EdgeInsets.all(18.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,7 +112,7 @@ class _AssitantHomeWidgetState extends State<AssitantHomeWidget> {
                                     fontWeight: FontWeight.w800,
                                   ),
                             ),
-                            const Icon(
+                            Icon(
                               Icons.add,
                               color: Color(0x015D67E2),
                               size: 32.0,
@@ -171,13 +174,13 @@ class _AssitantHomeWidgetState extends State<AssitantHomeWidget> {
                                     letterSpacing: 0.0,
                                   ),
                         ),
-                      ].divide(const SizedBox(height: 8.0)),
+                      ].divide(SizedBox(height: 8.0)),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -196,7 +199,7 @@ class _AssitantHomeWidgetState extends State<AssitantHomeWidget> {
                                         FocusScope.of(context).unfocus(),
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: const AssistantMenuWidget(),
+                                      child: AssistantMenuWidget(),
                                     ),
                                   ),
                                 );
@@ -212,7 +215,7 @@ class _AssitantHomeWidgetState extends State<AssitantHomeWidget> {
                                 color: FlutterFlowTheme.of(context).primary,
                                 borderRadius: BorderRadius.circular(100.0),
                               ),
-                              child: const Align(
+                              child: Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,

@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/schema/enums/enums.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/toast/toast_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -8,7 +9,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'health_data_model.dart';
@@ -80,7 +84,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: FutureBuilder<List<MedicoRow>>(
         future: MedicoTable().querySingleRow(
           queryFn: (q) => q.eq(
@@ -112,7 +116,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
           return Material(
             color: Colors.transparent,
             elevation: 3.0,
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
@@ -125,7 +129,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
               height: double.infinity,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(0.0),
                   bottomRight: Radius.circular(0.0),
                   topLeft: Radius.circular(24.0),
@@ -136,15 +140,15 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Container(
                         width: 100.0,
                         height: 4.0,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFDBE4F1),
+                          color: Color(0xFFDBE4F1),
                           borderRadius: BorderRadius.circular(32.0),
                         ),
                       ),
@@ -154,13 +158,13 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                     child: Container(
                       width: double.infinity,
                       height: double.infinity,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: SingleChildScrollView(
                               child: Column(
@@ -168,9 +172,9 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, -1.0),
+                                    alignment: AlignmentDirectional(0.0, -1.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
                                         'Informações de saúde',
@@ -186,7 +190,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 32.0, 24.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -238,12 +242,12 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            const Color(0xFF8798B5),
+                                                            Color(0xFF8798B5),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x0E294B0D),
                                                   width: 2.0,
                                                 ),
@@ -282,9 +286,9 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                     BorderRadius.circular(8.0),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0xFFF7FAFE),
+                                              fillColor: Color(0xFFF7FAFE),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                             ),
@@ -301,7 +305,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 8.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -345,13 +349,13 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              const Color(0xFF8798B5),
+                                                              Color(0xFF8798B5),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Color(0x0E294B0D),
                                                         width: 2.0,
@@ -401,9 +405,9 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        const Color(0xFFF7FAFE),
+                                                        Color(0xFFF7FAFE),
                                                     contentPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                   ),
@@ -420,7 +424,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                 ),
                                               ),
                                               Expanded(
-                                                child: SizedBox(
+                                                child: Container(
                                                   height: 48.0,
                                                   child: Stack(
                                                     children: [
@@ -479,14 +483,14 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                           size: 24.0,
                                                         ),
                                                         fillColor:
-                                                            const Color(0xFFF7FAFE),
+                                                            Color(0xFFF7FAFE),
                                                         elevation: 2.0,
                                                         borderColor:
-                                                            const Color(0x0E294B0D),
+                                                            Color(0x0E294B0D),
                                                         borderWidth: 2.0,
                                                         borderRadius: 8.0,
                                                         margin:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     4.0,
@@ -513,11 +517,11 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                           _model.ufValue == '')
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   -1.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -531,7 +535,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF8798B5),
                                                                     letterSpacing:
                                                                         0.0,
@@ -543,10 +547,10 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(width: 8.0)),
+                                            ].divide(SizedBox(width: 8.0)),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(height: 6.0)),
+                                      ].divide(SizedBox(height: 6.0)),
                                     ),
                                   ),
                                   if (responsiveVisibility(
@@ -555,7 +559,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                     tablet: false,
                                   ))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 24.0, 24.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -579,7 +583,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              final datePickedDate =
+                                              final _datePickedDate =
                                                   await showDatePicker(
                                                 context: context,
                                                 initialDate:
@@ -589,12 +593,12 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                 lastDate: DateTime(2050),
                                               );
 
-                                              if (datePickedDate != null) {
+                                              if (_datePickedDate != null) {
                                                 safeSetState(() {
                                                   _model.datePicked = DateTime(
-                                                    datePickedDate.year,
-                                                    datePickedDate.month,
-                                                    datePickedDate.day,
+                                                    _datePickedDate.year,
+                                                    _datePickedDate.month,
+                                                    _datePickedDate.day,
                                                   );
                                                 });
                                               }
@@ -603,16 +607,16 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                               width: double.infinity,
                                               height: 48.0,
                                               decoration: BoxDecoration(
-                                                color: const Color(0xFFF7FAFE),
+                                                color: Color(0xFFF7FAFE),
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 border: Border.all(
-                                                  color: const Color(0x13294B0D),
+                                                  color: Color(0x13294B0D),
                                                   width: 2.0,
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 0.0, 12.0, 0.0),
                                                 child: Row(
@@ -641,7 +645,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                             color: _model
                                                                         .datePicked ==
                                                                     null
-                                                                ? const Color(
+                                                                ? Color(
                                                                     0xFF8798B5)
                                                                 : FlutterFlowTheme.of(
                                                                         context)
@@ -649,7 +653,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),
-                                                    const Icon(
+                                                    Icon(
                                                       Icons
                                                           .calendar_today_outlined,
                                                       color: Color(0xFF8798B5),
@@ -660,11 +664,11 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(height: 6.0)),
+                                        ].divide(SizedBox(height: 6.0)),
                                       ),
                                     ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 24.0, 24.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -694,12 +698,12 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Mulish',
-                                                      color: const Color(0xFF8798B5),
+                                                      color: Color(0xFF8798B5),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0x0E294B0D),
                                                 width: 2.0,
                                               ),
@@ -738,9 +742,9 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                   BorderRadius.circular(8.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF7FAFE),
+                                            fillColor: Color(0xFFF7FAFE),
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -758,11 +762,11 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                             _model.textFieldMask1
                                           ],
                                         ),
-                                      ].divide(const SizedBox(height: 6.0)),
+                                      ].divide(SizedBox(height: 6.0)),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 24.0, 24.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -792,12 +796,12 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Mulish',
-                                                      color: const Color(0xFF8798B5),
+                                                      color: Color(0xFF8798B5),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0x0E294B0D),
                                                 width: 2.0,
                                               ),
@@ -836,9 +840,9 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                                   BorderRadius.circular(8.0),
                                             ),
                                             filled: true,
-                                            fillColor: const Color(0xFFF7FAFE),
+                                            fillColor: Color(0xFFF7FAFE),
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -854,7 +858,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                             _model.textFieldMask2
                                           ],
                                         ),
-                                      ].divide(const SizedBox(height: 6.0)),
+                                      ].divide(SizedBox(height: 6.0)),
                                     ),
                                   ),
                                 ],
@@ -863,7 +867,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                           ),
                           Builder(
                             builder: (context) => Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 32.0, 24.0, 24.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
@@ -874,7 +878,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                       currentUserUid,
                                     ),
                                   );
-                                  if (_model.cUSer?.first.medicoPrescritor ==
+                                  if (_model.cUSer?.first?.medicoPrescritor ==
                                       null) {
                                     _model.cMed = await MedicoTable().insert({
                                       'nome': _model.nomeMedTextController.text,
@@ -913,12 +917,12 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                           elevation: 0,
                                           insetPadding: EdgeInsets.zero,
                                           backgroundColor: Colors.transparent,
-                                          alignment: const AlignmentDirectional(
+                                          alignment: AlignmentDirectional(
                                                   0.0, -1.0)
                                               .resolve(
                                                   Directionality.of(context)),
-                                          child: const WebViewAware(
-                                            child: SizedBox(
+                                          child: WebViewAware(
+                                            child: Container(
                                               width: double.infinity,
                                               child: ToastWidget(
                                                 type: ToastTypes.puprle,
@@ -941,7 +945,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                       },
                                       matchingRows: (rows) => rows.eq(
                                         'id',
-                                        _model.cUSer?.first.medicoPrescritor,
+                                        _model.cUSer?.first?.medicoPrescritor,
                                       ),
                                     );
                                     await PacienteTable().update(
@@ -975,12 +979,12 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                           elevation: 0,
                                           insetPadding: EdgeInsets.zero,
                                           backgroundColor: Colors.transparent,
-                                          alignment: const AlignmentDirectional(
+                                          alignment: AlignmentDirectional(
                                                   0.0, -1.0)
                                               .resolve(
                                                   Directionality.of(context)),
-                                          child: const WebViewAware(
-                                            child: SizedBox(
+                                          child: WebViewAware(
+                                            child: Container(
                                               width: double.infinity,
                                               child: ToastWidget(
                                                 type: ToastTypes.puprle,
@@ -1001,9 +1005,9 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -1015,7 +1019,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),

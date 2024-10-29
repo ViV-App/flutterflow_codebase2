@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'create_med_model.dart';
 export 'create_med_model.dart';
 
@@ -45,11 +48,11 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Material(
         color: Colors.transparent,
         elevation: 3.0,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -62,7 +65,7 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
           height: 620.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(24.0),
@@ -73,14 +76,14 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Container(
                     width: 100.0,
                     height: 4.0,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFDBE4F1),
+                      color: Color(0xFFDBE4F1),
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
@@ -92,7 +95,7 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,7 +116,7 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                                 FormFieldController<String>(
                               _model.dropDownValue ??= 'Medicamento',
                             ),
-                            options: const [
+                            options: [
                               'Medicamento',
                               'Produto derivado de Cannabis',
                               'Suplemento'
@@ -136,24 +139,24 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                               color: FlutterFlowTheme.of(context).secondaryText,
                               size: 24.0,
                             ),
-                            fillColor: const Color(0xFFF7FAFE),
+                            fillColor: Color(0xFFF7FAFE),
                             elevation: 2.0,
-                            borderColor: const Color(0x0E294B0D),
+                            borderColor: Color(0x0E294B0D),
                             borderWidth: 2.0,
                             borderRadius: 8.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
                             hidesUnderline: true,
                             isOverButton: true,
                             isSearchable: false,
                             isMultiSelect: false,
                           ),
-                        ].divide(const SizedBox(height: 6.0)),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,12 +183,12 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: const Color(0xFF8798B5),
+                                    color: Color(0xFF8798B5),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x0E294B0D),
                                   width: 2.0,
                                 ),
@@ -213,8 +216,8 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               filled: true,
-                              fillColor: const Color(0xFFF7FAFE),
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              fillColor: Color(0xFFF7FAFE),
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -226,18 +229,19 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                             validator: _model.textControllerValidator
                                 .asValidator(context),
                           ),
-                        ].divide(const SizedBox(height: 6.0)),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
-                  ].addToStart(const SizedBox(height: 12.0)),
+                  ].addToStart(SizedBox(height: 12.0)),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
                 child: FFButtonWidget(
                   onPressed: ((_model.dropDownValue == null ||
                               _model.dropDownValue == '') ||
-                          (_model.textController.text == ''))
+                          (_model.textController.text == null ||
+                              _model.textController.text == ''))
                       ? null
                       : () async {
                           _model.medCreated =
@@ -260,9 +264,9 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                     width: double.infinity,
                     height: 48.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Mulish',
@@ -271,7 +275,7 @@ class _CreateMedWidgetState extends State<CreateMedWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                     elevation: 3.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

@@ -5,6 +5,8 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'int_phone_number_model.dart';
 export 'int_phone_number_model.dart';
@@ -60,7 +62,7 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
       getJsonField(
         _model.selectedCountry,
         r'''$.dialCode''',
-      )?.toString().toString(),
+      )?.toString()?.toString(),
       '5',
     ));
     _model.ipEmailFocusNode1 ??= FocusNode();
@@ -81,7 +83,7 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -132,22 +134,22 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
                 width: 100.0,
                 height: 48.0,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF7FAFE),
+                  color: Color(0xFFF7FAFE),
                   borderRadius: BorderRadius.circular(8.0),
                   border: Border.all(
-                    color: const Color(0x13294B0D),
+                    color: Color(0x13294B0D),
                     width: 2.0,
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(4.0),
+                  padding: EdgeInsets.all(4.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 0.0, 4.0),
+                            EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 0.0, 4.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
                           child: Image.network(
@@ -174,14 +176,14 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
           ),
           Expanded(
             flex: 1,
-            child: SizedBox(
+            child: Container(
               width: 100.0,
               child: TextFormField(
                 controller: _model.ipEmailTextController1,
                 focusNode: _model.ipEmailFocusNode1,
                 onChanged: (_) => EasyDebounce.debounce(
                   '_model.ipEmailTextController1',
-                  const Duration(milliseconds: 0),
+                  Duration(milliseconds: 0),
                   () => safeSetState(() {}),
                 ),
                 autofocus: false,
@@ -191,12 +193,12 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
                   hintText: '000',
                   hintStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Mulish',
-                        color: const Color(0xFF8798B5),
+                        color: Color(0xFF8798B5),
                         fontSize: 16.0,
                         letterSpacing: 0.0,
                       ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Color(0x0E294B0D),
                       width: 2.0,
                     ),
@@ -224,9 +226,9 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   filled: true,
-                  fillColor: const Color(0xFFF7FAFE),
+                  fillColor: Color(0xFFF7FAFE),
                   contentPadding:
-                      const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Mulish',
@@ -239,14 +241,14 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
           ),
           Expanded(
             flex: 2,
-            child: SizedBox(
+            child: Container(
               width: 100.0,
               child: TextFormField(
                 controller: _model.ipEmailTextController2,
                 focusNode: _model.ipEmailFocusNode2,
                 onChanged: (_) => EasyDebounce.debounce(
                   '_model.ipEmailTextController2',
-                  const Duration(milliseconds: 0),
+                  Duration(milliseconds: 0),
                   () async {
                     await widget.callback?.call(
                       functions.concatenString(
@@ -264,12 +266,12 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
                   hintText: '000',
                   hintStyle: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Mulish',
-                        color: const Color(0xFF8798B5),
+                        color: Color(0xFF8798B5),
                         fontSize: 16.0,
                         letterSpacing: 0.0,
                       ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Color(0x0E294B0D),
                       width: 2.0,
                     ),
@@ -297,9 +299,9 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   filled: true,
-                  fillColor: const Color(0xFFF7FAFE),
+                  fillColor: Color(0xFFF7FAFE),
                   contentPadding:
-                      const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Mulish',
@@ -310,7 +312,7 @@ class _IntPhoneNumberWidgetState extends State<IntPhoneNumberWidget> {
               ),
             ),
           ),
-        ].divide(const SizedBox(width: 12.0)),
+        ].divide(SizedBox(width: 12.0)),
       ),
     );
   }

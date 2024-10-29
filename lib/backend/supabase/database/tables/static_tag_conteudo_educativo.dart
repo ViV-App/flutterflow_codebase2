@@ -11,7 +11,7 @@ class StaticTagConteudoEducativoTable
 }
 
 class StaticTagConteudoEducativoRow extends SupabaseDataRow {
-  StaticTagConteudoEducativoRow(super.data);
+  StaticTagConteudoEducativoRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => StaticTagConteudoEducativoTable();

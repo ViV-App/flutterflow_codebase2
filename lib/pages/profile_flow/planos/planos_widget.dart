@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'planos_model.dart';
@@ -61,7 +62,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Color(0x00FFFFFF),
             ),
             child: Column(
@@ -75,7 +76,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(18.0),
+                    padding: EdgeInsets.all(18.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,7 +105,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
-                        const Icon(
+                        Icon(
                           Icons.add,
                           color: Color(0x005D67E2),
                           size: 32.0,
@@ -119,7 +120,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 32.0, 24.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -143,17 +144,17 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: const Color(0xFF42526D),
+                                      color: Color(0xFF42526D),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
-                            ].divide(const SizedBox(height: 8.0)),
+                            ].divide(SizedBox(height: 8.0)),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 0.0, 0.0),
                           child: FutureBuilder<List<PlanosAssinaturaRow>>(
                             future: PlanosAssinaturaTable().queryRows(
@@ -189,20 +190,20 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                 itemCount:
                                     listViewPlanosAssinaturaRowList.length,
                                 separatorBuilder: (_, __) =>
-                                    const SizedBox(height: 24.0),
+                                    SizedBox(height: 24.0),
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewPlanosAssinaturaRow =
                                       listViewPlanosAssinaturaRowList[
                                           listViewIndex];
                                   return Align(
-                                    alignment: const AlignmentDirectional(0.0, -1.0),
+                                    alignment: AlignmentDirectional(0.0, -1.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       child: Material(
                                         color: Colors.transparent,
                                         elevation: 0.0,
-                                        shape: const RoundedRectangleBorder(
+                                        shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(8.0),
                                             bottomRight: Radius.circular(8.0),
@@ -211,7 +212,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                           ),
                                         ),
                                         child: ClipRRect(
-                                          borderRadius: const BorderRadius.only(
+                                          borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(8.0),
                                             bottomRight: Radius.circular(8.0),
                                             topLeft: Radius.circular(8.0),
@@ -223,7 +224,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              borderRadius: const BorderRadius.only(
+                                              borderRadius: BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(8.0),
                                                 bottomRight:
@@ -232,7 +233,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                 topRight: Radius.circular(8.0),
                                               ),
                                               border: Border.all(
-                                                color: const Color(0xFFEFF4F9),
+                                                color: Color(0xFFEFF4F9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -248,7 +249,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 18.0,
                                                                 12.0,
@@ -328,7 +329,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF434854),
                                                                 fontSize: 18.0,
                                                                 letterSpacing:
@@ -338,19 +339,19 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         .w800,
                                                               ),
                                                         ),
-                                                      ].divide(const SizedBox(
+                                                      ].divide(SizedBox(
                                                           height: 12.0)),
                                                     ),
                                                   ),
                                                 ),
                                                 Container(
                                                   width: double.infinity,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0xFFEFF4F9),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 18.0,
                                                                 18.0,
@@ -387,7 +388,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF434854),
                                                                 fontSize: 28.0,
                                                                 letterSpacing:
@@ -399,7 +400,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       12.0,
@@ -418,7 +419,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF434854),
                                                                   fontSize:
                                                                       14.0,
@@ -435,7 +436,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                 .id)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         14.0,
@@ -445,7 +446,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                 FFButtonWidget(
                                                               onPressed:
                                                                   () async {
-                                                                var shouldSetState =
+                                                                var _shouldSetState =
                                                                     false;
                                                                 _model.currentUser =
                                                                     await PacienteTable()
@@ -457,12 +458,12 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                     currentUserUid,
                                                                   ),
                                                                 );
-                                                                shouldSetState =
+                                                                _shouldSetState =
                                                                     true;
                                                                 if (_model
                                                                         .currentUser
                                                                         ?.first
-                                                                        .queixaPrincipal ==
+                                                                        ?.queixaPrincipal ==
                                                                     'Outra queixa não listada') {
                                                                   await showDialog(
                                                                     context:
@@ -473,30 +474,29 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         child:
                                                                             AlertDialog(
                                                                           title:
-                                                                              const Text('Assinatura bloqueada'),
+                                                                              Text('Assinatura bloqueada'),
                                                                           content:
-                                                                              const Text('Percebemos que você tem queixas que não cobrimos, dessa forma, não podemos ativar sua assinatura.'),
+                                                                              Text('Percebemos que você tem queixas que não cobrimos, dessa forma, não podemos ativar sua assinatura.'),
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () => Navigator.pop(alertDialogContext),
-                                                                              child: const Text('Ok'),
+                                                                              child: Text('Ok'),
                                                                             ),
                                                                           ],
                                                                         ),
                                                                       );
                                                                     },
                                                                   );
-                                                                  if (shouldSetState) {
+                                                                  if (_shouldSetState)
                                                                     safeSetState(
                                                                         () {});
-                                                                  }
                                                                   return;
                                                                 } else {
                                                                   if (_model
                                                                           .currentUser
                                                                           ?.first
-                                                                          .queixas
-                                                                          .contains(
+                                                                          ?.queixas
+                                                                          ?.contains(
                                                                               'Outra queixa não listada') ==
                                                                       true) {
                                                                     await showDialog(
@@ -508,23 +508,22 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                           child:
                                                                               AlertDialog(
                                                                             title:
-                                                                                const Text('Assinatura bloqueada'),
+                                                                                Text('Assinatura bloqueada'),
                                                                             content:
-                                                                                const Text('Percebemos que você tem queixas que não cobrimos, dessa forma, não podemos ativar sua assinatura.'),
+                                                                                Text('Percebemos que você tem queixas que não cobrimos, dessa forma, não podemos ativar sua assinatura.'),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                child: const Text('Ok'),
+                                                                                child: Text('Ok'),
                                                                               ),
                                                                             ],
                                                                           ),
                                                                         );
                                                                       },
                                                                     );
-                                                                    if (shouldSetState) {
+                                                                    if (_shouldSetState)
                                                                       safeSetState(
                                                                           () {});
-                                                                    }
                                                                     return;
                                                                   } else {
                                                                     _model.res =
@@ -535,7 +534,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                           .id,
                                                                     );
 
-                                                                    shouldSetState =
+                                                                    _shouldSetState =
                                                                         true;
                                                                     if (true ==
                                                                         VerifyContraIndicacoesCall
@@ -551,22 +550,21 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                           return WebViewAware(
                                                                             child:
                                                                                 AlertDialog(
-                                                                              title: const Text('Assinatura bloqueada'),
-                                                                              content: const Text('Não é possível realizar uma assinatura devido à sua condição de saúde, o uso de Cannabis pode ser contraindicado. Somente um médico poderá avaliar essa possibilidade. Infelizmente, não poderemos oferecer acompanhamento através da nossa assinatura, considerando o potencial risco em seu caso.'),
+                                                                              title: Text('Assinatura bloqueada'),
+                                                                              content: Text('Não é possível realizar uma assinatura devido à sua condição de saúde, o uso de Cannabis pode ser contraindicado. Somente um médico poderá avaliar essa possibilidade. Infelizmente, não poderemos oferecer acompanhamento através da nossa assinatura, considerando o potencial risco em seu caso.'),
                                                                               actions: [
                                                                                 TextButton(
                                                                                   onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                  child: const Text('Ok'),
+                                                                                  child: Text('Ok'),
                                                                                 ),
                                                                               ],
                                                                             ),
                                                                           );
                                                                         },
                                                                       );
-                                                                      if (shouldSetState) {
+                                                                      if (_shouldSetState)
                                                                         safeSetState(
                                                                             () {});
-                                                                      }
                                                                       return;
                                                                     } else {
                                                                       _model.hasCanMed =
@@ -575,10 +573,10 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         value: _model
                                                                             .currentUser
                                                                             ?.first
-                                                                            .id,
+                                                                            ?.id,
                                                                       );
 
-                                                                      shouldSetState =
+                                                                      _shouldSetState =
                                                                           true;
                                                                       if (true ==
                                                                           HasCannabisMedicationCall
@@ -597,12 +595,11 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                               listViewPlanosAssinaturaRow.titulo,
                                                                         );
 
-                                                                        shouldSetState =
+                                                                        _shouldSetState =
                                                                             true;
-                                                                        if (shouldSetState) {
+                                                                        if (_shouldSetState)
                                                                           safeSetState(
                                                                               () {});
-                                                                        }
                                                                         return;
                                                                       } else {
                                                                         var confirmDialogResponse = await showDialog<bool>(
@@ -610,16 +607,16 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                               builder: (alertDialogContext) {
                                                                                 return WebViewAware(
                                                                                   child: AlertDialog(
-                                                                                    title: const Text('Assinatura bloqueada'),
-                                                                                    content: const Text('Percebemos que você ainda não tem nenhum produto derivado de cannabis registrado. Por favor, cadastre um para efetuar sua asinatura.'),
+                                                                                    title: Text('Assinatura bloqueada'),
+                                                                                    content: Text('Percebemos que você ainda não tem nenhum produto derivado de cannabis registrado. Por favor, cadastre um para efetuar sua asinatura.'),
                                                                                     actions: [
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                        child: const Text('Depois'),
+                                                                                        child: Text('Depois'),
                                                                                       ),
                                                                                       TextButton(
                                                                                         onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                        child: const Text('Cadastrar'),
+                                                                                        child: Text('Cadastrar'),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -631,14 +628,12 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                           context
                                                                               .pushNamed('prescricao01');
 
-                                                                          if (shouldSetState) {
+                                                                          if (_shouldSetState)
                                                                             safeSetState(() {});
-                                                                          }
                                                                           return;
                                                                         } else {
-                                                                          if (shouldSetState) {
+                                                                          if (_shouldSetState)
                                                                             safeSetState(() {});
-                                                                          }
                                                                           return;
                                                                         }
                                                                       }
@@ -646,14 +641,13 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                   }
                                                                 }
 
-                                                                if (shouldSetState) {
+                                                                if (_shouldSetState)
                                                                   safeSetState(
                                                                       () {});
-                                                                }
                                                               },
                                                               text:
                                                                   'Assinar agora',
-                                                              icon: const Icon(
+                                                              icon: Icon(
                                                                 Icons
                                                                     .open_in_new_rounded,
                                                                 size: 15.0,
@@ -663,14 +657,14 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                 width: double
                                                                     .infinity,
                                                                 height: 48.0,
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                                 iconPadding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -695,7 +689,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                     ),
                                                                 elevation: 0.0,
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Colors
                                                                       .transparent,
                                                                   width: 1.0,
@@ -715,7 +709,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                 .id)
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         14.0,
@@ -728,7 +722,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                     'Button pressed ...');
                                                               },
                                                               text: 'Assinado',
-                                                              icon: const Icon(
+                                                              icon: Icon(
                                                                 Icons.check,
                                                                 size: 15.0,
                                                               ),
@@ -737,20 +731,20 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                 width: double
                                                                     .infinity,
                                                                 height: 48.0,
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                                 iconPadding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF94B6D7),
                                                                 textStyle: FlutterFlowTheme.of(
                                                                         context)
@@ -768,7 +762,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                     ),
                                                                 elevation: 0.0,
                                                                 borderSide:
-                                                                    const BorderSide(
+                                                                    BorderSide(
                                                                   color: Colors
                                                                       .transparent,
                                                                   width: 1.0,
@@ -785,7 +779,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                             'Básico')
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         12.0,
@@ -810,7 +804,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                       CrossAxisAlignment
                                                                           .center,
                                                                   children: [
-                                                                    const Icon(
+                                                                    Icon(
                                                                       Icons
                                                                           .check_rounded,
                                                                       color: Color(
@@ -830,7 +824,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Diário de bem-viver (registro de sintomas) - Ilimitado',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -838,7 +832,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -850,7 +844,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                       CrossAxisAlignment
                                                                           .center,
                                                                   children: [
-                                                                    const Icon(
+                                                                    Icon(
                                                                       Icons
                                                                           .check_rounded,
                                                                       color: Color(
@@ -870,7 +864,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Alerta para tomada de remédios - Ilimitado',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -878,7 +872,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -890,7 +884,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                       CrossAxisAlignment
                                                                           .center,
                                                                   children: [
-                                                                    const Icon(
+                                                                    Icon(
                                                                       Icons
                                                                           .check_rounded,
                                                                       color: Color(
@@ -910,7 +904,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Histórico de evolução de sintomas - Limitado à 1 semana',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -918,7 +912,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -951,7 +945,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Plano terapêutico a cada 6 meses (Bônus)',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -959,7 +953,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -992,7 +986,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'BIP (Ajuste de dose)',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1000,7 +994,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -1033,7 +1027,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Conexão com médicos e fornecedores',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1041,11 +1035,11 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
-                                                              ].divide(const SizedBox(
+                                                              ].divide(SizedBox(
                                                                   height:
                                                                       12.0)),
                                                             ),
@@ -1055,7 +1049,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                             'Premium')
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         12.0,
@@ -1080,7 +1074,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                       CrossAxisAlignment
                                                                           .center,
                                                                   children: [
-                                                                    const Icon(
+                                                                    Icon(
                                                                       Icons
                                                                           .check_rounded,
                                                                       color: Color(
@@ -1100,7 +1094,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Diário de bem-viver (registro de sintomas) - Ilimitado',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1108,7 +1102,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -1120,7 +1114,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                       CrossAxisAlignment
                                                                           .center,
                                                                   children: [
-                                                                    const Icon(
+                                                                    Icon(
                                                                       Icons
                                                                           .check_rounded,
                                                                       color: Color(
@@ -1140,7 +1134,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Alerta para tomada de remédios - Ilimitado',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1148,7 +1142,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -1160,7 +1154,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                       CrossAxisAlignment
                                                                           .center,
                                                                   children: [
-                                                                    const Icon(
+                                                                    Icon(
                                                                       Icons
                                                                           .check_rounded,
                                                                       color: Color(
@@ -1180,7 +1174,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Histórico de evolução de sintomas - Limitado à 1 semana',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1188,7 +1182,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -1221,7 +1215,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Plano terapêutico a cada 6 meses (Bônus)',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1229,7 +1223,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -1262,7 +1256,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'BIP (Ajuste de dose)',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1270,7 +1264,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
@@ -1303,7 +1297,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                             'Conexão com médicos e fornecedores',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Mulish',
-                                                                                  color: const Color(0xFF434854),
+                                                                                  color: Color(0xFF434854),
                                                                                   fontSize: 16.0,
                                                                                   letterSpacing: 0.0,
                                                                                 ),
@@ -1311,11 +1305,11 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           8.0)),
                                                                 ),
-                                                              ].divide(const SizedBox(
+                                                              ].divide(SizedBox(
                                                                   height:
                                                                       12.0)),
                                                             ),
@@ -1337,7 +1331,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 32.0, 24.0, 0.0),
                           child: Material(
                             color: Colors.transparent,
@@ -1348,14 +1342,14 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFEFF4F9),
+                                color: Color(0xFFEFF4F9),
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
-                                  color: const Color(0xFFEFF4F9),
+                                  color: Color(0xFFEFF4F9),
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     14.0, 14.0, 14.0, 18.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -1367,14 +1361,14 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: const Color(0x96434854),
+                                            color: Color(0x96434854),
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w800,
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 0.0),
                                       child: Text(
                                         'A assinatura deve ser realizada fora do aplicativo. Basta clicar no botão acima, você será redirecionado para um ambiente confiável.',
@@ -1382,7 +1376,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color: const Color(0x96434854),
+                                              color: Color(0x96434854),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -1395,7 +1389,7 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               28.0, 32.0, 28.0, 32.0),
                           child: Text(
                             '* Em caso de não utilização, não é acumulativo para os meses sequentes.',
@@ -1403,15 +1397,15 @@ class _PlanosWidgetState extends State<PlanosWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: const Color(0xFF434854),
+                                  color: Color(0xFF434854),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
                           ),
                         ),
                       ]
-                          .addToStart(const SizedBox(height: 4.0))
-                          .addToEnd(const SizedBox(height: 32.0)),
+                          .addToStart(SizedBox(height: 4.0))
+                          .addToEnd(SizedBox(height: 32.0)),
                     ),
                   ),
                 ),

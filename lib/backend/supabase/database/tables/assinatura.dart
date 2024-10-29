@@ -9,7 +9,7 @@ class AssinaturaTable extends SupabaseTable<AssinaturaRow> {
 }
 
 class AssinaturaRow extends SupabaseDataRow {
-  AssinaturaRow(super.data);
+  AssinaturaRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AssinaturaTable();

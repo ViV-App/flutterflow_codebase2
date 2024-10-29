@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'pergunta_widget_model.dart';
 export 'pergunta_widget_model.dart';
 
@@ -44,9 +46,9 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
       safeSetState(() {
         _model.textController?.text = valueOrDefault<String>(
           getJsonField(
-            widget.respostaSetada,
+            widget!.respostaSetada,
             r'''$.resposta''',
-          )?.toString().toString(),
+          )?.toString()?.toString(),
           '.',
         );
         _model.textController?.selection =
@@ -77,16 +79,16 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
       child: Container(
-        decoration: const BoxDecoration(),
+        decoration: BoxDecoration(),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               valueOrDefault<String>(
-                widget.pergunta?.pergunta,
+                widget!.pergunta?.pergunta,
                 'Pergunta atual',
               ),
               textAlign: TextAlign.center,
@@ -98,11 +100,11 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                     fontWeight: FontWeight.w800,
                   ),
             ),
-            if (widget.pergunta?.opcoesAtivadas == true)
+            if (widget!.pergunta?.opcoesAtivadas == true)
               Expanded(
                 child: Builder(
                   builder: (context) {
-                    final opcoes = widget.pergunta?.opcoes.toList() ?? [];
+                    final opcoes = widget!.pergunta?.opcoes?.toList() ?? [];
 
                     return SingleChildScrollView(
                       child: Column(
@@ -116,12 +118,12 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await widget.setResposta?.call(
-                                widget.pergunta?.ordem,
+                                widget!.pergunta?.ordem,
                                 getJsonField(
                                   opcoesItem,
                                   r'''$.next_question''',
                                 ),
-                                widget.pergunta?.pergunta,
+                                widget!.pergunta?.pergunta,
                                 getJsonField(
                                   opcoesItem,
                                   r'''$.title''',
@@ -132,7 +134,7 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                             child: Container(
                               decoration: BoxDecoration(
                                 color: getJsonField(
-                                          widget.respostaSetada,
+                                          widget!.respostaSetada,
                                           r'''$.resposta''',
                                         ) ==
                                         getJsonField(
@@ -140,14 +142,14 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                                           r'''$.title''',
                                         )
                                     ? FlutterFlowTheme.of(context).primary
-                                    : const Color(0x00B5C0D3),
+                                    : Color(0x00B5C0D3),
                                 borderRadius: BorderRadius.circular(100.0),
                                 border: Border.all(
-                                  color: const Color(0xFFB5C0D3),
+                                  color: Color(0xFFB5C0D3),
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     32.0, 8.0, 32.0, 8.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -163,7 +165,7 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                                           .override(
                                             fontFamily: 'Mulish',
                                             color: getJsonField(
-                                                      widget.respostaSetada,
+                                                      widget!.respostaSetada,
                                                       r'''$.resposta''',
                                                     ) ==
                                                     getJsonField(
@@ -171,7 +173,7 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                                                       r'''$.title''',
                                                     )
                                                 ? Colors.white
-                                                : const Color(0xFFB5C0D3),
+                                                : Color(0xFFB5C0D3),
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -180,43 +182,44 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                               ),
                             ),
                           );
-                        }).divide(const SizedBox(height: 8.0)),
+                        }).divide(SizedBox(height: 8.0)),
                       ),
                     );
                   },
                 ),
               ),
-            if (widget.pergunta?.opcoesAtivadas == false)
+            if (widget!.pergunta?.opcoesAtivadas == false)
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.textController',
-                      const Duration(milliseconds: 100),
+                      Duration(milliseconds: 100),
                       () async {
-                        if (_model.textController.text == '') {
+                        if (_model.textController.text == null ||
+                            _model.textController.text == '') {
                           await widget.setResposta?.call(
-                            widget.pergunta?.ordem,
+                            widget!.pergunta?.ordem,
                             getJsonField(
-                              widget.pergunta?.opcoes.first,
+                              widget!.pergunta?.opcoes?.first,
                               r'''$.next_question''',
                             ),
-                            widget.pergunta?.pergunta,
+                            widget!.pergunta?.pergunta,
                             _model.textController.text,
                             false,
                           );
                         } else {
                           await widget.setResposta?.call(
-                            widget.pergunta?.ordem,
+                            widget!.pergunta?.ordem,
                             getJsonField(
-                              widget.pergunta?.opcoes.first,
+                              widget!.pergunta?.opcoes?.first,
                               r'''$.next_question''',
                             ),
-                            widget.pergunta?.pergunta,
+                            widget!.pergunta?.pergunta,
                             _model.textController.text,
                             true,
                           );
@@ -231,11 +234,11 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Mulish',
-                                color: const Color(0xFF8798B5),
+                                color: Color(0xFF8798B5),
                                 letterSpacing: 0.0,
                               ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Color(0x0E294B0D),
                           width: 3.0,
                         ),
@@ -265,7 +268,7 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                       filled: true,
                       fillColor: Colors.white,
                       contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(18.0, 32.0, 18.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(18.0, 32.0, 18.0, 0.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Mulish',
@@ -279,9 +282,9 @@ class _PerguntaWidgetWidgetState extends State<PerguntaWidgetWidget> {
                 ),
               ),
           ]
-              .divide(const SizedBox(height: 12.0))
-              .addToStart(const SizedBox(height: 12.0))
-              .addToEnd(const SizedBox(height: 12.0)),
+              .divide(SizedBox(height: 12.0))
+              .addToStart(SizedBox(height: 12.0))
+              .addToEnd(SizedBox(height: 12.0)),
         ),
       ),
     );

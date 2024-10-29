@@ -10,7 +10,7 @@ class StaticMedicamentosTable extends SupabaseTable<StaticMedicamentosRow> {
 }
 
 class StaticMedicamentosRow extends SupabaseDataRow {
-  StaticMedicamentosRow(super.data);
+  StaticMedicamentosRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => StaticMedicamentosTable();

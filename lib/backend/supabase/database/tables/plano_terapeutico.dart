@@ -10,7 +10,7 @@ class PlanoTerapeuticoTable extends SupabaseTable<PlanoTerapeuticoRow> {
 }
 
 class PlanoTerapeuticoRow extends SupabaseDataRow {
-  PlanoTerapeuticoRow(super.data);
+  PlanoTerapeuticoRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => PlanoTerapeuticoTable();

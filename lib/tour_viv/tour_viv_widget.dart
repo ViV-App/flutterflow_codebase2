@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'tour_viv_model.dart';
 export 'tour_viv_model.dart';
 
@@ -57,21 +59,21 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                   _model.arrow == false ? 172.0 : 0.0,
                   0.0,
                 )),
-                topLeft: const Radius.circular(0.0),
-                topRight: const Radius.circular(0.0),
+                topLeft: Radius.circular(0.0),
+                topRight: Radius.circular(0.0),
               ),
             ),
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
-                  child: SizedBox(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                  child: Container(
                     width: double.infinity,
                     height: double.infinity,
                     child: Stack(
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: PageView(
                             controller: _model.pageViewController ??=
@@ -88,7 +90,7 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                             scrollDirection: Axis.horizontal,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -108,7 +110,7 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Text(
                                         'Na ViV, entendemos que cada pessoa é única. Por isso, criamos planos de tratamento personalizados com base nas suas necessidades e histórico de saúde. A ViV te apoia na busca do produto mais adequado para o alívio de sintomas e melhora da qualidade de vida.',
@@ -123,11 +125,11 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                             ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 24.0)),
+                                  ].divide(SizedBox(height: 24.0)),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -147,7 +149,7 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Text(
                                         'O tratamento com a ViV evolui conforme sua saúde evolui. Compartilhamos propostas terapêuticas sobre ajustes de doses de canabinoides com base nos seus sintomas, para promover maior eficácia e alívio contínuo dos seus sintomas.\"',
@@ -162,11 +164,11 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                             ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 24.0)),
+                                  ].divide(SizedBox(height: 24.0)),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -186,7 +188,7 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 12.0, 0.0),
                                       child: Text(
                                         'Monitore e gerencie seu tratamento diretamente pelo app. Com a ViV, você tem controle sobre sua jornada de saúde, e acesso com as informações que precisa para tomar as melhores decisões.\n\nExplore as funcionalidades da ViV e dê o primeiro passo para otimizar seu tratamento de forma prática e personalizada.',
@@ -202,7 +204,7 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 32.0, 0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -213,10 +215,10 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                           width: 200.0,
                                           height: 52.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -230,7 +232,7 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -239,16 +241,16 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 24.0)),
+                                  ].divide(SizedBox(height: 24.0)),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 16.0),
                             child: smooth_page_indicator.SmoothPageIndicator(
                               controller: _model.pageViewController ??=
@@ -258,12 +260,12 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                               onDotClicked: (i) async {
                                 await _model.pageViewController!.animateToPage(
                                   i,
-                                  duration: const Duration(milliseconds: 500),
+                                  duration: Duration(milliseconds: 500),
                                   curve: Curves.ease,
                                 );
                                 safeSetState(() {});
                               },
-                              effect: const smooth_page_indicator.SlideEffect(
+                              effect: smooth_page_indicator.SlideEffect(
                                 spacing: 8.0,
                                 radius: 8.0,
                                 dotWidth: 18.0,
@@ -281,10 +283,10 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                 ),
                 if (_model.arrow == true)
                   Align(
-                    alignment: const AlignmentDirectional(1.0, 1.0),
+                    alignment: AlignmentDirectional(1.0, 1.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 32.0, 38.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 32.0, 38.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -292,11 +294,11 @@ class _TourVivWidgetState extends State<TourVivWidget> {
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           await _model.pageViewController?.nextPage(
-                            duration: const Duration(milliseconds: 300),
+                            duration: Duration(milliseconds: 300),
                             curve: Curves.ease,
                           );
                         },
-                        child: const Icon(
+                        child: Icon(
                           Icons.arrow_forward,
                           color: Colors.white,
                           size: 42.0,
