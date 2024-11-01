@@ -5,8 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'delete_prescription_model.dart';
 export 'delete_prescription_model.dart';
@@ -51,9 +49,9 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
         child: Container(
           width: double.infinity,
           height: 350.0,
@@ -79,7 +77,7 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     child: Text(
                       'Ao confirmar esta ação, seu remédio e todos os registros relacionados serão removidos.',
                       textAlign: TextAlign.center,
@@ -90,14 +88,14 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                           ),
                     ),
                   ),
-                ].divide(SizedBox(height: 12.0)),
+                ].divide(const SizedBox(height: 12.0)),
               ),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     child: Text(
                       'Desejar mesmo apagar?',
                       textAlign: TextAlign.center,
@@ -110,7 +108,7 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(22.0, 0.0, 22.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(22.0, 0.0, 22.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -120,7 +118,7 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                               await PrescricaoTable().delete(
                                 matchingRows: (rows) => rows.eq(
                                   'id',
-                                  widget!.prescricao?.id,
+                                  widget.prescricao?.id,
                                 ),
                               );
                               FFAppState().clearRemediosCache();
@@ -131,14 +129,14 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                                 builder: (alertDialogContext) {
                                   return WebViewAware(
                                     child: AlertDialog(
-                                      title: Text('Sucesso!'),
-                                      content: Text(
+                                      title: const Text('Sucesso!'),
+                                      content: const Text(
                                           'Sua prescrição foi deletada com sucesso.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                          child: const Text('Ok'),
                                         ),
                                       ],
                                     ),
@@ -150,7 +148,7 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                                 userId: currentUserUid,
                                 eventName: 'medicine delete concluded',
                                 propertiesJson: <String, dynamic>{
-                                  'medicineId': widget!.prescricao?.medicamento,
+                                  'medicineId': widget.prescricao?.medicamento,
                                 },
                               );
 
@@ -159,21 +157,21 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                             text: 'Sim',
                             options: FFButtonOptions(
                               height: 48.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Mulish',
-                                    color: Color(0xFFE25D5D),
+                                    color: const Color(0xFFE25D5D),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0xFFE25D5D),
                                 width: 1.0,
                               ),
@@ -196,9 +194,9 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                             text: 'Não',
                             options: FFButtonOptions(
                               height: 48.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -210,7 +208,7 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -218,10 +216,10 @@ class _DeletePrescriptionWidgetState extends State<DeletePrescriptionWidget> {
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(width: 12.0)),
+                      ].divide(const SizedBox(width: 12.0)),
                     ),
                   ),
-                ].divide(SizedBox(height: 12.0)),
+                ].divide(const SizedBox(height: 12.0)),
               ),
             ],
           ),

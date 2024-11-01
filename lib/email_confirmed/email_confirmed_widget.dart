@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'email_confirmed_model.dart';
 export 'email_confirmed_model.dart';
 
@@ -54,7 +52,7 @@ class _EmailConfirmedWidgetState extends State<EmailConfirmedWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 52.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 52.0, 0.0, 0.0),
                   child: Icon(
                     Icons.check_circle,
                     color: FlutterFlowTheme.of(context).primary,
@@ -63,7 +61,7 @@ class _EmailConfirmedWidgetState extends State<EmailConfirmedWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 42.0, 24.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 42.0, 24.0, 0.0),
                   child: Text(
                     'Parabéns, sua conta foi confirmada com sucesso!',
                     textAlign: TextAlign.center,
@@ -77,7 +75,7 @@ class _EmailConfirmedWidgetState extends State<EmailConfirmedWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 224.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 224.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await launchURL('vivassistente://vivassistente.com');
@@ -87,9 +85,9 @@ class _EmailConfirmedWidgetState extends State<EmailConfirmedWidget> {
                       width: 320.0,
                       height: 48.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(

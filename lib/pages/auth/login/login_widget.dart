@@ -8,8 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'login_model.dart';
 export 'login_model.dart';
@@ -33,7 +31,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (currentUserUid != null && currentUserUid != '') {
+      if (currentUserUid != '') {
         context.pushNamed('homePage');
       }
     });
@@ -66,7 +64,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.transparent,
             ),
             child: Column(
@@ -79,7 +77,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 0.0),
                       child: Text(
                         'Que bom que você está de volta! 👋',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -92,12 +90,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(32.0, 8.0, 32.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(32.0, 8.0, 32.0, 0.0),
                       child: Text(
                         'Faça login com em sua conta ou caso ainda não tenha uma, cadastre-se.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Mulish',
-                              color: Color(0xFF8798B5),
+                              color: const Color(0xFF8798B5),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               lineHeight: 1.5,
@@ -108,7 +106,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       key: _model.formKey,
                       autovalidateMode: AutovalidateMode.disabled,
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             32.0, 64.0, 32.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -139,12 +137,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: Color(0xFF8798B5),
+                                          color: const Color(0xFF8798B5),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x0E294B0D),
                                         width: 2.0,
                                       ),
@@ -175,9 +173,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0xFFF7FAFE),
+                                    fillColor: const Color(0xFFF7FAFE),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -190,7 +188,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   validator: _model.mailTextControllerValidator
                                       .asValidator(context),
                                 ),
-                              ].divide(SizedBox(height: 6.0)),
+                              ].divide(const SizedBox(height: 6.0)),
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,
@@ -218,12 +216,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: Color(0xFF8798B5),
+                                          color: const Color(0xFF8798B5),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x0E294B0D),
                                         width: 2.0,
                                       ),
@@ -254,9 +252,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0xFFF7FAFE),
+                                    fillColor: const Color(0xFFF7FAFE),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                     suffixIcon: InkWell(
                                       onTap: () => safeSetState(
@@ -282,10 +280,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       .ipPassTextControllerValidator
                                       .asValidator(context),
                                 ),
-                              ].divide(SizedBox(height: 6.0)),
+                              ].divide(const SizedBox(height: 6.0)),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -358,7 +356,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                               backgroundColor:
                                                   Colors.transparent,
                                               alignment:
-                                                  AlignmentDirectional(0.0, 0.0)
+                                                  const AlignmentDirectional(0.0, 0.0)
                                                       .resolve(
                                                           Directionality.of(
                                                               context)),
@@ -367,7 +365,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                   onTap: () => FocusScope.of(
                                                           dialogContext)
                                                       .unfocus(),
-                                                  child: ResetPasswordWidget(),
+                                                  child: const ResetPasswordWidget(),
                                                 ),
                                               ),
                                             );
@@ -380,7 +378,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color: Color(0xFFD63D3D),
+                                              color: const Color(0xFFD63D3D),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -392,7 +390,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
@@ -416,15 +414,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     ),
                                   );
                                   FFAppState().paciente = PacienteStruct(
-                                    id: _model.userReturned?.first?.id,
+                                    id: _model.userReturned?.first.id,
                                     uuid: currentUserUid,
                                     createdAt:
-                                        _model.userReturned?.first?.createdAt,
-                                    nome: _model.userReturned?.first?.nome,
+                                        _model.userReturned?.first.createdAt,
+                                    nome: _model.userReturned?.first.nome,
                                     telefone:
-                                        _model.userReturned?.first?.telefone,
-                                    cpf: _model.userReturned?.first?.id
-                                        ?.toString(),
+                                        _model.userReturned?.first.telefone,
+                                    cpf: _model.userReturned?.first.id
+                                        .toString(),
                                     queixas: _model.userReturned
                                         ?.map((e) => e.queixas.first)
                                         .toList(),
@@ -432,7 +430,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         ?.map((e) => e.contraIndicacoes.first)
                                         .toList(),
                                     foto:
-                                        _model.userReturned?.first?.profilePic,
+                                        _model.userReturned?.first.profilePic,
                                   );
                                   safeSetState(() {});
 
@@ -440,7 +438,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     'homePage',
                                     context.mounted,
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
+                                      kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 0),
@@ -454,9 +452,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -468,7 +466,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -492,7 +490,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     child: Container(
                                       width: 100.0,
                                       height: 1.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFF8798B5),
                                       ),
                                     ),
@@ -503,7 +501,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Mulish',
-                                          color: Color(0xFF8798B5),
+                                          color: const Color(0xFF8798B5),
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -513,12 +511,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     child: Container(
                                       width: 100.0,
                                       height: 1.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFF8798B5),
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(width: 18.0)),
+                                ].divide(const SizedBox(width: 18.0)),
                               ),
                             if (responsiveVisibility(
                               context: context,
@@ -553,23 +551,23 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             FFAppState().paciente =
                                                 PacienteStruct(
                                               nome:
-                                                  _model.userExist?.first?.nome,
-                                              id: _model.userExist?.first?.id,
+                                                  _model.userExist?.first.nome,
+                                              id: _model.userExist?.first.id,
                                               uuid:
-                                                  _model.userExist?.first?.uuid,
+                                                  _model.userExist?.first.uuid,
                                               createdAt: _model
-                                                  .userExist?.first?.createdAt,
+                                                  .userExist?.first.createdAt,
                                               telefone: _model
-                                                  .userExist?.first?.telefone,
-                                              cpf: _model.userExist?.first?.cpf,
+                                                  .userExist?.first.telefone,
+                                              cpf: _model.userExist?.first.cpf,
                                               foto: _model
-                                                  .userExist?.first?.profilePic,
+                                                  .userExist?.first.profilePic,
                                               perfilCompleto: _model.userExist
-                                                  ?.first?.perfilCompleto,
+                                                  ?.first.perfilCompleto,
                                               tratamentoPrevio: _model.userExist
-                                                  ?.first?.tramentoPrevio,
+                                                  ?.first.tramentoPrevio,
                                               medico: _model.userExist?.first
-                                                  ?.medicoPrescritor,
+                                                  .medicoPrescritor,
                                             );
                                             FFAppState().update(() {});
 
@@ -577,7 +575,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                               'homePage',
                                               extra: <String, dynamic>{
                                                 kTransitionInfoKey:
-                                                    TransitionInfo(
+                                                    const TransitionInfo(
                                                   hasTransition: true,
                                                   transitionType:
                                                       PageTransitionType.fade,
@@ -595,7 +593,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                               'homePage',
                                               extra: <String, dynamic>{
                                                 kTransitionInfoKey:
-                                                    TransitionInfo(
+                                                    const TransitionInfo(
                                                   hasTransition: true,
                                                   transitionType:
                                                       PageTransitionType.fade,
@@ -617,7 +615,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             border: Border.all(
-                                              color: Color(0xFF8798B5),
+                                              color: const Color(0xFF8798B5),
                                             ),
                                           ),
                                           child: Row(
@@ -643,14 +641,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF262B37),
+                                                              const Color(0xFF262B37),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w800,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(width: 4.0)),
+                                            ].divide(const SizedBox(width: 4.0)),
                                           ),
                                         ),
                                       ),
@@ -683,7 +681,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             border: Border.all(
-                                              color: Color(0xFF8798B5),
+                                              color: const Color(0xFF8798B5),
                                             ),
                                           ),
                                           child: Row(
@@ -709,31 +707,31 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF262B37),
+                                                              const Color(0xFF262B37),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w800,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(width: 4.0)),
+                                            ].divide(const SizedBox(width: 4.0)),
                                           ),
                                         ),
                                       ),
                                     ),
-                                ].divide(SizedBox(width: 24.0)),
+                                ].divide(const SizedBox(width: 24.0)),
                               ),
-                          ].divide(SizedBox(height: 24.0)),
+                          ].divide(const SizedBox(height: 24.0)),
                         ),
                       ),
                     ),
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -742,7 +740,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Mulish',
-                                    color: Color(0xFF434854),
+                                    color: const Color(0xFF434854),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
@@ -756,7 +754,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             context.pushNamed(
                               'createAccount',
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
+                                kTransitionInfoKey: const TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -770,14 +768,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: Color(0xFF6E78FF),
+                                  color: const Color(0xFF6E78FF),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
                         ),
-                      ].divide(SizedBox(width: 4.0)),
+                      ].divide(const SizedBox(width: 4.0)),
                     ),
                   ),
                 ),

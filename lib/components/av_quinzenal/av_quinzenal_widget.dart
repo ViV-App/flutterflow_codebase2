@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'av_quinzenal_model.dart';
 export 'av_quinzenal_model.dart';
@@ -53,7 +52,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: FutureBuilder<List<PacienteRow>>(
         future: PacienteTable().querySingleRow(
           queryFn: (q) => q.eq(
@@ -85,7 +84,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
           return Material(
             color: Colors.transparent,
             elevation: 3.0,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
@@ -94,7 +93,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
               ),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
                 topLeft: Radius.circular(0.0),
@@ -105,7 +104,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                 height: double.infinity,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primary,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(0.0),
                     bottomRight: Radius.circular(0.0),
                     topLeft: Radius.circular(0.0),
@@ -119,14 +118,14 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primary,
                         border: Border.all(
-                          color: Color(0x00E0E3E7),
+                          color: const Color(0x00E0E3E7),
                         ),
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 24.0, 24.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -141,21 +140,21 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, -1.0),
+                                            const AlignmentDirectional(-1.0, -1.0),
                                         child: Text(
                                           'Olá ${FFAppState().paciente.nome}! Esta é sua avaliação de qualidade de vida.',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Mulish',
-                                                color: Color(0xFFF6F6F6),
+                                                color: const Color(0xFFF6F6F6),
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, -1.0),
+                                            const AlignmentDirectional(-1.0, -1.0),
                                         child: Text(
                                           'Por favor, marque para cada questão o item que mais se aproxima da maneira como se sente.',
                                           textAlign: TextAlign.start,
@@ -169,11 +168,11 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                               ),
                                         ),
                                       ),
-                                    ].divide(SizedBox(height: 12.0)),
+                                    ].divide(const SizedBox(height: 12.0)),
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                  alignment: const AlignmentDirectional(1.0, -1.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -182,24 +181,24 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                     onTap: () async {
                                       Navigator.pop(context);
                                     },
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.close,
                                       color: Colors.white,
                                       size: 32.0,
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 12.0)),
+                              ].divide(const SizedBox(width: 12.0)),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 24.0, 24.0, 12.0),
                             child: Container(
                               width: double.infinity,
                               height: 45.0,
                               decoration: BoxDecoration(
-                                color: Color(0x00FFFFFF),
+                                color: const Color(0x00FFFFFF),
                                 borderRadius: BorderRadius.circular(24.0),
                                 border: Border.all(
                                   color: Colors.white,
@@ -238,7 +237,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                       child: Container(
                         width: double.infinity,
                         height: double.infinity,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
@@ -257,18 +256,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -290,7 +289,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -334,24 +333,24 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               FontWeight.w800,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(width: 18.0)),
+                                            ].divide(const SizedBox(width: 18.0)),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -359,7 +358,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -369,7 +368,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -413,7 +412,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -421,17 +420,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 24.0, 12.0, 0.0),
                                                 child: Row(
@@ -451,7 +450,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -484,7 +483,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               .alternate,
                                                       itemCount: 3,
                                                       itemPadding:
-                                                          EdgeInsets.fromLTRB(
+                                                          const EdgeInsets.fromLTRB(
                                                               8.0,
                                                               0.0,
                                                               8.0,
@@ -505,7 +504,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -522,18 +521,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 18.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -541,7 +540,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -551,7 +550,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -595,7 +594,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -603,17 +602,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 24.0, 12.0, 0.0),
                                                 child: Row(
@@ -633,7 +632,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -666,7 +665,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               .alternate,
                                                       itemCount: 3,
                                                       itemPadding:
-                                                          EdgeInsets.fromLTRB(
+                                                          const EdgeInsets.fromLTRB(
                                                               8.0,
                                                               0.0,
                                                               8.0,
@@ -687,7 +686,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -704,18 +703,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 18.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -723,7 +722,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -733,7 +732,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -777,7 +776,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -785,17 +784,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 24.0, 12.0, 0.0),
                                                 child: Row(
@@ -815,7 +814,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -848,7 +847,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               .alternate,
                                                       itemCount: 3,
                                                       itemPadding:
-                                                          EdgeInsets.fromLTRB(
+                                                          const EdgeInsets.fromLTRB(
                                                               8.0,
                                                               0.0,
                                                               8.0,
@@ -869,7 +868,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -885,7 +884,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].addToEnd(SizedBox(height: 24.0)),
+                                  ].addToEnd(const SizedBox(height: 24.0)),
                                 ),
                               if (_model.currentStep == 2)
                                 Column(
@@ -893,18 +892,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -926,7 +925,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -970,24 +969,24 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               FontWeight.w800,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(width: 18.0)),
+                                            ].divide(const SizedBox(width: 18.0)),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -995,7 +994,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -1005,7 +1004,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1049,7 +1048,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -1057,17 +1056,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: FlutterFlowRadioButton(
@@ -1121,7 +1120,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].addToEnd(SizedBox(height: 24.0)),
+                                  ].addToEnd(const SizedBox(height: 24.0)),
                                 ),
                               if (_model.currentStep == 3)
                                 Column(
@@ -1129,18 +1128,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1162,7 +1161,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1206,24 +1205,24 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               FontWeight.w800,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(width: 18.0)),
+                                            ].divide(const SizedBox(width: 18.0)),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1231,7 +1230,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -1241,7 +1240,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1285,7 +1284,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -1293,17 +1292,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 24.0, 12.0, 0.0),
                                                 child: Row(
@@ -1323,7 +1322,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -1356,7 +1355,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               .alternate,
                                                       itemCount: 3,
                                                       itemPadding:
-                                                          EdgeInsets.fromLTRB(
+                                                          const EdgeInsets.fromLTRB(
                                                               8.0,
                                                               0.0,
                                                               8.0,
@@ -1377,7 +1376,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -1393,7 +1392,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].addToEnd(SizedBox(height: 24.0)),
+                                  ].addToEnd(const SizedBox(height: 24.0)),
                                 ),
                               if (_model.currentStep == 4)
                                 Column(
@@ -1401,18 +1400,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1434,7 +1433,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1478,24 +1477,24 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               FontWeight.w800,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(width: 18.0)),
+                                            ].divide(const SizedBox(width: 18.0)),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1503,7 +1502,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -1513,7 +1512,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1557,7 +1556,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -1565,17 +1564,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: FlutterFlowRadioButton(
@@ -1628,18 +1627,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 24.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1647,7 +1646,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -1657,7 +1656,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1701,7 +1700,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -1709,17 +1708,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 24.0, 12.0, 0.0),
                                                 child: Row(
@@ -1739,7 +1738,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -1772,7 +1771,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               .alternate,
                                                       itemCount: 3,
                                                       itemPadding:
-                                                          EdgeInsets.fromLTRB(
+                                                          const EdgeInsets.fromLTRB(
                                                               8.0,
                                                               0.0,
                                                               8.0,
@@ -1793,7 +1792,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -1809,7 +1808,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].addToEnd(SizedBox(height: 24.0)),
+                                  ].addToEnd(const SizedBox(height: 24.0)),
                                 ),
                               if (_model.currentStep == 5)
                                 Column(
@@ -1817,18 +1816,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1850,7 +1849,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1894,24 +1893,24 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               FontWeight.w800,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(width: 18.0)),
+                                            ].divide(const SizedBox(width: 18.0)),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1919,7 +1918,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -1929,7 +1928,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1973,7 +1972,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -1981,17 +1980,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 24.0, 12.0, 0.0),
                                                 child: Row(
@@ -2011,7 +2010,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -2044,7 +2043,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               .alternate,
                                                       itemCount: 3,
                                                       itemPadding:
-                                                          EdgeInsets.fromLTRB(
+                                                          const EdgeInsets.fromLTRB(
                                                               8.0,
                                                               0.0,
                                                               8.0,
@@ -2065,7 +2064,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -2081,7 +2080,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].addToEnd(SizedBox(height: 24.0)),
+                                  ].addToEnd(const SizedBox(height: 24.0)),
                                 ),
                               if (_model.currentStep == 6)
                                 Column(
@@ -2089,18 +2088,18 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 12.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -2122,7 +2121,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -2166,24 +2165,24 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               FontWeight.w800,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(width: 18.0)),
+                                            ].divide(const SizedBox(width: 18.0)),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 32.0, 24.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEFF4F9),
+                                          color: const Color(0xFFEFF4F9),
                                           borderRadius:
                                               BorderRadius.circular(9.0),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 18.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -2191,7 +2190,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 12.0, 0.0, 0.0),
                                                 child: Row(
@@ -2201,7 +2200,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -2245,7 +2244,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     fontSize:
                                                                         12.0,
@@ -2253,17 +2252,17 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                                         0.0,
                                                                   ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(width: 8.0)),
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 24.0, 12.0, 0.0),
                                                 child: Row(
@@ -2283,7 +2282,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -2316,7 +2315,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                               .alternate,
                                                       itemCount: 3,
                                                       itemPadding:
-                                                          EdgeInsets.fromLTRB(
+                                                          const EdgeInsets.fromLTRB(
                                                               8.0,
                                                               0.0,
                                                               8.0,
@@ -2337,7 +2336,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 11.0,
                                                             letterSpacing: 0.0,
@@ -2353,7 +2352,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                         ),
                                       ),
                                     ),
-                                  ].addToEnd(SizedBox(height: 24.0)),
+                                  ].addToEnd(const SizedBox(height: 24.0)),
                                 ),
                             ],
                           ),
@@ -2368,7 +2367,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 12.0, 24.0, 24.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -2389,21 +2388,21 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: Color(0xFFEFF4F9),
+                                  color: const Color(0xFFEFF4F9),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Mulish',
-                                        color: Color(0xFF8798B5),
+                                        color: const Color(0xFF8798B5),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -2446,9 +2445,9 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 48.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -2460,7 +2459,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -2468,7 +2467,7 @@ class _AvQuinzenalWidgetState extends State<AvQuinzenalWidget> {
                                 ),
                               ),
                             ),
-                          ].divide(SizedBox(width: 12.0)),
+                          ].divide(const SizedBox(width: 12.0)),
                         ),
                       ),
                     ),

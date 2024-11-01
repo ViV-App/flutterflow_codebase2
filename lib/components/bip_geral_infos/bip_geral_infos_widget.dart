@@ -5,13 +5,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'bip_geral_infos_model.dart';
 export 'bip_geral_infos_model.dart';
@@ -61,8 +59,8 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
             curve: Curves.easeOut,
             delay: 100.0.ms,
             duration: 600.0.ms,
-            begin: Offset(2.0, 2.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(2.0, 2.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -73,8 +71,8 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
             curve: Curves.easeOut,
             delay: 500.0.ms,
             duration: 600.0.ms,
-            begin: Offset(2.0, 2.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(2.0, 2.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -85,8 +83,8 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
             curve: Curves.easeOut,
             delay: 900.0.ms,
             duration: 600.0.ms,
-            begin: Offset(2.0, 2.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(2.0, 2.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -97,8 +95,8 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
             curve: Curves.easeOut,
             delay: 100.0.ms,
             duration: 600.0.ms,
-            begin: Offset(2.0, 2.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(2.0, 2.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -119,7 +117,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: FutureBuilder<List<PacienteRow>>(
         future: (_model.requestCompleter ??= Completer<List<PacienteRow>>()
               ..complete(PacienteTable().querySingleRow(
@@ -153,7 +151,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
           return Material(
             color: Colors.transparent,
             elevation: 3.0,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
@@ -166,7 +164,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
               height: MediaQuery.sizeOf(context).height * 0.8,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(0.0),
                   bottomRight: Radius.circular(0.0),
                   topLeft: Radius.circular(24.0),
@@ -177,15 +175,15 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Container(
                         width: 100.0,
                         height: 4.0,
                         decoration: BoxDecoration(
-                          color: Color(0xFFDBE4F1),
+                          color: const Color(0xFFDBE4F1),
                           borderRadius: BorderRadius.circular(32.0),
                         ),
                       ),
@@ -198,7 +196,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 28.0, 62.0, 0.0, 0.0),
                             child: Text(
                               'Etapas',
@@ -213,9 +211,9 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                   ),
                             ),
                           ),
-                          if (widget!.bip == 'geral')
+                          if (widget.bip == 'geral')
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -230,7 +228,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                         children: [
                                           Icon(
                                             Icons.check_circle,
-                                            color: widget!.reqBip?.produto ==
+                                            color: widget.reqBip?.produto ==
                                                     true
                                                 ? FlutterFlowTheme.of(context)
                                                     .primary
@@ -242,7 +240,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                             width: 1.0,
                                             height: 52.0,
                                             decoration: BoxDecoration(
-                                              color: widget!.reqBip?.produto ==
+                                              color: widget.reqBip?.produto ==
                                                       true
                                                   ? FlutterFlowTheme.of(context)
                                                       .primary
@@ -292,7 +290,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                           ],
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 18.0)),
+                                    ].divide(const SizedBox(width: 18.0)),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -304,7 +302,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                         children: [
                                           Icon(
                                             Icons.check_circle,
-                                            color: widget!
+                                            color: widget
                                                         .reqBip?.dadosGerais ==
                                                     true
                                                 ? FlutterFlowTheme.of(context)
@@ -317,7 +315,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                             width: 1.0,
                                             height: 52.0,
                                             decoration: BoxDecoration(
-                                              color: widget!.reqBip
+                                              color: widget.reqBip
                                                           ?.dadosGerais ==
                                                       true
                                                   ? FlutterFlowTheme.of(context)
@@ -368,7 +366,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                           ],
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 18.0)),
+                                    ].divide(const SizedBox(width: 18.0)),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -380,7 +378,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                         children: [
                                           Icon(
                                             Icons.check_circle,
-                                            color: widget!.reqBip?.pam == true
+                                            color: widget.reqBip?.pam == true
                                                 ? FlutterFlowTheme.of(context)
                                                     .primary
                                                 : FlutterFlowTheme.of(context)
@@ -391,7 +389,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                             width: 1.0,
                                             height: 52.0,
                                             decoration: BoxDecoration(
-                                              color: widget!.reqBip?.pam == true
+                                              color: widget.reqBip?.pam == true
                                                   ? FlutterFlowTheme.of(context)
                                                       .primary
                                                   : FlutterFlowTheme.of(context)
@@ -440,14 +438,14 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                           ],
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 18.0)),
+                                    ].divide(const SizedBox(width: 18.0)),
                                   ),
                                 ],
                               ),
                             ),
-                          if (widget!.bip == 'especifico')
+                          if (widget.bip == 'especifico')
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   32.0, 32.0, 32.0, 0.0),
                               child: Builder(
                                 builder: (context) {
@@ -455,7 +453,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                       .addItemToList(
                                           containerPacienteRow!.queixas
                                               .toList(),
-                                          containerPacienteRow!
+                                          containerPacienteRow
                                               .queixaPrincipal!)
                                       .toList();
 
@@ -474,9 +472,9 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                             children: [
                                               Icon(
                                                 Icons.check_circle,
-                                                color: widget!.reqBip
+                                                color: widget.reqBip
                                                             ?.queixasRespondidas
-                                                            ?.contains(
+                                                            .contains(
                                                                 queixasItem) ==
                                                         true
                                                     ? FlutterFlowTheme.of(
@@ -491,9 +489,9 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                                 width: 1.0,
                                                 height: 52.0,
                                                 decoration: BoxDecoration(
-                                                  color: widget!.reqBip
+                                                  color: widget.reqBip
                                                               ?.queixasRespondidas
-                                                              ?.contains(
+                                                              .contains(
                                                                   queixasItem) ==
                                                           true
                                                       ? FlutterFlowTheme.of(
@@ -557,47 +555,47 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                               ],
                                             ),
                                           ),
-                                        ].divide(SizedBox(width: 18.0)),
+                                        ].divide(const SizedBox(width: 18.0)),
                                       );
                                     }),
                                   );
                                 },
                               ),
                             ),
-                        ].addToEnd(SizedBox(height: 32.0)),
+                        ].addToEnd(const SizedBox(height: 32.0)),
                       ),
                     ),
                   ),
-                  if (widget!.bip == 'geral')
+                  if (widget.bip == 'geral')
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            var _shouldSetState = false;
-                            if (widget!.reqBip?.produto == false) {
+                            var shouldSetState = false;
+                            if (widget.reqBip?.produto == false) {
                               _model.qst1 = await QuestionarioTable().queryRows(
                                 queryFn: (q) => q.eq(
                                   'nome',
                                   'BIP Geral',
                                 ),
                               );
-                              _shouldSetState = true;
+                              shouldSetState = true;
                               _model.res1 =
                                   await RespostasQuestionarioTable().queryRows(
                                 queryFn: (q) => q
                                     .eq(
                                       'bipRequisicao',
-                                      widget!.reqBip?.id,
+                                      widget.reqBip?.id,
                                     )
                                     .eq(
                                       'questionario',
-                                      _model.qst1?.first?.id,
+                                      _model.qst1?.first.id,
                                     ),
                               );
-                              _shouldSetState = true;
+                              shouldSetState = true;
                               if ((_model.res1 != null &&
                                       (_model.res1)!.isNotEmpty) ==
                                   true) {
@@ -609,12 +607,12 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                       ParamType.SupabaseRow,
                                     ),
                                     'bipRequisicao': serializeParam(
-                                      widget!.reqBip?.id,
+                                      widget.reqBip?.id,
                                       ParamType.int,
                                     ),
                                   }.withoutNulls,
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
+                                    kTransitionInfoKey: const TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -623,17 +621,17 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                 );
 
                                 Navigator.pop(context);
-                                if (_shouldSetState) safeSetState(() {});
+                                if (shouldSetState) safeSetState(() {});
                                 return;
                               } else {
                                 _model.apiResulte7s =
                                     await GenerateBipResponsesCall.call(
-                                  bipReq: widget!.reqBip?.id,
+                                  bipReq: widget.reqBip?.id,
                                   paciente: FFAppState().paciente.id,
-                                  questionario: _model.qst1?.first?.id,
+                                  questionario: _model.qst1?.first.id,
                                 );
 
-                                _shouldSetState = true;
+                                shouldSetState = true;
 
                                 context.pushNamed(
                                   'questionarioBip',
@@ -643,12 +641,12 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                       ParamType.SupabaseRow,
                                     ),
                                     'bipRequisicao': serializeParam(
-                                      widget!.reqBip?.id,
+                                      widget.reqBip?.id,
                                       ParamType.int,
                                     ),
                                   }.withoutNulls,
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
+                                    kTransitionInfoKey: const TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -657,11 +655,11 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                 );
 
                                 Navigator.pop(context);
-                                if (_shouldSetState) safeSetState(() {});
+                                if (shouldSetState) safeSetState(() {});
                                 return;
                               }
                             } else {
-                              if (widget!.reqBip?.dadosGerais == false) {
+                              if (widget.reqBip?.dadosGerais == false) {
                                 _model.qst2 =
                                     await QuestionarioTable().queryRows(
                                   queryFn: (q) => q.eq(
@@ -669,20 +667,20 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                     'Dados Gerais',
                                   ),
                                 );
-                                _shouldSetState = true;
+                                shouldSetState = true;
                                 _model.res2 = await RespostasQuestionarioTable()
                                     .queryRows(
                                   queryFn: (q) => q
                                       .eq(
                                         'bipRequisicao',
-                                        widget!.reqBip?.id,
+                                        widget.reqBip?.id,
                                       )
                                       .eq(
                                         'questionario',
-                                        _model.qst2?.first?.id,
+                                        _model.qst2?.first.id,
                                       ),
                                 );
-                                _shouldSetState = true;
+                                shouldSetState = true;
                                 if ((_model.res2 != null &&
                                         (_model.res2)!.isNotEmpty) ==
                                     true) {
@@ -694,12 +692,12 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                         ParamType.SupabaseRow,
                                       ),
                                       'bipRequisicao': serializeParam(
-                                        widget!.reqBip?.id,
+                                        widget.reqBip?.id,
                                         ParamType.int,
                                       ),
                                     }.withoutNulls,
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
+                                      kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 0),
@@ -708,17 +706,17 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                   );
 
                                   Navigator.pop(context);
-                                  if (_shouldSetState) safeSetState(() {});
+                                  if (shouldSetState) safeSetState(() {});
                                   return;
                                 } else {
                                   _model.apiResulte7sd =
                                       await GenerateBipResponsesCall.call(
-                                    bipReq: widget!.reqBip?.id,
+                                    bipReq: widget.reqBip?.id,
                                     paciente: FFAppState().paciente.id,
-                                    questionario: _model.qst2?.first?.id,
+                                    questionario: _model.qst2?.first.id,
                                   );
 
-                                  _shouldSetState = true;
+                                  shouldSetState = true;
 
                                   context.pushNamed(
                                     'questionarioBip',
@@ -728,12 +726,12 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                         ParamType.SupabaseRow,
                                       ),
                                       'bipRequisicao': serializeParam(
-                                        widget!.reqBip?.id,
+                                        widget.reqBip?.id,
                                         ParamType.int,
                                       ),
                                     }.withoutNulls,
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
+                                      kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 0),
@@ -742,11 +740,11 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                   );
 
                                   Navigator.pop(context);
-                                  if (_shouldSetState) safeSetState(() {});
+                                  if (shouldSetState) safeSetState(() {});
                                   return;
                                 }
                               } else {
-                                if (widget!.reqBip?.pam == false) {
+                                if (widget.reqBip?.pam == false) {
                                   _model.qst3 =
                                       await QuestionarioTable().queryRows(
                                     queryFn: (q) => q.eq(
@@ -754,21 +752,21 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                       'PAM',
                                     ),
                                   );
-                                  _shouldSetState = true;
+                                  shouldSetState = true;
                                   _model.res3 =
                                       await RespostasQuestionarioTable()
                                           .queryRows(
                                     queryFn: (q) => q
                                         .eq(
                                           'bipRequisicao',
-                                          widget!.reqBip?.id,
+                                          widget.reqBip?.id,
                                         )
                                         .eq(
                                           'questionario',
-                                          _model.qst3?.first?.id,
+                                          _model.qst3?.first.id,
                                         ),
                                   );
-                                  _shouldSetState = true;
+                                  shouldSetState = true;
                                   if ((_model.res3 != null &&
                                           (_model.res3)!.isNotEmpty) ==
                                       true) {
@@ -780,12 +778,12 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                           ParamType.SupabaseRow,
                                         ),
                                         'bipRequisicao': serializeParam(
-                                          widget!.reqBip?.id,
+                                          widget.reqBip?.id,
                                           ParamType.int,
                                         ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
+                                        kTransitionInfoKey: const TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,
@@ -795,17 +793,17 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                     );
 
                                     Navigator.pop(context);
-                                    if (_shouldSetState) safeSetState(() {});
+                                    if (shouldSetState) safeSetState(() {});
                                     return;
                                   } else {
                                     _model.apiResulte7sdz =
                                         await GenerateBipResponsesCall.call(
-                                      bipReq: widget!.reqBip?.id,
+                                      bipReq: widget.reqBip?.id,
                                       paciente: FFAppState().paciente.id,
-                                      questionario: _model.qst3?.first?.id,
+                                      questionario: _model.qst3?.first.id,
                                     );
 
-                                    _shouldSetState = true;
+                                    shouldSetState = true;
 
                                     context.pushNamed(
                                       'questionarioBip',
@@ -815,12 +813,12 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                           ParamType.SupabaseRow,
                                         ),
                                         'bipRequisicao': serializeParam(
-                                          widget!.reqBip?.id,
+                                          widget.reqBip?.id,
                                           ParamType.int,
                                         ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
+                                        kTransitionInfoKey: const TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,
@@ -830,25 +828,25 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                     );
 
                                     Navigator.pop(context);
-                                    if (_shouldSetState) safeSetState(() {});
+                                    if (shouldSetState) safeSetState(() {});
                                     return;
                                   }
                                 } else {
-                                  if (_shouldSetState) safeSetState(() {});
+                                  if (shouldSetState) safeSetState(() {});
                                   return;
                                 }
                               }
                             }
 
-                            if (_shouldSetState) safeSetState(() {});
+                            if (shouldSetState) safeSetState(() {});
                           },
                           text: 'Continuar',
                           options: FFButtonOptions(
                             width: 200.0,
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -860,7 +858,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -869,36 +867,36 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                         ),
                       ),
                     ),
-                  if (widget!.bip == 'especifico')
+                  if (widget.bip == 'especifico')
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            var _shouldSetState = false;
+                            var shouldSetState = false;
                             _model.cUserN = await PacienteTable().queryRows(
                               queryFn: (q) => q.eq(
                                 'uuid',
                                 currentUserUid,
                               ),
                             );
-                            _shouldSetState = true;
+                            shouldSetState = true;
                             if (functions
                                     .addItemToList(
                                         containerPacienteRow!.queixas.toList(),
-                                        containerPacienteRow!.queixaPrincipal!)
-                                    .contains(widget!.reqBip
-                                        ?.queixasNaoRespondidas?.first) ==
+                                        containerPacienteRow.queixaPrincipal!)
+                                    .contains(widget.reqBip
+                                        ?.queixasNaoRespondidas.first) ==
                                 true) {
                               _model.qst0 = await QuestionarioTable().queryRows(
                                 queryFn: (q) => q.eq(
                                   'nome',
-                                  widget!.reqBip?.queixasNaoRespondidas?.first,
+                                  widget.reqBip?.queixasNaoRespondidas.first,
                                 ),
                               );
-                              _shouldSetState = true;
+                              shouldSetState = true;
                               _model.resps =
                                   await RespostasQuestionarioTable().queryRows(
                                 queryFn: (q) => q
@@ -908,25 +906,25 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                     )
                                     .eq(
                                       'questionario',
-                                      _model.qst0?.first?.id,
+                                      _model.qst0?.first.id,
                                     )
                                     .eq(
                                       'bipRequisicao',
-                                      widget!.reqBip?.id,
+                                      widget.reqBip?.id,
                                     ),
                               );
-                              _shouldSetState = true;
+                              shouldSetState = true;
                               if ((_model.resps != null &&
                                       (_model.resps)!.isNotEmpty) ==
                                   false) {
                                 _model.apiResultik5 =
                                     await GenerateBipResponsesCall.call(
-                                  bipReq: widget!.reqBip?.id,
+                                  bipReq: widget.reqBip?.id,
                                   paciente: FFAppState().paciente.id,
-                                  questionario: _model.qst0?.first?.id,
+                                  questionario: _model.qst0?.first.id,
                                 );
 
-                                _shouldSetState = true;
+                                shouldSetState = true;
                                 Navigator.pop(context);
 
                                 context.pushNamed(
@@ -937,17 +935,17 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                       ParamType.SupabaseRow,
                                     ),
                                     'bipRequisicao': serializeParam(
-                                      widget!.reqBip?.id,
+                                      widget.reqBip?.id,
                                       ParamType.int,
                                     ),
                                     'queixa': serializeParam(
-                                      _model.qst0?.first?.nome,
+                                      _model.qst0?.first.nome,
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
                                 );
 
-                                if (_shouldSetState) safeSetState(() {});
+                                if (shouldSetState) safeSetState(() {});
                                 return;
                               } else {
                                 Navigator.pop(context);
@@ -960,33 +958,33 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                       ParamType.SupabaseRow,
                                     ),
                                     'bipRequisicao': serializeParam(
-                                      widget!.reqBip?.id,
+                                      widget.reqBip?.id,
                                       ParamType.int,
                                     ),
                                     'queixa': serializeParam(
-                                      _model.qst0?.first?.nome,
+                                      _model.qst0?.first.nome,
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
                                 );
 
-                                if (_shouldSetState) safeSetState(() {});
+                                if (shouldSetState) safeSetState(() {});
                                 return;
                               }
                             } else {
-                              if (_shouldSetState) safeSetState(() {});
+                              if (shouldSetState) safeSetState(() {});
                               return;
                             }
 
-                            if (_shouldSetState) safeSetState(() {});
+                            if (shouldSetState) safeSetState(() {});
                           },
                           text: 'Continuar',
                           options: FFButtonOptions(
                             width: 200.0,
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -998,7 +996,7 @@ class _BipGeralInfosWidgetState extends State<BipGeralInfosWidget>
                                   fontWeight: FontWeight.bold,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

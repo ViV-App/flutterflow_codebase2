@@ -3,12 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'pdf_viewer_model.dart';
 export 'pdf_viewer_model.dart';
 
@@ -49,8 +45,8 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: Offset(0.0, -72.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, -72.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -69,14 +65,14 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Align(
-            alignment: AlignmentDirectional(1.0, -1.0),
+            alignment: const AlignmentDirectional(1.0, -1.0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
               child: FlutterFlowIconButton(
                 borderColor: FlutterFlowTheme.of(context).primary,
                 borderRadius: 20.0,
@@ -107,7 +103,7 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
                 child: Stack(
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Container(
@@ -116,7 +112,7 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
                           ),
                           child: FlutterFlowWebView(
                             content: valueOrDefault<String>(
-                              widget!.pdfPath,
+                              widget.pdfPath,
                               'https://drive.google.com/file/d/1jxN1xxWybNB3-ZK_3GNzeP6AT2yTofS9/preview',
                             ),
                             bypass: false,
@@ -132,7 +128,7 @@ class _PdfViewerWidgetState extends State<PdfViewerWidget>
               ),
             ),
           ),
-        ].divide(SizedBox(height: 12.0)),
+        ].divide(const SizedBox(height: 12.0)),
       ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
     );
   }

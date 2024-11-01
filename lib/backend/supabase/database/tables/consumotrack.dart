@@ -9,7 +9,7 @@ class ConsumotrackTable extends SupabaseTable<ConsumotrackRow> {
 }
 
 class ConsumotrackRow extends SupabaseDataRow {
-  ConsumotrackRow(Map<String, dynamic> data) : super(data);
+  ConsumotrackRow(super.data);
 
   @override
   SupabaseTable get table => ConsumotrackTable();
@@ -32,6 +32,6 @@ class ConsumotrackRow extends SupabaseDataRow {
   DateTime? get hour => getField<DateTime>('hour');
   set hour(DateTime? value) => setField<DateTime>('hour', value);
 
-  dynamic? get dadosConsumo => getField<dynamic>('dados_consumo');
-  set dadosConsumo(dynamic? value) => setField<dynamic>('dados_consumo', value);
+  dynamic get dadosConsumo => getField<dynamic>('dados_consumo');
+  set dadosConsumo(dynamic value) => setField<dynamic>('dados_consumo', value);
 }

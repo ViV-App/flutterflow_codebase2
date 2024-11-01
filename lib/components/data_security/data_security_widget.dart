@@ -5,8 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'data_security_model.dart';
 export 'data_security_model.dart';
@@ -56,11 +54,11 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Material(
         color: Colors.transparent,
         elevation: 3.0,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -73,7 +71,7 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
           height: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(24.0),
@@ -84,14 +82,14 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Container(
                     width: 100.0,
                     height: 4.0,
                     decoration: BoxDecoration(
-                      color: Color(0xFFDBE4F1),
+                      color: const Color(0xFFDBE4F1),
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
@@ -101,7 +99,7 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,7 +108,7 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -118,9 +116,9 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  alignment: const AlignmentDirectional(0.0, -1.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Text(
                                       'Segurança',
@@ -136,7 +134,7 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 24.0, 24.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -167,12 +165,12 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: Color(0xFF8798B5),
+                                                    color: const Color(0xFF8798B5),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Color(0x0E294B0D),
                                               width: 2.0,
                                             ),
@@ -211,9 +209,9 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           filled: true,
-                                          fillColor: Color(0xFFF7FAFE),
+                                          fillColor: const Color(0xFFF7FAFE),
                                           contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           suffixIcon: InkWell(
                                             onTap: () => safeSetState(
@@ -241,11 +239,11 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                             .textController1Validator
                                             .asValidator(context),
                                       ),
-                                    ].divide(SizedBox(height: 6.0)),
+                                    ].divide(const SizedBox(height: 6.0)),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 24.0, 24.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -276,12 +274,12 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: Color(0xFF8798B5),
+                                                    color: const Color(0xFF8798B5),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Color(0x0E294B0D),
                                               width: 2.0,
                                             ),
@@ -320,9 +318,9 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                                 BorderRadius.circular(8.0),
                                           ),
                                           filled: true,
-                                          fillColor: Color(0xFFF7FAFE),
+                                          fillColor: const Color(0xFFF7FAFE),
                                           contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           suffixIcon: InkWell(
                                             onTap: () => safeSetState(
@@ -350,13 +348,13 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                             .textController2Validator
                                             .asValidator(context),
                                       ),
-                                    ].divide(SizedBox(height: 6.0)),
+                                    ].divide(const SizedBox(height: 6.0)),
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  alignment: const AlignmentDirectional(0.0, -1.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 32.0, 0.0, 0.0),
                                     child: Text(
                                       'Excluir conta',
@@ -364,7 +362,7 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: Color(0xFFD63D3D),
+                                            color: const Color(0xFFD63D3D),
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -376,7 +374,7 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 32.0, 24.0, 24.0),
                         child: FFButtonWidget(
                           onPressed: (_model.textController1.text !=
@@ -395,14 +393,14 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                     builder: (alertDialogContext) {
                                       return WebViewAware(
                                         child: AlertDialog(
-                                          title: Text('Tudo certo!'),
-                                          content: Text(
+                                          title: const Text('Tudo certo!'),
+                                          content: const Text(
                                               'Sua senha foi alterada com sucesso!'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: Text('Ok'),
+                                              child: const Text('Ok'),
                                             ),
                                           ],
                                         ),
@@ -416,9 +414,9 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -430,7 +428,7 @@ class _DataSecurityWidgetState extends State<DataSecurityWidget> {
                                   fontWeight: FontWeight.bold,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

@@ -2,12 +2,8 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'agenda_card_model.dart';
 export 'agenda_card_model.dart';
 
@@ -77,9 +73,9 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Container(
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -98,7 +94,7 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
               child: Material(
                 color: Colors.transparent,
                 elevation: 2.0,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(8.0),
                     bottomRight: Radius.circular(8.0),
@@ -107,7 +103,7 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
                   ),
                 ),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(8.0),
                     bottomRight: Radius.circular(8.0),
                     topLeft: Radius.circular(8.0),
@@ -116,7 +112,7 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
                   child: Container(
                     width: double.infinity,
                     height: 72.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFF7FAFE),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(8.0),
@@ -130,7 +126,7 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
                         Container(
                           width: 7.0,
                           height: 100.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFF6E78FF),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(12.0),
@@ -141,9 +137,9 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 18.0, 12.0, 12.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -171,7 +167,7 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Mulish',
-                                                color: Color(0xFF434854),
+                                                color: const Color(0xFF434854),
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w800,
@@ -183,15 +179,15 @@ class _AgendaCardWidgetState extends State<AgendaCardWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Mulish',
-                                                color: Color(0xFF434854),
+                                                color: const Color(0xFF434854),
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
-                                      ].divide(SizedBox(height: 4.0)),
+                                      ].divide(const SizedBox(height: 4.0)),
                                     ),
-                                  ].divide(SizedBox(width: 12.0)),
+                                  ].divide(const SizedBox(width: 12.0)),
                                 ),
                                 Theme(
                                   data: ThemeData(

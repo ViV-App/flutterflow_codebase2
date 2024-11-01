@@ -11,7 +11,7 @@ class StaticEfeitosAdversosTable
 }
 
 class StaticEfeitosAdversosRow extends SupabaseDataRow {
-  StaticEfeitosAdversosRow(Map<String, dynamic> data) : super(data);
+  StaticEfeitosAdversosRow(super.data);
 
   @override
   SupabaseTable get table => StaticEfeitosAdversosTable();

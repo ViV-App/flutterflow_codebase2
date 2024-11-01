@@ -2,8 +2,6 @@ import '/components/complete_perfil/complete_perfil_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'complete_profile_alert_model.dart';
 export 'complete_profile_alert_model.dart';
@@ -57,9 +55,9 @@ class _CompleteProfileAlertWidgetState
             return WebViewAware(
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: Container(
+                child: SizedBox(
                   height: MediaQuery.sizeOf(context).height * 0.85,
-                  child: CompletePerfilWidget(),
+                  child: const CompletePerfilWidget(),
                 ),
               ),
             );
@@ -73,7 +71,7 @@ class _CompleteProfileAlertWidgetState
           color: FlutterFlowTheme.of(context).customColor1,
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12.0, 6.0, 12.0, 6.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 6.0, 12.0, 6.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,

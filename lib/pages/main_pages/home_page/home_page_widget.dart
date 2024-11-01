@@ -21,7 +21,6 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -65,28 +64,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             return;
           } else {
             FFAppState().paciente = PacienteStruct(
-              nome: _model.user?.first?.nome,
-              id: _model.user?.first?.id,
-              uuid: _model.user?.first?.uuid,
-              createdAt: _model.user?.first?.createdAt,
-              telefone: _model.user?.first?.telefone,
-              cpf: _model.user?.first?.cpf,
-              foto: _model.user?.first?.profilePic,
-              perfilCompleto: _model.user?.first?.perfilCompleto,
-              tratamentoPrevio: _model.user?.first?.tramentoPrevio,
-              medico: _model.user?.first?.medicoPrescritor,
-              queixas: _model.user?.first?.queixas,
+              nome: _model.user?.first.nome,
+              id: _model.user?.first.id,
+              uuid: _model.user?.first.uuid,
+              createdAt: _model.user?.first.createdAt,
+              telefone: _model.user?.first.telefone,
+              cpf: _model.user?.first.cpf,
+              foto: _model.user?.first.profilePic,
+              perfilCompleto: _model.user?.first.perfilCompleto,
+              tratamentoPrevio: _model.user?.first.tramentoPrevio,
+              medico: _model.user?.first.medicoPrescritor,
+              queixas: _model.user?.first.queixas,
               contraIndicacoes:
                   _model.user?.map((e) => e.contraIndicacoes.first).toList(),
               peso: valueOrDefault<double>(
-                _model.user?.first?.peso,
+                _model.user?.first.peso,
                 0.0,
               ),
               altura: valueOrDefault<double>(
-                _model.user?.first?.altura,
+                _model.user?.first.altura,
                 0.0,
               ),
-              queixaPrincipal: _model.user?.first?.queixaPrincipal,
+              queixaPrincipal: _model.user?.first.queixaPrincipal,
             );
             FFAppState().update(() {});
             _model.assinatura = await AssinaturaTable().queryRows(
@@ -98,15 +97,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             FFAppState().updatePacienteStruct(
               (e) => e
                 ..assinatura = AssinaturaStruct(
-                  assinaturaId: _model.assinatura?.first?.id,
-                  plano: _model.assinatura?.first?.plano,
-                  status: _model.assinatura?.first?.status,
-                  registroBemViver: _model.assinatura?.first?.registroBemViver,
+                  assinaturaId: _model.assinatura?.first.id,
+                  plano: _model.assinatura?.first.plano,
+                  status: _model.assinatura?.first.status,
+                  registroBemViver: _model.assinatura?.first.registroBemViver,
                   registroAlertasMedicamento:
-                      _model.assinatura?.first?.registroAlertasMedicamento,
-                  evolucaoBemViver: _model.assinatura?.first?.evolucaoBemViver,
-                  acessoAssistente: _model.assinatura?.first?.acessoAssistente,
-                  bipMensal: _model.assinatura?.first?.bipsDisponiveis,
+                      _model.assinatura?.first.registroAlertasMedicamento,
+                  evolucaoBemViver: _model.assinatura?.first.evolucaoBemViver,
+                  acessoAssistente: _model.assinatura?.first.acessoAssistente,
+                  bipMensal: _model.assinatura?.first.bipsDisponiveis,
                 ),
             );
             safeSetState(() {});
@@ -123,7 +122,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   currentUserUid,
                 ),
               );
-              if (_model.user?.first?.firstOnboarding == 0) {
+              if (_model.user?.first.firstOnboarding == 0) {
                 safeSetState(() => _model.onboarding01Controller =
                     createPageWalkthrough(context));
                 _model.onboarding01Controller?.show(context: context);
@@ -132,7 +131,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 return;
               }
             } else {
-              if (_model.user?.first?.firstOnboarding == 0) {
+              if (_model.user?.first.firstOnboarding == 0) {
                 safeSetState(() => _model.onboarding01Controller =
                     createPageWalkthrough(context));
                 _model.onboarding01Controller?.show(context: context);
@@ -150,8 +149,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               currentUserUid,
             ),
           );
-          if (_model.checktk?.first?.fcmToken == null ||
-              _model.checktk?.first?.fcmToken == '') {
+          if (_model.checktk?.first.fcmToken == null ||
+              _model.checktk?.first.fcmToken == '') {
             _model.fctk = await actions.getFCMToken();
             await PacienteTable().update(
               data: {
@@ -203,7 +202,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
             return Scaffold(
-              backgroundColor: Color(0xFFEFF4F9),
+              backgroundColor: const Color(0xFFEFF4F9),
               body: Center(
                 child: SizedBox(
                   width: 50.0,
@@ -227,13 +226,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             onTap: () => FocusScope.of(context).unfocus(),
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: Color(0xFFEFF4F9),
+              backgroundColor: const Color(0xFFEFF4F9),
               body: SafeArea(
                 top: true,
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0x00FFFFFF),
                   ),
                   child: SingleChildScrollView(
@@ -247,11 +246,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             Container(
                               width: double.infinity,
                               height: 110.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF6E78FF),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(24.0),
+                                padding: const EdgeInsets.all(24.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -277,13 +276,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               propertyOne: 'homePage',
                                             );
 
+                                            await actions.segmentTrack(
+                                              'header profile clicked',
+                                              <String, String?>{
+                                                'source': 'homePage',
+                                              },
+                                            );
+
                                             safeSetState(() {});
                                           },
                                           child: Container(
                                             width: 52.0,
                                             height: 52.0,
                                             clipBehavior: Clip.antiAlias,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
@@ -297,7 +303,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
@@ -338,7 +344,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            Color(0xFFDBE4F1),
+                                                            const Color(0xFFDBE4F1),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -346,7 +352,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       ),
                                                 ),
                                               ),
-                                            ].divide(SizedBox(height: 4.0)),
+                                            ].divide(const SizedBox(height: 4.0)),
                                           ),
                                         ),
                                       ],
@@ -362,12 +368,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               wrapWithModel(
                                 model: _model.completeProfileAlertModel,
                                 updateCallback: () => safeSetState(() {}),
-                                child: CompleteProfileAlertWidget(),
+                                child: const CompleteProfileAlertWidget(),
                               ),
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsets.all(24.0),
+                          padding: const EdgeInsets.all(24.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -380,14 +386,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   onTap: () async {
                                     context.pushNamed('agenda');
 
-                                    _model.apiResultzmj =
-                                        await SegmentGroup.trackingCall.call(
-                                      userId: currentUserUid,
-                                      eventName: 'agenda clicked',
-                                      propertyOne: 'menu',
+                                    await actions.segmentTrack(
+                                      'agenda clicked',
+                                      <String, String?>{
+                                        'source': 'menu',
+                                      },
                                     );
-
-                                    safeSetState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -426,7 +430,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                           ),
-                                        ].divide(SizedBox(height: 4.0)),
+                                        ].divide(const SizedBox(height: 4.0)),
                                       ),
                                     ),
                                   ),
@@ -441,14 +445,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   onTap: () async {
                                     context.pushNamed('remedios');
 
-                                    _model.apiResultzmjc =
-                                        await SegmentGroup.trackingCall.call(
-                                      userId: currentUserUid,
-                                      eventName: 'medicine clicked',
-                                      propertyOne: 'menu',
+                                    await actions.segmentTrack(
+                                      'medicine clicked',
+                                      <String, String?>{
+                                        'source': 'menu',
+                                      },
                                     );
-
-                                    safeSetState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -487,7 +489,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                           ),
-                                        ].divide(SizedBox(height: 4.0)),
+                                        ].divide(const SizedBox(height: 4.0)),
                                       ),
                                     ),
                                   ),
@@ -502,14 +504,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   onTap: () async {
                                     context.pushNamed('conteudos');
 
-                                    _model.apiResultzmjf =
-                                        await SegmentGroup.trackingCall.call(
-                                      userId: currentUserUid,
-                                      eventName: 'content clicked',
-                                      propertyOne: 'menu',
+                                    await actions.segmentTrack(
+                                      'content clicked',
+                                      <String, String?>{
+                                        'source': 'menu',
+                                      },
                                     );
-
-                                    safeSetState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -548,7 +548,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                           ),
-                                        ].divide(SizedBox(height: 4.0)),
+                                        ].divide(const SizedBox(height: 4.0)),
                                       ),
                                     ),
                                   ),
@@ -563,14 +563,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   onTap: () async {
                                     context.pushNamed('evolucao');
 
-                                    _model.apiResultzmjz =
-                                        await SegmentGroup.trackingCall.call(
-                                      userId: currentUserUid,
-                                      eventName: 'content clicked',
-                                      propertyOne: 'menu',
+                                    await actions.segmentTrack(
+                                      'content clicked',
+                                      <String, String?>{
+                                        'source': 'menu',
+                                      },
                                     );
-
-                                    safeSetState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -609,13 +607,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                           ),
-                                        ].divide(SizedBox(height: 4.0)),
+                                        ].divide(const SizedBox(height: 4.0)),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(width: 12.0)),
+                            ].divide(const SizedBox(width: 12.0)),
                           ).addWalkthrough(
                             rowE6h0my7a,
                             _model.onboarding01Controller,
@@ -627,7 +625,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           tablet: false,
                         ))
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 24.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -662,7 +660,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: double.infinity,
                                   height: 200.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFF877EEF),
+                                    color: const Color(0xFF877EEF),
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
                                   child: Row(
@@ -671,7 +669,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             18.0, 0.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -687,7 +685,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: Color(0xFFF7F9FA),
+                                                    color: const Color(0xFFF7F9FA),
                                                     fontSize: 22.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
@@ -705,7 +703,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
-                                          ].divide(SizedBox(height: 32.0)),
+                                          ].divide(const SizedBox(height: 32.0)),
                                         ),
                                       ),
                                       Container(
@@ -720,7 +718,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 8.0)),
+                                    ].divide(const SizedBox(width: 8.0)),
                                   ),
                                 ),
                               ),
@@ -767,7 +765,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     (columnStatusPacientRow?.estagio !=
                                         'bipsInsuficientes'))
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 24.0),
                                     child: wrapWithModel(
                                       model:
@@ -793,7 +791,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               locale: FFLocalizations.of(context).languageCode,
                             ))
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -816,11 +814,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: Container(
+                                            child: SizedBox(
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
                                                   0.85,
-                                              child: CompletePerfilWidget(),
+                                              child: const CompletePerfilWidget(),
                                             ),
                                           ),
                                         ),
@@ -828,11 +826,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     },
                                   ).then((value) => safeSetState(() {}));
 
-                                  _model.apiResultwcv =
-                                      await SegmentGroup.trackingCall.call(
-                                    userId: currentUserUid,
-                                    eventName: 'well-being started',
-                                    propertyOne: 'homePage',
+                                  await actions.segmentTrack(
+                                    'well-being started',
+                                    <String, String?>{
+                                      'source': 'home',
+                                    },
                                   );
                                 } else {
                                   await showModalBottomSheet(
@@ -847,7 +845,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: Container(
+                                            child: SizedBox(
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
                                                   0.8,
@@ -861,15 +859,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     },
                                   ).then((value) => safeSetState(() {}));
 
-                                  _model.apiResultwcvz =
-                                      await SegmentGroup.trackingCall.call(
-                                    userId: currentUserUid,
-                                    eventName: 'well-being started',
-                                    propertyOne: 'homePage',
+                                  await actions.segmentTrack(
+                                    'well-being started',
+                                    <String, String?>{
+                                      'source': 'home',
+                                    },
                                   );
                                 }
-
-                                safeSetState(() {});
                               },
                               child: Material(
                                 color: Colors.transparent,
@@ -886,7 +882,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     borderRadius: BorderRadius.circular(9.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 18.0, 12.0, 12.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -926,7 +922,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(height: 4.0)),
+                                              ].divide(const SizedBox(height: 4.0)),
                                             ),
                                             Icon(
                                               Icons.arrow_forward_ios,
@@ -948,7 +944,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   width: 75.0,
                                                   height: 60.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0xFF75C3FB),
+                                                    color: const Color(0xFF75C3FB),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
@@ -984,7 +980,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   width: 75.0,
                                                   height: 60.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0xFFB9EEB0),
+                                                    color: const Color(0xFFB9EEB0),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
@@ -1020,7 +1016,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   width: 75.0,
                                                   height: 60.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0xFFEEE8B0),
+                                                    color: const Color(0xFFEEE8B0),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
@@ -1056,7 +1052,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   width: 75.0,
                                                   height: 60.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0xFFFFCFA4),
+                                                    color: const Color(0xFFFFCFA4),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
@@ -1092,7 +1088,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   width: 75.0,
                                                   height: 60.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0xFFFFA4A4),
+                                                    color: const Color(0xFFFFA4A4),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
@@ -1101,7 +1097,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     children: [
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Column(
                                                           mainAxisSize:
@@ -1132,7 +1128,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(SizedBox(width: 12.0)),
+                                          ].divide(const SizedBox(width: 12.0)),
                                         ),
                                       ],
                                     ),
@@ -1145,7 +1141,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 32.0, 24.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -1165,17 +1161,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: Container(
+                                        child: SizedBox(
                                           height: MediaQuery.sizeOf(context)
                                                   .height *
                                               0.85,
-                                          child: AssistantHubWidget(),
+                                          child: const AssistantHubWidget(),
                                         ),
                                       ),
                                     ),
                                   );
                                 },
                               ).then((value) => safeSetState(() {}));
+
+                              await actions.segmentTrack(
+                                'assistant started',
+                                <String, String?>{
+                                  'source': 'home',
+                                },
+                              );
                             },
                             child: Material(
                               color: Colors.transparent,
@@ -1187,11 +1190,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 width: double.infinity,
                                 height: 80.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFF6E78FF),
+                                  color: const Color(0xFF6E78FF),
                                   borderRadius: BorderRadius.circular(9.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       18.0, 0.0, 18.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -1249,9 +1252,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(height: 4.0)),
+                                            ].divide(const SizedBox(height: 4.0)),
                                           ),
-                                        ].divide(SizedBox(width: 12.0)),
+                                        ].divide(const SizedBox(width: 12.0)),
                                       ),
                                     ],
                                   ),
@@ -1264,7 +1267,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 16.0, 24.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -1275,7 +1278,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               context.pushNamed(
                                 'agenda',
                                 extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
+                                  kTransitionInfoKey: const TransitionInfo(
                                     hasTransition: true,
                                     transitionType: PageTransitionType.fade,
                                     duration: Duration(milliseconds: 0),
@@ -1283,14 +1286,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 },
                               );
 
-                              _model.apiResultwcf =
-                                  await SegmentGroup.trackingCall.call(
-                                userId: currentUserUid,
-                                eventName: 'medicine clicked',
-                                propertyOne: 'homePage',
+                              await actions.segmentTrack(
+                                'medicine clicked',
+                                <String, String?>{
+                                  'source': 'home',
+                                },
                               );
-
-                              safeSetState(() {});
                             },
                             child: Material(
                               color: Colors.transparent,
@@ -1302,11 +1303,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 width: double.infinity,
                                 height: 80.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFFFD4D2),
+                                  color: const Color(0xFFFFD4D2),
                                   borderRadius: BorderRadius.circular(9.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       18.0, 0.0, 18.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -1319,11 +1320,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Container(
                                             width: 32.0,
                                             height: 32.0,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: Color(0xFFFFA29F),
                                               shape: BoxShape.circle,
                                             ),
-                                            child: Column(
+                                            child: const Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
@@ -1349,7 +1350,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF434854),
+                                                              const Color(0xFF434854),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -1364,13 +1365,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xCC434854),
+                                                              const Color(0xCC434854),
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
-                                            ].divide(SizedBox(height: 4.0)),
+                                            ].divide(const SizedBox(height: 4.0)),
                                           ),
-                                        ].divide(SizedBox(width: 12.0)),
+                                        ].divide(const SizedBox(width: 12.0)),
                                       ),
                                     ],
                                   ),
@@ -1380,7 +1381,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 32.0, 0.0, 0.0),
                           child: Text(
                             'Conteúdos mais vistos',
@@ -1395,7 +1396,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: FutureBuilder<List<StaticConteudosRow>>(
                             future: StaticConteudosTable().queryRows(
@@ -1429,7 +1430,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     final rowStaticConteudosRow =
                                         rowStaticConteudosRowList[rowIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 4.0),
                                       child: Material(
                                         color: Colors.transparent,
@@ -1486,7 +1487,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsets.all(
+                                                              const EdgeInsets.all(
                                                                   12.0),
                                                           child: Column(
                                                             mainAxisSize:
@@ -1531,7 +1532,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Mulish',
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFF8798B5),
                                                                       fontSize:
                                                                           11.0,
@@ -1546,7 +1547,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           builder: (context) =>
                                                               Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -1570,7 +1571,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       backgroundColor:
                                                                           Colors
                                                                               .transparent,
-                                                                      alignment: AlignmentDirectional(
+                                                                      alignment: const AlignmentDirectional(
                                                                               0.0,
                                                                               0.0)
                                                                           .resolve(
@@ -1592,34 +1593,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   },
                                                                 );
 
-                                                                _model.apiResultwcp =
-                                                                    await SegmentGroup
-                                                                        .trackingCall
-                                                                        .call(
-                                                                  userId:
-                                                                      currentUserUid,
-                                                                  eventName:
-                                                                      'content clicked',
-                                                                  propertyOne:
-                                                                      'homePage',
+                                                                await actions
+                                                                    .segmentTrack(
+                                                                  'content clicked',
+                                                                  <String,
+                                                                      String?>{
+                                                                    'source':
+                                                                        'home',
+                                                                  },
                                                                 );
-
-                                                                safeSetState(
-                                                                    () {});
                                                               },
                                                               text: 'Ler mais',
                                                               options:
                                                                   FFButtonOptions(
                                                                 width: 100.0,
                                                                 height: 32.0,
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                                 iconPadding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1646,7 +1642,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     ),
                                                                 elevation: 1.0,
                                                                 borderSide:
-                                                                    BorderSide(
+                                                                    const BorderSide(
                                                                   color: Colors
                                                                       .transparent,
                                                                   width: 1.0,
@@ -1670,9 +1666,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     );
                                   })
-                                      .divide(SizedBox(width: 14.0))
-                                      .addToStart(SizedBox(width: 24.0))
-                                      .addToEnd(SizedBox(width: 24.0)),
+                                      .divide(const SizedBox(width: 14.0))
+                                      .addToStart(const SizedBox(width: 24.0))
+                                      .addToEnd(const SizedBox(width: 24.0)),
                                 ),
                               );
                             },
@@ -1680,11 +1676,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                         Container(
                           width: double.infinity,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                         ),
                         Builder(
                           builder: (context) => Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 32.0, 24.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -1697,14 +1693,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   sharePositionOrigin:
                                       getWidgetBoundingBox(context),
                                 );
-                                _model.apiResultwcb =
-                                    await SegmentGroup.trackingCall.call(
-                                  userId: currentUserUid,
-                                  eventName: 'share clicked',
-                                  propertyOne: 'homePage',
+                                await actions.segmentTrack(
+                                  'share clicked',
+                                  <String, String?>{
+                                    'source': 'home',
+                                  },
                                 );
-
-                                safeSetState(() {});
                               },
                               child: Material(
                                 color: Colors.transparent,
@@ -1716,11 +1710,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: double.infinity,
                                   height: 80.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFEFEDFF),
+                                    color: const Color(0xFFEFEDFF),
                                     borderRadius: BorderRadius.circular(9.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         18.0, 0.0, 18.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1733,11 +1727,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             Container(
                                               width: 32.0,
                                               height: 32.0,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color: Color(0xFF6E78FF),
                                                 shape: BoxShape.circle,
                                               ),
-                                              child: Column(
+                                              child: const Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
@@ -1763,7 +1757,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             FontWeight.bold,
                                                       ),
                                             ),
-                                          ].divide(SizedBox(width: 12.0)),
+                                          ].divide(const SizedBox(width: 12.0)),
                                         ),
                                       ],
                                     ),
@@ -1773,7 +1767,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                         ),
-                      ].addToEnd(SizedBox(height: 32.0)),
+                      ].addToEnd(const SizedBox(height: 32.0)),
                     ),
                   ),
                 ),
@@ -1797,12 +1791,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 elevation: 0,
                 insetPadding: EdgeInsets.zero,
                 backgroundColor: Colors.transparent,
-                alignment: AlignmentDirectional(0.0, -1.0)
+                alignment: const AlignmentDirectional(0.0, -1.0)
                     .resolve(Directionality.of(context)),
                 child: WebViewAware(
                   child: GestureDetector(
                     onTap: () => FocusScope.of(dialogContext).unfocus(),
-                    child: OnboardingHomeCompletedWidget(),
+                    child: const OnboardingHomeCompletedWidget(),
                   ),
                 ),
               );
@@ -1834,12 +1828,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   elevation: 0,
                   insetPadding: EdgeInsets.zero,
                   backgroundColor: Colors.transparent,
-                  alignment: AlignmentDirectional(0.0, -1.0)
+                  alignment: const AlignmentDirectional(0.0, -1.0)
                       .resolve(Directionality.of(context)),
                   child: WebViewAware(
                     child: GestureDetector(
                       onTap: () => FocusScope.of(dialogContext).unfocus(),
-                      child: OnboardingHomeSkippedWidget(),
+                      child: const OnboardingHomeSkippedWidget(),
                     ),
                   ),
                 );

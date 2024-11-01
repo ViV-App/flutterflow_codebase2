@@ -1,23 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
-import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -82,24 +75,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : SplashScreenWidget(),
+          appStateNotifier.loggedIn ? const HomePageWidget() : const SplashScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? HomePageWidget()
-              : SplashScreenWidget(),
+              ? const HomePageWidget()
+              : const SplashScreenWidget(),
         ),
         FFRoute(
           name: 'splashScreen',
           path: '/splashScreen',
-          builder: (context, params) => SplashScreenWidget(),
+          builder: (context, params) => const SplashScreenWidget(),
         ),
         FFRoute(
           name: 'login',
           path: '/login',
-          builder: (context, params) => LoginWidget(),
+          builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
           name: 'createAccount',
@@ -115,64 +108,64 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'homePage',
           path: '/homePage',
           requireAuth: true,
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: 'profilePage',
           path: '/profilePage',
           requireAuth: true,
-          builder: (context, params) => ProfilePageWidget(),
+          builder: (context, params) => const ProfilePageWidget(),
         ),
         FFRoute(
           name: 'remedios',
           path: '/remedios',
           requireAuth: true,
-          builder: (context, params) => RemediosWidget(),
+          builder: (context, params) => const RemediosWidget(),
         ),
         FFRoute(
           name: 'prescricao01',
           path: '/prescricao01',
           requireAuth: true,
-          builder: (context, params) => Prescricao01Widget(),
+          builder: (context, params) => const Prescricao01Widget(),
         ),
         FFRoute(
           name: 'prescricao02',
           path: '/prescricao02',
           requireAuth: true,
-          builder: (context, params) => Prescricao02Widget(),
+          builder: (context, params) => const Prescricao02Widget(),
         ),
         FFRoute(
           name: 'agenda',
           path: '/agenda',
           requireAuth: true,
-          builder: (context, params) => AgendaWidget(),
+          builder: (context, params) => const AgendaWidget(),
         ),
         FFRoute(
           name: 'conteudos',
           path: '/conteudos',
           requireAuth: true,
-          builder: (context, params) => ConteudosWidget(),
+          builder: (context, params) => const ConteudosWidget(),
         ),
         FFRoute(
           name: 'planos',
           path: '/planos',
-          builder: (context, params) => PlanosWidget(),
+          builder: (context, params) => const PlanosWidget(),
         ),
         FFRoute(
           name: 'chatViv',
           path: '/chatViv',
           requireAuth: true,
-          builder: (context, params) => ChatVivWidget(),
+          builder: (context, params) => const ChatVivWidget(),
         ),
         FFRoute(
           name: 'resetSenha',
           path: '/resetSenha',
-          builder: (context, params) => ResetSenhaWidget(),
+          builder: (context, params) => const ResetSenhaWidget(),
         ),
         FFRoute(
           name: 'assitantHome',
           path: '/assitantHome',
-          builder: (context, params) => AssitantHomeWidget(),
+          builder: (context, params) => const AssitantHomeWidget(),
         ),
         FFRoute(
           name: 'cannabisPraMim',
@@ -187,12 +180,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'meuPlano',
           path: '/meuPlano',
-          builder: (context, params) => MeuPlanoWidget(),
+          builder: (context, params) => const MeuPlanoWidget(),
         ),
         FFRoute(
           name: 'comprarBip',
           path: '/comprarBip',
-          builder: (context, params) => ComprarBipWidget(),
+          builder: (context, params) => const ComprarBipWidget(),
         ),
         FFRoute(
           name: 'formPreConsulta',
@@ -218,7 +211,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'evolucao',
           path: '/evolucao',
           requireAuth: true,
-          builder: (context, params) => EvolucaoWidget(),
+          builder: (context, params) => const EvolucaoWidget(),
         ),
         FFRoute(
           name: 'planoTerapeutico',
@@ -281,17 +274,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'emailConfirmed',
           path: '/emailConfirmed',
-          builder: (context, params) => EmailConfirmedWidget(),
+          builder: (context, params) => const EmailConfirmedWidget(),
         ),
         FFRoute(
           name: 'splashScreenCopy',
           path: '/splashScreenCopy',
-          builder: (context, params) => SplashScreenCopyWidget(),
+          builder: (context, params) => const SplashScreenCopyWidget(),
         ),
         FFRoute(
           name: 'tourViv',
           path: '/tourViv',
-          builder: (context, params) => TourVivWidget(),
+          builder: (context, params) => const TourVivWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -529,7 +522,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

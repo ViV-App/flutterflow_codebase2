@@ -9,7 +9,7 @@ class FichaSaudeTable extends SupabaseTable<FichaSaudeRow> {
 }
 
 class FichaSaudeRow extends SupabaseDataRow {
-  FichaSaudeRow(Map<String, dynamic> data) : super(data);
+  FichaSaudeRow(super.data);
 
   @override
   SupabaseTable get table => FichaSaudeTable();

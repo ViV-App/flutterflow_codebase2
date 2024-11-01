@@ -1,22 +1,11 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/forms_filled/forms_filled_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/questionario/questionario_ask/questionario_ask_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/request_manager.dart';
 
 import 'questionario_widget.dart' show QuestionarioWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:percent_indicator/percent_indicator.dart';
-import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
 class QuestionarioModel extends FlutterFlowModel<QuestionarioWidget> {
   ///  Local state fields for this page.
@@ -54,20 +43,12 @@ class QuestionarioModel extends FlutterFlowModel<QuestionarioWidget> {
   late FlutterFlowDynamicModels<QuestionarioAskModel> questionarioAskModels;
   // Stores action output result for [Backend Call - API (generate responses)] action in Button widget.
   ApiCallResponse? apiResultr3x;
-  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
-  ApiCallResponse? wrverfvr;
   // Stores action output result for [Backend Call - API (generate responses)] action in Button widget.
   ApiCallResponse? apiResultr3xd3;
-  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
-  ApiCallResponse? rg435g54;
   // Stores action output result for [Backend Call - API (generate responses)] action in Button widget.
   ApiCallResponse? apiResultr3xd3a;
-  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
-  ApiCallResponse? rg545gt4g;
   // Stores action output result for [Backend Call - Update Row(s)] action in Button widget.
   List<StatusPacientRow>? qefef;
-  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
-  ApiCallResponse? rfg534g45;
   // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
   ApiCallResponse? apiResultoio;
 

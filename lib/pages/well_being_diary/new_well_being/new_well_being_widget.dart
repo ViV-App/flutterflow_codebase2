@@ -9,8 +9,6 @@ import '/pages/well_being_diary/queixa_question/queixa_question_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'new_well_being_model.dart';
 export 'new_well_being_model.dart';
 
@@ -72,7 +70,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: FutureBuilder<List<PacienteRow>>(
         future: PacienteTable().querySingleRow(
           queryFn: (q) => q.eq(
@@ -104,7 +102,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
           return Material(
             color: Colors.transparent,
             elevation: 3.0,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
@@ -113,7 +111,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
               ),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
                 topLeft: Radius.circular(24.0),
@@ -123,7 +121,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(0.0),
                     bottomRight: Radius.circular(0.0),
                     topLeft: Radius.circular(24.0),
@@ -145,29 +143,29 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Container(
                                   width: 100.0,
                                   height: 4.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFDBE4F1),
+                                    color: const Color(0xFFDBE4F1),
                                     borderRadius: BorderRadius.circular(32.0),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 8.0),
                                 child: Text(
                                   'Meu diário de bem estar',
@@ -190,7 +188,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                       child: Container(
                         width: double.infinity,
                         height: double.infinity,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: SingleChildScrollView(
                           primary: false,
                           child: Column(
@@ -198,16 +196,16 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 32.0, 24.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   height: 147.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFEFF4F9),
+                                    color: const Color(0xFFEFF4F9),
                                     borderRadius: BorderRadius.circular(9.0),
                                     border: Border.all(
-                                      color: Color(0x00D11F1F),
+                                      color: const Color(0x00D11F1F),
                                     ),
                                   ),
                                   child: Column(
@@ -218,7 +216,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -232,7 +230,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: Color(0xFF434854),
+                                                    color: const Color(0xFF434854),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w800,
@@ -247,16 +245,16 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            Color(0xFF434854),
+                                                            const Color(0xFF434854),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
-                                          ].divide(SizedBox(height: 4.0)),
+                                          ].divide(const SizedBox(height: 4.0)),
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -290,8 +288,8 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     height: 60.0,
                                                     decoration: BoxDecoration(
                                                       color: _model.mood == 4
-                                                          ? Color(0xFF75C3FB)
-                                                          : Color(0xFFB5C0D3),
+                                                          ? const Color(0xFF75C3FB)
+                                                          : const Color(0xFFB5C0D3),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
@@ -350,8 +348,8 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     height: 60.0,
                                                     decoration: BoxDecoration(
                                                       color: _model.mood == 3
-                                                          ? Color(0xFFB9EEB0)
-                                                          : Color(0xFFB5C0D3),
+                                                          ? const Color(0xFFB9EEB0)
+                                                          : const Color(0xFFB5C0D3),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
@@ -410,8 +408,8 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     height: 60.0,
                                                     decoration: BoxDecoration(
                                                       color: _model.mood == 2
-                                                          ? Color(0xFFEEE8B0)
-                                                          : Color(0xFFB5C0D3),
+                                                          ? const Color(0xFFEEE8B0)
+                                                          : const Color(0xFFB5C0D3),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
@@ -470,8 +468,8 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     height: 60.0,
                                                     decoration: BoxDecoration(
                                                       color: _model.mood == 1
-                                                          ? Color(0xFFFFCFA4)
-                                                          : Color(0xFFB5C0D3),
+                                                          ? const Color(0xFFFFCFA4)
+                                                          : const Color(0xFFB5C0D3),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
@@ -530,8 +528,8 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     height: 60.0,
                                                     decoration: BoxDecoration(
                                                       color: _model.mood == 0
-                                                          ? Color(0xFFFFA4A4)
-                                                          : Color(0xFFB5C0D3),
+                                                          ? const Color(0xFFFFA4A4)
+                                                          : const Color(0xFFB5C0D3),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
@@ -561,7 +559,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ].divide(SizedBox(width: 12.0)),
+                                          ].divide(const SizedBox(width: 12.0)),
                                         ),
                                       ),
                                     ],
@@ -569,7 +567,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 24.0, 24.0, 0.0),
                                 child:
                                     FutureBuilder<List<StaticQueixasSaudeRow>>(
@@ -664,10 +662,10 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 24.0, 0.0, 0.0),
                                 child: Container(
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: FutureBuilder<
                                       List<StaticQueixasSaudeRow>>(
                                     future: StaticQueixasSaudeTable().queryRows(
@@ -707,7 +705,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                   columnIndex];
                                           return Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             child: QueixaQuestionWidget(
                                               key: Key(
@@ -773,24 +771,24 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                             ),
                                           );
                                         })
-                                            .divide(SizedBox(height: 24.0))
-                                            .addToEnd(SizedBox(height: 24.0)),
+                                            .divide(const SizedBox(height: 24.0))
+                                            .addToEnd(const SizedBox(height: 24.0)),
                                       );
                                     },
                                   ),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFEFF4F9),
+                                    color: const Color(0xFFEFF4F9),
                                     borderRadius: BorderRadius.circular(9.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 18.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -799,7 +797,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -810,12 +808,12 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 width: 32.0,
                                                 height: 32.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFF75C3FB),
+                                                  color: const Color(0xFF75C3FB),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
                                                 ),
-                                                child: Column(
+                                                child: const Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   mainAxisAlignment:
@@ -830,7 +828,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 0.0),
                                                 child: Column(
@@ -847,7 +845,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -865,14 +863,14 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 4.0)),
+                                                      const SizedBox(height: 4.0)),
                                                 ),
                                               ),
                                             ],
@@ -883,9 +881,9 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                           children: [
                                             Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 24.0, 12.0, 0.0),
                                                 child: FutureBuilder<
@@ -993,9 +991,9 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                           .contains(wrapStaticEfeitosAdversosRow
                                                                               .efeito) ==
                                                                       true
-                                                                  ? Color(
+                                                                  ? const Color(
                                                                       0xFF6E78FF)
-                                                                  : Color(
+                                                                  : const Color(
                                                                       0xFFDBE4F1),
                                                               borderRadius:
                                                                   BorderRadius
@@ -1004,7 +1002,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           8.0,
@@ -1033,7 +1031,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                               'Mulish',
                                                                           color: _model.effects.contains(wrapStaticEfeitosAdversosRow.efeito) == true
                                                                               ? Colors.white
-                                                                              : Color(0xFF8798B5),
+                                                                              : const Color(0xFF8798B5),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
@@ -1047,7 +1045,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                           .contains(
                                                                               wrapStaticEfeitosAdversosRow.efeito) ==
                                                                       true)
-                                                                    Icon(
+                                                                    const Icon(
                                                                       Icons
                                                                           .close_sharp,
                                                                       color: Colors
@@ -1055,7 +1053,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                       size:
                                                                           14.0,
                                                                     ),
-                                                                ].divide(SizedBox(
+                                                                ].divide(const SizedBox(
                                                                     width:
                                                                         8.0)),
                                                               ),
@@ -1072,15 +1070,15 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                     .isNotEmpty) ==
                                                 true)
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 0.0),
                                                 child: Container(
                                                   width: double.infinity,
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 12.0, 24.0),
                                                     child: Builder(
@@ -1163,9 +1161,9 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                   color: _model.effects.contains(
                                                                               effecstCustomItem) ==
                                                                           true
-                                                                      ? Color(
+                                                                      ? const Color(
                                                                           0xFF6E78FF)
-                                                                      : Color(
+                                                                      : const Color(
                                                                           0xFFDBE4F1),
                                                                   borderRadius:
                                                                       BorderRadius
@@ -1173,7 +1171,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                               25.0),
                                                                 ),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           8.0,
@@ -1193,7 +1191,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Mulish',
-                                                                              color: _model.effects.contains(effecstCustomItem) == true ? Colors.white : Color(0xFF8798B5),
+                                                                              color: _model.effects.contains(effecstCustomItem) == true ? Colors.white : const Color(0xFF8798B5),
                                                                               fontSize: 12.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w600,
@@ -1203,7 +1201,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                               .effects
                                                                               .contains(effecstCustomItem) ==
                                                                           true)
-                                                                        Icon(
+                                                                        const Icon(
                                                                           Icons
                                                                               .close_sharp,
                                                                           color:
@@ -1211,7 +1209,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                           size:
                                                                               14.0,
                                                                         ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         width:
                                                                             8.0)),
                                                                   ),
@@ -1229,19 +1227,19 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 0.0),
                                           child: Container(
                                             width: double.infinity,
                                             height: 3.0,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: Color(0x41E0E3E7),
                                             ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 0.0, 0.0),
                                           child: Text(
                                             'Outros efeitos',
@@ -1250,7 +1248,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Mulish',
-                                                  color: Color(0xFF434854),
+                                                  color: const Color(0xFF434854),
                                                   fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w800,
@@ -1259,7 +1257,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 12.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -1268,7 +1266,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                               width: double.infinity,
                                               height: 48.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0xFFF7FAFE),
+                                                color: const Color(0xFFF7FAFE),
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 border: Border.all(
@@ -1311,7 +1309,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 1.0,
@@ -1324,7 +1322,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 1.0,
@@ -1363,7 +1361,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                                       8.0),
                                                         ),
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     0.0,
@@ -1389,7 +1387,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                         FlutterFlowTheme.of(
                                                                 context)
                                                             .primary,
-                                                    icon: Icon(
+                                                    icon: const Icon(
                                                       Icons.add,
                                                       color: Colors.white,
                                                       size: 24.0,
@@ -1428,16 +1426,16 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 12.0, 24.0, 24.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFEFF4F9),
+                                    color: const Color(0xFFEFF4F9),
                                     borderRadius: BorderRadius.circular(9.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 18.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -1446,7 +1444,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 12.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1457,12 +1455,12 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 width: 32.0,
                                                 height: 32.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFF8798B5),
+                                                  color: const Color(0xFF8798B5),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
                                                 ),
-                                                child: Column(
+                                                child: const Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   mainAxisAlignment:
@@ -1477,7 +1475,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 8.0, 0.0),
                                                 child: Column(
@@ -1494,7 +1492,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -1512,14 +1510,14 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 4.0)),
+                                                      const SizedBox(height: 4.0)),
                                                 ),
                                               ),
                                             ],
@@ -1527,10 +1525,10 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                              const AlignmentDirectional(0.0, -1.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 24.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller:
@@ -1540,7 +1538,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
                                                 '_model.textController2',
-                                                Duration(milliseconds: 2000),
+                                                const Duration(milliseconds: 2000),
                                                 () async {
                                                   _model.apiResultgd4vergCopy =
                                                       await SegmentGroup
@@ -1565,12 +1563,12 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF8798B5),
+                                                              const Color(0xFF8798B5),
                                                           letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0x0E294B0D),
                                                     width: 2.0,
                                                   ),
@@ -1614,9 +1612,9 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                                           8.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: Color(0xFFF7FAFE),
+                                                fillColor: const Color(0xFFF7FAFE),
                                                 contentPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(18.0, 32.0,
                                                             18.0, 0.0),
                                               ),
@@ -1652,7 +1650,7 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 12.0, 24.0, 24.0),
                         child: FFButtonWidget(
                           onPressed: ((_model.mood == null) ||
@@ -1678,9 +1676,9 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: (_model.mood == null) ||
                                     ((_model.effects.isNotEmpty) == false)
@@ -1692,20 +1690,20 @@ class _NewWellBeingWidgetState extends State<NewWellBeingWidget> {
                                   fontFamily: 'Mulish',
                                   color: (_model.mood == null) ||
                                           ((_model.effects.isNotEmpty) == false)
-                                      ? Color(0x6414181B)
+                                      ? const Color(0x6414181B)
                                       : Colors.white,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                             disabledColor:
                                 FlutterFlowTheme.of(context).alternate,
-                            disabledTextColor: Color(0x6414181B),
+                            disabledTextColor: const Color(0x6414181B),
                           ),
                         ),
                       ),

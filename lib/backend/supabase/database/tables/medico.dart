@@ -9,7 +9,7 @@ class MedicoTable extends SupabaseTable<MedicoRow> {
 }
 
 class MedicoRow extends SupabaseDataRow {
-  MedicoRow(Map<String, dynamic> data) : super(data);
+  MedicoRow(super.data);
 
   @override
   SupabaseTable get table => MedicoTable();

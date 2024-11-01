@@ -9,7 +9,7 @@ class CobrancaTable extends SupabaseTable<CobrancaRow> {
 }
 
 class CobrancaRow extends SupabaseDataRow {
-  CobrancaRow(Map<String, dynamic> data) : super(data);
+  CobrancaRow(super.data);
 
   @override
   SupabaseTable get table => CobrancaTable();

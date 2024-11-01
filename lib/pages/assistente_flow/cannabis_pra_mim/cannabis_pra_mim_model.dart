@@ -1,13 +1,7 @@
-import '/backend/supabase/supabase.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/questionario/pergunta_widget/pergunta_widget_widget.dart';
-import 'dart:async';
 import 'cannabis_pra_mim_widget.dart' show CannabisPraMimWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class CannabisPraMimModel extends FlutterFlowModel<CannabisPraMimWidget> {
   ///  Local state fields for this page.

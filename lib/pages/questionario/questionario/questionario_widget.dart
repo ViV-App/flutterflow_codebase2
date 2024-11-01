@@ -10,7 +10,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -43,7 +42,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResultwq1 = await ResetFormResponsesCall.call(
         paciente: FFAppState().paciente.id,
-        formulario: widget!.questionario?.id,
+        formulario: widget.questionario?.id,
         ordem: 0,
       );
     });
@@ -72,7 +71,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -86,7 +85,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                           )
                           .eq(
                             'questionario',
-                            widget!.questionario?.id,
+                            widget.questionario?.id,
                           )
                           .order('ordem', ascending: true),
                     ),
@@ -108,7 +107,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                       List<RespostasQuestionarioRow>
                           pageViewRespostasQuestionarioRowList = snapshot.data!;
 
-                      return Container(
+                      return SizedBox(
                         width: double.infinity,
                         height: 500.0,
                         child: PageView.builder(
@@ -158,7 +157,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       32.0, 24.0, 32.0, 12.0),
                                   child: FutureBuilder<
                                       List<RespostasQuestionarioRow>>(
@@ -173,7 +172,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                             )
                                             .eq(
                                               'questionario',
-                                              widget!.questionario?.id,
+                                              widget.questionario?.id,
                                             )
                                             .order('ordem', ascending: true),
                                       ),
@@ -213,48 +212,33 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                         progressColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
-                                        backgroundColor: Color(0xFFE0E3E7),
-                                        barRadius: Radius.circular(12.0),
+                                        backgroundColor: const Color(0xFFE0E3E7),
+                                        barRadius: const Radius.circular(12.0),
                                         padding: EdgeInsets.zero,
                                       );
                                     },
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(-1.0, -1.0),
+                                  alignment: const AlignmentDirectional(-1.0, -1.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         28.0, 12.0, 0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        await _model.pageViewController
-                                            ?.animateToPage(
-                                          28,
-                                          duration: Duration(milliseconds: 500),
-                                          curve: Curves.ease,
-                                        );
-                                      },
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          widget!.questionario?.nome,
-                                          'c',
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Mulish',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              fontSize: 24.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        widget.questionario?.nome,
+                                        'c',
                                       ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Mulish',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            fontSize: 24.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                     ),
                                   ),
                                 ),
@@ -282,7 +266,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 8.0, 24.0, 32.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -299,10 +283,10 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                             options: FFButtonOptions(
                                               width: 200.0,
                                               height: 48.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: Colors.white,
                                               textStyle: FlutterFlowTheme.of(
@@ -310,12 +294,12 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: Color(0xFFB5C0D3),
+                                                    color: const Color(0xFFB5C0D3),
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Color(0xFFB5C0D3),
                                                 width: 1.0,
                                               ),
@@ -338,7 +322,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                   ?.animateToPage(
                                                 _model.previuousQuestions.last,
                                                 duration:
-                                                    Duration(milliseconds: 500),
+                                                    const Duration(milliseconds: 500),
                                                 curve: Curves.ease,
                                               );
                                               _model
@@ -351,10 +335,10 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                             options: FFButtonOptions(
                                               width: 200.0,
                                               height: 48.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: Colors.white,
                                               textStyle: FlutterFlowTheme.of(
@@ -362,12 +346,12 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                   .titleSmall
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: Color(0xFFB5C0D3),
+                                                    color: const Color(0xFFB5C0D3),
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Color(0xFFB5C0D3),
                                                 width: 1.0,
                                               ),
@@ -379,20 +363,20 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                       Expanded(
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: ((_model.nextQuestion ==
                                                         null) ||
                                                     (_model.nextQuestion == 0))
                                                 ? null
                                                 : () async {
-                                                    var _shouldSetState = false;
+                                                    var shouldSetState = false;
                                                     await Future.wait([
                                                       Future(() async {
                                                         if (_model
                                                                 .lastQuestion ==
                                                             true) {
-                                                          if (widget!
+                                                          if (widget
                                                                   .questionario
                                                                   ?.nome ==
                                                               'Queixa e Diagnóstico') {
@@ -419,7 +403,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               questionario: 4,
                                                             );
 
-                                                            _shouldSetState =
+                                                            shouldSetState =
                                                                 true;
 
                                                             context.goNamed(
@@ -427,7 +411,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               extra: <String,
                                                                   dynamic>{
                                                                 kTransitionInfoKey:
-                                                                    TransitionInfo(
+                                                                    const TransitionInfo(
                                                                   hasTransition:
                                                                       true,
                                                                   transitionType:
@@ -440,29 +424,21 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               },
                                                             );
 
-                                                            _model.wrverfvr =
-                                                                await SegmentGroup
-                                                                    .trackingCall
-                                                                    .call(
-                                                              userId:
-                                                                  currentUserUid,
-                                                              eventName:
-                                                                  'pre-appointment concluded',
-                                                              propertiesJson: <String,
-                                                                  dynamic>{
+                                                            await actions
+                                                                .segmentTrack(
+                                                              'pre-appointment concluded',
+                                                              <String, dynamic>{
                                                                 'questionario':
-                                                                    widget!
+                                                                    widget
                                                                         .questionario,
                                                               },
                                                             );
-
-                                                            _shouldSetState =
-                                                                true;
-                                                            if (_shouldSetState)
+                                                            if (shouldSetState) {
                                                               safeSetState(
                                                                   () {});
+                                                            }
                                                             return;
-                                                          } else if (widget!
+                                                          } else if (widget
                                                                   .questionario
                                                                   ?.nome ==
                                                               'Histórico de Saúde') {
@@ -489,7 +465,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               questionario: 5,
                                                             );
 
-                                                            _shouldSetState =
+                                                            shouldSetState =
                                                                 true;
 
                                                             context.goNamed(
@@ -497,7 +473,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               extra: <String,
                                                                   dynamic>{
                                                                 kTransitionInfoKey:
-                                                                    TransitionInfo(
+                                                                    const TransitionInfo(
                                                                   hasTransition:
                                                                       true,
                                                                   transitionType:
@@ -510,29 +486,21 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               },
                                                             );
 
-                                                            _model.rg435g54 =
-                                                                await SegmentGroup
-                                                                    .trackingCall
-                                                                    .call(
-                                                              userId:
-                                                                  currentUserUid,
-                                                              eventName:
-                                                                  'pre-appointment concluded',
-                                                              propertiesJson: <String,
-                                                                  dynamic>{
+                                                            await actions
+                                                                .segmentTrack(
+                                                              'pre-appointment concluded',
+                                                              <String, dynamic>{
                                                                 'questionario':
-                                                                    widget!
+                                                                    widget
                                                                         .questionario,
                                                               },
                                                             );
-
-                                                            _shouldSetState =
-                                                                true;
-                                                            if (_shouldSetState)
+                                                            if (shouldSetState) {
                                                               safeSetState(
                                                                   () {});
+                                                            }
                                                             return;
-                                                          } else if (widget!
+                                                          } else if (widget
                                                                   .questionario
                                                                   ?.nome ==
                                                               'Hábitos de vida') {
@@ -559,7 +527,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               questionario: 6,
                                                             );
 
-                                                            _shouldSetState =
+                                                            shouldSetState =
                                                                 true;
 
                                                             context.goNamed(
@@ -567,7 +535,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               extra: <String,
                                                                   dynamic>{
                                                                 kTransitionInfoKey:
-                                                                    TransitionInfo(
+                                                                    const TransitionInfo(
                                                                   hasTransition:
                                                                       true,
                                                                   transitionType:
@@ -580,29 +548,21 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               },
                                                             );
 
-                                                            _model.rg545gt4g =
-                                                                await SegmentGroup
-                                                                    .trackingCall
-                                                                    .call(
-                                                              userId:
-                                                                  currentUserUid,
-                                                              eventName:
-                                                                  'pre-appointment concluded',
-                                                              propertiesJson: <String,
-                                                                  dynamic>{
+                                                            await actions
+                                                                .segmentTrack(
+                                                              'pre-appointment concluded',
+                                                              <String, dynamic>{
                                                                 'questionario':
-                                                                    widget!
+                                                                    widget
                                                                         .questionario,
                                                               },
                                                             );
-
-                                                            _shouldSetState =
-                                                                true;
-                                                            if (_shouldSetState)
+                                                            if (shouldSetState) {
                                                               safeSetState(
                                                                   () {});
+                                                            }
                                                             return;
-                                                          } else if (widget!
+                                                          } else if (widget
                                                                   .questionario
                                                                   ?.nome ==
                                                               'Histórico Famíliar e Psicosocial') {
@@ -635,7 +595,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                                     .paciente,
                                                               ),
                                                             );
-                                                            _shouldSetState =
+                                                            shouldSetState =
                                                                 true;
                                                             await showModalBottomSheet(
                                                               isScrollControlled:
@@ -659,11 +619,11 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                                           .viewInsetsOf(
                                                                               context),
                                                                       child:
-                                                                          Container(
+                                                                          SizedBox(
                                                                         height: MediaQuery.sizeOf(context).height *
                                                                             0.85,
                                                                         child:
-                                                                            FormsFilledWidget(),
+                                                                            const FormsFilledWidget(),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -678,7 +638,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               extra: <String,
                                                                   dynamic>{
                                                                 kTransitionInfoKey:
-                                                                    TransitionInfo(
+                                                                    const TransitionInfo(
                                                                   hasTransition:
                                                                       true,
                                                                   transitionType:
@@ -691,32 +651,25 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               },
                                                             );
 
-                                                            _model.rfg534g45 =
-                                                                await SegmentGroup
-                                                                    .trackingCall
-                                                                    .call(
-                                                              userId:
-                                                                  currentUserUid,
-                                                              eventName:
-                                                                  'pre-appointment concluded',
-                                                              propertiesJson: <String,
-                                                                  dynamic>{
+                                                            await actions
+                                                                .segmentTrack(
+                                                              'pre-appointment concluded',
+                                                              <String, dynamic>{
                                                                 'questionario':
-                                                                    widget!
+                                                                    widget
                                                                         .questionario,
                                                               },
                                                             );
-
-                                                            _shouldSetState =
-                                                                true;
-                                                            if (_shouldSetState)
+                                                            if (shouldSetState) {
                                                               safeSetState(
                                                                   () {});
+                                                            }
                                                             return;
                                                           } else {
-                                                            if (_shouldSetState)
+                                                            if (shouldSetState) {
                                                               safeSetState(
                                                                   () {});
+                                                            }
                                                             return;
                                                           }
                                                         } else {
@@ -725,7 +678,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                               ?.animateToPage(
                                                             _model
                                                                 .nextQuestion!,
-                                                            duration: Duration(
+                                                            duration: const Duration(
                                                                 milliseconds:
                                                                     500),
                                                             curve: Curves.ease,
@@ -736,8 +689,9 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                           safeSetState(() {});
                                                           await actions
                                                               .hideKeyboard();
-                                                          if (_shouldSetState)
+                                                          if (shouldSetState) {
                                                             safeSetState(() {});
+                                                          }
                                                           return;
                                                         }
                                                       }),
@@ -753,7 +707,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                           propertiesJson: <String,
                                                               dynamic>{
                                                             'questionario':
-                                                                widget!
+                                                                widget
                                                                     .questionario,
                                                             'step':
                                                                 pageViewRespostasQuestionarioRow
@@ -761,20 +715,21 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                           },
                                                         );
 
-                                                        _shouldSetState = true;
+                                                        shouldSetState = true;
                                                       }),
                                                     ]);
-                                                    if (_shouldSetState)
+                                                    if (shouldSetState) {
                                                       safeSetState(() {});
+                                                    }
                                                   },
                                             text: 'Continuar',
                                             options: FFButtonOptions(
                                               width: 200.0,
                                               height: 48.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -790,7 +745,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                                             FontWeight.bold,
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),
@@ -804,7 +759,7 @@ class _QuestionarioWidgetState extends State<QuestionarioWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 24.0)),
+                                    ].divide(const SizedBox(width: 24.0)),
                                   ),
                                 ),
                               ],

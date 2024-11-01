@@ -9,7 +9,7 @@ class AgendamentoTable extends SupabaseTable<AgendamentoRow> {
 }
 
 class AgendamentoRow extends SupabaseDataRow {
-  AgendamentoRow(Map<String, dynamic> data) : super(data);
+  AgendamentoRow(super.data);
 
   @override
   SupabaseTable get table => AgendamentoTable();

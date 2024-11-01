@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'splash_screen_copy_model.dart';
 export 'splash_screen_copy_model.dart';
 
@@ -49,7 +47,7 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: Color(0xFC5D67E2),
+              color: const Color(0xFC5D67E2),
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: Image.network(
@@ -64,7 +62,7 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                   child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0x005D67E2),
                     ),
                     child: Column(
@@ -72,7 +70,7 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -98,11 +96,11 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
-                            ].divide(SizedBox(width: 12.0)),
+                            ].divide(const SizedBox(width: 12.0)),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 44.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -127,15 +125,15 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                       ),
-                                  duration: Duration(milliseconds: 600),
+                                  duration: const Duration(milliseconds: 600),
                                   curve: Curves.easeIn,
-                                  child: Text(
+                                  child: const Text(
                                     'Boas vindas à ViV',
                                   ),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   'Dê o primeiro passo em direção à melhora da sua qualidade de vida e conte conosco para te guiar nesse processo!',
@@ -150,14 +148,14 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 48.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     context.pushNamed(
                                       'createAccount',
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
+                                        kTransitionInfoKey: const TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,
@@ -172,11 +170,11 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 48.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF6E78FF),
+                                    color: const Color(0xFF6E78FF),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -186,7 +184,7 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -195,9 +193,9 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
+                                alignment: const AlignmentDirectional(0.0, -1.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 28.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -208,7 +206,7 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color: Color(0xFFDFE2E6),
+                                              color: const Color(0xFFDFE2E6),
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -234,7 +232,7 @@ class _SplashScreenCopyWidgetState extends State<SplashScreenCopyWidget> {
                                               ),
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 4.0)),
+                                    ].divide(const SizedBox(width: 4.0)),
                                   ),
                                 ),
                               ),

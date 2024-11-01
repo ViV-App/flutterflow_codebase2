@@ -1,25 +1,12 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/custom_date_picker_widget.dart';
-import '/components/duracao_dias/duracao_dias_widget.dart';
-import '/components/horario_prescricao/horario_prescricao_widget.dart';
 import '/components/prescription_added/prescription_added_widget.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'prescricao02_widget.dart' show Prescricao02Widget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
@@ -124,12 +111,12 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
       await SegmentGroup.trackingMedicineCall.call(
         userId: currentUserUid,
         eventName: 'new-medicine registered',
-        medicamento: p01?.medicamento,
-        prescricaoId: p01?.id,
-        dosagensJson: p01?.doses,
-        duracao: p01?.duracaoDias,
-        dateStart: p01?.dateStart?.toString(),
-        dateEnd: p01?.dateEnd?.toString(),
+        medicamento: p01.medicamento,
+        prescricaoId: p01.id,
+        dosagensJson: p01.doses,
+        duracao: p01.duracaoDias,
+        dateStart: p01.dateStart?.toString(),
+        dateEnd: p01.dateEnd?.toString(),
       );
 
       await showDialog(
@@ -140,12 +127,12 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: AlignmentDirectional(0.0, -1.0)
+            alignment: const AlignmentDirectional(0.0, -1.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
                 onTap: () => FocusScope.of(dialogContext).unfocus(),
-                child: PrescriptionAddedWidget(),
+                child: const PrescriptionAddedWidget(),
               ),
             ),
           );
@@ -169,12 +156,12 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
       await SegmentGroup.trackingMedicineCall.call(
         userId: currentUserUid,
         eventName: 'new-medicine registered',
-        medicamento: p02?.medicamento,
-        prescricaoId: p02?.id,
-        dosagensJson: p02?.doses,
-        duracao: p02?.duracaoDias,
-        dateStart: p02?.dateStart?.toString(),
-        dateEnd: p02?.dateEnd?.toString(),
+        medicamento: p02.medicamento,
+        prescricaoId: p02.id,
+        dosagensJson: p02.doses,
+        duracao: p02.duracaoDias,
+        dateStart: p02.dateStart?.toString(),
+        dateEnd: p02.dateEnd?.toString(),
       );
 
       await showDialog(
@@ -185,12 +172,12 @@ class Prescricao02Model extends FlutterFlowModel<Prescricao02Widget> {
             elevation: 0,
             insetPadding: EdgeInsets.zero,
             backgroundColor: Colors.transparent,
-            alignment: AlignmentDirectional(0.0, -1.0)
+            alignment: const AlignmentDirectional(0.0, -1.0)
                 .resolve(Directionality.of(context)),
             child: WebViewAware(
               child: GestureDetector(
                 onTap: () => FocusScope.of(dialogContext).unfocus(),
-                child: PrescriptionAddedWidget(),
+                child: const PrescriptionAddedWidget(),
               ),
             ),
           );

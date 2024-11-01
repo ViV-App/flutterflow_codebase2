@@ -1,4 +1,3 @@
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -6,7 +5,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'duracao_dias_model.dart';
 export 'duracao_dias_model.dart';
@@ -55,11 +53,11 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Material(
         color: Colors.transparent,
         elevation: 3.0,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -72,7 +70,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
           height: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(24.0),
@@ -83,14 +81,14 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Container(
                     width: 100.0,
                     height: 4.0,
                     decoration: BoxDecoration(
-                      color: Color(0xFFDBE4F1),
+                      color: const Color(0xFFDBE4F1),
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
@@ -98,7 +96,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Builder(
                     builder: (context) {
                       final listN = functions.generateNumberList().toList();
@@ -110,7 +108,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                           children: List.generate(listN.length, (listNIndex) {
                             final listNItem = listN[listNIndex];
                             return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -133,8 +131,8 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                                     height: 45.0,
                                     decoration: BoxDecoration(
                                       color: _model.picked == listNItem
-                                          ? Color(0xFFEFF4F9)
-                                          : Color(0x00FFFFFF),
+                                          ? const Color(0xFFEFF4F9)
+                                          : const Color(0x00FFFFFF),
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Row(
@@ -150,7 +148,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                                                 fontFamily: 'Mulish',
                                                 color:
                                                     _model.picked == listNItem
-                                                        ? Color(0xFF6E78FF)
+                                                        ? const Color(0xFF6E78FF)
                                                         : FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText,
@@ -166,9 +164,9 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                               ),
                             );
                           })
-                              .divide(SizedBox(height: 12.0))
-                              .addToStart(SizedBox(height: 12.0))
-                              .addToEnd(SizedBox(height: 12.0)),
+                              .divide(const SizedBox(height: 12.0))
+                              .addToStart(const SizedBox(height: 12.0))
+                              .addToEnd(const SizedBox(height: 12.0)),
                         ),
                       );
                     },
@@ -176,7 +174,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     FFAppState().updatePrescricaoStruct(
@@ -191,9 +189,9 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                     width: double.infinity,
                     height: 48.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Mulish',
@@ -202,7 +200,7 @@ class _DuracaoDiasWidgetState extends State<DuracaoDiasWidget> {
                           fontWeight: FontWeight.bold,
                         ),
                     elevation: 3.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

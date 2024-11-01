@@ -2,8 +2,6 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'card_diagnostico_model.dart';
 export 'card_diagnostico_model.dart';
 
@@ -47,37 +45,37 @@ class _CardDiagnosticoWidgetState extends State<CardDiagnosticoWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         minHeight: 40.0,
         maxHeight: 1000.0,
       ),
       decoration: BoxDecoration(
-        color: Color(0xFFF7FAFE),
+        color: const Color(0xFFF7FAFE),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 150.0,
               ),
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     valueOrDefault<String>(
-                      widget!.diagnostico?.nome,
+                      widget.diagnostico?.nome,
                       '-',
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Mulish',
-                          color: Color(0xFF434854),
+                          color: const Color(0xFF434854),
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w800,
                         ),
@@ -188,7 +186,7 @@ class _CardDiagnosticoWidgetState extends State<CardDiagnosticoWidget> {
                     checkColor: FlutterFlowTheme.of(context).info,
                   ),
                 ),
-              ].divide(SizedBox(width: 18.0)),
+              ].divide(const SizedBox(width: 18.0)),
             ),
           ],
         ),

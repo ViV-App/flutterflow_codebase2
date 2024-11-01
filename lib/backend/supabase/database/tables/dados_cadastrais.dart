@@ -10,7 +10,7 @@ class DadosCadastraisTable extends SupabaseTable<DadosCadastraisRow> {
 }
 
 class DadosCadastraisRow extends SupabaseDataRow {
-  DadosCadastraisRow(Map<String, dynamic> data) : super(data);
+  DadosCadastraisRow(super.data);
 
   @override
   SupabaseTable get table => DadosCadastraisTable();

@@ -1,18 +1,16 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/custom_date_picker_widget.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'evolucao_model.dart';
@@ -133,13 +131,13 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                       return Container(
                         width: double.infinity,
                         height: 500.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.transparent,
                         ),
                         child: Container(
                           width: double.infinity,
                           height: double.infinity,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -151,7 +149,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(18.0),
+                                  padding: const EdgeInsets.all(18.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -186,7 +184,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                       Container(
                                         width: 32.0,
                                         height: 32.0,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0x006E78FF),
                                           shape: BoxShape.circle,
                                         ),
@@ -215,17 +213,17 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-1.0, -1.0),
+                                              const AlignmentDirectional(-1.0, -1.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 12.0, 24.0, 0.0),
                                             child: Text(
                                               'Aqui você pode acompanhar todos os dados que são preenchidos.',
@@ -234,7 +232,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: Color(0xFF8798B5),
+                                                    color: const Color(0xFF8798B5),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
@@ -244,7 +242,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   18.0, 24.0, 18.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -266,16 +264,10 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   await _model
                                                       .getSintomas(context);
                                                   safeSetState(() {});
-                                                  _model.apiResult38y =
-                                                      await SegmentGroup
-                                                          .trackingCall
-                                                          .call(
-                                                    userId: currentUserUid,
-                                                    eventName:
-                                                        'date-picker-back clicked',
+                                                  await actions.segmentTrack(
+                                                    'date-picker-back clicked',
+                                                    <String, dynamic>{},
                                                   );
-
-                                                  safeSetState(() {});
                                                 },
                                                 child: Icon(
                                                   Icons.arrow_back_ios_new,
@@ -313,7 +305,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                               padding: MediaQuery
                                                                   .viewInsetsOf(
                                                                       context),
-                                                              child: Container(
+                                                              child: SizedBox(
                                                                 height: MediaQuery.sizeOf(
                                                                             context)
                                                                         .height *
@@ -351,14 +343,14 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   child: Container(
                                                     height: 37.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFFF7FAFE),
+                                                      color: const Color(0xFFF7FAFE),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   18.0,
                                                                   0.0,
@@ -441,7 +433,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                               padding: MediaQuery
                                                                   .viewInsetsOf(
                                                                       context),
-                                                              child: Container(
+                                                              child: SizedBox(
                                                                 height: MediaQuery.sizeOf(
                                                                             context)
                                                                         .height *
@@ -479,14 +471,14 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   child: Container(
                                                     height: 37.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFFF7FAFE),
+                                                      color: const Color(0xFFF7FAFE),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   18.0,
                                                                   0.0,
@@ -542,16 +534,10 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   await _model
                                                       .getSintomas(context);
                                                   safeSetState(() {});
-                                                  _model.apiResult38yz =
-                                                      await SegmentGroup
-                                                          .trackingCall
-                                                          .call(
-                                                    userId: currentUserUid,
-                                                    eventName:
-                                                        'date-picker-front clicked',
+                                                  await actions.segmentTrack(
+                                                    'date-picker-front clicked',
+                                                    <String, dynamic>{},
                                                   );
-
-                                                  safeSetState(() {});
                                                 },
                                                 child: Icon(
                                                   Icons.arrow_forward_ios,
@@ -561,25 +547,25 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   size: 18.0,
                                                 ),
                                               ),
-                                            ].divide(SizedBox(width: 24.0)),
+                                            ].divide(const SizedBox(width: 24.0)),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 32.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: 322.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0xFFF7FAFE),
+                                                    color: const Color(0xFFF7FAFE),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12.0),
@@ -595,7 +581,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     18.0,
@@ -630,7 +616,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       -1.0,
                                                                       -1.0),
                                                               child: Text(
@@ -641,7 +627,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Mulish',
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFF8798B5),
                                                                       fontSize:
                                                                           14.0,
@@ -653,14 +639,14 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                     ),
                                                               ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
                                                                       24.0,
@@ -714,7 +700,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               letterSpacing: 0.0,
                                                                             ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         width:
                                                                             4.0)),
                                                                   ),
@@ -747,7 +733,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               letterSpacing: 0.0,
                                                                             ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         width:
                                                                             4.0)),
                                                                   ),
@@ -780,7 +766,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               letterSpacing: 0.0,
                                                                             ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         width:
                                                                             4.0)),
                                                                   ),
@@ -813,7 +799,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               letterSpacing: 0.0,
                                                                             ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         width:
                                                                             4.0)),
                                                                   ),
@@ -846,11 +832,11 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               letterSpacing: 0.0,
                                                                             ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         width:
                                                                             4.0)),
                                                                   ),
-                                                                ].divide(SizedBox(
+                                                                ].divide(const SizedBox(
                                                                     height:
                                                                         16.0)),
                                                               ),
@@ -858,10 +844,10 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                 child:
                                                                     Container(
                                                                   decoration:
-                                                                      BoxDecoration(),
+                                                                      const BoxDecoration(),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -890,7 +876,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                         ))
                                                                           Expanded(
                                                                             child:
-                                                                                Container(
+                                                                                SizedBox(
                                                                               width: double.infinity,
                                                                               height: 230.0,
                                                                               child: FlutterFlowLineChart(
@@ -912,18 +898,18 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                     ),
                                                                                   )
                                                                                 ],
-                                                                                chartStylingInfo: ChartStylingInfo(
+                                                                                chartStylingInfo: const ChartStylingInfo(
                                                                                   enableTooltip: true,
                                                                                   tooltipBackgroundColor: Colors.white,
                                                                                   backgroundColor: Color(0x00FFFFFF),
                                                                                   showGrid: true,
                                                                                   showBorder: false,
                                                                                 ),
-                                                                                axisBounds: AxisBounds(),
-                                                                                xAxisLabelInfo: AxisLabelInfo(
+                                                                                axisBounds: const AxisBounds(),
+                                                                                xAxisLabelInfo: const AxisLabelInfo(
                                                                                   reservedSize: 7.0,
                                                                                 ),
-                                                                                yAxisLabelInfo: AxisLabelInfo(
+                                                                                yAxisLabelInfo: const AxisLabelInfo(
                                                                                   reservedSize: 40.0,
                                                                                 ),
                                                                               ),
@@ -942,7 +928,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               false,
                                                                         ))
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 8.0,
                                                                                 0.0,
@@ -972,7 +958,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Mulish',
-                                                                                                color: Color(0xFF434854),
+                                                                                                color: const Color(0xFF434854),
                                                                                                 fontSize: 14.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.w600,
@@ -986,7 +972,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                           ),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Mulish',
-                                                                                                color: Color(0xFF434854),
+                                                                                                color: const Color(0xFF434854),
                                                                                                 fontSize: 14.0,
                                                                                                 letterSpacing: 0.0,
                                                                                                 fontWeight: FontWeight.w600,
@@ -1006,7 +992,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Expanded(
-                                                                                child: Container(
+                                                                                child: SizedBox(
                                                                                   width: double.infinity,
                                                                                   height: 200.0,
                                                                                   child: custom_widgets.DynamicLineChart(
@@ -1024,7 +1010,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                                                                                 child: Builder(
                                                                                   builder: (context) {
                                                                                     final dates = GetLatestBemViverScoreCall.createdAt(
@@ -1061,7 +1047,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ].divide(SizedBox(
+                                                            ].divide(const SizedBox(
                                                                 width: 12.0)),
                                                           ),
                                                         ),
@@ -1071,7 +1057,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 child: ClipRRect(
@@ -1082,7 +1068,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                     width: double.infinity,
                                                     height: 322.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFFF7FAFE),
+                                                      color: const Color(0xFFF7FAFE),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12.0),
@@ -1096,7 +1082,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
                                                                       18.0,
@@ -1132,7 +1118,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         -1.0,
                                                                         -1.0),
                                                                 child: Text(
@@ -1143,7 +1129,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Mulish',
-                                                                        color: Color(
+                                                                        color: const Color(
                                                                             0xFF8798B5),
                                                                         fontSize:
                                                                             14.0,
@@ -1154,14 +1140,14 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                       ),
                                                                 ),
                                                               ),
-                                                            ].divide(SizedBox(
+                                                            ].divide(const SizedBox(
                                                                 height: 4.0)),
                                                           ),
                                                         ),
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         18.0,
                                                                         24.0,
@@ -1173,7 +1159,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                       .max,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1217,7 +1203,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               letterSpacing: 0.0,
                                                                             ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         height:
                                                                             16.0)),
                                                                   ),
@@ -1226,7 +1212,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                   child:
                                                                       Container(
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                     child:
                                                                         Column(
                                                                       mainAxisSize:
@@ -1238,7 +1224,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                       children: [
                                                                         Expanded(
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             width:
                                                                                 double.infinity,
                                                                             height:
@@ -1258,7 +1244,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               24.0,
                                                                               0.0,
                                                                               0.0,
@@ -1297,7 +1283,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ].divide(SizedBox(
+                                                              ].divide(const SizedBox(
                                                                   width: 12.0)),
                                                             ),
                                                           ),
@@ -1308,7 +1294,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 child: Material(
@@ -1327,7 +1313,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                       width: double.infinity,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xFFF7FAFE),
+                                                            const Color(0xFFF7FAFE),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(12.0),
@@ -1341,7 +1327,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         18.0,
                                                                         18.0,
@@ -1375,7 +1361,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           -1.0,
                                                                           -1.0),
                                                                   child: Text(
@@ -1387,7 +1373,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                           fontFamily:
                                                                               'Mulish',
                                                                           color:
-                                                                              Color(0xFF8798B5),
+                                                                              const Color(0xFF8798B5),
                                                                           fontSize:
                                                                               14.0,
                                                                           letterSpacing:
@@ -1397,13 +1383,13 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                         ),
                                                                   ),
                                                                 ),
-                                                              ].divide(SizedBox(
+                                                              ].divide(const SizedBox(
                                                                   height: 4.0)),
                                                             ),
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         18.0,
                                                                         18.0,
@@ -1415,7 +1401,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                               height: 90.0,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFFEFF4F9),
                                                                 borderRadius:
                                                                     BorderRadius
@@ -1423,7 +1409,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                             12.0),
                                                               ),
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         12.0,
@@ -1506,7 +1492,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                               width: 100.0,
                                                                               height: 100.0,
                                                                               decoration: BoxDecoration(
-                                                                                color: _model.queixa == rowViewQueixasPacienteRow.queixaId ? Colors.white : Color(0x007E5F5F),
+                                                                                color: _model.queixa == rowViewQueixasPacienteRow.queixaId ? Colors.white : const Color(0x007E5F5F),
                                                                                 borderRadius: BorderRadius.circular(8.0),
                                                                               ),
                                                                               child: Column(
@@ -1529,14 +1515,14 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                           width: 24.0,
                                                                                           height: 24.0,
                                                                                           decoration: BoxDecoration(
-                                                                                            color: Color(0x7FB5C0D3),
+                                                                                            color: const Color(0x7FB5C0D3),
                                                                                             borderRadius: BorderRadius.circular(8.0),
                                                                                           ),
                                                                                         ),
                                                                                     ],
                                                                                   ),
                                                                                   Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
                                                                                     child: Text(
                                                                                       valueOrDefault<String>(
                                                                                         rowViewQueixasPacienteRow.queixaNome,
@@ -1553,12 +1539,12 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                           ),
                                                                                     ),
                                                                                   ),
-                                                                                ].divide(SizedBox(height: 3.0)),
+                                                                                ].divide(const SizedBox(height: 3.0)),
                                                                               ),
                                                                             ),
                                                                           ),
                                                                         );
-                                                                      }).divide(SizedBox(
+                                                                      }).divide(const SizedBox(
                                                                           width:
                                                                               12.0)),
                                                                     );
@@ -1569,7 +1555,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         18.0,
                                                                         0.0,
@@ -1630,7 +1616,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                 0.0,
                                                                           ),
                                                                     ),
-                                                                  ].divide(SizedBox(
+                                                                  ].divide(const SizedBox(
                                                                       height:
                                                                           52.0)),
                                                                 ),
@@ -1638,7 +1624,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                   child:
                                                                       Container(
                                                                     decoration:
-                                                                        BoxDecoration(),
+                                                                        const BoxDecoration(),
                                                                     child:
                                                                         Column(
                                                                       mainAxisSize:
@@ -1685,7 +1671,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                             final dynamicLineChartGetQueixaValuesResponse =
                                                                                 snapshot.data!;
 
-                                                                            return Container(
+                                                                            return SizedBox(
                                                                               width: double.infinity,
                                                                               height: 180.0,
                                                                               child: custom_widgets.DynamicLineChart(
@@ -1743,9 +1729,9 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                                 snapshot.data!;
 
                                                                             return Container(
-                                                                              decoration: BoxDecoration(),
+                                                                              decoration: const BoxDecoration(),
                                                                               child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                                                                                 child: Builder(
                                                                                   builder: (context) {
                                                                                     final datess = GetQueixaValuesCall.createdA6(
@@ -1781,7 +1767,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ].divide(SizedBox(
+                                                              ].divide(const SizedBox(
                                                                   width: 12.0)),
                                                             ),
                                                           ),
@@ -1792,14 +1778,14 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: 370.0,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0xFFF7FAFE),
+                                                    color: const Color(0xFFF7FAFE),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12.0),
@@ -1813,7 +1799,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     18.0,
@@ -1848,7 +1834,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       -1.0,
                                                                       -1.0),
                                                               child: Text(
@@ -1859,7 +1845,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Mulish',
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFF8798B5),
                                                                       fontSize:
                                                                           14.0,
@@ -1871,23 +1857,23 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                     ),
                                                               ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
                                                                       0.0,
                                                                       18.0,
                                                                       18.0),
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width:
                                                                 double.infinity,
                                                             height: 300.0,
@@ -1906,10 +1892,10 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(SizedBox(height: 18.0)),
+                                            ].divide(const SizedBox(height: 18.0)),
                                           ),
                                         ),
-                                      ].addToEnd(SizedBox(height: 24.0)),
+                                      ].addToEnd(const SizedBox(height: 24.0)),
                                     ),
                                   ),
                                 ),
@@ -1926,13 +1912,13 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                   child: Container(
                     width: double.infinity,
                     height: 500.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.transparent,
                     ),
                     child: Container(
                       width: double.infinity,
                       height: double.infinity,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -1943,7 +1929,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(18.0),
+                              padding: const EdgeInsets.all(18.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -1978,7 +1964,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                   Container(
                                     width: 32.0,
                                     height: 32.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Color(0x006E78FF),
                                       shape: BoxShape.circle,
                                     ),
@@ -2007,16 +1993,16 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                           Expanded(
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: SingleChildScrollView(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
+                                          const AlignmentDirectional(-1.0, -1.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 12.0, 24.0, 0.0),
                                         child: Text(
                                           'Aqui você pode acompanhar todos os dados que são preenchidos.',
@@ -2024,7 +2010,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Mulish',
-                                                color: Color(0xFF8798B5),
+                                                color: const Color(0xFF8798B5),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -2033,7 +2019,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           18.0, 24.0, 18.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -2085,7 +2071,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                           padding: MediaQuery
                                                               .viewInsetsOf(
                                                                   context),
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             height: MediaQuery
                                                                         .sizeOf(
                                                                             context)
@@ -2118,13 +2104,13 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                               child: Container(
                                                 height: 37.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFFF7FAFE),
+                                                  color: const Color(0xFFF7FAFE),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           18.0, 0.0, 18.0, 0.0),
                                                   child: Row(
@@ -2198,7 +2184,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                           padding: MediaQuery
                                                               .viewInsetsOf(
                                                                   context),
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             height: MediaQuery
                                                                         .sizeOf(
                                                                             context)
@@ -2231,13 +2217,13 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                               child: Container(
                                                 height: 37.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFFF7FAFE),
+                                                  color: const Color(0xFFF7FAFE),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           18.0, 0.0, 18.0, 0.0),
                                                   child: Row(
@@ -2297,24 +2283,24 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                               size: 18.0,
                                             ),
                                           ),
-                                        ].divide(SizedBox(width: 24.0)),
+                                        ].divide(const SizedBox(width: 24.0)),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 32.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 322.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0xFFF7FAFE),
+                                                color: const Color(0xFFF7FAFE),
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                               ),
@@ -2327,7 +2313,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 18.0,
                                                                 18.0,
@@ -2361,7 +2347,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                         ),
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   -1.0, -1.0),
                                                           child: Text(
                                                             'Como você avaliou seu humor',
@@ -2371,7 +2357,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF8798B5),
                                                                   fontSize:
                                                                       14.0,
@@ -2383,17 +2369,17 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                 ),
                                                           ),
                                                         ),
-                                                      ].divide(SizedBox(
+                                                      ].divide(const SizedBox(
                                                           height: 4.0)),
                                                     ),
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   114.0,
@@ -2409,7 +2395,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                             .override(
                                                               fontFamily:
                                                                   'Mulish',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xA25D67E2),
                                                               fontSize: 16.0,
                                                               letterSpacing:
@@ -2427,7 +2413,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             child: ClipRRect(
                                               borderRadius:
@@ -2436,7 +2422,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                 width: double.infinity,
                                                 height: 322.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xFFF7FAFE),
+                                                  color: const Color(0xFFF7FAFE),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           12.0),
@@ -2449,7 +2435,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   18.0,
                                                                   18.0,
@@ -2484,7 +2470,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     -1.0, -1.0),
                                                             child: Text(
                                                               'Esta é sua evolução dentro do VIV Score.',
@@ -2494,7 +2480,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF8798B5),
                                                                     fontSize:
                                                                         14.0,
@@ -2506,17 +2492,17 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                   ),
                                                             ),
                                                           ),
-                                                        ].divide(SizedBox(
+                                                        ].divide(const SizedBox(
                                                             height: 4.0)),
                                                       ),
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     114.0,
@@ -2532,7 +2518,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xA25D67E2),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -2551,7 +2537,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             child: Material(
                                               color: Colors.transparent,
@@ -2566,7 +2552,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                 child: Container(
                                                   width: double.infinity,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0xFFF7FAFE),
+                                                    color: const Color(0xFFF7FAFE),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12.0),
@@ -2580,7 +2566,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     18.0,
@@ -2615,7 +2601,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       -1.0,
                                                                       -1.0),
                                                               child: Text(
@@ -2626,7 +2612,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Mulish',
-                                                                      color: Color(
+                                                                      color: const Color(
                                                                           0xFF8798B5),
                                                                       fontSize:
                                                                           14.0,
@@ -2638,17 +2624,17 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                     ),
                                                               ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               height: 4.0)),
                                                         ),
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       114.0,
@@ -2664,7 +2650,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xA25D67E2),
                                                                   fontSize:
                                                                       16.0,
@@ -2685,13 +2671,13 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 370.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0xFFF7FAFE),
+                                                color: const Color(0xFFF7FAFE),
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                               ),
@@ -2702,7 +2688,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 18.0,
                                                                 18.0,
@@ -2736,7 +2722,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                         ),
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   -1.0, -1.0),
                                                           child: Text(
                                                             'Dados de efeitos colaterais',
@@ -2746,7 +2732,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF8798B5),
                                                                   fontSize:
                                                                       14.0,
@@ -2758,17 +2744,17 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                                 ),
                                                           ),
                                                         ),
-                                                      ].divide(SizedBox(
+                                                      ].divide(const SizedBox(
                                                           height: 4.0)),
                                                     ),
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   114.0,
@@ -2784,7 +2770,7 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                                             .override(
                                                               fontFamily:
                                                                   'Mulish',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xA25D67E2),
                                                               fontSize: 16.0,
                                                               letterSpacing:
@@ -2800,10 +2786,10 @@ class _EvolucaoWidgetState extends State<EvolucaoWidget> {
                                               ),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 18.0)),
+                                        ].divide(const SizedBox(height: 18.0)),
                                       ),
                                     ),
-                                  ].addToEnd(SizedBox(height: 24.0)),
+                                  ].addToEnd(const SizedBox(height: 24.0)),
                                 ),
                               ),
                             ),

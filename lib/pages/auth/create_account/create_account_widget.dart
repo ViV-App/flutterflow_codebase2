@@ -13,8 +13,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_account_model.dart';
@@ -84,7 +82,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -94,7 +92,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                     height: double.infinity,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(0.0),
@@ -125,7 +123,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 24.0, 24.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -153,7 +151,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: ClipRRect(
@@ -190,12 +188,12 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(SizedBox(width: 14.0)),
+                                              ].divide(const SizedBox(width: 14.0)),
                                             ),
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 24.0, 24.0, 0.0),
                                             child: Text(
                                               'Insira seus dados pessoais',
@@ -204,7 +202,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Mulish',
-                                                    color: Color(0xFF13294B),
+                                                    color: const Color(0xFF13294B),
                                                     fontSize: 24.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
@@ -213,7 +211,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 8.0, 24.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -233,7 +231,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF8798B5),
+                                                              const Color(0xFF8798B5),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           lineHeight: 1.5,
@@ -243,7 +241,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 42.0, 24.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -288,7 +286,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF8798B5),
                                                                   fontSize:
                                                                       16.0,
@@ -298,7 +296,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x0E294B0D),
                                                             width: 2.0,
@@ -352,9 +350,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            Color(0xFFF7FAFE),
+                                                            const Color(0xFFF7FAFE),
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -374,7 +372,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                           .asValidator(context),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 6.0)),
+                                                      const SizedBox(height: 6.0)),
                                                 ),
                                                 Column(
                                                   mainAxisSize:
@@ -416,7 +414,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF8798B5),
                                                                   fontSize:
                                                                       16.0,
@@ -426,7 +424,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x0E294B0D),
                                                             width: 2.0,
@@ -480,9 +478,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            Color(0xFFF7FAFE),
+                                                            const Color(0xFFF7FAFE),
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -505,7 +503,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                       ],
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 6.0)),
+                                                      const SizedBox(height: 6.0)),
                                                 ),
                                                 Column(
                                                   mainAxisSize:
@@ -547,7 +545,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF8798B5),
                                                                   fontSize:
                                                                       16.0,
@@ -557,7 +555,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x0E294B0D),
                                                             width: 2.0,
@@ -611,9 +609,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            Color(0xFFF7FAFE),
+                                                            const Color(0xFFF7FAFE),
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -633,7 +631,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                           .asValidator(context),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 6.0)),
+                                                      const SizedBox(height: 6.0)),
                                                 ),
                                                 Column(
                                                   mainAxisSize:
@@ -671,7 +669,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 6.0)),
+                                                      const SizedBox(height: 6.0)),
                                                 ),
                                                 Column(
                                                   mainAxisSize:
@@ -711,7 +709,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Mulish',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF8798B5),
                                                                   fontSize:
                                                                       16.0,
@@ -721,7 +719,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x0E294B0D),
                                                             width: 2.0,
@@ -775,9 +773,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         ),
                                                         filled: true,
                                                         fillColor:
-                                                            Color(0xFFF7FAFE),
+                                                            const Color(0xFFF7FAFE),
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -817,7 +815,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                           .asValidator(context),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 6.0)),
+                                                      const SizedBox(height: 6.0)),
                                                 ),
                                                 Row(
                                                   mainAxisSize:
@@ -889,7 +887,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF262B37),
                                                                     letterSpacing:
                                                                         0.0,
@@ -901,7 +899,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             TextSpan(
                                                               text:
                                                                   'Termos de Uso ',
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                 color: Color(
                                                                     0xFF6E78FF),
                                                                 fontWeight:
@@ -929,7 +927,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                       );
                                                                     },
                                                             ),
-                                                            TextSpan(
+                                                            const TextSpan(
                                                               text: 'e ',
                                                               style: TextStyle(
                                                                 color: Color(
@@ -939,7 +937,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             TextSpan(
                                                               text:
                                                                   'Políticas de Privacidade',
-                                                              style: TextStyle(
+                                                              style: const TextStyle(
                                                                 color: Color(
                                                                     0xFF6E78FF),
                                                                 fontWeight:
@@ -982,7 +980,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                     ),
                                                   ],
                                                 ),
-                                              ].divide(SizedBox(height: 18.0)),
+                                              ].divide(const SizedBox(height: 18.0)),
                                             ),
                                           ),
                                           if (responsiveVisibility(
@@ -993,7 +991,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             desktop: false,
                                           ))
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       28.0, 24.0, 28.0, 0.0),
                                               child: Column(
@@ -1011,7 +1009,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                           width: 100.0,
                                                           height: 1.0,
                                                           decoration:
-                                                              BoxDecoration(
+                                                              const BoxDecoration(
                                                             color: Color(
                                                                 0xFF8798B5),
                                                           ),
@@ -1025,7 +1023,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             .override(
                                                               fontFamily:
                                                                   'Mulish',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF8798B5),
                                                               fontSize: 12.0,
                                                               letterSpacing:
@@ -1040,14 +1038,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                           width: 100.0,
                                                           height: 1.0,
                                                           decoration:
-                                                              BoxDecoration(
+                                                              const BoxDecoration(
                                                             color: Color(
                                                                 0xFF8798B5),
                                                           ),
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        SizedBox(width: 18.0)),
+                                                        const SizedBox(width: 18.0)),
                                                   ),
                                                   Row(
                                                     mainAxisSize:
@@ -1090,7 +1088,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                         backgroundColor:
                                                                             Colors.transparent,
                                                                         alignment:
-                                                                            AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
+                                                                            const AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
                                                                         child:
                                                                             WebViewAware(
                                                                           child:
@@ -1098,7 +1096,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                             onTap: () =>
                                                                                 FocusScope.of(dialogContext).unfocus(),
                                                                             child:
-                                                                                ToastWidget(
+                                                                                const ToastWidget(
                                                                               type: ToastTypes.red,
                                                                               title: 'Politica de privacidade',
                                                                               message: 'Aceite os termos e politica de privacidade para entrar com o Google.',
@@ -1124,7 +1122,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                               8.0),
                                                                   border: Border
                                                                       .all(
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF8798B5),
                                                                   ),
                                                                 ),
@@ -1160,7 +1158,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                             fontFamily:
                                                                                 'Mulish',
                                                                             color:
-                                                                                Color(0xFF262B37),
+                                                                                const Color(0xFF262B37),
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
@@ -1169,7 +1167,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                                 FontWeight.w800,
                                                                           ),
                                                                     ),
-                                                                  ].divide(SizedBox(
+                                                                  ].divide(const SizedBox(
                                                                       width:
                                                                           4.0)),
                                                                 ),
@@ -1194,7 +1192,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                       .transparent,
                                                               onTap: () async {
                                                                 Function()
-                                                                    _navigate =
+                                                                    navigate =
                                                                     () {};
                                                                 if (_model
                                                                         .checkboxValue ==
@@ -1210,7 +1208,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                       null) {
                                                                     return;
                                                                   }
-                                                                  _navigate = () =>
+                                                                  navigate = () =>
                                                                       context.goNamedAuth(
                                                                           'homePage',
                                                                           context
@@ -1231,7 +1229,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                         backgroundColor:
                                                                             Colors.transparent,
                                                                         alignment:
-                                                                            AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
+                                                                            const AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
                                                                         child:
                                                                             WebViewAware(
                                                                           child:
@@ -1239,7 +1237,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                             onTap: () =>
                                                                                 FocusScope.of(dialogContext).unfocus(),
                                                                             child:
-                                                                                ToastWidget(
+                                                                                const ToastWidget(
                                                                               type: ToastTypes.red,
                                                                               title: 'Politica de privacidade',
                                                                               message: 'Aceite os termos e politica de privacidade para entrar com o Google.',
@@ -1251,7 +1249,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                   );
                                                                 }
 
-                                                                _navigate();
+                                                                navigate();
                                                               },
                                                               child: Container(
                                                                 width: 100.0,
@@ -1267,7 +1265,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                               8.0),
                                                                   border: Border
                                                                       .all(
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF8798B5),
                                                                   ),
                                                                 ),
@@ -1303,7 +1301,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                             fontFamily:
                                                                                 'Mulish',
                                                                             color:
-                                                                                Color(0xFF262B37),
+                                                                                const Color(0xFF262B37),
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
@@ -1312,7 +1310,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                                 FontWeight.w800,
                                                                           ),
                                                                     ),
-                                                                  ].divide(SizedBox(
+                                                                  ].divide(const SizedBox(
                                                                       width:
                                                                           4.0)),
                                                                 ),
@@ -1323,10 +1321,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                     ],
                                                   ),
                                                 ].divide(
-                                                    SizedBox(height: 18.0)),
+                                                    const SizedBox(height: 18.0)),
                                               ),
                                             ),
-                                        ].addToEnd(SizedBox(height: 24.0)),
+                                        ].addToEnd(const SizedBox(height: 24.0)),
                                       ),
                                     ),
                                   ),
@@ -1342,7 +1340,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 24.0, 24.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1367,7 +1365,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -1400,11 +1398,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 14.0)),
+                                      ].divide(const SizedBox(width: 14.0)),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 24.0, 18.0, 0.0),
                                     child: Text(
                                       'Pronto, sua conta já foi criada! 🎉',
@@ -1420,7 +1418,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 8.0, 24.0, 0.0),
                                     child: Text(
                                       'Para te conhecer melhor, precisamos de algumas informações sobre você, ok?  ',
@@ -1428,7 +1426,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: Color(0xFF8798B5),
+                                            color: const Color(0xFF8798B5),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             lineHeight: 1.5,
@@ -1436,7 +1434,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 32.0, 24.0, 0.0),
                                     child: RichText(
                                       textScaler:
@@ -1456,7 +1454,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                   fontWeight: FontWeight.w800,
                                                 ),
                                           ),
-                                          TextSpan(
+                                          const TextSpan(
                                             text:
                                                 '(Selecione no máximo 3, a primeira será considerada Principal, e as demais Secundárias)',
                                             style: TextStyle(
@@ -1474,7 +1472,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 24.0, 0.0, 0.0),
                                     child: FutureBuilder<
                                         List<StaticQueixasSaudeRow>>(
@@ -1514,14 +1512,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                               listViewStaticQueixasSaudeRowList
                                                   .length,
                                           separatorBuilder: (_, __) =>
-                                              SizedBox(height: 18.0),
+                                              const SizedBox(height: 18.0),
                                           itemBuilder:
                                               (context, listViewIndex) {
                                             final listViewStaticQueixasSaudeRow =
                                                 listViewStaticQueixasSaudeRowList[
                                                     listViewIndex];
                                             return Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: InkWell(
@@ -1561,9 +1559,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                           (alertDialogContext) {
                                                         return WebViewAware(
                                                           child: AlertDialog(
-                                                            title: Text(
+                                                            title: const Text(
                                                                 'Assinatura bloqueada'),
-                                                            content: Text(
+                                                            content: const Text(
                                                                 'Caso não possua uma queixa que não cobrimos, não poderemos prosseguir com sua assinatura futuramente.'),
                                                             actions: [
                                                               TextButton(
@@ -1571,7 +1569,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                                     Navigator.pop(
                                                                         alertDialogContext),
                                                                 child:
-                                                                    Text('Ok'),
+                                                                    const Text('Ok'),
                                                               ),
                                                             ],
                                                           ),
@@ -1600,12 +1598,12 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                           ? FlutterFlowTheme.of(
                                                                   context)
                                                               .primary
-                                                          : Color(0xFFDBE4F1),
+                                                          : const Color(0xFFDBE4F1),
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(12.0),
+                                                        const EdgeInsets.all(12.0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1627,7 +1625,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             0.0,
@@ -1696,7 +1694,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                               safeSetState(
                                                                   () {});
                                                             },
-                                                            child: Icon(
+                                                            child: const Icon(
                                                               Icons
                                                                   .circle_outlined,
                                                               color: Color(
@@ -1735,7 +1733,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             ),
                                                           ),
                                                       ].divide(
-                                                          SizedBox(width: 8.0)),
+                                                          const SizedBox(width: 8.0)),
                                                     ),
                                                   ),
                                                 ),
@@ -1746,7 +1744,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                       },
                                     ),
                                   ),
-                                ].addToEnd(SizedBox(height: 24.0)),
+                                ].addToEnd(const SizedBox(height: 24.0)),
                               ),
                             ),
                           ),
@@ -1758,7 +1756,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 24.0, 24.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1783,7 +1781,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -1816,11 +1814,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(width: 14.0)),
+                                      ].divide(const SizedBox(width: 14.0)),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 24.0, 18.0, 0.0),
                                     child: Text(
                                       'Pronto, sua conta já foi criada! 🎉',
@@ -1828,7 +1826,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: Color(0xFF13294B),
+                                            color: const Color(0xFF13294B),
                                             fontSize: 24.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
@@ -1836,7 +1834,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 8.0, 24.0, 0.0),
                                     child: Text(
                                       'Agora, vou fazer mais algumas perguntas para entender como podemos te guiar no seu tratamento! Vamos lá?',
@@ -1844,7 +1842,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: Color(0xFF8798B5),
+                                            color: const Color(0xFF8798B5),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             lineHeight: 1.5,
@@ -1852,7 +1850,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 32.0, 24.0, 0.0),
                                     child: Text(
                                       'Das opções abaixo, escolha qual ou quais se aplicam a você.',
@@ -1867,7 +1865,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 24.0, 0.0, 0.0),
                                     child: FutureBuilder<
                                         List<StaticContraIndicacaoRow>>(
@@ -1906,14 +1904,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                               listViewStaticContraIndicacaoRowList
                                                   .length,
                                           separatorBuilder: (_, __) =>
-                                              SizedBox(height: 18.0),
+                                              const SizedBox(height: 18.0),
                                           itemBuilder:
                                               (context, listViewIndex) {
                                             final listViewStaticContraIndicacaoRow =
                                                 listViewStaticContraIndicacaoRowList[
                                                     listViewIndex];
                                             return Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: InkWell(
@@ -1955,12 +1953,12 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                           ? FlutterFlowTheme.of(
                                                                   context)
                                                               .primary
-                                                          : Color(0xFFDBE4F1),
+                                                          : const Color(0xFFDBE4F1),
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(12.0),
+                                                        const EdgeInsets.all(12.0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1982,7 +1980,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             0.0,
@@ -2036,7 +2034,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                               safeSetState(
                                                                   () {});
                                                             },
-                                                            child: Icon(
+                                                            child: const Icon(
                                                               Icons
                                                                   .circle_outlined,
                                                               color: Color(
@@ -2075,7 +2073,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                             ),
                                                           ),
                                                       ].divide(
-                                                          SizedBox(width: 8.0)),
+                                                          const SizedBox(width: 8.0)),
                                                     ),
                                                   ),
                                                 ),
@@ -2086,7 +2084,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                       },
                                     ),
                                   ),
-                                ].addToEnd(SizedBox(height: 24.0)),
+                                ].addToEnd(const SizedBox(height: 24.0)),
                               ),
                             ),
                           ),
@@ -2096,7 +2094,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 18.0, 24.0, 24.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 18.0, 24.0, 24.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -2116,10 +2114,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     _model.currentStep =
                                         _model.currentStep! + 1;
                                     safeSetState(() {});
-                                    _model.apiResult23ot =
-                                        await SegmentGroup.trackingCall.call(
-                                      eventName: 'sign-up screen viewed',
-                                      propertyOne: 'step 3',
+                                    await actions.segmentTrack(
+                                      'sign-up screen viewed',
+                                      <String, String?>{
+                                        'step': 'step 3',
+                                      },
                                     );
                                   } else if (_model.currentStep == 4) {
                                     if (_model.contra.length > 1) {
@@ -2128,15 +2127,15 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                         builder: (alertDialogContext) {
                                           return WebViewAware(
                                             child: AlertDialog(
-                                              title: Text('Condição de saúde'),
-                                              content: Text(
+                                              title: const Text('Condição de saúde'),
+                                              content: const Text(
                                                   'Devido à sua condição de saúde, o uso de Cannabis pode ser contraindicado. Somente um médico poderá avaliar essa possibilidade. Infelizmente, não poderemos oferecer acompanhamento através da nossa assinatura, considerando o potencial risco em seu caso. (botão: Entendi) que leve para dentro do App'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
                                                       Navigator.pop(
                                                           alertDialogContext),
-                                                  child: Text('Ok'),
+                                                  child: const Text('Ok'),
                                                 ),
                                               ],
                                             ),
@@ -2220,16 +2219,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                       context.goNamed('homePage');
                                     }
                                   }
-
-                                  safeSetState(() {});
                                 },
                           text: 'Continuar',
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -2241,7 +2238,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   fontWeight: FontWeight.bold,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -2296,14 +2293,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     ),
                                   );
                                   FFAppState().paciente = PacienteStruct(
-                                    id: _model.loggedUser?.first?.id,
+                                    id: _model.loggedUser?.first.id,
                                     uuid: currentUserUid,
                                     createdAt:
-                                        _model.loggedUser?.first?.createdAt,
-                                    nome: _model.loggedUser?.first?.nome,
+                                        _model.loggedUser?.first.createdAt,
+                                    nome: _model.loggedUser?.first.nome,
                                     telefone:
-                                        _model.loggedUser?.first?.telefone,
-                                    cpf: _model.loggedUser?.first?.cpf,
+                                        _model.loggedUser?.first.telefone,
+                                    cpf: _model.loggedUser?.first.cpf,
                                   );
                                   safeSetState(() {});
                                   _model.st1 =
@@ -2334,10 +2331,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     email: currentUserEmail,
                                   );
 
-                                  _model.apiResult23oc =
-                                      await SegmentGroup.trackingCall.call(
-                                    eventName: 'sign-up screen viewed',
-                                    propertyOne: 'step 2',
+                                  await actions.segmentTrack(
+                                    'sign-up screen viewed',
+                                    <String, String?>{
+                                      'step': 'step 2',
+                                    },
                                   );
 
                                   safeSetState(() {});
@@ -2346,9 +2344,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -2360,7 +2358,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   fontWeight: FontWeight.bold,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -2371,7 +2369,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                         ),
                       if (_model.currentStep == 4)
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,

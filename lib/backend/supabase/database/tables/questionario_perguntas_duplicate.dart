@@ -11,7 +11,7 @@ class QuestionarioPerguntasDuplicateTable
 }
 
 class QuestionarioPerguntasDuplicateRow extends SupabaseDataRow {
-  QuestionarioPerguntasDuplicateRow(Map<String, dynamic> data) : super(data);
+  QuestionarioPerguntasDuplicateRow(super.data);
 
   @override
   SupabaseTable get table => QuestionarioPerguntasDuplicateTable();

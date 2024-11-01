@@ -1,11 +1,8 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'plano_terapeutico_model.dart';
 export 'plano_terapeutico_model.dart';
@@ -14,7 +11,7 @@ class PlanoTerapeuticoWidget extends StatefulWidget {
   const PlanoTerapeuticoWidget({
     super.key,
     bool? verDosagem,
-  }) : this.verDosagem = verDosagem ?? false;
+  }) : verDosagem = verDosagem ?? false;
 
   final bool verDosagem;
 
@@ -40,8 +37,8 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
           FFAppState().paciente.id,
         ),
       );
-      if ((_model.status?.first?.processo == 'planoTerapeutico') &&
-          (_model.status?.first?.estagio == 'visualizarPlano')) {
+      if ((_model.status?.first.processo == 'planoTerapeutico') &&
+          (_model.status?.first.estagio == 'visualizarPlano')) {
         await StatusPacientTable().update(
           data: {
             'processo': 'tratamentoBip',
@@ -79,16 +76,16 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Stack(
               children: [
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                      alignment: const AlignmentDirectional(0.0, -1.0),
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
@@ -102,7 +99,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                           ],
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(18.0),
+                          padding: const EdgeInsets.all(18.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,7 +132,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                       fontWeight: FontWeight.w800,
                                     ),
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.add,
                                 color: Color(0x015D67E2),
                                 size: 32.0,
@@ -147,7 +144,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 62.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 62.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -204,12 +201,12 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                   fontWeight: FontWeight.w600,
                                 ),
                           ),
-                        ].divide(SizedBox(height: 8.0)),
+                        ].divide(const SizedBox(height: 8.0)),
                       ),
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 72.0, 24.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 72.0, 24.0, 0.0),
                       child: FutureBuilder<List<PlanoTerapeuticoRow>>(
                         future: PlanoTerapeuticoTable().querySingleRow(
                           queryFn: (q) => q.eq(
@@ -261,7 +258,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         18.0, 0.0, 18.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -275,7 +272,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                               width: 32.0,
                                               height: 32.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0x3D6D98F4),
+                                                color: const Color(0x3D6D98F4),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         200.0),
@@ -300,7 +297,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -332,7 +329,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF8798B5),
+                                                              const Color(0xFF8798B5),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -342,7 +339,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.arrow_forward_ios_sharp,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -370,7 +367,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         18.0, 0.0, 18.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -384,7 +381,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                               width: 32.0,
                                               height: 32.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0x3D6D98F4),
+                                                color: const Color(0x3D6D98F4),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         200.0),
@@ -409,7 +406,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -441,7 +438,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF8798B5),
+                                                              const Color(0xFF8798B5),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -451,7 +448,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.arrow_forward_ios_sharp,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -479,7 +476,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         18.0, 0.0, 18.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -493,7 +490,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                               width: 32.0,
                                               height: 32.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0x3D6D98F4),
+                                                color: const Color(0x3D6D98F4),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         200.0),
@@ -518,7 +515,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -550,7 +547,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF8798B5),
+                                                              const Color(0xFF8798B5),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -560,7 +557,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                             ),
                                           ],
                                         ),
-                                        Icon(
+                                        const Icon(
                                           Icons.arrow_forward_ios_sharp,
                                           color: Color(0xFF8798B5),
                                           size: 24.0,
@@ -570,7 +567,7 @@ class _PlanoTerapeuticoWidgetState extends State<PlanoTerapeuticoWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(height: 18.0)),
+                            ].divide(const SizedBox(height: 18.0)),
                           );
                         },
                       ),

@@ -10,7 +10,7 @@ class StaticConteudosTable extends SupabaseTable<StaticConteudosRow> {
 }
 
 class StaticConteudosRow extends SupabaseDataRow {
-  StaticConteudosRow(Map<String, dynamic> data) : super(data);
+  StaticConteudosRow(super.data);
 
   @override
   SupabaseTable get table => StaticConteudosTable();

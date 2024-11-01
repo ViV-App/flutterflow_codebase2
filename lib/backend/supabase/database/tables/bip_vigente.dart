@@ -9,7 +9,7 @@ class BipVigenteTable extends SupabaseTable<BipVigenteRow> {
 }
 
 class BipVigenteRow extends SupabaseDataRow {
-  BipVigenteRow(Map<String, dynamic> data) : super(data);
+  BipVigenteRow(super.data);
 
   @override
   SupabaseTable get table => BipVigenteTable();

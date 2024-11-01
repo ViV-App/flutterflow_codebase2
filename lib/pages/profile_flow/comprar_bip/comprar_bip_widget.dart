@@ -4,10 +4,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'comprar_bip_model.dart';
 export 'comprar_bip_model.dart';
 
@@ -50,7 +47,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0x00FFFFFF),
             ),
             child: Column(
@@ -64,7 +61,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(18.0),
+                    padding: const EdgeInsets.all(18.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +90,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.add,
                           color: Color(0x005D67E2),
                           size: 32.0,
@@ -108,7 +105,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 32.0, 24.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -132,17 +129,17 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Mulish',
-                                      color: Color(0xFF42526D),
+                                      color: const Color(0xFF42526D),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
-                            ].divide(SizedBox(height: 8.0)),
+                            ].divide(const SizedBox(height: 8.0)),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 0.0, 0.0),
                           child: FutureBuilder<List<BipPlanosRow>>(
                             future: BipPlanosTable().queryRows(
@@ -173,19 +170,19 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                 scrollDirection: Axis.vertical,
                                 itemCount: listViewBipPlanosRowList.length,
                                 separatorBuilder: (_, __) =>
-                                    SizedBox(height: 32.0),
+                                    const SizedBox(height: 32.0),
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewBipPlanosRow =
                                       listViewBipPlanosRowList[listViewIndex];
                                   return Align(
-                                    alignment: AlignmentDirectional(0.0, -1.0),
+                                    alignment: const AlignmentDirectional(0.0, -1.0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       child: Material(
                                         color: Colors.transparent,
                                         elevation: 0.0,
-                                        shape: RoundedRectangleBorder(
+                                        shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(8.0),
                                             bottomRight: Radius.circular(8.0),
@@ -194,7 +191,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                           ),
                                         ),
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(8.0),
                                             bottomRight: Radius.circular(8.0),
                                             topLeft: Radius.circular(8.0),
@@ -206,7 +203,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(8.0),
                                                 bottomRight:
@@ -215,7 +212,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                 topRight: Radius.circular(8.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFEFF4F9),
+                                                color: const Color(0xFFEFF4F9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -231,7 +228,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 18.0,
                                                                 12.0,
@@ -267,7 +264,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF434854),
                                                                 fontSize: 18.0,
                                                                 letterSpacing:
@@ -283,12 +280,12 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                 ),
                                                 Container(
                                                   width: double.infinity,
-                                                  decoration: BoxDecoration(
+                                                  decoration: const BoxDecoration(
                                                     color: Color(0xFFEFF4F9),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 18.0,
                                                                 18.0,
@@ -309,7 +306,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Mulish',
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF434854),
                                                                 fontSize: 28.0,
                                                                 letterSpacing:
@@ -321,7 +318,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       12.0,
@@ -343,7 +340,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Mulish',
-                                                                        color: Color(
+                                                                        color: const Color(
                                                                             0xFF434854),
                                                                         letterSpacing:
                                                                             0.0,
@@ -360,7 +357,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                     '1',
                                                                   ),
                                                                   style:
-                                                                      TextStyle(
+                                                                      const TextStyle(
                                                                     color: Color(
                                                                         0xFF434854),
                                                                     fontWeight:
@@ -368,7 +365,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                             .w500,
                                                                   ),
                                                                 ),
-                                                                TextSpan(
+                                                                const TextSpan(
                                                                   text:
                                                                       ' BIP para ser usada nos próximos 12 meses *',
                                                                   style:
@@ -387,7 +384,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Mulish',
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFF434854),
                                                                     letterSpacing:
                                                                         0.0,
@@ -397,7 +394,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       14.0,
@@ -421,7 +418,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                 cusId: _model
                                                                     .user
                                                                     ?.first
-                                                                    ?.id,
+                                                                    .id,
                                                                 value:
                                                                     listViewBipPlanosRow
                                                                         .valor,
@@ -430,14 +427,14 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                 asaasId: _model
                                                                     .user
                                                                     ?.first
-                                                                    ?.asaasCustomerId,
+                                                                    .asaasCustomerId,
                                                               );
 
                                                               safeSetState(
                                                                   () {});
                                                             },
                                                             text: 'Comprar',
-                                                            icon: Icon(
+                                                            icon: const Icon(
                                                               Icons
                                                                   .open_in_new_rounded,
                                                               size: 18.0,
@@ -448,14 +445,14 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                   .infinity,
                                                               height: 48.0,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -480,7 +477,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                                                       ),
                                                               elevation: 0.0,
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -509,7 +506,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 32.0, 24.0, 0.0),
                           child: Material(
                             color: Colors.transparent,
@@ -520,14 +517,14 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xFFEFF4F9),
+                                color: const Color(0xFFEFF4F9),
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
-                                  color: Color(0xFFEFF4F9),
+                                  color: const Color(0xFFEFF4F9),
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     14.0, 14.0, 14.0, 18.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -539,14 +536,14 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Mulish',
-                                            color: Color(0x96434854),
+                                            color: const Color(0x96434854),
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w800,
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 0.0),
                                       child: Text(
                                         'A assinatura deve ser realizada fora do aplicativo. Basta clicar no botão acima, você será redirecionado para um ambiente confiável.',
@@ -554,7 +551,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Mulish',
-                                              color: Color(0x96434854),
+                                              color: const Color(0x96434854),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -567,7 +564,7 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               28.0, 32.0, 28.0, 32.0),
                           child: Text(
                             '* Em caso de não utilização, não é acumulativo para os meses sequentes.',
@@ -575,15 +572,15 @@ class _ComprarBipWidgetState extends State<ComprarBipWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Mulish',
-                                  color: Color(0xFF434854),
+                                  color: const Color(0xFF434854),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
                           ),
                         ),
                       ]
-                          .addToStart(SizedBox(height: 4.0))
-                          .addToEnd(SizedBox(height: 32.0)),
+                          .addToStart(const SizedBox(height: 4.0))
+                          .addToEnd(const SizedBox(height: 32.0)),
                     ),
                   ),
                 ),

@@ -10,12 +10,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'profile_page_model.dart';
@@ -101,7 +101,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0x00FFFFFF),
                 ),
                 child: Column(
@@ -114,7 +114,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         Container(
                           width: double.infinity,
                           height: 210.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFFEFF4F9),
                           ),
                           child: Column(
@@ -122,7 +122,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     18.0, 18.0, 18.0, 18.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -148,13 +148,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 24.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -253,8 +253,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     }
 
                                                     if (_model.uploadedFileUrl !=
-                                                            null &&
-                                                        _model.uploadedFileUrl !=
                                                             '') {
                                                       await PacienteTable()
                                                           .update(
@@ -278,7 +276,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                     }
                                                   }
                                                 },
-                                                child: Container(
+                                                child: SizedBox(
                                                   width: 52.0,
                                                   height: 52.0,
                                                   child: Stack(
@@ -289,7 +287,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                         clipBehavior:
                                                             Clip.antiAlias,
                                                         decoration:
-                                                            BoxDecoration(
+                                                            const BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                         ),
@@ -308,7 +306,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -329,7 +327,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             fontSize: 16.0,
                                                             letterSpacing: 0.0,
@@ -338,14 +336,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           ),
                                                     ),
                                                     Text(
-                                                      'ID: ${profilePagePacienteRow?.id?.toString()}',
+                                                      'ID: ${profilePagePacienteRow?.id.toString()}',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF8798B5),
                                                             fontSize: 12.0,
                                                             letterSpacing: 0.0,
@@ -354,7 +352,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                           ),
                                                     ),
                                                   ].divide(
-                                                      SizedBox(height: 4.0)),
+                                                      const SizedBox(height: 4.0)),
                                                 ),
                                               ),
                                             ],
@@ -381,7 +379,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
 
                                               safeSetState(() {});
                                             },
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.content_copy_sharp,
                                               color: Color(0xFF8798B5),
                                               size: 24.0,
@@ -396,7 +394,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             .plano ==
                                         1)
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -413,24 +411,24 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             width: double.infinity,
                                             height: 48.0,
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: Color(0xFFDBE4F1),
+                                            color: const Color(0xFFDBE4F1),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
                                                       fontFamily: 'Mulish',
-                                                      color: Color(0xFF434854),
+                                                      color: const Color(0xFF434854),
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
                                             elevation: 0.0,
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -445,7 +443,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             .plano !=
                                         1)
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -456,24 +454,24 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                             width: double.infinity,
                                             height: 48.0,
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: Color(0xFFDBE4F1),
+                                            color: const Color(0xFFDBE4F1),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
                                                       fontFamily: 'Mulish',
-                                                      color: Color(0xFF434854),
+                                                      color: const Color(0xFF434854),
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
                                             elevation: 0.0,
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -482,7 +480,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           ),
                                         ),
                                       ),
-                                  ].divide(SizedBox(height: 12.0)),
+                                  ].divide(const SizedBox(height: 12.0)),
                                 ),
                               ),
                             ],
@@ -492,7 +490,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           wrapWithModel(
                             model: _model.completeProfileAlertModel,
                             updateCallback: () => safeSetState(() {}),
-                            child: CompleteProfileAlertWidget(),
+                            child: const CompleteProfileAlertWidget(),
                           ),
                         Column(
                           mainAxisSize: MainAxisSize.max,
@@ -515,7 +513,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: Container(
+                                          child: SizedBox(
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
                                                 0.8,
@@ -529,37 +527,35 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   },
                                 ).then((value) => safeSetState(() {}));
 
-                                _model.apiResulty70z =
-                                    await SegmentGroup.trackingCall.call(
-                                  userId: currentUserUid,
-                                  eventName: 'personal data clicked',
-                                  propertyOne: 'profilePage',
+                                await actions.segmentTrack(
+                                  'personal data clicked',
+                                  <String, String?>{
+                                    'source': 'profile',
+                                  },
                                 );
-
-                                safeSetState(() {});
                               },
                               child: Container(
                                 width: double.infinity,
                                 height: 56.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0x01FFFFFF),
                                 ),
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 1.0,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0x4114181B),
                                         ),
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             18.0, 0.0, 18.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -584,14 +580,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            Color(0xFF434854),
+                                                            const Color(0xFF434854),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(width: 12.0)),
+                                              ].divide(const SizedBox(width: 12.0)),
                                             ),
-                                            Icon(
+                                            const Icon(
                                               Icons.arrow_forward_ios_sharp,
                                               color: Color(0xFF8798B5),
                                               size: 18.0,
@@ -622,11 +618,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: Container(
+                                          child: SizedBox(
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
                                                 0.8,
-                                            child: HealthDataWidget(),
+                                            child: const HealthDataWidget(),
                                           ),
                                         ),
                                       ),
@@ -634,36 +630,35 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   },
                                 ).then((value) => safeSetState(() {}));
 
-                                _model.apiResult23r =
-                                    await SegmentGroup.trackingCall.call(
-                                  eventName: 'health info clicked',
-                                  propertyOne: 'profilePage',
+                                await actions.segmentTrack(
+                                  'health info clicked',
+                                  <String, String?>{
+                                    'source': 'profile',
+                                  },
                                 );
-
-                                safeSetState(() {});
                               },
                               child: Container(
                                 width: double.infinity,
                                 height: 56.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0x01FFFFFF),
                                 ),
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 1.0,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0x4114181B),
                                         ),
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             18.0, 0.0, 18.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -689,14 +684,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            Color(0xFF434854),
+                                                            const Color(0xFF434854),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(width: 12.0)),
+                                              ].divide(const SizedBox(width: 12.0)),
                                             ),
-                                            Icon(
+                                            const Icon(
                                               Icons.arrow_forward_ios_sharp,
                                               color: Color(0xFF8798B5),
                                               size: 18.0,
@@ -727,11 +722,11 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: Container(
+                                          child: SizedBox(
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
                                                 0.8,
-                                            child: DataSecurityWidget(),
+                                            child: const DataSecurityWidget(),
                                           ),
                                         ),
                                       ),
@@ -739,36 +734,35 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   },
                                 ).then((value) => safeSetState(() {}));
 
-                                _model.apiResult23rg =
-                                    await SegmentGroup.trackingCall.call(
-                                  eventName: 'security clicked',
-                                  propertyOne: 'profilePage',
+                                await actions.segmentTrack(
+                                  'security clicked',
+                                  <String, String?>{
+                                    'source': 'profile',
+                                  },
                                 );
-
-                                safeSetState(() {});
                               },
                               child: Container(
                                 width: double.infinity,
                                 height: 56.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0x01FFFFFF),
                                 ),
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      alignment: const AlignmentDirectional(0.0, 1.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 1.0,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0x4114181B),
                                         ),
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             18.0, 0.0, 18.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -793,14 +787,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                       .override(
                                                         fontFamily: 'Mulish',
                                                         color:
-                                                            Color(0xFF434854),
+                                                            const Color(0xFF434854),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(width: 12.0)),
+                                              ].divide(const SizedBox(width: 12.0)),
                                             ),
-                                            Icon(
+                                            const Icon(
                                               Icons.arrow_forward_ios_sharp,
                                               color: Color(0xFF8798B5),
                                               size: 18.0,
@@ -823,7 +817,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   context.pushNamed(
                                     'meuPlano',
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
+                                      kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 0),
@@ -831,39 +825,38 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     },
                                   );
 
-                                  _model.apiResult23rr =
-                                      await SegmentGroup.trackingCall.call(
-                                    eventName: 'my-plan clicked',
-                                    propertyOne: 'profilePage',
+                                  await actions.segmentTrack(
+                                    'my-plan clicked',
+                                    <String, String?>{
+                                      'source': 'profile',
+                                    },
                                   );
-
-                                  safeSetState(() {});
                                 },
                                 child: Container(
                                   width: double.infinity,
                                   height: 56.0,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0x01FFFFFF),
                                   ),
                                   child: Stack(
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 1.0),
+                                            const AlignmentDirectional(0.0, 1.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 1.0,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: Color(0x4114181B),
                                           ),
                                         ),
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   18.0, 0.0, 18.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -888,14 +881,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF434854),
+                                                              const Color(0xFF434854),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
-                                                ].divide(SizedBox(width: 12.0)),
+                                                ].divide(const SizedBox(width: 12.0)),
                                               ),
-                                              Icon(
+                                              const Icon(
                                                 Icons.arrow_forward_ios_sharp,
                                                 color: Color(0xFF8798B5),
                                                 size: 18.0,
@@ -914,44 +907,42 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 32.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           FFAppState().paciente = PacienteStruct();
                           FFAppState().prescricao = PrescricaoStruct();
                           FFAppState().onboardingHomePage = 0;
                           safeSetState(() {});
-                          _model.apiResult23rgv =
-                              await SegmentGroup.trackingCall.call(
-                            eventName: 'logout clicked',
-                            propertyOne: 'profilePage',
+                          await actions.segmentTrack(
+                            'logout clicked',
+                            <String, String?>{
+                              'source': 'profile',
+                            },
                           );
-
                           GoRouter.of(context).prepareAuthEvent();
                           await authManager.signOut();
                           GoRouter.of(context).clearRedirectLocation();
 
                           context.goNamedAuth('splashScreen', context.mounted);
-
-                          safeSetState(() {});
                         },
                         text: 'Sair da conta',
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 48.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFFEFF4F9),
+                          color: const Color(0xFFEFF4F9),
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Mulish',
-                                    color: Color(0xFF8798B5),
+                                    color: const Color(0xFF8798B5),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

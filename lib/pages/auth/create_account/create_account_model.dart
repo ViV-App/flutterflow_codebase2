@@ -1,23 +1,10 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/enums/enums.dart';
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/toast/toast_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/questionario/int_phone_number/int_phone_number_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'create_account_widget.dart' show CreateAccountWidget;
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
 class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   ///  Local state fields for this page.
@@ -125,8 +112,6 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
-  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
-  ApiCallResponse? apiResult23ot;
   // Stores action output result for [Backend Call - API (create asaas customer)] action in Button widget.
   ApiCallResponse? customerAsaas;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
@@ -137,8 +122,6 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   StatusPacientRow? st1;
   // Stores action output result for [Backend Call - API (nn acc created)] action in Button widget.
   ApiCallResponse? apiResultagx;
-  // Stores action output result for [Backend Call - API (tracking)] action in Button widget.
-  ApiCallResponse? apiResult23oc;
 
   @override
   void initState(BuildContext context) {

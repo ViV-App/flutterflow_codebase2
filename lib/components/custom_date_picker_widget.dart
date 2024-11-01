@@ -6,8 +6,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'custom_date_picker_model.dart';
 export 'custom_date_picker_model.dart';
 
@@ -17,7 +15,7 @@ class CustomDatePickerWidget extends StatefulWidget {
     this.callback,
     bool? hasInitDate,
     this.initDate,
-  }) : this.hasInitDate = hasInitDate ?? false;
+  }) : hasInitDate = hasInitDate ?? false;
 
   final Future Function(DateTime dateSet)? callback;
   final bool hasInitDate;
@@ -43,22 +41,22 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (widget!.hasInitDate == true) {
-        _model.initDay = functions.getDayNumber(widget!.initDate!) - 1;
-        _model.initMonth = functions.getMonthNumber(widget!.initDate!) - 1;
+      if (widget.hasInitDate == true) {
+        _model.initDay = functions.getDayNumber(widget.initDate!) - 1;
+        _model.initMonth = functions.getMonthNumber(widget.initDate!) - 1;
         safeSetState(() {});
         await Future.wait([
           Future(() async {
             await _model.carouselDController?.animateToPage(
               _model.initDay,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.ease,
             );
           }),
           Future(() async {
             await _model.carouselMController?.animateToPage(
               _model.initMonth,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.ease,
             );
           }),
@@ -71,14 +69,14 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
           Future(() async {
             await _model.carouselDController?.animateToPage(
               _model.initDay,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.ease,
             );
           }),
           Future(() async {
             await _model.carouselMController?.animateToPage(
               _model.initMonth,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.ease,
             );
           }),
@@ -101,13 +99,13 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
     return Stack(
       children: [
         Align(
-          alignment: AlignmentDirectional(0.0, 1.0),
+          alignment: const AlignmentDirectional(0.0, 1.0),
           child: Container(
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
                 topLeft: Radius.circular(32.0),
@@ -118,15 +116,15 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: 100.0,
                       height: 4.0,
                       decoration: BoxDecoration(
-                        color: Color(0xFFDBE4F1),
+                        color: const Color(0xFFDBE4F1),
                         borderRadius: BorderRadius.circular(32.0),
                       ),
                     ),
@@ -135,15 +133,15 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 18.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 18.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Container(
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 12.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -159,7 +157,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                                     .carouselACurrentIndex])
                                             .toList();
 
-                                        return Container(
+                                        return SizedBox(
                                           width: 200.0,
                                           height: double.infinity,
                                           child: CarouselSlider.builder(
@@ -191,7 +189,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                                                 ? FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary
-                                                                : Color(
+                                                                : const Color(
                                                                     0x4A000000),
                                                             fontSize: 34.0,
                                                             letterSpacing: 1.0,
@@ -219,7 +217,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                                                       .of(
                                                                           context)
                                                                   .primary
-                                                              : Color(
+                                                              : const Color(
                                                                   0x4A000000),
                                                           fontSize: 34.0,
                                                           letterSpacing: 1.0,
@@ -263,7 +261,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       '/',
                                       maxLines: 1,
@@ -284,7 +282,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                         final months =
                                             functions.returnMonths().toList();
 
-                                        return Container(
+                                        return SizedBox(
                                           width: 200.0,
                                           height: double.infinity,
                                           child: CarouselSlider.builder(
@@ -316,7 +314,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                                                 ? FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary
-                                                                : Color(
+                                                                : const Color(
                                                                     0x4B000000),
                                                             fontSize: 34.0,
                                                             letterSpacing: 1.0,
@@ -344,7 +342,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                                                       .of(
                                                                           context)
                                                                   .primary
-                                                              : Color(
+                                                              : const Color(
                                                                   0x4B000000),
                                                           fontSize: 34.0,
                                                           letterSpacing: 1.0,
@@ -388,7 +386,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       '/',
                                       maxLines: 1,
@@ -409,7 +407,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                         final years =
                                             functions.yearsList().toList();
 
-                                        return Container(
+                                        return SizedBox(
                                           width: 200.0,
                                           height: double.infinity,
                                           child: CarouselSlider.builder(
@@ -436,7 +434,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                                                           ? FlutterFlowTheme.of(
                                                                   context)
                                                               .primary
-                                                          : Color(0x4B000000),
+                                                          : const Color(0x4B000000),
                                                       fontSize: 34.0,
                                                       letterSpacing: 1.0,
                                                       fontWeight:
@@ -481,7 +479,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 18.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 18.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -493,9 +491,9 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                           text: 'Cancelar',
                           options: FFButtonOptions(
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: Colors.white,
                             textStyle: FlutterFlowTheme.of(context)
@@ -537,9 +535,9 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                           text: 'Confirmar',
                           options: FFButtonOptions(
                             height: 48.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -554,7 +552,7 @@ class _CustomDatePickerWidgetState extends State<CustomDatePickerWidget> {
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(width: 18.0)),
+                    ].divide(const SizedBox(width: 18.0)),
                   ),
                 ),
               ],

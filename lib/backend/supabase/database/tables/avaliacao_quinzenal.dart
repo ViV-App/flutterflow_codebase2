@@ -10,7 +10,7 @@ class AvaliacaoQuinzenalTable extends SupabaseTable<AvaliacaoQuinzenalRow> {
 }
 
 class AvaliacaoQuinzenalRow extends SupabaseDataRow {
-  AvaliacaoQuinzenalRow(Map<String, dynamic> data) : super(data);
+  AvaliacaoQuinzenalRow(super.data);
 
   @override
   SupabaseTable get table => AvaliacaoQuinzenalTable();

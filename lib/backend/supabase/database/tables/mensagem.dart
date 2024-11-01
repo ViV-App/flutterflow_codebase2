@@ -9,7 +9,7 @@ class MensagemTable extends SupabaseTable<MensagemRow> {
 }
 
 class MensagemRow extends SupabaseDataRow {
-  MensagemRow(Map<String, dynamic> data) : super(data);
+  MensagemRow(super.data);
 
   @override
   SupabaseTable get table => MensagemTable();
@@ -35,6 +35,6 @@ class MensagemRow extends SupabaseDataRow {
   bool? get isPergunta => getField<bool>('is_pergunta');
   set isPergunta(bool? value) => setField<bool>('is_pergunta', value);
 
-  dynamic? get resposta => getField<dynamic>('resposta');
-  set resposta(dynamic? value) => setField<dynamic>('resposta', value);
+  dynamic get resposta => getField<dynamic>('resposta');
+  set resposta(dynamic value) => setField<dynamic>('resposta', value);
 }

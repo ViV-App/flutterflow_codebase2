@@ -3,13 +3,11 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/assistente_flow/assistant_menu/assistant_menu_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -51,13 +49,13 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
           await Future.delayed(const Duration(milliseconds: 500));
           await _model.columnController?.animateTo(
             _model.columnController!.position.maxScrollExtent,
-            duration: Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 100),
             curve: Curves.ease,
           );
           await Future.delayed(const Duration(milliseconds: 500));
           await _model.columnController?.animateTo(
             _model.columnController!.position.maxScrollExtent,
-            duration: Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 100),
             curve: Curves.ease,
           );
         },
@@ -65,7 +63,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
       );
       await _model.columnController?.animateTo(
         _model.columnController!.position.maxScrollExtent,
-        duration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 100),
         curve: Curves.ease,
       );
     });
@@ -98,7 +96,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFEFF4F9),
+            backgroundColor: const Color(0xFFEFF4F9),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -121,20 +119,20 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFEFF4F9),
+            backgroundColor: const Color(0xFFEFF4F9),
             body: SafeArea(
               top: true,
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0x00FFFFFF),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
@@ -148,7 +146,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                         ],
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(18.0),
+                        padding: const EdgeInsets.all(18.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -179,7 +177,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
-                            Icon(
+                            const Icon(
                               Icons.add,
                               color: Color(0x015D67E2),
                               size: 32.0,
@@ -234,7 +232,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                 final columnMensagemRow =
                                     columnMensagemRowList[columnIndex];
                                 return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       18.0, 0.0, 18.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -243,16 +241,16 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                           'Assistant')
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-1.0, -1.0),
+                                              const AlignmentDirectional(-1.0, -1.0),
                                           child: Container(
-                                            constraints: BoxConstraints(
+                                            constraints: const BoxConstraints(
                                               maxWidth: 350.0,
                                             ),
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(0.0),
                                                 bottomRight:
@@ -262,7 +260,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 12.0, 12.0, 12.0),
                                               child: Column(
@@ -282,7 +280,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                                             .override(
                                                               fontFamily:
                                                                   'Mulish',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF262B37),
                                                               fontSize: 16.0,
                                                               letterSpacing:
@@ -296,7 +294,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -311,7 +309,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Mulish',
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF434854),
                                                             letterSpacing: 0.0,
                                                           ),
@@ -319,11 +317,11 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             1.0, 1.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -360,12 +358,12 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                       if (columnMensagemRow.sender == 'Pacient')
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(1.0, -1.0),
+                                              const AlignmentDirectional(1.0, -1.0),
                                           child: Container(
-                                            constraints: BoxConstraints(
+                                            constraints: const BoxConstraints(
                                               maxWidth: 350.0,
                                             ),
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: Color(0xFFDBE4F1),
                                               borderRadius: BorderRadius.only(
                                                 bottomLeft:
@@ -377,7 +375,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       12.0, 12.0, 12.0, 12.0),
                                               child: Column(
@@ -396,17 +394,17 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                                         .override(
                                                           fontFamily: 'Mulish',
                                                           color:
-                                                              Color(0xFF434854),
+                                                              const Color(0xFF434854),
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             1.0, 1.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -440,13 +438,13 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                             ),
                                           ),
                                         ),
-                                    ].divide(SizedBox(height: 18.0)),
+                                    ].divide(const SizedBox(height: 18.0)),
                                   ),
                                 );
                               })
-                                      .divide(SizedBox(height: 18.0))
-                                      .addToStart(SizedBox(height: 32.0))
-                                      .addToEnd(SizedBox(height: 32.0)),
+                                      .divide(const SizedBox(height: 18.0))
+                                      .addToStart(const SizedBox(height: 32.0))
+                                      .addToEnd(const SizedBox(height: 32.0)),
                             ),
                           );
                         },
@@ -456,13 +454,13 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                       width: double.infinity,
                       height: 80.0,
                       decoration: BoxDecoration(
-                        color: Color(0x00FFFFFF),
+                        color: const Color(0x00FFFFFF),
                         border: Border.all(
-                          color: Color(0xFFDBE4F1),
+                          color: const Color(0xFFDBE4F1),
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(14.0),
+                        padding: const EdgeInsets.all(14.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -474,7 +472,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                               desktop: false,
                             ))
                               Align(
-                                alignment: AlignmentDirectional(-1.0, 1.0),
+                                alignment: const AlignmentDirectional(-1.0, 1.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -494,7 +492,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                             child: Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
-                                              child: AssistantMenuWidget(),
+                                              child: const AssistantMenuWidget(),
                                             ),
                                           ),
                                         );
@@ -512,7 +510,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                         borderRadius:
                                             BorderRadius.circular(100.0),
                                       ),
-                                      child: Align(
+                                      child: const Align(
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Column(
@@ -546,7 +544,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 8.0, 0.0),
                                         child: TextFormField(
                                           controller: _model.textController,
@@ -554,7 +552,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
                                             '_model.textController',
-                                            Duration(milliseconds: 100),
+                                            const Duration(milliseconds: 100),
                                             () => safeSetState(() {}),
                                           ),
                                           autofocus: false,
@@ -567,7 +565,7 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                                     .labelMedium
                                                     .override(
                                                       fontFamily: 'Mulish',
-                                                      color: Color(0xFF8798B5),
+                                                      color: const Color(0xFF8798B5),
                                                       letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: InputBorder.none,
@@ -588,11 +586,10 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
                                         ),
                                       ),
                                     ),
-                                    if ((_model.textController.text != null &&
-                                            _model.textController.text != '') &&
+                                    if ((_model.textController.text != '') &&
                                         (_model.waiting == false))
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 12.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -639,18 +636,17 @@ class _ChatVivWidgetState extends State<ChatVivWidget> {
 
                                             safeSetState(() {});
                                           },
-                                          child: Icon(
+                                          child: const Icon(
                                             Icons.send_outlined,
                                             color: Color(0xFF6E78FF),
                                             size: 32.0,
                                           ),
                                         ),
                                       ),
-                                    if ((_model.textController.text == null ||
-                                            _model.textController.text == '') &&
+                                    if ((_model.textController.text == '') &&
                                         (_model.typing != true))
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 12.0, 0.0),
                                         child: Icon(
                                           Icons.send_outlined,

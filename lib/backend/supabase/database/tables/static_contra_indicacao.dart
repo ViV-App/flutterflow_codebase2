@@ -11,7 +11,7 @@ class StaticContraIndicacaoTable
 }
 
 class StaticContraIndicacaoRow extends SupabaseDataRow {
-  StaticContraIndicacaoRow(Map<String, dynamic> data) : super(data);
+  StaticContraIndicacaoRow(super.data);
 
   @override
   SupabaseTable get table => StaticContraIndicacaoTable();

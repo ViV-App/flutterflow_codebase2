@@ -4,12 +4,9 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'conteudos_model.dart';
 export 'conteudos_model.dart';
@@ -53,14 +50,14 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0x00FFFFFF),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(18.0),
+                  padding: const EdgeInsets.all(18.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +85,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                               fontWeight: FontWeight.bold,
                             ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.add,
                         color: Color(0x015D67E2),
                         size: 32.0,
@@ -97,7 +94,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   child: FutureBuilder<List<StaticTagConteudoEducativoRow>>(
                     future: StaticTagConteudoEducativoTable().queryRows(
                       queryFn: (q) => q,
@@ -127,7 +124,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                           width: double.infinity,
                           height: 48.0,
                           decoration: BoxDecoration(
-                            color: Color(0x1E4B39EF),
+                            color: const Color(0x1E4B39EF),
                             borderRadius: BorderRadius.circular(12.0),
                             border: Border.all(
                               color: FlutterFlowTheme.of(context).primary,
@@ -136,7 +133,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                           child: Stack(
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     4.0, 4.0, 4.0, 4.0),
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.dropDownValueController ??=
@@ -165,7 +162,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: 'Busque por tema',
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.ten_mp,
                                     color: Colors.transparent,
                                     size: 15.0,
@@ -175,7 +172,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                       FlutterFlowTheme.of(context).alternate,
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                  margin: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 0.0),
                                   hidesUnderline: true,
                                   isOverButton: false,
@@ -186,9 +183,9 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                               if (_model.dropDownValue != null &&
                                   _model.dropDownValue != '')
                                 Align(
-                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  alignment: const AlignmentDirectional(1.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 12.0, 0.0),
                                     child: FlutterFlowIconButton(
                                       borderColor:
@@ -222,11 +219,11 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: double.infinity,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -269,7 +266,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                   }
 
                                   return ListView.separated(
-                                    padding: EdgeInsets.fromLTRB(
+                                    padding: const EdgeInsets.fromLTRB(
                                       0,
                                       32.0,
                                       0,
@@ -280,13 +277,13 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                     itemCount:
                                         listViewStaticConteudosRowList.length,
                                     separatorBuilder: (_, __) =>
-                                        SizedBox(height: 32.0),
+                                        const SizedBox(height: 32.0),
                                     itemBuilder: (context, listViewIndex) {
                                       final listViewStaticConteudosRow =
                                           listViewStaticConteudosRowList[
                                               listViewIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         child: Material(
                                           color: Colors.transparent,
@@ -312,7 +309,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                       .spaceBetween,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 12.0),
                                                   child: Column(
@@ -321,7 +318,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     18.0,
@@ -417,7 +414,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                               .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Mulish',
-                                                                                color: Color(0xC214181B),
+                                                                                color: const Color(0xC214181B),
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -425,14 +422,14 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                       ],
                                                                     ),
                                                                   ),
-                                                                ].divide(SizedBox(
+                                                                ].divide(const SizedBox(
                                                                     width:
                                                                         12.0)),
                                                               ),
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0,
                                                                       -1.0),
                                                               child: Container(
@@ -447,7 +444,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                               8.0),
                                                                 ),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           4.0,
@@ -479,13 +476,13 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                 ),
                                                               ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               width: 12.0)),
                                                         ),
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     18.0,
@@ -518,11 +515,11 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, -1.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
                                                                       8.0,
@@ -554,13 +551,13 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           -1.0, -1.0),
                                                   child: Builder(
                                                     builder: (context) =>
                                                         Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   18.0,
                                                                   0.0,
@@ -588,7 +585,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                 backgroundColor:
                                                                     Colors
                                                                         .transparent,
-                                                                alignment: AlignmentDirectional(
+                                                                alignment: const AlignmentDirectional(
                                                                         0.0,
                                                                         0.0)
                                                                     .resolve(
@@ -687,7 +684,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                   }
 
                                   return ListView.separated(
-                                    padding: EdgeInsets.fromLTRB(
+                                    padding: const EdgeInsets.fromLTRB(
                                       0,
                                       32.0,
                                       0,
@@ -698,13 +695,13 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                     itemCount:
                                         listViewStaticConteudosRowList.length,
                                     separatorBuilder: (_, __) =>
-                                        SizedBox(height: 32.0),
+                                        const SizedBox(height: 32.0),
                                     itemBuilder: (context, listViewIndex) {
                                       final listViewStaticConteudosRow =
                                           listViewStaticConteudosRowList[
                                               listViewIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         child: Material(
                                           color: Colors.transparent,
@@ -730,7 +727,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                       .spaceBetween,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 12.0),
                                                   child: Column(
@@ -739,7 +736,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     18.0,
@@ -835,7 +832,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                               .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Mulish',
-                                                                                color: Color(0xC214181B),
+                                                                                color: const Color(0xC214181B),
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -843,14 +840,14 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                       ],
                                                                     ),
                                                                   ),
-                                                                ].divide(SizedBox(
+                                                                ].divide(const SizedBox(
                                                                     width:
                                                                         12.0)),
                                                               ),
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0,
                                                                       -1.0),
                                                               child: Container(
@@ -865,7 +862,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                               8.0),
                                                                 ),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           4.0,
@@ -897,13 +894,13 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                 ),
                                                               ),
                                                             ),
-                                                          ].divide(SizedBox(
+                                                          ].divide(const SizedBox(
                                                               width: 12.0)),
                                                         ),
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     18.0,
@@ -936,11 +933,11 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, -1.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
                                                                       8.0,
@@ -972,13 +969,13 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           -1.0, -1.0),
                                                   child: Builder(
                                                     builder: (context) =>
                                                         Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   18.0,
                                                                   0.0,
@@ -1006,7 +1003,7 @@ class _ConteudosWidgetState extends State<ConteudosWidget> {
                                                                 backgroundColor:
                                                                     Colors
                                                                         .transparent,
-                                                                alignment: AlignmentDirectional(
+                                                                alignment: const AlignmentDirectional(
                                                                         0.0,
                                                                         0.0)
                                                                     .resolve(

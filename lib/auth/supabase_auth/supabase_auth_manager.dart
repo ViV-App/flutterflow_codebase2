@@ -25,10 +25,10 @@ class SupabaseAuthManager extends AuthManager
         return;
       }
       await currentUser?.delete();
-    } on AuthException catch (e) {
+    } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
             content: Text(
                 'Algo inesperado aconteceu, por favor, tente novamente em alguns minutos.')),
       );
@@ -46,17 +46,17 @@ class SupabaseAuthManager extends AuthManager
         return;
       }
       await currentUser?.updateEmail(email);
-    } on AuthException catch (e) {
+    } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
             content: Text(
                 'Algo inesperado aconteceu, por favor, tente novamente em alguns minutos.')),
       );
       return;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Email change confirmation email sent')),
+      const SnackBar(content: Text('Email change confirmation email sent')),
     );
   }
 
@@ -67,17 +67,17 @@ class SupabaseAuthManager extends AuthManager
   }) async {
     try {
       await SupaFlow.client.auth.resetPasswordForEmail(email);
-    } on AuthException catch (e) {
+    } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
             content: Text(
                 'Algo inesperado aconteceu, por favor, tente novamente em alguns minutos.')),
       );
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('E-mail de recuperação de senha enviado!')),
+      const SnackBar(content: Text('E-mail de recuperação de senha enviado!')),
     );
   }
 

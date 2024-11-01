@@ -10,7 +10,7 @@ class PlanosAssinaturaTable extends SupabaseTable<PlanosAssinaturaRow> {
 }
 
 class PlanosAssinaturaRow extends SupabaseDataRow {
-  PlanosAssinaturaRow(Map<String, dynamic> data) : super(data);
+  PlanosAssinaturaRow(super.data);
 
   @override
   SupabaseTable get table => PlanosAssinaturaTable();

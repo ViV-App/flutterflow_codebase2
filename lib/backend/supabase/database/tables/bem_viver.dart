@@ -9,7 +9,7 @@ class BemViverTable extends SupabaseTable<BemViverRow> {
 }
 
 class BemViverRow extends SupabaseDataRow {
-  BemViverRow(Map<String, dynamic> data) : super(data);
+  BemViverRow(super.data);
 
   @override
   SupabaseTable get table => BemViverTable();
