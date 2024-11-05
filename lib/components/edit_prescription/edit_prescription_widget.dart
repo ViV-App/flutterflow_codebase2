@@ -2,7 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/custom_date_picker_widget.dart';
+import '/components/custom_date_picker/custom_date_picker_widget.dart';
 import '/components/delete_prescription/delete_prescription_widget.dart';
 import '/components/duracao_dias/duracao_dias_widget.dart';
 import '/components/horario_prescricao/horario_prescricao_widget.dart';

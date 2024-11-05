@@ -52,8 +52,8 @@ class PacienteRow extends SupabaseDataRow {
   double? get altura => getField<double>('altura');
   set altura(double? value) => setField<double>('altura', value);
 
-  double? get peso => getField<double>('Peso');
-  set peso(double? value) => setField<double>('Peso', value);
+  double? get peso => getField<double>('peso');
+  set peso(double? value) => setField<double>('peso', value);
 
   int? get medicoPrescritor => getField<int>('medico_prescritor');
   set medicoPrescritor(int? value) => setField<int>('medico_prescritor', value);

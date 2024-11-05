@@ -264,6 +264,8 @@ dynamic deserializeParam<T>(
             return ConsumotrackRow(data);
           case QuestionarioPerguntasRow:
             return QuestionarioPerguntasRow(data);
+          case VwPacienteCadastralDataRow:
+            return VwPacienteCadastralDataRow(data);
           case PacienteRow:
             return PacienteRow(data);
           case StatusPacientRow:

@@ -885,9 +885,9 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                       data: {
                                         'altura': double.tryParse(
                                             _model.textController3.text),
-                                        'Peso': double.tryParse(
-                                            _model.textController4.text),
                                         'medico_prescritor': _model.cMed?.id,
+                                        'peso': double.tryParse(
+                                            _model.textController4.text),
                                       },
                                       matchingRows: (rows) => rows.eq(
                                         'uuid',
@@ -948,7 +948,7 @@ class _HealthDataWidgetState extends State<HealthDataWidget> {
                                       data: {
                                         'altura': double.tryParse(
                                             _model.textController3.text),
-                                        'Peso': double.tryParse(
+                                        'peso': double.tryParse(
                                             _model.textController4.text),
                                       },
                                       matchingRows: (rows) => rows.eq(

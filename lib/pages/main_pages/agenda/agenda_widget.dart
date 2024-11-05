@@ -1,5 +1,5 @@
 import '/backend/supabase/supabase.dart';
-import '/components/custom_date_picker_widget.dart';
+import '/components/custom_date_picker/custom_date_picker_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';

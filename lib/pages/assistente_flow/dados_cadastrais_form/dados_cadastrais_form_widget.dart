@@ -2209,7 +2209,7 @@ class _DadosCadastraisFormWidgetState extends State<DadosCadastraisFormWidget>
                                   'dados_cad_preenchidos': true,
                                   'altura': double.tryParse(
                                       _model.alturaTextController.text),
-                                  'Peso': double.tryParse(
+                                  'peso': double.tryParse(
                                       _model.pesoTextController.text),
                                 },
                                 matchingRows: (rows) => rows.eq(

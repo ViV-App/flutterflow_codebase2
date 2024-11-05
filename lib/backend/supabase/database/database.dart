@@ -27,6 +27,7 @@ export 'tables/static_diagnosticos.dart';
 export 'tables/static_tag_conteudo_educativo.dart';
 export 'tables/consumotrack.dart';
 export 'tables/questionario_perguntas.dart';
+export 'tables/vw_paciente_cadastral_data.dart';
 export 'tables/paciente.dart';
 export 'tables/status_pacient.dart';
 export 'tables/ficha_saude.dart';

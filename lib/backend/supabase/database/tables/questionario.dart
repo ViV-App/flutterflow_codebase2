@@ -28,4 +28,7 @@ class QuestionarioRow extends SupabaseDataRow {
 
   String? get proposito => getField<String>('proposito');
   set proposito(String? value) => setField<String>('proposito', value);
+
+  int? get ordem => getField<int>('ordem');
+  set ordem(int? value) => setField<int>('ordem', value);
 }

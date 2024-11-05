@@ -1,5 +1,5 @@
 import '/backend/schema/structs/index.dart';
-import '/components/custom_time_picker_widget.dart';
+import '/components/custom_time_picker/custom_time_picker_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
